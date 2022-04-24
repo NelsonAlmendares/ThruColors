@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');/* font-family: 'Raleway', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Raleway:wght@200&display=swap'); /*font-family: 'Mulish', sans-serif; font-family: 'Raleway', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); /* font-family: 'Mulish', sans-serif; font-family: 'Noto Sans', sans-serif; font-family: 'Raleway', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap'); /* font-family: 'Raleway', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+:root{
+    --black: #000;
+    --purple:#542181;
+    --purple2:#8D6BAB;
+    --pink: #EBACBF;
+    --navigator: #9FE40B;
+    --banner1: #F3F5F7;
+    --mouse_enter: #3E1860;
+    --mouse_leave: #EFEFEF;
+    --text_hover: #F68712;
+    --search: #C9B6DA;
+    --search_hover: #B9ABE0;
+    --footer: #D6D6D6;
+}
+
+body {
+  position: relative;
+}
+
+@font-face {
+    font-family: 'Kathen';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/kathen.woff2') format('woff2');
+  }
+
+  .fixed{
+    background-color: var(--purple);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header{
+  position: fixed;
+  z-index: 10;
+  transition: 0.4s;
+  width: 100%;
+}
+
+h2{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+h3{
+  margin-bottom: 0;
+}
+
+i{
+  color: var(--black);
+}
+
+/* Elementos con tipografía */
+.kathen {
+  font-family: 'Kathen';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-size: 25px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.carrito{
+  height: 35px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.carrito_link{
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.title{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.breadcrumbs{
+  text-decoration: none;
+  color: var(--navigator);
+}
+
+#actions{
+  height: 20px;
+}
+
+.breadcrumbs:hover{
+  color: var(--navigator);
+}
+
+.banner-back{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.banner{
+  width: 100%;
+  height: 23vh;
+  z-index: 1;
+  margin-left: 0;
+  margin-right: 0;
+  background: url('../../resources/img/banner.png');
+}
+
+.banner-text{
+  padding-top: 8%;
+  color: white;
+}
+
+.banner h1{
+  padding-top: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-text2{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5%;
+  color: white;
+}
+
+.banner1{
+  background: url('../resources/banner1.png');
+  height: 25vh;
+}
+
+.search{
+  border-color: #F3F5F7;
+  background: var(--search);
+  border-color: var(--search);
+}
+
+.search:hover{
+  background-color: var(--search_hover);
+}
+
+.logo{
+  height: 25px;
+}
+
+.spaciador{
+  margin-top: 40px;
+}
+
+.iconos{
+  height: 25px;
+}
+
+.icon{
+  height: 25px;
+  cursor: pointer;
+}
+
+.logo-brand{
+  height: 50px;
+}
+
+.products-preview{
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+.icons{
+  cursor: pointer;
+}
+
+.profile{
+    border-radius: 50%;
+    height: 25px;
+}
+
+.lateral{
+  margin-top: 30px;
+}
+
+.images{
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.header-text{
+  padding-left: 4rem;
+}
+
+.edit{
+  height: 415px;
+}
+
+.Slogan{
+  font-family: 'Mulish', sans-serif;
+  font-family: 'Raleway', sans-serif;;
+}
+
+
+.card-description{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.card-price{
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.cards{
+  background-color: var(--mouse_enter);
+  border-color: var(--mouse_enter);
+  color: #F3F5F7;
+}
+
+.title_cards{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.cards:hover{
+  background-color: var(--mouse_leave);
+  color: var(--text_hover);
+  border-color: var(--mouse_leave);
+}
+
+.zona1{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-position:center center;
+}
+
+.zona2{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-position:center center;
+}
+
+.img-container{
+  position: relative;
+}
+
+.image{
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.overlay{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.img-container:hover .image{
+  opacity: 0.3;
+}
+
+.img-container:hover .overlay{
+  opacity: 1;
+}
+
+/* Banner fijo parte superior */
+
+#activo{
+  color: var(--navigator);
+}
+
+.navigator{
+  color: var(--navigator);
+  text-decoration: none;
+}
+
+.navigator:hover{
+  color: var(--navigator);
+  text-decoration: none;
+}
+
+header.abajo{
+  background: var(--purple);
+}
+
+header.abajo .breadcrumb li a{
+  color: var(--navigator);
+}
+
+
+
+
+
+/* SWIPER */
+.swiper {
+  width: 90%;
+  height: 50%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/*Modificaciones del card Mision*/
+#CardMision{
+  background: -webkit-linear-gradient(to right, #fffcdc, #E5C4D9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fffcdc, #E5C4D9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-left: 5%;
+  padding-right: 5%;
+  border: none;
+}
+
+#ImagenMision {  
+  border: 7px solid white;
+  transform: rotate(-17deg);
+  max-width: 55%;
+  max-height: 100%;
+}
+
+#titleMision {
+  font-family: 'Kathen';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-size: 25px;
+  color: var(--black);
+}
+
+/*Modificaciones del card Vision*/
+#CardVision{
+  background: -webkit-linear-gradient(to right, #fffcdc, #E5C4D9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #fffcdc, #E5C4D9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: none;
+}
+
+#ImagenVision {  
+  border: 7px solid white;
+  transform: rotate(17deg);
+  max-width: 45%;
+  max-height: 100%;
+}
+
+#titleVision {
+  font-family: 'Kathen';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-size: 25px;
+}
+
+.card-body{
+  margin-top : 5%; 
+}
+
+#card_text{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+#card_vision p{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+/*Modifica el footer*/
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  background-color: var(--footer);
+  padding: 2rem;
+  color: var(--black);
+  bottom: 0;
+  width: 100%;
+}

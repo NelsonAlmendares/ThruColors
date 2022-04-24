@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- Link css para productos -->
+  <link rel="stylesheet" href="../../css/publico/prooductos.css">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="../../resources/butterfly.png">
+
+  <title>Productos | ThruColors</title>
+</head>
+<body>
+  <header class="fixed">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand kathen text-white" href="../publico/main.html"><img src="../../resources/butterfly.png"
+            class="img-fluid logo" alt=""> Thru Colors</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+            </li>
+          </ul>
+          <form class="d-flex">
+            <img src="../../resources/perfil/media_.jpeg" style="height: 25px;" class="img-fluid profile mt-1" alt="">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Astrid Nicole
+                </a>
+                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li><a class="dropdown-item" href="../publico/index.html">Cerrar Sesión <img
+                        src="../../resources/iconos/icons8_Close_96px.png" id="actions" alt=""></a></li>
+                  <li><a class="dropdown-item" href="#">Ajustes <img
+                        src="../../resources/iconos/icons8_settings_96px.png" id="actions" alt=""></a></li>
+                </ul>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a class="navigator" href="../publico/main.html">Inicio</a></li>
+            <li class="breadcrumb-item active" id="activo" aria-current="page">Productos</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          </ul>
+          <form class="d-flex">
+            <a href="../publico/carrito.html" class="carrito_link"><img src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito" alt=""></a>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn search btn-outline-secondary" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 mt-3">
+          <h3 class="p-3">Marcas</h3>
+          <div class="col">
+            <div class="buttons mt-3 text-center">
+              <button type="button" id="marcas" class="btn btn-outline-primary">Avon</button>
+              <button type="button" id="marcas" class="btn btn-outline-primary">Nivea</button>
+              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Gilton</button>
+              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Gucci</button>
+              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Dalton</button>
+              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Esika</button>
+            </div>
+            <h4 class="p-3 mt-3">
+              Categorías
+            </h4>
+            <div id="dropdown_menu" class="text-center">
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Categorías
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="filter mt-4 p-3">
+              <h4 class="mt-3">
+                Categorías
+              </h4>
+              <input type="range" class="form-range" id="customRange1">
+            </div>
+            <div class="filter_button p-3">
+              <div class="row">
+                <div class="col d-flex">
+                  <button type="button" id="marcas" class="btn btn-outline-primary">Filtrar</button>
+                  <p class="filtro">$4 - $90</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 mt-3">
+          <div class="container">
+            <div class="row">
+              <div class="container products-preview">
+                <div class="row">
+                  <!-- CAR NUMERO 1 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm"> <a
+                                href="../../views/publico/detalle_producto.html" class="card_link">Add to cart</a> <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Hidratación</h5>
+                        <p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
+                        <p class="card-price text-center">$12.95</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 2 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product2.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuerpo</h5>
+                        <p class="card-description text-center">Jabón de baño GARNIER de 600ml</p>
+                        <p class="card-price text-center">$19.63</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 3 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product3.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 4 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product4.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="container products-preview">
+                <div class="row">
+                  <!-- CAR NUMERO 1 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Hidratación</h5>
+                        <p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
+                        <p class="card-price text-center">$12.95</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 2 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product2.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuerpo</h5>
+                        <p class="card-description text-center">Jabón de baño GARNIER de 600ml</p>
+                        <p class="card-price text-center">$19.63</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 3 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product3.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 4 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product4.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="container products-preview">
+                <div class="row">
+                  <!-- CAR NUMERO 1 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Hidratación</h5>
+                        <p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
+                        <p class="card-price text-center">$12.95</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 2 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product2.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuerpo</h5>
+                        <p class="card-description text-center">Jabón de baño GARNIER de 600ml</p>
+                        <p class="card-price text-center">$19.63</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 3 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product3.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- CAR NUMERO 4 -->
+                  <div class="col-md-3 d-flex">
+                    <div class="card">
+                      <div class="img-container">
+                        <img src="../../resources/productos/Product4.png" class="image card-img-top img-fluid"
+                          alt="...">
+                        <div class="overlay">
+                          <div class="col">
+                            <button type="button" class="btn btn-outline-danger btn-sm">Add to cart <i
+                                class="bi bi-bag"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Cuidado Facial</h5>
+                        <p class="card-description text-center">Base para maquillaje BOURIOS pile caucásica</p>
+                        <p class="card-price text-center">$9.45</p>
+                        <form action="" class="text-center">
+                          <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pagination">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link previous_link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link next_link" href="#">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <img src="../../resources/butterfly.png" class="logo-brand mb-2" alt="logo">
+      <ul class="list-inline">
+        <li class="list-inline-item footer-menu"><a href="#">Home</a></li>
+        <li class="list-inline-item footer-menu"><a href="#">Portfolio</a></li>
+        <li class="list-inline-item footer-menu"><a href="#">About us</a></li>
+        <li class="list-inline-item footer-menu"><a href="#">Pricing</a></li>
+        <li class="list-inline-item footer-menu"><a href="#">Contact</a></li>
+      </ul>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+              class="img-fluid icon"></a></li>
+        <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+              class="img-fluid icon"></a></li>
+        <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174883.png"
+              class="img-fluid icon"></a></li>
+        <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733544.png"
+              class="img-fluid icon"></a></li>
+        <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png"
+              class="img-fluid icon"></a></li>
+      </ul>
+      <small>©2022 All Rights Reserved. Created by <a href="https://github.com/NelsonAlmendares/ThruColors.git"
+          class="font-weight-bold" target="_blank" rel="noopener">Thru Colors Team</a></small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

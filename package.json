@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap-icons": "^1.8.1",
+    "sweetalert2": "^11.4.6",
+    "swiper": "^8.0.7",
+    "vanilla-datatables": "^1.6.16"
+  }
+}

@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap"); /* font-family: 'Raleway', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Raleway:wght@200&display=swap"); /*font-family: 'Mulish', sans-serif; font-family: 'Raleway', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"); /* font-family: 'Mulish', sans-serif; font-family: 'Noto Sans', sans-serif; font-family: 'Raleway', sans-serif;*/
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap"); /* font-family: 'Raleway', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+
+:root {
+  --black: #000;
+  --purple: #542181;
+  --purple2: #8d6bab;
+  --pink: #ebacbf;
+  --navigator: #9fe40b;
+  --banner1: #f3f5f7;
+  --mouse_enter: #3e1860;
+  --mouse_leave: #efefef;
+  --text_hover: #f68712;
+  --search: #c9b6da;
+  --search_hover: #b9abe0;
+  --footer: #d6d6d6;
+}
+
+@font-face {
+  font-family: "Kathen";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/kathen.woff2") format("woff2");
+}
+
+
+.fixed {
+  background-color: var(--purple);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header {
+  position: fixed;
+  z-index: 10;
+  transition: 0.4s;
+  width: 100%;
+}
+
+/* Elementos con tipografía */
+.kathen {
+  font-family: "Kathen";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#number{
+    width: 50px;
+}
+
+#vista_previa{
+    width: 150px;
+}
+
+#nombre{
+    width: 380px;
+}
+
+#costos{
+    width: 100px;
+}
+
+#acciones{
+    width: 100px;
+}
+
+.eliminar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.img-table{
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrito{
+    height: 35px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .carrito_link{
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+.breadcrumbs {
+  text-decoration: none;
+  color: var(--navigator);
+}
+
+#actions {
+  height: 20px;
+}
+
+.breadcrumbs:hover {
+  color: var(--navigator);
+}
+
+.banner-back {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.banner {
+  width: 100%;
+  height: 23vh;
+  z-index: 1;
+  margin-left: 0;
+  margin-right: 0;
+  background: url("../../resources/img/banner.png");
+}
+
+.banner-text {
+  padding-top: 8%;
+  color: white;
+}
+
+.banner h1 {
+  padding-top: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-text2 {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5%;
+  color: white;
+}
+
+.banner1 {
+  background: url("../resources/banner1.png");
+  height: 25vh;
+}
+
+.search {
+  border-color: #f3f5f7;
+  background: var(--search);
+  border-color: var(--search);
+}
+
+.search:hover {
+  background-color: var(--search_hover);
+}
+
+.logo {
+  height: 25px;
+}
+
+.spaciador {
+  margin-top: 40px;
+}
+
+.iconos {
+  height: 25px;
+}
+
+.icon {
+  height: 25px;
+  cursor: pointer;
+}
+
+.logo-brand {
+  height: 50px;
+}
+
+.profile {
+  border-radius: 50%;
+  height: 25px;
+}
+
+.zona1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
+}
+
+.zona2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
+}
+
+.img-container {
+  position: relative;
+}
+
+/* Banner fijo parte superior */
+
+#activo {
+  color: var(--navigator);
+}
+
+.navigator {
+  color: var(--navigator);
+  text-decoration: none;
+}
+
+.navigator:hover {
+  color: var(--navigator);
+  text-decoration: none;
+}
+
+/*Modifica el footer*/
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  background-color: var(--footer);
+  padding: 1.4rem;
+  color: var(--black);
+  width: 100%;
+  bottom: 0;
+}

@@ -1,0 +1,225 @@
+:root{
+    --purple: #5E2590;
+    --navigator: #9FE40B;
+    --button: #EFEFEF;
+    --button_color: #F68C1B;
+    --button_hover: #A058CF;
+    --black: #000;
+    --hover: #DC3545;
+    --search: #C9B6DA;
+    --search_hover: #B9ABE0;
+    --footer: #D6D6D6;
+}
+
+@font-face {
+    font-family: 'Kathen';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../resources/fonts/publico/kathen.woff2') format('woff2');
+}
+
+.carrito{
+    height: 35px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.kathen {
+    font-family: 'Kathen';
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-size: 25px;
+  }
+
+.logo-brand{
+    height: 50px;
+}
+
+  .search{
+    border-color: #F3F5F7;
+    background: var(--search);
+    border-color: var(--search);
+  }
+
+  .search:hover{
+    background-color: var(--search_hover);
+  }
+
+.fixed{
+    background-color: var(--purple);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.carrito_link{
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+.navigator{
+    color: var(--navigator);
+    text-decoration: none;
+}
+
+#activo{
+    color: var(--navigator);
+}
+
+.profile{
+    border-radius: 50%;
+}
+
+.logo{
+    height: 30px;
+}
+
+.card_buttom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-container{
+    position: relative;
+  }
+  
+  .image{
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .overlay{
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .img-container:hover .image{
+    opacity: 0.3;
+  }
+  
+  .img-container:hover .overlay{
+    opacity: 1;
+  }
+
+.filtro{
+    margin-top: 12px;
+    margin-left: 25px;
+}
+
+.card_link{
+    color: var(--black);
+}
+
+.card_link:hover{
+    color: white;
+}
+
+.pagination{
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-link{
+    color: var(--button_hover);
+}
+
+.previous_link{
+    color: var(--black);
+}
+
+.next_link{
+    color: var(--black);
+}
+
+.item{
+    color: var(--black);
+}
+
+.actions{
+    color: var(--purple);
+}
+
+.page-link:hover{
+    color: var(--purple);
+}
+
+#actions{
+    height: 20px;
+}
+
+#label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+#customRange1{
+    margin-top: 13px;
+}
+
+#marcas{
+    border-radius: 20px;
+    background-color: var(--button);
+    border-color: var(--button);
+    color: black;
+}
+
+#marcas:hover{
+    background-color: var(--hover);
+    color: white;
+    border-color: var(--hover);
+}
+
+#dropdownMenuLink{
+    background-color: var(--button);
+    color: var(--black);
+    border-color: var(--button);
+}
+
+#dropdown_menu{
+    margin-top: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--purple);
+}
+
+a:hover{
+    color: var(--button_hover);
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    background-color: var(--footer);
+    padding: 2rem;
+    color: var(--black);
+    bottom: 0;
+    width: 100%;
+  }
+
+.icon{
+    height: 25px;
+}

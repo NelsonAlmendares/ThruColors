@@ -1,0 +1,44 @@
+-Para crear un repositorio usamos el comando
+git init 
+
+--Seguido a esto agregamos todos los archivos que contentan algo dentro
+git add .
+
+--creamos nuestro primer commit para hacer valida la subida de los archivos y 
+se cree la version dentro de git.
+git commit -m "lo que hice para subir
+
+--creamos una rama donde estaremos subiendo a git cada cambio
+git branch -M main
+
+--damos la ruta donde se debe de almcacenar cada uno de los cambios que realicemos
+git remote add origin origin https://github.com/NelsonAlmendares/Thru_Colors_Admin.git
+
+--Y finalizamos con la subida del proyecto
+git push -u origin main
+
+/* ----------- PARA ACTUALIZAR Y SUBIR LOS CAMBIOS ----------- */
+
+--Agregamos desde la terminal todos los cambios que se realizen
+git add .
+
+--creamos nuestro commit para crear una version
+git commit -m "los nuevos cambios"
+
+--subimos el proyecto
+git push -u origin main
+
+--Cambio realizado
+
+/* ----------- PARA TRAER LOS CAMBIOS DESDE OTRO PC ----------- */
+--usando el comando
+git pull
+
+--para agregar usamos
+git add origin rama donde lo subiremos
+
+git branch elmer_branch
+
+* cambios realizados *
+
+git push origin master
