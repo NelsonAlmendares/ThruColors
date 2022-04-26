@@ -1,5 +1,5 @@
 # Hello there!
-## _Thru Colors_
+## _Thru Colors Site_
 
 [![N|Solid](https://www.lucushost.com/blog/wp-content/uploads/2019/10/bootstrap.png)](https://getbootstrap.com/)
 
