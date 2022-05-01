@@ -22,3 +22,8 @@ function readRows(api) {
         }
     });
 }
+
+/* Funcion para retornar los datos de una busqueda {OPERACION SEARCH}*/
+function searchRows (params) {
+
+}
