@@ -13,9 +13,12 @@ function readRows(api) {
                 if(response.status){
                     data = response.dataset;
                 }else{
-                    
+                    sweetAlert(4, response.exception, null);
                 }
-            })
+                fillTable(data);
+            });
+        }else{
+            console.log(request.status + ' ' + request.statusText);
         }
-    })
+    });
 }
