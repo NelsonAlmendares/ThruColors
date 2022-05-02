@@ -162,7 +162,7 @@ function logOut() {
         method: "get",
       }).then(function (request) {
         if (request.ok) {
-          request.json().then(function (response) {
+          request.json().then(function (response) { 
             if (response.status) {
               sweetAlert(1, response.message, "index.html");
             } else {
