@@ -1,368 +1,375 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thru Colors | Productos</title>
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon">
-  <!-- Main styles -->
-  <link rel="stylesheet" href="../../css/privado/style.min.css" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thru Colors | Productos</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon">
+	<!-- Main styles -->
+	<link rel="stylesheet" href="../../css/privado/style.min.css" />
 
-  <!-- Estilos personalizados Nelson Almendares -->
-  <link rel="stylesheet" href="../../css/privado/productos.css">
+	<!-- Estilos personalizados Nelson Almendares -->
+	<link rel="stylesheet" href="../../css/privado/productos.css">
 
 </head>
 
 <body>
-  <div class="layer"></div>
-  <!-- ! Body -->
-  <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
-  <div class="page-flex">
-    <!-- ! Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-start">
-        <div class="sidebar-head">
-          <a href="index.html" class="logo-wrapper" title="Home">
-            <span class="sr-only">Home</span>
-            <img src="../../resources/logo.png" class="logo" />
-          </a>
-          <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-            <span class="sr-only">Toggle menu</span>
-            <span class="icon menu-toggle" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="sidebar-body ">
-          <a href="##" class="sidebar-user">
-            <span class="sidebar-user-img">
-              <picture>
-                <source srcset="../../resources/perfil/perfil_e.png" type="image/webp"><img
-                  src="../../resources/perfil/perfil_e.png" alt="User name">
-              </picture>
-            </span>
-            <div class="sidebar-user-info">
-              <span class="sidebar-user__title">Elmer Carías</span>
-              <span class="sidebar-user__subtitle">CEO</span>
-            </div>
-          </a>
-          <ul class="sidebar-body-menu">
-            <li>
-              <a href="index.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/inicio.png" alt="..."
-                    class="icon-boton" /></span>
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a href="ventas.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/venta.png" alt="..."
-                    class="icon-boton" /></span>
-                Ventas
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a href="categoria.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/categoria.png" alt="..."
-                    class="icon-boton" /></span>
-                Categorías
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a class="active" href="productos.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/productos.png" alt="..."
-                    class="icon-boton" /></span>
-                Productos
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a href="clientes.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/clientes.png" alt="..."
-                    class="icon-boton" /></span>
-                Clientes
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a href="marcas.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos//marcas.png" alt="..."
-                    class="icon-boton" /></span>
-                Marcas
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a href="empleados.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/empleado.png" alt="..."
-                    class="icon-boton" /></span>
-                Empleados
-              </a>
-              <!--span class="msg-counter">7</°span-->
-            </li>
-            <li>
-              <a href="tipo_empleados.html">
-                <span class="icon" aria-hidden="true"><img src="../../resources/iconos/tipo_empleado.png" alt="..."
-                    class="icon-boton" /></span>
-                Tipo Empleados
-              </a>
-            </li>
-          </ul>
-        </div>
-        <ul class="cat-sub-menu">
-          <li>
-            <a href="extention-01.html"></a>
-          </li>
-          <li>
-            <a href="extention-02.html"></a>
-          </li>
-        </ul>
-      </div>
-      <div class="sidebar-footer"></div>
-    </aside>
-    <div class="main-wrapper">
-      <!-- ! Main nav -->
-      <nav class="main-nav--bg">
-        <div class="container main-nav">
-          <div class="main-nav-start">
-            <div class="search-wrapper">
-              <i data-feather="search" aria-hidden="true"></i>
-              <input type="text" placeholder="Enter keywords ..." required />
-            </div>
-          </div>
-          <div class="main-nav-end">
-            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-              <span class="sr-only">Toggle menu</span>
-              <span class="icon menu-toggle--gray" aria-hidden="true"></span>
-            </button>
-            <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
-              <span class="sr-only">Switch theme</span>
-              <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
-              <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
-            </button>
-            <div class="notification-wrapper">
-              <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
-                <span class="sr-only">To messages</span>
-                <span class="icon notification" aria-hidden="true"></span>
-              </button>
-              <ul class="users-item-dropdown notification-dropdown dropdown">
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">System just updated</span>
-                      <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read more
-                        here.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon danger">
-                      <i data-feather="info" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">The cache is full!</span>
-                      <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space and
-                        interfere ...</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">New Subscriber here!</span>
-                      <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="link-to-page" href="##">Go to Notifications page</a>
-                </li>
-              </ul>
-            </div>
-            <div class="notification-wrapper">
-              <button class="gray-circle-btn dropdown-btn" title="Ajustes" type="button">
-                <span class="sr-only">Ajustes</span>
-                <span class="icon setting" aria-hidden="true"></span>
-              </button>
-              <ul class="users-item-dropdown notification-dropdown dropdown">
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">System just updated</span>
-                      <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read more
-                        here.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon danger">
-                      <i data-feather="info" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">The cache is full!</span>
-                      <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space and
-                        interfere ...></span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="notification-dropdown-icon info">
-                      <i data-feather="check" aria-hidden="true"></i>
-                    </div>
-                    <div class="notification-dropdown-text">
-                      <span class="notification-dropdown__title">New Subscriber here!</span>
-                      <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="link-to-page" href="##">Go to Notifications page</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <!-- ! Main -->
-      <main class="main users chart-page" id="skip-target">
-        <div class="container">
-          <div class="col spacing-top">
-            <h2 class="main-text">Administración de Productos</h2>
-          </div>
-          <div class="col">
-            <form action="" id="form" name="form" method="post">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Ext.</th>
-                    <th>City</th>
-                    <th data-type="date" data-format="YYYY/MM/DD">Start Date</th>
-                    <th>Completion</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Unity Pugh</td>
-                    <td>9958</td>
-                    <td>Curicó</td>
-                    <td>2005/02/11</td>
-                    <td>37%</td>
-                  </tr>
-                  <tr>
-                    <td>Theodore Duran</td>
-                    <td>8971</td>
-                    <td>Dhanbad</td>
-                    <td>1999/04/07</td>
-                    <td>97%</td>
-                  </tr>
-                  <tr>
-                    <td>Kylie Bishop</td>
-                    <td>3147</td>
-                    <td>Norman</td>
-                    <td>2005/09/08</td>
-                    <td>63%</td>
-                  </tr>
-                  <tr>
-                    <td>Willow Gilliam</td>
-                    <td>3497</td>
-                    <td>Amqui</td>
-                    <td>2009/29/11</td>
-                    <td>30%</td>
-                  </tr>
-                  <tr>
-                    <td>Blossom Dickerson</td>
-                    <td>5018</td>
-                    <td>Kempten</td>
-                    <td>2006/11/09</td>
-                    <td>17%</td>
-                  </tr>
-                  <tr>
-                    <td>Elliott Snyder</td>
-                    <td>3925</td>
-                    <td>Enines</td>
-                    <td>2006/03/08</td>
-                    <td>57%</td>
-                  </tr>
-                  <tr>
-                    <td>Castor Pugh</td>
-                    <td>9488</td>
-                    <td>Neath</td>
-                    <td>2014/23/12</td>
-                    <td>93%</td>
-                  </tr>
-                  <tr>
-                    <td>Pearl Carlson</td>
-                    <td>6231</td>
-                    <td>Cobourg</td>
-                    <td>2014/31/08</td>
-                    <td>100%</td>
-                  </tr>
-                  <tr>
-                    <td>Deirdre Bridges</td>
-                    <td>1579</td>
-                    <td>Eberswalde-Finow</td>
-                    <td>2014/26/08</td>
-                    <td>44%</td>
-                  </tr>
-                  <tr>
-                    <td>Daniel Baldwin</td>
-                    <td>6095</td>
-                    <td>Moircy</td>
-                    <td>2000/11/01</td>
-                    <td>33%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
-          </div>
-        </div>
-      </main>
-      <!-- ! Footer -->
-      <footer class="footer">
-        <div class="container footer--flex">
-          <div class="footer-start">
-            <p>
-              2022 © Thru Colors Dashboard -
-              <a href="elegant-dashboard.com" target="_blank" rel="noopener noreferrer">Thru Colors-dashboard.com</a>
-            </p>
-          </div>
-          <ul class="footer-end">
-            <li><a href="##">About</a></li>
-            <li><a href="##">Support</a></li>
-            <li><a href="##">Puchase</a></li>
-          </ul>
-        </div>
-      </footer>
-    </div>
-  </div>
+	<div class="layer"></div>
+	<!-- ! Body -->
+	<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+	<div class="page-flex">
+		<!-- ! Sidebar -->
+		<aside class="sidebar">
+			<div class="sidebar-start">
+				<div class="sidebar-head">
+					<a href="index.html" class="logo-wrapper" title="Home">
+						<span class="sr-only">Home</span>
+						<img src="../../resources/logo.png" class="logo" />
+					</a>
+					<button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+						<span class="sr-only">Toggle menu</span>
+						<span class="icon menu-toggle" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="sidebar-body ">
+					<a href="##" class="sidebar-user">
+						<span class="sidebar-user-img">
+							<picture>
+								<source srcset="../../resources/perfil/perfil_e.png" type="image/webp"><img
+									src="../../resources/perfil/perfil_e.png" alt="User name">
+							</picture>
+						</span>
+						<div class="sidebar-user-info">
+							<span class="sidebar-user__title">Elmer Carías</span>
+							<span class="sidebar-user__subtitle">CEO</span>
+						</div>
+					</a>
+					<ul class="sidebar-body-menu">
+						<li>
+							<a href="index.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/inicio.png"
+										alt="..." class="icon-boton" /></span>
+								Inicio
+							</a>
+						</li>
+						<li>
+							<a href="ventas.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/venta.png"
+										alt="..." class="icon-boton" /></span>
+								Ventas
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a href="categoria.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/categoria.png"
+										alt="..." class="icon-boton" /></span>
+								Categorías
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a class="active" href="productos.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/productos.png"
+										alt="..." class="icon-boton" /></span>
+								Productos
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a href="clientes.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/clientes.png"
+										alt="..." class="icon-boton" /></span>
+								Clientes
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a href="marcas.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos//marcas.png"
+										alt="..." class="icon-boton" /></span>
+								Marcas
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a href="empleados.html">
+								<span class="icon" aria-hidden="true"><img src="../../resources/iconos/empleado.png"
+										alt="..." class="icon-boton" /></span>
+								Empleados
+							</a>
+							<!--span class="msg-counter">7</°span-->
+						</li>
+						<li>
+							<a href="tipo_empleados.html">
+								<span class="icon" aria-hidden="true"><img
+										src="../../resources/iconos/tipo_empleado.png" alt="..."
+										class="icon-boton" /></span>
+								Tipo Empleados
+							</a>
+						</li>
+					</ul>
+				</div>
+				<ul class="cat-sub-menu">
+					<li>
+						<a href="extention-01.html"></a>
+					</li>
+					<li>
+						<a href="extention-02.html"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="sidebar-footer"></div>
+		</aside>
+		<div class="main-wrapper">
+			<!-- ! Main nav -->
+			<nav class="main-nav--bg">
+				<div class="container main-nav">
+					<div class="main-nav-start">
+						<div class="search-wrapper">
+							<i data-feather="search" aria-hidden="true"></i>
+							<input type="text" placeholder="Enter keywords ..." required />
+						</div>
+					</div>
+					<div class="main-nav-end">
+						<button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+							<span class="sr-only">Toggle menu</span>
+							<span class="icon menu-toggle--gray" aria-hidden="true"></span>
+						</button>
+						<button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+							<span class="sr-only">Switch theme</span>
+							<i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+							<i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+						</button>
+						<div class="notification-wrapper">
+							<button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
+								<span class="sr-only">To messages</span>
+								<span class="icon notification" aria-hidden="true"></span>
+							</button>
+							<ul class="users-item-dropdown notification-dropdown dropdown">
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon info">
+											<i data-feather="check"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">System just updated</span>
+											<span class="notification-dropdown__subtitle">The system has been
+												successfully upgraded. Read more
+												here.</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon danger">
+											<i data-feather="info" aria-hidden="true"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">The cache is full!</span>
+											<span class="notification-dropdown__subtitle">Unnecessary caches take up a
+												lot of memory space and
+												interfere ...</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon info">
+											<i data-feather="check" aria-hidden="true"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">New Subscriber here!</span>
+											<span class="notification-dropdown__subtitle">A new subscriber has
+												subscribed.</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="link-to-page" href="##">Go to Notifications page</a>
+								</li>
+							</ul>
+						</div>
+						<div class="notification-wrapper">
+							<button class="gray-circle-btn dropdown-btn" title="Ajustes" type="button">
+								<span class="sr-only">Ajustes</span>
+								<span class="icon setting" aria-hidden="true"></span>
+							</button>
+							<ul class="users-item-dropdown notification-dropdown dropdown">
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon info">
+											<i data-feather="check"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">System just updated</span>
+											<span class="notification-dropdown__subtitle">The system has been
+												successfully upgraded. Read more
+												here.</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon danger">
+											<i data-feather="info" aria-hidden="true"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">The cache is full!</span>
+											<span class="notification-dropdown__subtitle">Unnecessary caches take up a
+												lot of memory space and
+												interfere ...></span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a href="##">
+										<div class="notification-dropdown-icon info">
+											<i data-feather="check" aria-hidden="true"></i>
+										</div>
+										<div class="notification-dropdown-text">
+											<span class="notification-dropdown__title">New Subscriber here!</span>
+											<span class="notification-dropdown__subtitle">A new subscriber has
+												subscribed.</span>
+										</div>
+									</a>
+								</li>
+								<li>
+									<a class="link-to-page" href="##">Go to Notifications page</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!-- ! Main -->
+			<main class="main users chart-page" id="skip-target">
+				<div class="container">
+					<div class="col spacing-top">
+						<h2 class="main-text">Administración de Productos</h2>
+					</div>
+					<div class="col">
+						<form action="" id="form" name="form" method="post">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Ext.</th>
+										<th>City</th>
+										<th data-type="date" data-format="YYYY/MM/DD">Start Date</th>
+										<th>Completion</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Unity Pugh</td>
+										<td>9958</td>
+										<td>Curicó</td>
+										<td>2005/02/11</td>
+										<td>37%</td>
+									</tr>
+									<tr>
+										<td>Theodore Duran</td>
+										<td>8971</td>
+										<td>Dhanbad</td>
+										<td>1999/04/07</td>
+										<td>97%</td>
+									</tr>
+									<tr>
+										<td>Kylie Bishop</td>
+										<td>3147</td>
+										<td>Norman</td>
+										<td>2005/09/08</td>
+										<td>63%</td>
+									</tr>
+									<tr>
+										<td>Willow Gilliam</td>
+										<td>3497</td>
+										<td>Amqui</td>
+										<td>2009/29/11</td>
+										<td>30%</td>
+									</tr>
+									<tr>
+										<td>Blossom Dickerson</td>
+										<td>5018</td>
+										<td>Kempten</td>
+										<td>2006/11/09</td>
+										<td>17%</td>
+									</tr>
+									<tr>
+										<td>Elliott Snyder</td>
+										<td>3925</td>
+										<td>Enines</td>
+										<td>2006/03/08</td>
+										<td>57%</td>
+									</tr>
+									<tr>
+										<td>Castor Pugh</td>
+										<td>9488</td>
+										<td>Neath</td>
+										<td>2014/23/12</td>
+										<td>93%</td>
+									</tr>
+									<tr>
+										<td>Pearl Carlson</td>
+										<td>6231</td>
+										<td>Cobourg</td>
+										<td>2014/31/08</td>
+										<td>100%</td>
+									</tr>
+									<tr>
+										<td>Deirdre Bridges</td>
+										<td>1579</td>
+										<td>Eberswalde-Finow</td>
+										<td>2014/26/08</td>
+										<td>44%</td>
+									</tr>
+									<tr>
+										<td>Daniel Baldwin</td>
+										<td>6095</td>
+										<td>Moircy</td>
+										<td>2000/11/01</td>
+										<td>33%</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</main>
+			<!-- ! Footer -->
+			<footer class="footer">
+				<div class="container footer--flex">
+					<div class="footer-start">
+						<p>
+							2022 © Thru Colors Dashboard -
+							<a href="elegant-dashboard.com" target="_blank" rel="noopener noreferrer">Thru
+								Colors-dashboard.com</a>
+						</p>
+					</div>
+					<ul class="footer-end">
+						<li><a href="##">About</a></li>
+						<li><a href="##">Support</a></li>
+						<li><a href="##">Puchase</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</div>
 
-  <!-- Vanilla DataTables -->
-  <link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
-  <script src="../../js/privado/vanilla-dataTables.min.js"></script>
+	<!-- Vanilla DataTables -->
+	<link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
+	<script src="../../js/privado/vanilla-dataTables.min.js"></script>
 
-  <!--Inicializador de las tablas de datos -->
-  <script src="../../js/privado/dataTables.js"></script>
+	<!--Inicializador de las tablas de datos -->
+	<script src="../../js/privado/dataTables.js"></script>
 
-  <!-- Icons library -->
-  <script src="../../plugins/feather.min.js"></script>
+	<!-- Icons library -->
+	<script src="../../plugins/feather.min.js"></script>
 
-  <script src="../../js/publico/tables.js"></script>
+	<script src="../../js/publico/tables.js"></script>
 </body>
 
 </html>
