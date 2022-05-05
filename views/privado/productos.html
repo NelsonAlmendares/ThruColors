@@ -244,89 +244,67 @@
           <div class="col spacing-top">
             <h2 class="main-text">Administración de Productos</h2>
           </div>
+          <div class="container">
+            <div class="col botones">
+              <button class="btn-agregar" type="submit">Agregar</button>
+              <button class="btn-reporte" type="submit">Reporte</button>
+            </div>
+          </div>
           <div class="col">
             <form action="" id="form" name="form" method="post">
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Ext.</th>
-                    <th>City</th>
-                    <th data-type="date" data-format="YYYY/MM/DD">Start Date</th>
-                    <th>Completion</th>
+                    <th>Nombre</th>
+                    <th class="espaciado">Costo</th>
+                    <th>Descipcion</th>
+                    <th>Marca</th>
+                    <th>Genero</th>
+                    <th>Categoria</th>
+                    <th>Presentacion</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Unity Pugh</td>
-                    <td>9958</td>
-                    <td>Curicó</td>
-                    <td>2005/02/11</td>
-                    <td>37%</td>
+                    <td class="contenido">Crema Hidratante</td>
+                    <td class="contenido">$2.30</td>
+                    <td class="contenido">Crema que auida a cerrar los poros de la piel</td>
+                    <td class="contenido">CHANNEL</td>
+                    <td class="contenido">Cara</td>
+                    <td class="contenido">Unisex</td>
+                    <td class="contenido">1000ml</td>
+                    <td class="contenido">
+                      <button class="btn-editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Theodore Duran</td>
-                    <td>8971</td>
-                    <td>Dhanbad</td>
-                    <td>1999/04/07</td>
-                    <td>97%</td>
+                    <td class="contenido">Espuma para cabello</td>
+                    <td class="contenido">$2.30</td>
+                    <td class="contenido">Crema que auida a cerrar los poros de la piel</td>
+                    <td class="contenido">CHANNEL</td>
+                    <td class="contenido">Cara</td>
+                    <td class="contenido">Unisex</td>
+                    <td class="contenido">1000ml</td>
+                    <td class="contenido">
+                      <button class="btn-editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
+                    </td>
                   </tr>
                   <tr>
-                    <td>Kylie Bishop</td>
-                    <td>3147</td>
-                    <td>Norman</td>
-                    <td>2005/09/08</td>
-                    <td>63%</td>
-                  </tr>
-                  <tr>
-                    <td>Willow Gilliam</td>
-                    <td>3497</td>
-                    <td>Amqui</td>
-                    <td>2009/29/11</td>
-                    <td>30%</td>
-                  </tr>
-                  <tr>
-                    <td>Blossom Dickerson</td>
-                    <td>5018</td>
-                    <td>Kempten</td>
-                    <td>2006/11/09</td>
-                    <td>17%</td>
-                  </tr>
-                  <tr>
-                    <td>Elliott Snyder</td>
-                    <td>3925</td>
-                    <td>Enines</td>
-                    <td>2006/03/08</td>
-                    <td>57%</td>
-                  </tr>
-                  <tr>
-                    <td>Castor Pugh</td>
-                    <td>9488</td>
-                    <td>Neath</td>
-                    <td>2014/23/12</td>
-                    <td>93%</td>
-                  </tr>
-                  <tr>
-                    <td>Pearl Carlson</td>
-                    <td>6231</td>
-                    <td>Cobourg</td>
-                    <td>2014/31/08</td>
-                    <td>100%</td>
-                  </tr>
-                  <tr>
-                    <td>Deirdre Bridges</td>
-                    <td>1579</td>
-                    <td>Eberswalde-Finow</td>
-                    <td>2014/26/08</td>
-                    <td>44%</td>
-                  </tr>
-                  <tr>
-                    <td>Daniel Baldwin</td>
-                    <td>6095</td>
-                    <td>Moircy</td>
-                    <td>2000/11/01</td>
-                    <td>33%</td>
-                  </tr>
+                    <td class="contenido">Crema Hidratante</td>
+                    <td class="contenido">$2.30</td>
+                    <td class="contenido">Crema que auida a cerrar los poros de la piel</td>
+                    <td class="contenido">CHANNEL</td>
+                    <td class="contenido">Cara</td>
+                    <td class="contenido">Unisex</td>
+                    <td class="contenido">1000ml</td>
+                    <td class="contenido">
+                      <button class="btn-editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                      <button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>     
                 </tbody>
               </table>
             </form>
@@ -355,6 +333,9 @@
   <!-- Vanilla DataTables -->
   <link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
   <script src="../../js/privado/vanilla-dataTables.min.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
 
   <!--Inicializador de las tablas de datos -->
   <script src="../../js/privado/dataTables.js"></script>
