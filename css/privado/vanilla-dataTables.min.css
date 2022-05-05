@@ -90,8 +90,9 @@
 .dataTable-table > tfoot > tr > th,
 .dataTable-table > thead > tr > th {
   vertical-align: bottom;
-  text-align: left;
+  text-align: center;
 }
+
 .dataTable-table > thead > tr > th {
   border-bottom: 1px solid #d9d9d9;
 }
@@ -101,7 +102,12 @@
 .dataTable-table th a {
   text-decoration: none;
   color: inherit;
+}.dataTable-table th {
+  text-decoration: none;
+  color: inherit;
+  margin: 20px;
 }
+
 .dataTable-sorter {
   display: inline-block;
   height: 100%;
