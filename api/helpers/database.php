@@ -29,7 +29,7 @@
         }
 
         /*Funcion para mandar a llamar los registros con sentencia de sql tipo SELECT retornando un valor booleano*/
-        private static function getRows($query, $values){
+        public static function getRows($query, $values){
             try {
                 self::connect();
                 self::$statement = self::$connection->prepare($query);
