@@ -1,7 +1,7 @@
 
 CREATE TABLE public.tb_cliente
 (
-    id_cliente integer NOT NULL,
+    id_cliente  SERIAL INTEGER NOT NULL,
     nombre_cliente character varying(50) NOT NULL,
     apellido_cliente character varying(50) NOT NULL,
     celular_cliente character varying(9) NOT NULL,
@@ -17,7 +17,7 @@ ALTER TABLE IF EXISTS public.tb_cliente
 
 CREATE TABLE public.tb_venta
 (
-    id_venta integer NOT NULL,
+    id_venta SERIAL INTEGER NOT NULL,
     fecha_venta date NOT NULL, 
     estado_venta character varying(30) NOT NULL,
     id_cliente integer NOT NULL,
@@ -29,7 +29,7 @@ ALTER TABLE IF EXISTS public.tb_venta
 
 CREATE TABLE public."tb_DetalleVenta"
 (
-    "id_DetalleVenta" integer NOT NULL,
+    "id_DetalleVenta" SERIAL INTEGER NOT NULL,
     cantidad integer NOT NULL,
     id_producto integer NOT NULL,
     id_venta integer NOT NULL,
@@ -42,7 +42,7 @@ ALTER TABLE IF EXISTS public."tb_DetalleVenta"
 
 CREATE TABLE public."tb_valoracionProducto"
 (
-    id_valoracion integer NOT NULL,
+    id_valoracion SERIAL INTEGER NOT NULL,
     comentario_producto text NOT NULL,
     fecha_comentario date NOT NULL,
     estado_comentario character varying(100),
@@ -54,9 +54,9 @@ ALTER TABLE IF EXISTS public."tb_valoracionProducto"
 
 CREATE TABLE public.tb_producto
 (
-    id_producto integer NOT NULL,
+    id_producto SERIAL INTEGER NOT NULL,
     costo_producto double precision NOT NULL,
-    descipcion_producto text NOT NULL,
+    descripcion_producto text NOT NULL,
     foto_producto text NOT NULL,
     cantidad_producto integer NOT NULL,
     "id_estadoProducto" integer NOT NULL,
@@ -73,7 +73,7 @@ ALTER TABLE IF EXISTS public.tb_producto
 
 CREATE TABLE public.tb_estado
 (
-    id_estado integer NOT NULL,
+    id_estado SERIAL INTEGER NOT NULL,
     estado_producto character varying(30) NOT NULL,
     PRIMARY KEY (id_estado)
 );
@@ -83,7 +83,7 @@ ALTER TABLE IF EXISTS public.tb_estado
 
 CREATE TABLE public.tb_gerero
 (
-    id_genero integer NOT NULL,
+    id_genero SERIAL INTEGER NOT NULL,
     genero_producto character varying(30) NOT NULL,
     PRIMARY KEY (id_genero)
 );
@@ -93,7 +93,7 @@ ALTER TABLE IF EXISTS public.tb_gerero
 
 CREATE TABLE public.tb_empleado
 (
-    id_empleado integer NOT NULL,
+    id_empleado SERIAL INTEGER NOT NULL,
     nombre_empleado character varying(50) NOT NULL,
     apellido_empleado character varying(50) NOT NULL,
     "DUI" character varying(11) NOT NULL,
@@ -109,7 +109,7 @@ ALTER TABLE IF EXISTS public.tb_empleado
 
 CREATE TABLE public.tb_marca
 (
-    id_marca integer NOT NULL,
+    id_marca SERIAL INTEGER NOT NULL,
     nombre_marca character varying NOT NULL,
     PRIMARY KEY (id_marca)
 );
@@ -119,7 +119,7 @@ ALTER TABLE IF EXISTS public.tb_marca
 
 CREATE TABLE public.tb_presentacion
 (
-    id_presentacion integer NOT NULL,
+    id_presentacion SERIAL INTEGER NOT NULL,
     presentacion_producto character varying(50) NOT NULL,
     PRIMARY KEY (id_presentacion)
 );
@@ -129,7 +129,7 @@ ALTER TABLE IF EXISTS public.tb_presentacion
 
 CREATE TABLE public.tipo_empleado
 (
-    "id_tipoEmpleado" integer NOT NULL,
+    "id_tipoEmpleado" SERIAL INTEGER NOT NULL,
     "tipoEmpleado" character varying NOT NULL,
     PRIMARY KEY ("id_tipoEmpleado")
 );

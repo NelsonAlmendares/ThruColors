@@ -1,6 +1,6 @@
 <?php
     
-    class validator{
+    class Validator{
         private $passwordError = null;
         private $fileError = null;
         private $fileName = null;
@@ -187,31 +187,31 @@
     }
 
     /* Metodo para validar un PDF */
-    public function validatePDFFile($file)
-    {
-        // Se verifica si el archivo existe, de lo contrario se establece el mensaje de error correspondiente.
-        if ($file) {
-            // Se comprueba si el archivo tiene un tamaño menor o igual a 2MB, de lo contrario se establece un número de error.
-            if ($file['size'] <= 2097152) {
-                // Se verifica el tipo de archivo.
-                if (mime_content_type($file['tmp_name']) == 'application/pdf') {
-                    // Se obtiene la extensión del archivo y se convierte a minúsculas.
-                    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-                    // Se establece un nombre único para el archivo.
-                    $this->fileName = uniqid() . '.' . $extension;
-                    return true;
-                } else {
-                    $this->fileError = 'El tipo de archivo debe ser PDF';
-                    return false;
-                }
-            } else {
-                $this->fileError = 'El tamaño del archivo debe ser menor a 2MB';
-                return false;
-            }
-        } else {
-            $this->fileError = 'El archivo no existe';
-            return false;
-        }
-    }
+    // public function validatePDFFile($file)
+    // {
+    //     // Se verifica si el archivo existe, de lo contrario se establece el mensaje de error correspondiente.
+    //     if ($file) {
+    //         // Se comprueba si el archivo tiene un tamaño menor o igual a 2MB, de lo contrario se establece un número de error.
+    //         if ($file['size'] <= 2097152) {
+    //             // Se verifica el tipo de archivo.
+    //             if (mime_content_type($file['tmp_name']) == 'application/pdf') {
+    //                 // Se obtiene la extensión del archivo y se convierte a minúsculas.
+    //                 $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    //                 // Se establece un nombre único para el archivo.
+    //                 $this->fileName = uniqid() . '.' . $extension;
+    //                 return true;
+    //             } else {
+    //                 $this->fileError = 'El tipo de archivo debe ser PDF';
+    //                 return false;
+    //             }
+    //         } else {
+    //             $this->fileError = 'El tamaño del archivo debe ser menor a 2MB';
+    //             return false;
+    //         }
+    //     } else {
+    //         $this->fileError = 'El archivo no existe';
+    //         return false;
+    //     }
+    // }
 }
 ?>
