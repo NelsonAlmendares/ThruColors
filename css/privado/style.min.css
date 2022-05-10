@@ -1319,7 +1319,7 @@ input {
   border: solid transparent 2px !important;
 }
 input[type='checkbox'],
-input[type='radio'] {
+input[type='radio']{
   min-height: auto;
 }
 input[type='radio'] {
