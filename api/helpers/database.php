@@ -29,7 +29,7 @@
         }
 
         /*Funcion para mandar a llamar los registros con sentencia de sql tipo SELECT retornando un valor booleano*/
-        public static function getRows($query, $values){
+        public static function getRow($query, $values){
             try {
                 self::connect();
                 self::$statement = self::$connection->prepare($query);
@@ -41,6 +41,19 @@
             }
         }
 
+        public static function getRows($query, $values){
+            try{
+                self::connect();
+                self::$statement = self::$connection->prepare($query);
+                $state = self::$statement->execute($values);
+                self::$connection = null;
+                return $state;
+            }catch(PDOException $error){
+                self::setException($error->getCode(), $error->getMessage());
+                return false;
+            }
+        }
+        
         private static function setException($code, $message){
         // Se asigna el mensaje del error original por si se necesita.
         self::$error = utf8_encode($message);

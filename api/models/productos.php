@@ -178,22 +178,77 @@
 
         /* Metodos para realizar las operaciones SCRUD */
 
+        /* Funcion para hacer la busqueda en la base por medio de parametros como son nombre y descripcion */
         public function searchRows($value){
-            $sql = 'SELECT nombre_producto, descipcion_producto, costo_producto, estado_producto, nombre_marca, categoria_producto, presentacion_producto
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
             FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
                 INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
-                INNER JOIN "tb_categoriaProducto" tc ON tp."id_categoriaProducto" = tc.id_categoria
+                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-                WHERE nombre_producto LIKE = ? OR descipcion_producto LIKE = ?
-                ORDER BY id_producto';
+                WHERE nombre_producto LIKE = ? OR descripcion_producto LIKE = ?
+                ORDER BY id_producto;';
             $params = array("%$value%", "%$value%");
             return Database::getRows($sql, $params);
         }
 
+        /* Funcion para los inserts de la vista a la base */
         public function createRow(){
-            $sql = 'INSERT INTO "tb_producto" (id_producto, nombre_producto, costo_producto, descipcion_producto, foto_producto, cantidad_producto,"id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto","id_categoriaProducto","id_presentacionProducto")
+            $sql = 'INSERT INTO "tb_producto" (nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto,"id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto","id_categoriaProducto","id_presentacionProducto")
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
-            $params = array($this->nombreProducto, $this->nombreProducto);
+            $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto);
+            return Database::executeRow($sql, $params);
+        }
+
+        /* Función para mandar a llamar a todos los registros que se tengan de la base  */
+        public function readAll(){
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
+                FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
+                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
+                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+                ORDER BY id_producto;';
+            $params = null;
+            return Database::getRow($sql, $params);
+        }
+
+        /* Función para actualizar un registro desde la vista de la aplicacion dejando la imagen actual que contiene */
+        public function updateRow($current_image){
+            ($this->fotoProducto) ? $this->deleteFile($this->getRuta(), $current_image) : $this->fotoProducto = $current_image;
+            $sql = 'UPDATE public."tb_producto"
+	                SET foto_producto=?, nombre_producto=?, costo_producto=?, descripcion_producto=?, cantidad_producto=?, "id_estadoProducto"=?, id_empleado=?, "id_marcaProducto"=?, "id_generoProducto"=?, "id_categoriaProducto"=?, "id_presentacionProducto"=?
+	            WHERE id_producto = ?';
+            $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
+            return Database::executeRow($sql, $params);
+        }
+
+        /* Funcion para eliminar un registro de la base */
+        public function deleteRow(){
+           $sql = 'DELETE FROM public.tb_producto
+	                WHERE id_producto = ?';
+            $params = array($this->id);
+            return Database::executeRow($sql,  $params);
+        }
+
+        /* Funcion para mostrar la categorias de los productos en un tabla */
+        public function readProductsCategory(){
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
+                FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
+                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
+                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+                WHERE id_categoria = ? 
+                ORDER BY id_producto';
+            $params = array($this->id);
+            return Database::getRows($sql, $params);
+        }
+
+        /* Funcion para ver el porcentaje de categorias en un gráfico */
+        public function quantityProductsCategory(){
+            $sql = 'SELECT categoria_producto, ROUND((COUNT(id_producto) * 100.0 / (SELECT COUNT(id_producto) FROM tb_producto)), 2) porcentaje
+	            FROM tb_producto INNER JOIN tb_categoria ON "id_categoriaProducto" = id_categoria
+	            GROUP BY categoria_producto ORDER BY porcentaje DESC';
+            $params = null;
+            return Database::getRows($sql, $params);
         }
     }
 ?>
