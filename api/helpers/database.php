@@ -80,7 +80,7 @@
         }
 
         /* Metodo para obtener errores de una excecion */
-        public static function getExeption(){
+        public static function getException(){
             return self::$error;
         }
     }
