@@ -30,6 +30,7 @@
         }
 
         /*Funcion para mandar a llamar los registros con sentencia de sql tipo SELECT retornando un valor booleano*/
+
         public static function getRows($query, $values){
             try {
                 self::connect();
@@ -65,7 +66,6 @@
             die(self::getException());
         }
     }
-
         private static function setException($code, $message){
         // Se asigna el mensaje del error original por si se necesita.
         self::$error = utf8_encode($message);
