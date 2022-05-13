@@ -47,3 +47,11 @@ SELECT nombre_producto, descipcion_producto, costo_producto, estado_producto, no
 
 INSERT INTO "tb_producto" (id_producto, nombre_producto, costo_producto, descipcion_producto, foto_producto, cantidad_producto,"id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto","id_categoriaProducto","id_presentacionProducto")
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+
+SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
+            FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
+                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
+                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+                WHERE id_categoria = 4 
+                ORDER BY id_producto;

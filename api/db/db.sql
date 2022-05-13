@@ -1,7 +1,7 @@
 
 CREATE TABLE public.tb_cliente
 (
-    id_cliente  SERIAL INTEGER NOT NULL,
+    id_cliente  SERIAL NOT NULL,
     nombre_cliente character varying(50) NOT NULL,
     apellido_cliente character varying(50) NOT NULL,
     celular_cliente character varying(9) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE public.tb_venta
     id_venta SERIAL INTEGER NOT NULL,
     fecha_venta date NOT NULL, 
     estado_venta character varying(30) NOT NULL,
-    id_cliente integer NOT NULL,
+    id_cliente  NOT NULL,
     PRIMARY KEY (id_venta)
 );
 
@@ -55,6 +55,7 @@ ALTER TABLE IF EXISTS public."tb_valoracionProducto"
 CREATE TABLE public.tb_producto
 (
     id_producto SERIAL INTEGER NOT NULL,
+    nombre_producto character varying(50) not null,
     costo_producto double precision NOT NULL,
     descripcion_producto text NOT NULL,
     foto_producto text NOT NULL,
@@ -167,63 +168,36 @@ where tb_p."id_estadoProducto" = tb_e.id_estado AND tb_p."id_marcaProducto" = tb
 ALTER TABLE IF EXISTS public.tb_venta
     RENAME fecha_vente TO fecha_venta;
 
-UPDATE public.tb_presentacion
-	SET id_presentacion=2, presentacion_producto='1000ml'
-	WHERE id_presentacion = 2;
-
-ALTER TABLE IF EXISTS public.tb_producto
-    ADD COLUMN nombre_producto character varying(50) NOT NULL;
-
-ALTER TABLE IF EXISTS public.tb_producto
-    ALTER COLUMN foto_producto DROP NOT NULL;
-
 ALTER TABLE IF EXISTS public.tb_producto
     RENAME "id_generoProoducto" TO "id_generoProducto";
 
-ALTER TABLE IF EXISTS public.tb_gerero
-    RENAME TO tb_genero;
-
-ALTER TABLE IF EXISTS public.tb_producto
-    RENAME CONSTRAINT "FK_estadp" TO "FK_estado";
-
 --Alters de las tablas
-ALTER TABLE IF EXISTS public."tb_DetalleVenta" DROP CONSTRAINT IF EXISTS "FK_detalleVenta";
 
-ALTER TABLE IF EXISTS public."tb_DetalleVenta"
-    ADD CONSTRAINT "FK_detalleVenta" FOREIGN KEY (id_venta)
-    REFERENCES public.tb_venta (id_venta) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-ALTER TABLE IF EXISTS public."tb_DetalleVenta"
-    ADD CONSTRAINT "FK_valoracion" FOREIGN KEY ("id_Valoracion")
-    REFERENCES public."tb_valoracionProducto" (id_valoracion) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
+--Tabla de estado de los productos
 ALTER TABLE IF EXISTS public.tb_producto
-    ADD CONSTRAINT "FK_estadp" FOREIGN KEY ("id_estadoProducto")
+    ADD CONSTRAINT "FK_estado" FOREIGN KEY ("id_estadoProducto")
     REFERENCES public.tb_estado (id_estado) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
+--Tabla de empleados
 ALTER TABLE IF EXISTS public.tb_producto
-    ADD CONSTRAINT "FK_genero" FOREIGN KEY ("id_generoProoducto")
+    ADD CONSTRAINT "FK_empleado" FOREIGN KEY (id_empleado)
+    REFERENCES public.tipo_empleado ("id_tipoEmpleado") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+--Tabla de genero de los productos
+ALTER TABLE IF EXISTS public.tb_producto
+    ADD CONSTRAINT "FK_genero" FOREIGN KEY ("id_generoProducto")
     REFERENCES public.tb_gerero (id_genero) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
-ALTER TABLE IF EXISTS public.tb_producto
-    ADD CONSTRAINT "FK_presentacion" FOREIGN KEY ("id_presentacionProducto")
-    REFERENCES public.tb_presentacion (id_presentacion) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
+--Tabla de marcas de los productos
 ALTER TABLE IF EXISTS public.tb_producto
     ADD CONSTRAINT "FK_marca" FOREIGN KEY ("id_marcaProducto")
     REFERENCES public.tb_marca (id_marca) MATCH SIMPLE
@@ -231,27 +205,23 @@ ALTER TABLE IF EXISTS public.tb_producto
     ON DELETE NO ACTION
     NOT VALID;
 
+--Tabla de categoria de los productos
 ALTER TABLE IF EXISTS public.tb_producto
     ADD CONSTRAINT "FK_categoria" FOREIGN KEY ("id_categoriaProducto")
-    REFERENCES public."tb_categoriaProducto" (id_categoria) MATCH SIMPLE
+    REFERENCES public.tb_categoria (id_categoria) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
+--Tabla de presentacion de los productos
 ALTER TABLE IF EXISTS public.tb_producto
-    ADD CONSTRAINT "FK_empleado" FOREIGN KEY (id_empleado)
-    REFERENCES public.tb_empleado (id_empleado) MATCH SIMPLE
+    ADD CONSTRAINT "FK_presentacion" FOREIGN KEY ("id_presentacionProducto")
+    REFERENCES public.tb_presentacion (id_presentacion) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 
-ALTER TABLE IF EXISTS public.tb_empleado
-    ADD CONSTRAINT "FK_tipoEmpleado" FOREIGN KEY (tipo_empleado)
-    REFERENCES public.tipo_empleado ("id_tipoEmpleado") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
+--tabla de detalle de venta con relacion a la tabla de productos
 ALTER TABLE IF EXISTS public."tb_DetalleVenta"
     ADD CONSTRAINT "FK_producto" FOREIGN KEY (id_producto)
     REFERENCES public.tb_producto (id_producto) MATCH SIMPLE
@@ -259,13 +229,122 @@ ALTER TABLE IF EXISTS public."tb_DetalleVenta"
     ON DELETE NO ACTION
     NOT VALID;
 
-create type filtrar_producto as(
-	  nombre_producto character varying (50),
-	  costo_producto double precision,
-	  descripcion_producto character varying (200),
-	  foto_producto text,
-	  cantidad_producto integer,
-	  estado_producto character varying (50),
-	  categoria_producto character varying (20),
-	  presentacion_producto character varying (20)
-  );
+--Tabla de detalle de venta para la tabla de ventas
+ALTER TABLE IF EXISTS public."tb_DetalleVenta"
+    ADD CONSTRAINT "FK_venta" FOREIGN KEY (id_venta)
+    REFERENCES public.tb_venta (id_venta) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+--tabla de detalle de ventas para la valoracion de los productos
+ALTER TABLE IF EXISTS public."tb_DetalleVenta"
+    ADD CONSTRAINT "FK_valoracion" FOREIGN KEY ("id_Valoracion")
+    REFERENCES public."tb_valoracionProducto" (id_valoracion) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+--Tabla de ventas con relacion para la tabla de cliente
+ALTER TABLE IF EXISTS public.tb_venta
+    ADD CONSTRAINT "FK_cliente" FOREIGN KEY (id_cliente)
+    REFERENCES public.tb_cliente (id_cliente) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+--Relacion de las tablas de empleado con tipo Empleado
+ALTER TABLE IF EXISTS public.tb_empleado
+    ADD CONSTRAINT "FK_tipoEmpleado" FOREIGN KEY (tipo_empleado)
+    REFERENCES public.tipo_empleado ("id_tipoEmpleado") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+--Inserts de la base
+
+--Tabla de genero de productos
+INSERT INTO PUBLIC."tb_gerero" (genero_producto)
+VALUES('Hombre');
+INSERT INTO PUBLIC."tb_gerero" (genero_producto)
+VALUES('Mujer');
+INSERT INTO PUBLIC."tb_gerero" (genero_producto)
+VALUES('Unisex');
+
+--tabla de estado de los productos
+INSERT INTO PUBLIC.""(estado_producto)
+VALUES('En bodega');
+INSERT INTO PUBLIC.""(estado_producto)
+VALUES('Agotado');
+INSERT INTO PUBLIC.""(estado_producto)
+VALUES('No encontrado');
+
+--tabla de presentacion de los productos
+INSERT INTO PUBLIC."tb_presentacion"(presentacion_Producto)
+VALUES('500ml');
+INSERT INTO PUBLIC."tb_presentacion"(presentacion_Producto)
+VALUES('1000ml');
+INSERT INTO PUBLIC."tb_presentacion"(presentacion_Producto)
+VALUES('Espuma');
+INSERT INTO PUBLIC."tb_presentacion"(presentacion_Producto)
+VALUES('Sobres');
+INSERT INTO PUBLIC."tb_presentacion"(presentacion_Producto)
+VALUES('Única');
+
+--Tabla de marcas de los productos
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Aveeno');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Jo Malone');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Fresh');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Bioderma');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Neutrgena');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Lubriderm');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('DARPHIN');
+INSERT INTO PUBLIC."tb_marca"(nombre_marca)
+VALUES('Garnier');
+
+--Tabla de tipo de Empleados
+INSERT INTO PUBLIC."tipo_empleado"("tipoEmpleado")
+VALUES('Administrador');
+INSERT INTO PUBLIC."tipo_empleado"("tipoEmpleado")
+VALUES('Vendedor');
+
+--Tabla de empleados
+INSERT INTO PUBLIC."tb_empleado"("nombre_empleado", "apellido_empleado", "DUI", "direccion_empleado", "codigo_empleado", "password_empleado", tipo_empleado)
+VALUES('Nelson', 'Almendares', 013568794, 'Urb Santisima trinidida, Ayutuxtepeque, casa 23', 202201, 'Nelson12', 1);
+
+--Tabla de categorias de productos
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Hidratacion', 'imagen.jpg');
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Color', 'imagen.jpg');
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Reparación', 'imagen.jpg');
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Caballeros', 'imagen.jpg');
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Cuero Cabelludo', 'imagen.jpg');
+insert into public."tb_categoria"(categoria_producto, foto_categoria)
+values('Estilizado', 'imagen.jpg');
+
+--Tabla de productos
+INSERT INTO public.tb_producto(
+	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
+	VALUES ('Crema para manos', 12.50, 'Crema hidratante para piel reseca, a base de extracto de coco', 'imagen.jpg',12, 1, 1, 6, 3, 1, 1);INSERT INTO public.tb_producto(
+	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
+	VALUES ('Quinnoa Hair Mask', 41.82, 'Tratamiento que ayuda a repara cabellos procesados', 'imagen.jpg', 12, 1, 1, 1, 3, 3, 5);
+INSERT INTO public.tb_producto(
+	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
+	VALUES ('Shampoo Lumina', 23.71, 'Matizador para cabello cano plateado. Su pigmento violeta neutraliza las tonalidades amarillas', 'imagen.png', 8, 1, 1, 9, 2, 5, 2);
+INSERT INTO public.tb_producto(
+	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
+	VALUES ('Love curl Shampoo', 22.19, 'Shampoo que birnda elasticidad manteniendo el cabello suave', 'imagen.jpg', 16, 1, 1, 8, 2, 7, 6);
+INSERT INTO public.tb_producto(
+	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
+	VALUES ('3D Men Champu', 21.50,'Ayuda a prevenir la caspa en el cabello masculino, brindando a su vez limpieza capilar', 'imagen.jpg', 20, 1, 1, 10, 1, 4, 6);

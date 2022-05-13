@@ -15,6 +15,10 @@
         return $this->getFilName;
     }
 
+    public function getFileError(){
+        return $this->fileError;
+    }
+
     /* Metodo para validar los campos vacios de un Formulario */
     public function validateForm($fields){
         foreach ($fields as $index => $value) {
