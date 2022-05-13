@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $empleado = new Empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'codigo' => null);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_empleado'])) {
         $result['session'] = 1;
@@ -47,8 +47,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$empleado->setApellido_e($_POST['apellido_empleado'])) {
                     $result['exception'] = 'Apellido incorrecto';
+                } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
+                    $result['exception'] = 'Direccion incorrecto';
                 } elseif (!$empleado->setCodigo_e($_POST['codigo_empleado'])) {
                     $result['exception'] = 'Codigo incorrecto';
+                } elseif (!$empleado->setTipo_e($_POST['tipo_empleado'])) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif ($empleado->editProfile()) {
                     $result['status'] = 1;
                     $result['message'] = 'Perfil modificado correctamente';
@@ -58,8 +64,8 @@ if (isset($_GET['action'])) {
                 break;
             case 'changePassword':
                 $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->setId($_SESSION['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
+                if (!$empleado->setId($_SESSION['id_empleado'])) {
+                    $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$empleado->checkPassword($_POST['actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';
                 } elseif ($_POST['nueva'] != $_POST['confirmar']) {
@@ -97,14 +103,18 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->setNombres($_POST['nombres'])) {
+                if (!$empleado->setNombre_e($_POST['nombre_empleado'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$empleado->setApellidos($_POST['apellidos'])) {
+                } elseif (!$empleado->setApellido_e($_POST['apellido_empleado'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$empleado->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$empleado->setAlias($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
+                    $result['exception'] = 'Direccion incorrecto';
+                } elseif (!$empleado->setCodigo_e($_POST['codigo_Empleado'])) {
+                    $result['exception'] = 'Codigo incorrecto';
+                } elseif (!$empleado->setTipo_e($_POST['tipo_empleado'])) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$empleado->setClave($_POST['clave'])) {
@@ -129,16 +139,22 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->setId($_POST['id'])) {
+                if (!$empleado->setId_e($_POST['id_empleado'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$empleado->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$empleado->setNombres($_POST['nombres'])) {
+                } elseif (!$empleado->setNombre_e($_POST['nombre_empleado'])) {
                     $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$empleado->setApellidos($_POST['apellidos'])) {
+                } elseif (!$empleado->setApellido_e($_POST['apellido_empleado'])) {
                     $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$empleado->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
+                    $result['exception'] = 'Direccion incorrecto';
+                } elseif (!$empleado->setCodigo_e($_POST['codigo_empleado'])) {
+                    $result['exception'] = 'Codigo incorrecto';
+                } elseif (!$empleado->setTipo_e($_POST['tipo_empleado'])) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif ($empleado->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario modificado correctamente';
@@ -147,9 +163,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if ($_POST['id'] == $_SESSION['id_usuario']) {
+                if ($_POST['id_empleado'] == $_SESSION['id_empleado']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
-                } elseif (!$empleado->setId($_POST['id'])) {
+                } elseif (!$empleado->setId_e($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$empleado->readOne()) {
                     $result['exception'] = 'Usuario inexistente';
@@ -176,23 +192,29 @@ if (isset($_GET['action'])) {
                 break;
             case 'register':
                 $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->setNombre_e($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$empleado->setApellido_e($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$empleado->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$empleado->setCodigo_e($_POST['alias'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                if (!$empleado->setNombre_e($_POST['nombre_empleado'])) {
+                    $result['exception'] = 'Nombre incorrectos';
+                } elseif (!$empleado->setApellido_e($_POST['apellido_empleado'])) {
+                    $result['exception'] = 'Apellido incorrectos';
+                } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
+                    $result['exception'] = 'DUI incorrecto';
+                } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
+                    $result['exception'] = 'Direccion incorrecto';
+                } elseif (!$empleado->setCodigo_e($_POST['codigo_empleado'])) {
+                    $result['exception'] = 'Codigo incorrecto';
+                } elseif (!$empleado->setTipo_e(1)) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$empleado->setClave($_POST['clave'])) {
-                    $result['exception'] = $empleado->getPasswordError();
+                    $result['exception'] = $empleado->getPasswordError();                    
                 } elseif ($empleado->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario registrado correctamente';
-                } else {
+                    $result['message'] = 'El empleao registrado correctamente';
+                } elseif (Database::getException()) {                   
                     $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'El empleado no se registro correctamente';
                 }
                 break;
             case 'logIn':
