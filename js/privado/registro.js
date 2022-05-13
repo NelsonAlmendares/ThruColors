@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+    //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 });
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de registrar.

@@ -16,7 +16,7 @@
     }
 
     /* Metodo para validar los campos vacios de un Formulario */
-    public function validateForms($fields){
+    public function validateForm($fields){
         foreach ($fields as $index => $value) {
             $value = trim($value);
             $fields[$index] = $value;
@@ -26,7 +26,7 @@
 
     /* Metodo para validar los campos vacios */
     public function validateNaturalNumber($value){
-        if (filter_var($value, FILTER_VALIDATE_INT, array('main_range' => 1))) {
+        if (filter_var($value, FILTER_VALIDATE_INT, array('main_range' => 0))) {
             return true;
         }else{
             return false;
@@ -187,31 +187,31 @@
     }
 
     /* Metodo para validar un PDF */
-    // public function validatePDFFile($file)
-    // {
-    //     // Se verifica si el archivo existe, de lo contrario se establece el mensaje de error correspondiente.
-    //     if ($file) {
-    //         // Se comprueba si el archivo tiene un tamaño menor o igual a 2MB, de lo contrario se establece un número de error.
-    //         if ($file['size'] <= 2097152) {
-    //             // Se verifica el tipo de archivo.
-    //             if (mime_content_type($file['tmp_name']) == 'application/pdf') {
-    //                 // Se obtiene la extensión del archivo y se convierte a minúsculas.
-    //                 $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    //                 // Se establece un nombre único para el archivo.
-    //                 $this->fileName = uniqid() . '.' . $extension;
-    //                 return true;
-    //             } else {
-    //                 $this->fileError = 'El tipo de archivo debe ser PDF';
-    //                 return false;
-    //             }
-    //         } else {
-    //             $this->fileError = 'El tamaño del archivo debe ser menor a 2MB';
-    //             return false;
-    //         }
-    //     } else {
-    //         $this->fileError = 'El archivo no existe';
-    //         return false;
-    //     }
-    // }
+    public function validatePDFFile($file)
+    {
+         // Se verifica si el archivo existe, de lo contrario se establece el mensaje de error correspondiente.
+         if ($file) {
+             // Se comprueba si el archivo tiene un tamaño menor o igual a 2MB, de lo contrario se establece un número de error.
+             if ($file['size'] <= 2097152) {
+                 // Se verifica el tipo de archivo.
+                 if (mime_content_type($file['tmp_name']) == 'application/pdf') {
+                     // Se obtiene la extensión del archivo y se convierte a minúsculas.
+                     $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                     // Se establece un nombre único para el archivo.
+                     $this->fileName = uniqid() . '.' . $extension;
+                     return true;
+                 } else {
+                     $this->fileError = 'El tipo de archivo debe ser PDF';
+                     return false;
+                 }
+             } else {
+                 $this->fileError = 'El tamaño del archivo debe ser menor a 2MB';
+                 return false;
+             }
+         } else {
+             $this->fileError = 'El archivo no existe';
+             return false;
+         }
+     }
 }
 ?>

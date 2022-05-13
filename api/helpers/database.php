@@ -1,5 +1,5 @@
 <?php
-    class dataBase{
+    class Database{
         /* variablas para la conexion con la base de datos */
         private static $connection = null;
         private static $statement = null;
@@ -7,9 +7,8 @@
 
         public static function connect(){
             $server = 'localhost';
-            $database = 'DB_ThruColors';
+            $database = 'ThruColors';
             $username = 'postgres';
-            $password = '1234';
 
             self::$connection = new PDO('pgslq:host=' . $server . ';dbname=' . $database . ';port=5432' , $username, $password);
         }
@@ -29,7 +28,7 @@
         }
 
         /*Funcion para mandar a llamar los registros con sentencia de sql tipo SELECT retornando un valor booleano*/
-        private static function getRows($query, $values){
+        public static function getRows($query, $values){
             try {
                 self::connect();
                 self::$statement = self::$connection->prepare($query);

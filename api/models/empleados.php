@@ -9,10 +9,11 @@ class Empleados extends Validator
     private $id_empleado = null;
     private $nombre_empleado = null;
     private $apellido_empleado = null;
-    private $DUI = null;
+    private $DUI_empleado = null;
     Private $direccion_empleado = null;
     private $codigo_empleado = null;
     private $clave = null;
+    private $tipo_empleado = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -47,6 +48,26 @@ class Empleados extends Validator
         }
     }
 
+    public function setDUI_e($value)
+    {
+        if ($this->validateDUI($value)) {
+            $this->DUI_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDireccion_e($value)
+    {
+        if ($this->validateAlphabetic($value, 1, 60)) {
+            $this->direccion_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setCodigo_e($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -61,6 +82,16 @@ class Empleados extends Validator
     {
         if ($this->validatePassword($value)) {
             $this->clave = password_hash($value, PASSWORD_DEFAULT);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setTipo_e($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->tipo_empleado = $value;
             return true;
         } else {
             return false;
@@ -85,6 +116,16 @@ class Empleados extends Validator
         return $this->apellidos_empleado;
     }
 
+    public function getDUI_e()
+    {
+        return $this->DUI_empleado;
+    }
+
+    public function getDireccion_e()
+    {
+        return $this->direccion_empleado;
+    }
+
     public function getCodigo_e()
     {
         return $this->codigo_empleado;
@@ -93,6 +134,11 @@ class Empleados extends Validator
     public function getClave()
     {
         return $this->clave;
+    }
+    
+    public function getTipo_e()
+    {
+        return $this->tipo_empleado;
     }
 
     /*
@@ -126,26 +172,26 @@ class Empleados extends Validator
 
     public function changePassword()
     {
-        $sql = 'UPDATE usuarios SET clave_usuario = ? WHERE id_usuario = ?';
-        $params = array($this->clave, $_SESSION['id_usuario']);
+        $sql = 'UPDATE tb_empleado SET clave_empleado = ? WHERE id_empleado = ?';
+        $params = array($this->clave, $_SESSION['id_empleado']);
         return Database::executeRow($sql, $params);
     }
 
     public function readProfile()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($_SESSION['id_usuario']);
+        $sql = 'SELECT id_empleado, nombres_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado
+                FROM tb_empleado
+                WHERE id_empleado = ?';
+        $params = array($_SESSION['id_empleado']);
         return Database::getRow($sql, $params);
     }
 
     public function editProfile()
     {
-        $sql = 'UPDATE usuarios
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $_SESSION['id_usuario']);
+        $sql = 'UPDATE tb_empleado
+                SET nombre_empleado = ?, apellido_empleado = ?, "DUI" = ?, direccion_empleado = ?, codigo_empleado = ?, tipo_empleado = ?
+                WHERE id_empleado = ?';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->tipo_empleado, $_SESSION['id_empleado']);
         return Database::executeRow($sql, $params);
     }
 
@@ -154,19 +200,20 @@ class Empleados extends Validator
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
-        $params = array("%$value%", "%$value%");
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado
+                FROM tb_empleado
+                WHERE apellido_empleado ILIKE ? OR nombre_empleado ILIKE ? OR "DUI" ILIKE ? OR codigo_empleado ILIKE ? OR tipo_empleado ILIKE ?
+                ORDER BY apellido_empleado';
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->clave);
+        $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado)
+            VALUES ( ?, ?, ?, ?, ?, ?, ?);';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado);
+        print_r($params);
         return Database::executeRow($sql, $params);
     }
 
@@ -190,18 +237,18 @@ class Empleados extends Validator
 
     public function updateRow()
     {
-        $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        $sql = 'UPDATE tb_empleado 
+               SET nombre_empleado = ?, apellido_empleado = ?, "DUI" = ?, direccion_empleado = ?, codigo_empleado = ?, tipo_empleado = ?
+                WHERE id_empleado = ?';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->tipo_empleado, $this->id_empleado);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($this->id);
+        $sql = 'DELETE FROM tb_empleado
+                WHERE id_empleado = ?';
+        $params = array($this->id_empleado);
         return Database::executeRow($sql, $params);
     }
 }

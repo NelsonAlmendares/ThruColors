@@ -4,7 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Thru Colors | Login</title>
+	<title>Thru Colors | Registro</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../../resources/butterfly.png" type="image/x-icon" />
 	<!-- Custom styles -->
@@ -27,8 +27,7 @@
           <div class="row justify-content-center">
           </div>
             <div class="col-md-12">
-              <div class="wrap d-md-flex">
-                <div class="background"><img class="img-fluid image" src="../../resources/img/undraw_makeup_artist_rxn8.svg" alt=""></div>
+              <div class="wrap d-md-flex">                
                 <div class="login-wrap p-4 p-md-5">
                   <div class="d-flex">
                     <div class="w-100">
@@ -36,28 +35,38 @@
                     </div>                    
                   </div>
 				  <div class="" id="error"></div>
-                  <form action="#" class="signin-form" id="formulario">
+                  <form action="#" class="signin-form" id="register-form">
                     <div class="form-group mb-3">
-                      <label class="label" for="name">Código de empleado:</label>
-                      <input type="number" class="form-control" id="codigo" step="000" placeholder="001" required/>
+                      <label class="label" for="nombre_empleado">Nombre de empleado:</label>
+                      <input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado" placeholder="Nombre" required/>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="label" for="apellido_empleado">Apellido de empleado:</label>
+                      <input type="text" class="form-control" id="apellido_empleado" name="apellido_empleado" placeholder="Apellido" required/>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="label" for="DUI_empleado">DUI de empleado:</label>
+                      <input type="text" class="form-control" id="DUI_empleado" name="DUI_empleado" placeholder="12345678-9" required/>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="label" for="direccion_empleado">Direccion de empleado:</label>
+                      <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado" placeholder="Residencial, pasaje, casa N°..." required/>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="label" for="codigo_empleado">Código de empleado:</label>
+                      <input type="number" class="form-control" id="codigo_empleado" name="codigo_empleado" step="000" placeholder="001" required/>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label class="label" for="clave">Contraseña:</label>
+                      <input type="password" id="clave" name="clave" maxlength="8" class="form-control" placeholder="Contraseña" required/>
                     </div>
                     <div class="form-group mb-3">
                       <label class="label" for="password">Contraseña:</label>
-                      <input type="password" id="password" maxlength="6" class="form-control" placeholder="Contraseña" required/>
+                      <input id="confirmar" type="password" name="confirmar" maxlength="8" class="form-control" placeholder="Confirmar contraseña" required>
                     </div>
+                                       
                     <div class="form-group">
-                      <button type="submit" class="btn btn-outline-warnign" value="enviar" id="button" data-tooltip="Iniciar">Iniciar sesión</button>
-                    </div>
-                    <div class="form-group d-md-flex">
-                      <div class="w-50 text-left">
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="checkbox" role="switch" id="input_switch">
-                          <label class="form-check-label" for="flexSwitchCheckDefault">Recordarme</label>
-                        </div>
-                      </div>
-                      <div class="w-50 text-md-right">
-                        <a href="#">Olvide la contraseña</a>
-                      </div>
+                      <button type="submit" class="btn btn-outline-warnign tooltipped" value="enviar" id="button" data-tooltip="Registrar">Registrarse</button>
                     </div>
                   </form>                                    
               </div>
