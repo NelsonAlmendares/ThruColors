@@ -1034,9 +1034,8 @@ body {
 }
 
 .logo {
-  background-image: url(../img/svg/Logo.svg);
-  width: 49px;
-  height: 49px;
+  width: 25px;
+  height: 25px;
 }
 
 .menu-toggle {
@@ -1288,7 +1287,6 @@ body {
 }
 
 h1,
-h2,
 h3 {
   letter-spacing: 1px;
   color: #171717;

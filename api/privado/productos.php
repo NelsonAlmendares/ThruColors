@@ -99,6 +99,12 @@
                         $result['exception'] = 'Selecione un estado'; 
                     } elseif(!$producto->setEmpleado($_POST['empleado'])){
                         $result['exception'] = 'Empleado no valido';
+                    } elseif(!$producto->setMarca($_POST['marcaProducto'])){
+                        $result['exception'] = 'Seleccione una marca';
+                    } elseif(!$producto->setCategoria($_POST['categoriaProducto'])){
+                        $result['exception'] = 'Seleeccione una categoria';
+                    } elseif(!$producto->setPresentacion($_POST['presentacionProducto'])){
+                        $result['exception'] = 'Seleccione una presentacio';
                     } elseif(!is_uploaded_file($_FILES['archivo']['tmp_name'])){
                         if($producto->updateRow($data['foto'])){
                             $result['status'] = 1;

@@ -1,6 +1,6 @@
 <?php
 
-    class Productos extends Validator{
+    class Productos extends validator{
         private $id = null;
         private $nombreProducto = null;
         private $costoProducto = null;
@@ -186,7 +186,7 @@
                 INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
                 WHERE nombre_producto LIKE = ? OR descripcion_producto LIKE = ?
-                ORDER BY id_producto;';
+                ORDER BY id_producto';
             $params = array("%$value%", "%$value%");
             return Database::getRows($sql, $params);
         }
@@ -227,7 +227,7 @@
         public function updateRow($current_image){
             ($this->fotoProducto) ? $this->deleteFile($this->getRuta(), $current_image) : $this->fotoProducto = $current_image;
             $sql = 'UPDATE public."tb_producto"
-	                SET foto_producto=?, nombre_producto=?, costo_producto=?, descripcion_producto=?, cantidad_producto=?, "id_estadoProducto"=?, id_empleado=?, "id_marcaProducto"=?, "id_generoProducto"=?, "id_categoriaProducto"=?, "id_presentacionProducto"=?
+	            SET foto_producto=?, nombre_producto=?, costo_producto=?, descripcion_producto=?, cantidad_producto=?, "id_estadoProducto"=?, id_empleado=?, "id_marcaProducto"=?, "id_generoProducto"=?, "id_categoriaProducto"=?, "id_presentacionProducto"=?
 	            WHERE id_producto = ?';
             $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
             return Database::executeRow($sql, $params);
