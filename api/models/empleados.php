@@ -10,6 +10,7 @@ class Empleados extends Validator
     private $nombre_empleado = null;
     private $apellido_empleado = null;
     private $DUI_empleado = null;
+    private $foto_empleado = null;
     Private $direccion_empleado = null;
     private $codigo_empleado = null;
     private $clave = null;
@@ -52,6 +53,16 @@ class Empleados extends Validator
     {
         if ($this->validateDUI($value)) {
             $this->DUI_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setFoto_e($value)
+    {
+        if ($this->validateImageFile($value,1080,1080)) {
+            $this->foto_empleado = $value;
             return true;
         } else {
             return false;
@@ -119,6 +130,11 @@ class Empleados extends Validator
     public function getDUI_e()
     {
         return $this->DUI_empleado;
+    }
+
+    public function getFoto_e()
+    {
+        return $this->foto_empleado;
     }
 
     public function getDireccion_e()

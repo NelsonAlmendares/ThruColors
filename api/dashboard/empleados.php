@@ -198,6 +198,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellido incorrectos';
                 } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
                     $result['exception'] = 'DUI incorrecto';
+                } elseif (!$empleado->setFoto_e($_POST['foto_empleado'])) {
+                    $result['exception'] = 'Error con al cargar la foto del empleado';
                 } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
                     $result['exception'] = 'Direccion incorrecto';
                 } elseif (!$empleado->setCodigo_e($_POST['codigo_empleado'])) {
