@@ -147,7 +147,7 @@ class Empleados extends Validator
     public function checkUser($codigo_empleado)
     {
         $sql = 'SELECT id_empleado FROM tb_empleado WHERE codigo_empleado = ?';
-        $params = array($alias);
+        $params = array($codigo_empleado);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_empleado = $data['id_empleado'];
             $this->codigo_empleado = $codigo_empleado;
@@ -211,9 +211,8 @@ class Empleados extends Validator
     public function createRow()
     {
         $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado)
-            VALUES ( ?, ?, ?, ?, ?, ?, ?);';
-        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado);
-        print_r($params);
+            VALUES ( ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado);        
         return Database::executeRow($sql, $params);
     }
 

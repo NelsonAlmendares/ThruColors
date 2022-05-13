@@ -211,9 +211,10 @@ if (isset($_GET['action'])) {
                 } elseif ($empleado->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'El empleao registrado correctamente';
-                } else {
-                    $result['message'] = 'El empleado no se registro correctamente';
+                } elseif (Database::getException()) {                   
                     $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'El empleado no se registro correctamente';
                 }
                 break;
             case 'logIn':
