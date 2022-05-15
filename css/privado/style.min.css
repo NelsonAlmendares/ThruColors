@@ -1,4 +1,3 @@
-/*! normalize.css v8..1 | MIT License | github.com/necolas/normalize.css */
 @import url(../../resources/fonts/publico/kathen.woff2);
 html {
   line-height: 1.15;
@@ -739,13 +738,13 @@ body {
   height: 75px;
 }
 .menu-toggle {
-  background-image: url(../resources/svg/Bulk/Menu-toggle-white.svg);
+  background-image: url(../../resources/iconos/angles-left-solid.svg);
   width: 24px;
   height: 24px;
 }
 .home,
 .menu-toggle--gray {
-  background-image: url(../resources/svg/Bulk/Menu-toggle-gray.svg);
+  background-image: url(../../resources/iconos/angles-left-solid.svg);
   width: 24px;
   height: 24px;
 }
@@ -817,6 +816,11 @@ body {
   background-image: url(../resources/svg/Bulk/Notification-gray.svg);
   width: 24px;
   height: 24px;
+}
+.configuracion {
+  background-image: url(../../resources/iconos/icons8_settings_96px.png);
+  width: 6px;
+  height: 6px;
 }
 .arrows-up-down {
   background-image: url(../resources/svg/Bulk/Arrows-up-down.svg);
@@ -2639,7 +2643,7 @@ label {
   border-top-color: #222235;
 }
 .darkmode .menu-toggle--gray {
-  background-image: url(../resources/svg/Bulk/Menu-toggle-white.svg);
+  background-image: url(../../resources/iconos/angles-left-solid.svg);
 }
 @media (min-width: 576px) {
   .container {

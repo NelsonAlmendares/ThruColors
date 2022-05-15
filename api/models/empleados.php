@@ -10,10 +10,12 @@ class Empleados extends Validator
     private $nombre_empleado = null;
     private $apellido_empleado = null;
     private $DUI_empleado = null;
+    private $foto_empleado = null;
     Private $direccion_empleado = null;
     private $codigo_empleado = null;
     private $clave = null;
     private $tipo_empleado = null;
+    private $ruta = '../imagenes/empleados/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -52,6 +54,16 @@ class Empleados extends Validator
     {
         if ($this->validateDUI($value)) {
             $this->DUI_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setFoto_e($file)
+    {
+        if ($this->validateImageFile($file,800,800)) {
+            $this->foto_empleado = $this->getFileName();
             return true;
         } else {
             return false;
@@ -121,6 +133,11 @@ class Empleados extends Validator
         return $this->DUI_empleado;
     }
 
+    public function getFoto_e()
+    {
+        return $this->foto_empleado;
+    }
+
     public function getDireccion_e()
     {
         return $this->direccion_empleado;
@@ -139,6 +156,11 @@ class Empleados extends Validator
     public function getTipo_e()
     {
         return $this->tipo_empleado;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
     }
 
     /*
@@ -210,9 +232,9 @@ class Empleados extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado)
-            VALUES ( ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado);        
+        $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado)
+            VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado, $this->foto_empleado);                
         return Database::executeRow($sql, $params);
     }
 

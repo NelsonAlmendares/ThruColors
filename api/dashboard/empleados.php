@@ -198,6 +198,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellido incorrectos';
                 } elseif (!$empleado->setDUI_e($_POST['DUI_empleado'])) {
                     $result['exception'] = 'DUI incorrecto';
+                } elseif (!is_uploaded_file($_FILES['foto_empleado']['tmp_name'])) {
+                    $result['exception'] = 'Seleccione una imagen';
+                } elseif (!$empleado->setFoto_e($_FILES['foto_empleado'])) {
+                    $result['exception'] = $empleado->getFileError();
                 } elseif (!$empleado->setDireccion_e($_POST['direccion_empleado'])) {
                     $result['exception'] = 'Direccion incorrecto';
                 } elseif (!$empleado->setCodigo_e($_POST['codigo_empleado'])) {
@@ -210,7 +214,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = $empleado->getPasswordError();                    
                 } elseif ($empleado->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'El empleao registrado correctamente';
+                    if ($empleado->saveFile($_FILES['foto_empleado'], $empleado->getRuta(), $empleado->getFoto_e())) {
+                    $result['message'] = 'El empleado registrado correctamente';
+                    } else {
+                        $result['message'] = 'El empleado se registro pero no se guardó la imagen';
+                    }
                 } elseif (Database::getException()) {                   
                     $result['exception'] = Database::getException();
                 } else {
