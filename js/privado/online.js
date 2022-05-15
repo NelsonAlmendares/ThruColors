@@ -4,7 +4,7 @@
 */
 
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API = SERVER + 'dashboard/empleados.php?action=';
+const API = SERVER + 'privado/empleados.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,5 +1,5 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_PRODUCTOS = SERVER + 'dashboard/productos.php?action=';
+const API_PRODUCTOS = SERVER + 'privado/productos.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
