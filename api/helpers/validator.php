@@ -12,7 +12,7 @@
 
     /* Obteniendo errores de los arhivos agregados recientemente */
     public function getFileName(){
-        return $this->getFilName;
+        return $this->fileName;
     }
 
     public function getFileError(){
@@ -38,28 +38,36 @@
     }
 
     /* metodo para verificar las dimensiones de las imagenes */
-    public function validateImageFile($file, $maxWidth, $maxHeight){
-        if($file){
-            if($file['size'] <= 2097152){
+    public function validateImageFile($file, $maxWidth, $maxHeigth)
+    {
+        // Se verifica si el archivo existe, de lo contrario se establece el mensaje de error correspondiente.
+        if ($file) {
+            // Se comprueba si el archivo tiene un tamaño menor o igual a 2MB, de lo contrario se establece el mensaje de error correspondiente.
+            if ($file['size'] <= 2097152) {
+                // Se obtienen las dimensiones de la imagen y su tipo.
                 list($width, $height, $type) = getimagesize($file['tmp_name']);
-                if($width <= $maxWidth && $height <= $maxHeight){
-                    if($type == 2 || $type == 3){
-                        $extencion = strtolower(phpinfo($file['name'], PATHINFO_EXTENSION));
-                        $this->filename = uniqid() . '.' . $extencion;
+                // Se verifica si la imagen cumple con las dimensiones máximas, de lo contrario se establece el mensaje de error correspondiente.
+                if ($width <= $maxWidth && $height <= $maxHeigth) {
+                    // Se comprueba si el tipo de imagen es permitido (2 - JPG y 3 - PNG), de lo contrario se establece el mensaje de error correspondiente.
+                    if ($type == 2 || $type == 3) {
+                        // Se obtiene la extensión del archivo y se convierte a minúsculas.
+                        $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                        // Se establece un nombre único para el archivo.
+                        $this->fileName = uniqid() . '.' . $extension;
                         return true;
-                    }else{
-                        $this->fileError = 'El tipo de imagen debe de  ser jpg o png';
+                    } else {
+                        $this->fileError = 'El tipo de imagen debe ser jpg o png';
                         return false;
                     }
-                }else{
-                    $this->fileError = 'La dimención de la imagen no es correcta';
+                } else {
+                    $this->fileError = 'La dimensión de la imagen es incorrecta';
                     return false;
                 }
-            }else{
-                $this->fileError = 'El tamaño de la imagen debe de ser menor a 2 mb';
+            } else {
+                $this->fileError = 'El tamaño de la imagen debe ser menor a 2MB';
                 return false;
             }
-        }else{
+        } else {
             $this->fileError = 'El archivo de la imagen no existe';
             return false;
         }
@@ -165,8 +173,11 @@
     }
 
     /* Metodo para validar la ubicacion de un archivo antes de subirlo al servidor */
-    public function saveFile($file, $path, $name){
+    public function saveFile($file, $path, $name)
+    {
+        // Se comprueba que la ruta en el servidor exista.
         if (file_exists($path)) {
+            // Se verifica que el archivo sea movido al servidor.
             if (move_uploaded_file($file['tmp_name'], $path . $name)) {
                 return true;
             } else {
@@ -178,8 +189,11 @@
     }
 
     /* Metodo para validar la ubicacion de un archivo antes de borrarlo del servidor */
-    public function deleteFile($path, $name){
+    public function deleteFile($path, $name)
+    {
+        // Se verifica que la ruta exista.
         if (file_exists($path)) {
+            // Se comprueba que el archivo sea borrado del servidor.
             if (@unlink($path . $name)) {
                 return true;
             } else {

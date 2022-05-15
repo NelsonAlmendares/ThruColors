@@ -9,7 +9,7 @@
             $server = 'localhost';
             $database = 'DB_ThruColors';
             $username = 'postgres';
-            $password = 'admin';
+            $password = 'HuTao262';
 
             self::$connection = new PDO('pgsql:host=' . $server . ';dbname=' . $database . ';port=5432' , $username, $password);
         }
