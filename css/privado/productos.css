@@ -1,6 +1,7 @@
 :root{
   --white: #fff;
   --black: #000;
+  --gray: #EFF0F6;
   --btn_agregar: #7EBD3F;
   --btn_border: #4CAF50;
   --btn_hover: #157347;
@@ -11,6 +12,12 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.titles{
+  font-family: 'Satisfy', cursive;
+  font-size: 2rem;
+}
 
 .main-text{
     font-family: 'Questrial', sans-serif;
@@ -110,7 +117,7 @@ i{
 }
 
 .modal__title{
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
@@ -121,7 +128,7 @@ i{
 .modal__close{
   text-decoration: none;
   color: #fff;
-  background-color: #f26250;
+  background-color: var(--btn_agregar);
   padding: 1em 3em;
   border-radius: 5px;
   border: 1px solid ;
@@ -131,8 +138,23 @@ i{
 }
 
 .modal__close:hover{
-  color: #f26250;
+  color: var(--btn_border);
   background-color: #fff;
+}
+
+#closeModal{
+  text-decoration: none;
+  color: var(--white);
+  background-color: var(--btn_editar);
+  padding: 1em 3em;
+  border-radius: 5px;
+  border: 1px solid ;
+  display: inline-block;
+}
+
+#closeModal:hover{
+  color: var(--btn_editar);
+  background-color: var(--white);
 }
 
 .modal--show{
@@ -154,4 +176,39 @@ i{
 
 form{
   width: 100%;
+}
+
+/* Inputs de seleccion de archivos */
+.file-select {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.file-select::before {
+  background-color: var(--gray);
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#src-file1::before {
+  content: 'Seleccionar Archivo';
+  cursor: pointer;
 }
