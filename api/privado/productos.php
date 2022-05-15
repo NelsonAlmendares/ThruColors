@@ -1,6 +1,6 @@
 <?php
     require_once('../helpers/database.php');
-    require_once('../helpers/validator.php');
+    require_once('../helpers/Validator.php');
     require_once('../models/productos.php');
 
     if(isset($_GET['actions'])){
@@ -20,7 +20,7 @@
                     }
                     break;
                 case 'search':
-                    $_POST = $producto->validateForms($_POST);
+                    $_POST = $producto->validateForm($_POST);
                     if($_POST['search'] == ''){
                         $result['exception'] = 'Ingrese un valor para buscar';
                     } elseif($result['dataset'] = $producto->searchRows($_POST['search'])){
@@ -34,7 +34,7 @@
                 break;
 
                 case 'create':
-                    $_POST = $producto->validateForms($_POST);
+                    $_POST = $producto->validateForm($_POST);
                     if (!$producto->setNombre($_POST['nombreProducto'])) {
                         $result['exception'] = 'Nombre Incorrecto';
                     } elseif(!$producto->setPrecio($_POST['costoProducto'])){
@@ -82,7 +82,7 @@
                 break;
 
                 case 'update':
-                    $_POST = $producto->validateForms($_POST);
+                    $_POST = $producto->validateForm($_POST);
                     if(!$producto->setId($_POST['id'])){
                         $result['exception'] = 'Producto Incorrecto';
                     } elseif(!$data = $producto->readOne()){
