@@ -10,6 +10,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $empleado = new Empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'codigo' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_empleado'])) {
@@ -24,7 +25,7 @@ if (isset($_GET['action'])) {
                     $result['foto'] = $_SESSION['foto_empleado'];
                     $result['rol'] = $_SESSION['tipo_empleado'];
                 } else {
-                    $result['exception'] = 'Nombre de empleado indefinido';
+                    $result['exception'] = 'Codigo de empleado indefinido';
                 }
                 break;
             case 'logOut':
