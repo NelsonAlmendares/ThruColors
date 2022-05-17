@@ -115,8 +115,8 @@
 				<nav class="main-nav--bg">
 					<div class="container main-nav">
 						<div class="main-nav-start">
-							<div class="search-wrapper buscar">
-								<i data-feather="search" aria-hidden="true"></i>
+							<div class="search-wrapper buscar" id="search-form">
+								<i data-feather="search" aria-hidden="true" type="submit"></i>
 								<input type="text" placeholder="Buscar" required />
 							</div>
 						</div>
@@ -153,12 +153,12 @@
 					</div>
 					<div class="container">
 						<div class="col botones">
-							<button class="add-btn btn-agregar" onclick="openCreate()">Agregar</button>
+							<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
 							<button class="btn-reporte" type="submit">Reporte</button>
 						</div>
 					</div>
-					<div class="col">
-						<form action="" id="form" name="form" method="post">
+					<div class="col" id="contenido">
+						<form action="" id="save-form" name="save-form" method="post">
 							<table class="table">
 								<thead>
 									<tr>
@@ -172,52 +172,10 @@
 										<th>Acciones</th>
 									</tr>
 								</thead>
-								<tbody id="tbody-rowe"></tbody>								
+								<tbody id="table-e"></tbody>
 							</table>
-						</form>
-					</div>
-					<section save-modal class="modal">
-						<div class="modal__container" id="save-modal">							
-							<img src="../../resources/img/undraw_makeup_artist_rxn8.svg" alt="" class="modal__img">
-							<div class="container">
-								<div class="col">
-									<h2 id="modal-titulo"></h2>
-									<form class="row" method="post" id="save-form" enctype="multipart/form-data">
-										<!-- No se coloca el id solo al momento de modificar al momento de modificar -->										
-										<div class="input-field col s12 m6">
-											<label class="label" for="nombre_empleado">Nombre de empleado:</label>
-                      						<input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado" placeholder="Nombre" required/>											
-										</div>
-										<div class="input-field col s12 m6">
-											<label class="label" for="apellido_empleado">Apellido de empleado:</label>
-                      						<input type="text" class="form-control" id="apellido_empleado" name="apellido_empleado" placeholder="Apellido" required/>												
-										</div>
-										<div class="input-field col s12 m6">
-											<label class="label" for="DUI_empleado">DUI de empleado:</label>
-                      						<input type="text" class="form-control" id="DUI_empleado" name="DUI_empleado" placeholder="12345678-9" maxlength="10" required/>												
-										</div>
-										<div class="input-field col s12 m6">
-											<label class="label" for="direccion_empleado">Direccion de empleado:</label>
-                     						<input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado" placeholder="Residencial, pasaje, casa N°..." required/>											
-										</div>
-										<div class="input-field col s12 m6">
-											<label class="label" for="tipo_empleado">Tipo empleado</label>
-											<select id="tipo_empleado" name="tipo_empleado">
-											</select>											
-										</div>
-										<div class="input-field col s12 m6">
-											<label class="label" for="foto_empleado">Foto de empleado:</label>
-                     						<input type="file" class="form-control" id="foto_empleado" name="foto_empleado" accept=".jpg, .png" required/>										
-										</div>										
-										<div class="input-field col s12 m6">
-											<a href="" class="modal__close">Cerrar</a>
-											<button class="add-btn btn-agregar" type="submit">Agregar</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</section>
+						</form>						
+					</div>					
 				</div>
 			</main>
 			<!-- Footer -->
@@ -254,7 +212,6 @@
 	<script src="../../js/components.js"></script>
 	<script src="../../js/privado/script.js"></script>
 	<script src="../../plugins/feather.min.js"></script>
-	<script src="../../js/privado/modal.js"></script>
 	<script src="../../js/privado/online.js"></script>
 	<script src="../../js/publico/tables.js"></script>
 	<script src="../../js/privado/empleados.js"></script>
