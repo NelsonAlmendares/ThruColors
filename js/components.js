@@ -76,7 +76,7 @@ function searchRows(api, form) {
 *
 *   Retorno: ninguno.
 */
-function saveRow(api, action, form, modal) {
+function saveRow(api, action, form) {
     fetch(api + action, {
         method: 'post',
         body: new FormData(document.getElementById(form))
@@ -88,10 +88,11 @@ function saveRow(api, action, form, modal) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se cierra la caja de dialogo (modal) del formulario.
-                    M.Modal.getInstance(document.getElementById(modal)).close();
+                    //M.Modal.getInstance(document.getElementById(modal)).close();                    
                     // Se cargan nuevamente las filas en la tabla de la vista después de guardar un registro y se muestra un mensaje de éxito.
                     readRows(api);
                     sweetAlert(1, response.message, null);
+                    location.reload();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }
@@ -236,7 +237,7 @@ function fillSelect(endpoint, select, selected) {
                 // Se agregan las opciones a la etiqueta select mediante su id.
                 document.getElementById(select).innerHTML = content;
                 // Se inicializa el componente Select del formulario para que muestre las opciones.
-                M.FormSelect.init(document.querySelectorAll('select'));
+                //M.FormSelect.init(document.querySelectorAll('select'));
             });
         } else {
             console.log(request.status + ' ' + request.statusText);

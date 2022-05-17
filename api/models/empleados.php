@@ -266,6 +266,7 @@ class Empleados extends Validator
         $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado)
             VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado, $this->foto_empleado);                
+        //print_r($params);
         return Database::executeRow($sql, $params);
     }
 
