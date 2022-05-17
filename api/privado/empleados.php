@@ -10,7 +10,8 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $empleado = new Empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'codigo' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['id_empleado'])) {
         $result['session'] = 1;
@@ -20,6 +21,9 @@ if (isset($_GET['action'])) {
                 if (isset($_SESSION['codigo_empleado'])) {
                     $result['status'] = 1;
                     $result['codigo'] = $_SESSION['codigo_empleado'];
+                    $result['nombre'] = $_SESSION['nombre_empleado'];
+                    $result['foto'] = $_SESSION['foto_empleado'];
+                    $result['rol'] = $_SESSION['tipo_empleado'];
                 } else {
                     $result['exception'] = 'Codigo de empleado indefinido';
                 }
@@ -229,11 +233,18 @@ if (isset($_GET['action'])) {
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->checkUser($_POST['codigo_empleado'])) {
                     $result['exception'] = 'Codigo incorrecto';
+                } elseif (!$empleado->readUserName($_POST['codigo_empleado'])) {
+                    $result['exception'] = 'Nombre no encontrado';
+                } elseif (!$empleado->readUserRol($_POST['codigo_empleado'])) {
+                    $result['exception'] = 'Rol no encontrado';
                 } elseif ($empleado->checkPassword($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_empleado'] = $empleado->getId_e();
                     $_SESSION['codigo_empleado'] = $empleado->getCodigo_e();
+                    $_SESSION['nombre_empleado'] = $empleado->getNombre_e();
+                    $_SESSION['foto_empleado'] = $empleado->getFoto_e();
+                    $_SESSION['tipo_empleado'] = $empleado->getTipo_e();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
