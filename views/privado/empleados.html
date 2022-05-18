@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="../../css/privado/style.min.css" />
 	<!-- Estilos personalizados Nelson Almendares -->
 	<link rel="stylesheet" href="../../css/privado/productos.css">
+
+	<link rel="stylesheet" href="../../css/privado/empleado.css">
 </head>
 
 <body>
@@ -156,33 +158,34 @@
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
 					<form action="" id="save-form" name="save-form" method="post">
-						<div class="col spacing-top">
-							<h2 class="main-text">Administración de Empleados</h2>
+					<div class="col spacing-top">
+						<h2 class="main-text">Administración de Empleados</h2>
+					</div>
+					<div class="container">
+						<div class="col botones">
+							<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+							<button class="btn-reporte" type="submit">Reporte</button>
 						</div>
-						<div class="container">
-							<div class="col botones">
-								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
-								<button class="btn-reporte" type="submit">Reporte</button>
-							</div>
-						</div>
-						<div class="col" id="contenido">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>ID empleado</th>
-										<th>Foto empleado</th>
-										<th>Nombre empleado</th>
-										<th>Apellido empleado</th>
-										<th>DUI</th>
-										<th>Direccion</th>
-										<th>Codigo empleado</th>
-										<th>Tipo empleado</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody id="table-e"></tbody>
-							</table>
-						</div>
+					</div>
+					<div class="col" id="contenido">
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Foto empleado</th>
+									<th>Nombre empleado</th>
+									<th>Apellido empleado</th>
+									<th>DUI</th>
+									<th>Direccion</th>
+									<th>Codigo empleado</th>
+									<th>Tipo empleado</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody id="table-e"></tbody>
+						</table>
+
+					</div>
 					</form>
 				</div>
 			</main>
@@ -220,9 +223,10 @@
 	<!----Js personales---->
 	<script src="../../js/components.js"></script>
 	<script src="../../plugins/feather.min.js"></script>
-	<script src="../../js/privado/online.js"></script>
+	<script src="../../controller/components.js"></script>
 	<script src="../../js/publico/tables.js"></script>
-	<script src="../../js/privado/empleados.js"></script>
+	<script src="../../controller/admin/empleados.js"></script>
+	<script src="../../controller/admin/online.js"></script>
 	<script src="../../js/privado/script.js"></script>
 </body>
 
