@@ -134,6 +134,7 @@ function confirmDelete(api, data) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro y se muestra un mensaje de éxito.
                             readRows(api);
                             sweetAlert(1, response.message, null);
+                            location.reload();
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
