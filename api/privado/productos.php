@@ -8,7 +8,7 @@
 
         $producto = new Productos;
         $result = array('status' => 0, 'message' => null, 'exception' => null);
-        if (isset($_SESSION['id_usuario'])) {
+        if (isset($_SESSION['id_empleado'])) {
             switch ($_GET['actions']) {
                 case 'readAll':
                     if($result['dataset'] = $producto->readAll()){
