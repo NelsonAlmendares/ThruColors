@@ -26,7 +26,6 @@ function fillTable(dataset) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
                         <tr>
-
                             <td class="contenido">${row.id_empleado}</td>
                             <td class="contenido"><img src="${SERVER}imagenes/empleados/${row.foto_empleado}" class="materialboxed" height="100"></td>
                             <td class="contenido">${row.nombre_empleado}</td>
@@ -59,7 +58,6 @@ document.getElementById('search-form').addEventListener('submit', function (even
 
 // Función para preparar el formulario al momento de insertar un registro.
 function openCreate() {
-
     // Se crea la variable que guardara todas las etiquetas html.
     let register = '';
     // Se crea todo el formulario.
@@ -186,7 +184,6 @@ function openUpdate(id_empleado) {
     // Se deshabilitan los campos de alias y contraseña.
     document.getElementById('id_empleado').hidden = false;
     document.getElementById('id_e').hidden = false;
-
     document.getElementById('id_empleado').disabled = false;
     document.getElementById('id_e').disabled = false;   
     document.getElementById('confirmar').hidden = true;
@@ -195,7 +192,6 @@ function openUpdate(id_empleado) {
     document.getElementById('confirmar').disabled = true;
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
-
     data.append('id_empleado', id_empleado);
     // Petición para obtener los datos del registro solicitado.
     fetch(API_USUARIOS + 'readOne', {
@@ -240,7 +236,7 @@ document.getElementById('save-form').addEventListener('submit', function (event)
         action = 'create';
     } else if (document.getElementById('id_empleado').disabled==false){
         action = 'update';
-    }
+    }    
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
     saveRow(API_USUARIOS, action, 'save-form');
 });

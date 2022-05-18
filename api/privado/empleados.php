@@ -94,11 +94,29 @@ if (isset($_GET['action'])) {
                 break;
             case 'search':
                 $_POST = $empleado->validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $empleado->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Valor encontrado';
+                } elseif ($empleado->validateNaturalNumber($_POST['buscar'])) {
+                    if ($result['dataset'] = $empleado->searchNumbers($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                } elseif ($empleado->validateAlphabetic($_POST['buscar'],0,500)) {
+                    if ($result['dataset'] = $empleado->searchRows($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                } elseif ($empleado->validateDUI($_POST['buscar'])) {
+                    if ($result['dataset'] = $empleado->searchDUIs($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
