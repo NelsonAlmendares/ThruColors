@@ -92,4 +92,4 @@ class marca extends validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-}
+} 
