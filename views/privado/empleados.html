@@ -14,6 +14,8 @@
 </head>
 
 <body>
+	<!-----Clase para inicializar el dropdown------->
+	<div class="layer"></div>
 	<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
 	<div class="page-flex">
 		<!-- ! Nav -->
@@ -30,7 +32,7 @@
 					</button>
 				</div>
 				<div class="sidebar-body ">
-					<a class="sidebar-user" id="info_user">						
+					<a class="sidebar-user" id="info_user">
 					</a>
 					<ul class="sidebar-body-menu">
 						<li>
@@ -130,6 +132,7 @@
 								<i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
 								<i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
 							</button>
+							<!-----------Aqui se cierra la sesión :3--------------->
 							<div class="notification-wrapper">
 								<button class="gray-circle-btn dropdown-btn" title="Configuracion" type="button">
 									<span class="sr-only">Configuración</span>
@@ -148,20 +151,21 @@
 			<!-- Main -->
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<div class="col spacing-top">
-						<h2 class="main-text">Administración de Empleados</h2>
-					</div>
-					<div class="container">
-						<div class="col botones">
-							<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
-							<button class="btn-reporte" type="submit">Reporte</button>
+					<form action="" id="save-form" name="save-form" method="post">
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Empleados</h2>
 						</div>
-					</div>
-					<div class="col" id="contenido">
-						<form action="" id="save-form" name="save-form" method="post">
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
+							</div>
+						</div>
+						<div class="col" id="contenido">
 							<table class="table">
 								<thead>
 									<tr>
+										<th>ID empleado</th>
 										<th>Foto empleado</th>
 										<th>Nombre empleado</th>
 										<th>Apellido empleado</th>
@@ -174,8 +178,8 @@
 								</thead>
 								<tbody id="table-e"></tbody>
 							</table>
-						</form>						
-					</div>					
+						</div>
+					</form>
 				</div>
 			</main>
 			<!-- Footer -->
@@ -209,12 +213,13 @@
 
 	<!-- Icons library -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!----Js personales---->
 	<script src="../../js/components.js"></script>
-	<script src="../../js/privado/script.js"></script>
 	<script src="../../plugins/feather.min.js"></script>
 	<script src="../../js/privado/online.js"></script>
 	<script src="../../js/publico/tables.js"></script>
 	<script src="../../js/privado/empleados.js"></script>
+	<script src="../../js/privado/script.js"></script>
 </body>
 
 </html>
