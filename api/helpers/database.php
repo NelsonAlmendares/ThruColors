@@ -9,7 +9,11 @@
             $server = 'localhost';
             $database = 'ThruColors';
             $username = 'postgres';
+<<<<<<< HEAD
             $password = 'AdminUser';
+=======
+            $password = 'HuTao262';
+>>>>>>> f958dc33d022caf92488e30f1e9ecd2c9eeac0e6
 
             self::$connection = new PDO('pgsql:host=' . $server . ';dbname=' . $database . ';port=5432' , $username, $password);
         }
@@ -30,7 +34,6 @@
         }
 
         /*Funcion para mandar a llamar los registros con sentencia de sql tipo SELECT retornando un valor booleano*/
-
         public static function getRows($query, $values){
             try {
                 self::connect();
@@ -66,6 +69,7 @@
             die(self::getException());
         }
     }
+
         private static function setException($code, $message){
         // Se asigna el mensaje del error original por si se necesita.
         self::$error = utf8_encode($message);

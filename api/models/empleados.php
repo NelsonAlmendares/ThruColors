@@ -10,10 +10,12 @@ class Empleados extends Validator
     private $nombre_empleado = null;
     private $apellido_empleado = null;
     private $DUI_empleado = null;
+    private $foto_empleado = null;
     Private $direccion_empleado = null;
     private $codigo_empleado = null;
     private $clave = null;
     private $tipo_empleado = null;
+    private $ruta = '../imagenes/empleados/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -52,6 +54,16 @@ class Empleados extends Validator
     {
         if ($this->validateDUI($value)) {
             $this->DUI_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setFoto_e($file)
+    {
+        if ($this->validateImageFile($file,800,800)) {
+            $this->foto_empleado = $this->getFileName();
             return true;
         } else {
             return false;
@@ -121,6 +133,11 @@ class Empleados extends Validator
         return $this->DUI_empleado;
     }
 
+    public function getFoto_e()
+    {
+        return $this->foto_empleado;
+    }
+
     public function getDireccion_e()
     {
         return $this->direccion_empleado;
@@ -141,6 +158,11 @@ class Empleados extends Validator
         return $this->tipo_empleado;
     }
 
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
@@ -150,6 +172,37 @@ class Empleados extends Validator
         $params = array($codigo_empleado);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_empleado = $data['id_empleado'];
+            $this->codigo_empleado = $codigo_empleado;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function readUserName($codigo_empleado)
+    {
+        $sql = 'SELECT nombre_empleado, foto_empleado
+                FROM tb_empleado
+                WHERE codigo_empleado = ?';
+        $params = array($this->codigo_empleado);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->nombre_empleado = $data['nombre_empleado'];
+            $this->foto_empleado = $data['foto_empleado'];
+            $this->codigo_empleado = $codigo_empleado;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function readUserRol($codigo_empleado)
+    {
+        $sql = 'SELECT te."tipoEmpleado" 
+                FROM  tipo_empleado te, tb_empleado tb_e 
+                WHERE te."id_tipoEmpleado"=tb_e.tipo_empleado AND tb_e.codigo_empleado= ?';
+        $params = array($this->codigo_empleado);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->tipo_empleado = $data['tipoEmpleado'];
             $this->codigo_empleado = $codigo_empleado;
             return true;
         } else {
@@ -179,7 +232,7 @@ class Empleados extends Validator
 
     public function readProfile()
     {
-        $sql = 'SELECT id_empleado, nombres_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado
+        $sql = 'SELECT id_empleado, nombres_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
                 WHERE id_empleado = ?';
         $params = array($_SESSION['id_empleado']);
@@ -200,7 +253,7 @@ class Empleados extends Validator
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
                 WHERE apellido_empleado ILIKE ? OR nombre_empleado ILIKE ? OR "DUI" ILIKE ? OR codigo_empleado ILIKE ? OR tipo_empleado ILIKE ?
                 ORDER BY apellido_empleado';
@@ -210,15 +263,16 @@ class Empleados extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado)
-            VALUES ( ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado);        
+        $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado)
+            VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->clave, $this->tipo_empleado, $this->foto_empleado);                
+        //print_r($params);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
                 ORDER BY apellido_empleado;';
         $params = null;
@@ -227,7 +281,7 @@ class Empleados extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
                 WHERE id_empleado = ?';
         $params = array($this->id_empleado);
@@ -237,9 +291,9 @@ class Empleados extends Validator
     public function updateRow()
     {
         $sql = 'UPDATE tb_empleado 
-               SET nombre_empleado = ?, apellido_empleado = ?, "DUI" = ?, direccion_empleado = ?, codigo_empleado = ?, tipo_empleado = ?
+               SET nombre_empleado = ?, apellido_empleado = ?, "DUI" = ?, direccion_empleado = ?, codigo_empleado = ?, tipo_empleado = ?, foto_empleado = ?
                 WHERE id_empleado = ?';
-        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->tipo_empleado, $this->id_empleado);
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->DUI_empleado, $this->direccion_empleado, $this->codigo_empleado, $this->tipo_empleado, $this->foto_empleado, $this->id_empleado);
         return Database::executeRow($sql, $params);
     }
 

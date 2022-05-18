@@ -6,9 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Thru Colors | Marcas</title>
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon">
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="../../css/privado/style.min.css" />
+	<!-- Estilos personalizados Nelson Almendares -->
+	<link rel="stylesheet" href="../../css/privado/productos.css">
+
 </head>
 
 <body>
@@ -30,17 +33,7 @@
 					</button>
 				</div>
 				<div class="sidebar-body ">
-					<a href="##" class="sidebar-user">
-						<span class="sidebar-user-img">
-							<picture>
-								<source srcset="../../resources/perfil/perfil_e.png" type="image/webp"><img
-									src="../../resources/perfil/perfil_e.png" alt="User name">
-							</picture>
-						</span>
-						<div class="sidebar-user-info">
-							<span class="sidebar-user__title">Elmer Carías</span>
-							<span class="sidebar-user__subtitle">CEO</span>
-						</div>
+					<a class="sidebar-user" id="info_user">						
 					</a>
 					<ul class="sidebar-body-menu">
 						<li>
@@ -247,144 +240,55 @@
 			<!-- ! Main -->
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<h2 class="main-title">Marcas</h2>
-					<div class="row">
-						<div class="col-lg-7">
-							<div class="users-table table-wrapper">
-								<table class="posts-table">
-									<thead>
-										<tr class="users-table-info">
-											<th>Foto</th>
-											<th>Marca</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/productos/marcas/chanel.png"
-															type="image/webp" />
-														<img src="../../resources/productos/marcas/chanel.png"
-															alt="category" />
-													</picture>
-												</div>
-											</td>
-											<td>Chanel</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/productos/marcas/lancome.png"
-															type="image/webp" />
-														<img src="../../resources/productos/marcas/lancome.png"
-															alt="category" />
-													</picture>
-												</div>
-											</td>
-											<td>Lancome</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/productos/marcas/mac.png"
-															type="image/webp" />
-														<img src="../../resources/productos/marcas/mac.png"
-															alt="category" />
-													</picture>
-												</div>
-											</td>
-											<td>Mac</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/productos/marcas/revlon.jpg"
-															type="image/webp" />
-														<img src="../../resources/productos/marcas/revlon.jpg"
-															alt="category" />
-													</picture>
-												</div>
-											</td>
-											<td>Revlon</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/productos/marcas/dior.png"
-															type="image/webp" />
-														<img src="../../resources/productos/marcas/dior.png"
-															alt="category" />
-													</picture>
-												</div>
-											</td>
-											<td>Dior</td>
-										</tr>
-									</tbody>
-								</table>
+					<div class="col spacing-top">
+						<h2 class="main-text">Administración de Marca</h2>
+					</div>
+					<div class="container">
+						<div class="col botones">
+							<button class="add-btn btn-agregar" type="submit">Agregar</button>
+							<button class="btn-reporte" type="submit">Reporte</button>
+						</div>
+					</div>
+					<div class="col">
+						<form action="" id="form" name="form" method="post">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Numero</th>
+										<th>Marca</th>>
+									</tr>
+								</thead>
+								<tbody id="tbody-rows"></tbody>
+								<!--tbody>
+									<tr>
+										<td class="contenido">1</td>
+										<td class="contenido">2022-02-14</td>
+											<button class="btn-editar"><i
+													class="fa-solid fa-pen-to-square"></i></button>
+											<button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
+										</td>
+									</tr>
+								</tbody-->
+							</table>
+						</form>
+					</div>
+					<section class="modal">
+						<div class="modal__container">
+							<img src="../../resources/img/undraw_makeup_artist_rxn8.svg" alt="" class="modal__img">
+							<div class="container">
+								<div class="col">
+									<h2>Agregar Marca</h2>
+									<form action="" method="post">
+										<span class="notification-dropdown__subtitle">Nombre Marca:</span>
+										<form class="d-flex">
+											<input  form="form-control" class="me-3 form-labe">
+										  </form>
+										<a href="" class="modal__close">Aceptar</a>
+									</form>
+								</div>
 							</div>
 						</div>
-						<section class="col-lg-5">
-							<article class="white-block">
-								<div class="row">
-									<table class="posts-table">
-										<thead>
-											<tr class="users-table-info">
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<div class="categories-table-img">
-														<picture>
-															<img width="160" height="100"
-																src="../../resources/productos/marcas/chanel.png"
-																alt="category">
-														</picture>
-													</div>
-												</td>
-												<td>
-													<form action="" method="POST" class="text-center">
-														<a href="#" class="btn btn-outline-secondary agregar">Agregar
-															Foto</a>
-													</form>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<label for="inputPassword"
-														class="col-sm-3s col-form-label">Nombre</label>
-													<div class="col-sm-12">
-														<input type="text">
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="col-sm-12">
-														<form action="" method="POST" class="text-center">
-															<a href="#"
-																class="btn btn-outline-secondary cancelar">Cancelar</a>
-														</form>
-													</div>
-												</td>
-												<td>
-													<form action="" method="POST" class="text-center">
-														<a href="#" class="btn btn-outline-secondary agregar">Editar
-															Marca</a>
-													</form>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</article>
-						</section>
-					</div>
+					</section>
 				</div>
 			</main>
 			<!-- ! Footer -->
@@ -405,13 +309,30 @@
 			</footer>
 		</div>
 	</div>
-	<!-- Chart library -->
-	<script src="../../plugins/chart.min.js"></script>
+	<!-- Vanilla DataTables -->
+	<link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
+	<script src="../../js/privado/vanilla-dataTables.min.js"></script>
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
+
+	<!--Inicializador de las tablas de datos -->
+	<script src="../../js/privado/dataTables.js"></script>
+   
 	<!-- Icons library -->
 	<script src="../../plugins/feather.min.js"></script>
+<<<<<<< HEAD
+	<script src="../../js/privado/modal.js"></script>
+	<script src="../../js/publico/tables.js"></script>
+	<script src="../../js/privado/ventas.js"></script>
+=======
 	<!-- Custom scripts -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="../../js/components.js"></script>
+	<script src="../../js/privado/online.js"></script>
 	<script src="../../js/privado/script.js"></script>
 
+>>>>>>> 262b93181efaff011c901f2061c21e4f9033064d
 </body>
 
 </html>
