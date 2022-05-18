@@ -104,7 +104,7 @@
                     } elseif(!$producto->setCategoria($_POST['categoriaProducto'])){
                         $result['exception'] = 'Seleeccione una categoria';
                     } elseif(!$producto->setPresentacion($_POST['presentacionProducto'])){
-                        $result['exception'] = 'Seleccione una presentacio';
+                        $result['exception'] = 'Seleccione una presentacion';
                     } elseif(!is_uploaded_file($_FILES['archivo']['tmp_name'])){
                         if($producto->updateRow($data['foto'])){
                             $result['status'] = 1;
@@ -125,7 +125,41 @@
                         $result['exception'] = Database::getException();
                     }
                 break;
+
+                case 'delete':
+                    if(!$producto->setId($_POST['id'])){
+                        $result['exception'] = 'producto incorrecto';
+                    } elseif(!$data = $producto->readOne()){
+                        $result['excpetion'] = 'Producto inexistente';
+                    } elseif($producto->deleteRow()){
+                        $result['status'] = 1;
+                        if($producto->deleteFile($producto->getRuta(), $data['imagen_producto'])){
+                            $result['message'] = 'Producto eliminado correctamente';
+                        } else{
+                            $result['message'] = 'Producto eliminado pero no se borro la imagen';
+                        }
+                    } else{
+                        $result['exception'] = Database::getException();
+                    }
+                break;
+
+                case 'quantityProductsCategory':
+                    if($result['dataset'] = $producto->quantityProductsCategory()){
+                        $result['status']= 1;
+                    } else{
+                        $result['exception'] = 'No hay datos disponibles';
+                    }
+                break;
+
+                default:
+                    $result['exception'] = 'no hay datos disponibles';
             }
+            header('content-type: application/json; charset=uft-8');
+        } else{
+            print(json_decode('Acceso denegado'));        
         }
+    } else{
+        print(json_decode('Recurso no disponible'));
     }
+
 ?>
