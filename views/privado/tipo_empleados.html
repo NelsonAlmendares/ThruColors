@@ -9,6 +9,8 @@
 	<link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon" />
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="../../css/privado/style.min.css" />
+	<!-- Estilos personalizados Nelson Almendares -->
+	<link rel="stylesheet" href="../../css/privado/productos.css">
 </head>
 
 <body>
@@ -148,100 +150,29 @@
 			<!-- ! Main -->
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<h2 class="main-title">Tipo empleados</h2>
-					<div class="row">
-						<div class="col-lg-7">
-							<div class="users-table table-wrapper">
-								<table class="posts-table">
-									<thead>
-										<tr class="users-table-info">
-											<th>
-												Tipo empleado
-											</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												Jefe
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Gerente
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Trabajador
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Repartidor
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Secretario
-											</td>
-										</tr>
-										<tr>
-											<td>
-												Empacador
-											</td>
-										</tr>
-									</tbody>
-								</table>
+					<form action="" id="save-form" name="save-form" method="post">
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Empleados</h2>
+						</div>
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
 							</div>
 						</div>
-						<section class="col-lg-5">
-							<article class="white-block">
-								<div class="row">
-									<table class="posts-table">
-										<thead>
-											<tr class="users-table-info">
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<label for="inputPassword" class="col-sm-3s col-form-label">Tipo
-														Empleado:</label>
-													<div class="col-sm-12">
-														<input type="text">
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<form action="" method="POST" class="text-center">
-														<a href="#"
-															class="btn btn-outline-secondary agregarT">Agregar</a>
-													</form>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<form action="" method="POST" class="text-center">
-														<a href="#" class="btn btn-outline-secondary agregar">Editar</a>
-													</form>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<form action="" method="POST" class="text-center">
-														<a href="#"
-															class="btn btn-outline-secondary cancelar">Cancelar</a>
-													</form>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</article>
-						</section>
-					</div>
+						<div class="col" id="contenido">
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID tipo empleado</th>
+										<th>Tipo empleado</th>										
+									</tr>
+								</thead>
+								<tbody id="table-e"></tbody>
+							</table>
+						</div>
+					</form>
 				</div>
 			</main>
 			<!-- ! Footer -->
@@ -262,16 +193,25 @@
 			</footer>
 		</div>
 	</div>
-	<!-- Libreria de iconos -->
+	<!-- Vanilla DataTables -->
+	<link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
+	<script src="../../js/privado/vanilla-dataTables.min.js"></script>
 	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
-	<!-- Chart library -->
-	<script src="../../plugins/chart.min.js"></script>
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
+
+	<!--Inicializador de las tablas de datos -->
+	<script src="../../js/privado/dataTables.js"></script>
+
 	<!-- Icons library -->
-	<script src="../../plugins/feather.min.js"></script>
-	<!-- Custom scripts -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!----Js personales---->
 	<script src="../../js/components.js"></script>
+	<script src="../../plugins/feather.min.js"></script>
 	<script src="../../js/privado/online.js"></script>
+	<script src="../../js/publico/tables.js"></script>
+	<script src="../../js/privado/tipo_empleado.js"></script>
 	<script src="../../js/privado/script.js"></script>
 
 </body>

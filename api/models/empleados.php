@@ -166,6 +166,8 @@ class Empleados extends Validator
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
+
+    /*-------------Método para proporcionar el id del empleado.-------------*/
     public function checkUser($codigo_empleado)
     {
         $sql = 'SELECT id_empleado FROM tb_empleado WHERE codigo_empleado = ?';
@@ -179,6 +181,7 @@ class Empleados extends Validator
         }
     }
 
+    /*-------------Método para proporcionar el nombre y foto del empleado.-------------*/
     public function readUserName($codigo_empleado)
     {
         $sql = 'SELECT nombre_empleado, foto_empleado
@@ -195,6 +198,7 @@ class Empleados extends Validator
         }
     }
 
+    /*-------------Método para proporcionar el rol o tipo de empleado.-------------*/
     public function readUserRol($codigo_empleado)
     {
         $sql = 'SELECT te."tipoEmpleado" 
@@ -273,7 +277,7 @@ class Empleados extends Validator
     {
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
-                ORDER BY apellido_empleado;';
+                ORDER BY id_empleado;';
         $params = null;
         return Database::getRows($sql, $params);
     }
@@ -287,8 +291,11 @@ class Empleados extends Validator
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+    public function updateRow($foto_imagen)
     {
+        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+        ($this->foto_empleado) ? $this->deleteFile($this->getRuta(), $foto_imagen) : $this->foto_empleado = $foto_imagen;
+
         $sql = 'UPDATE tb_empleado 
                SET nombre_empleado = ?, apellido_empleado = ?, "DUI" = ?, direccion_empleado = ?, codigo_empleado = ?, tipo_empleado = ?, foto_empleado = ?
                 WHERE id_empleado = ?';
