@@ -30,15 +30,15 @@
                 case 'readProfile':
                     if($result['dataset'] = $empleado->readProfile()){
                         $result['status'] = 1;
-                    }elseif (Database::getExeption()) {
-                        $result['exception'] = Database::getExeption();
+                    }elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
                     }else{
                         $result['exception'] = 'Empleado inexsitente';
                     }
                     break;
                 case 'editProfile':
                     $_POST = $empleado->validateForm($_POST);
-                    if(!$empleado->setNombres($_POST['nombres'])){
+                    if(!$empleado->setNombre_e($_POST['nombres'])){
                         $result['exception'] = 'Nombres incorrectos';
                     }
                     break;
