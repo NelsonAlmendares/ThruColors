@@ -46,7 +46,9 @@ class marca extends validator
 
     public function searchRows($value)
     {
-        $sql = 'SELECT id_marca, nombre_marca FROM public.tb_marca where nombre_marca = ?';
+        $sql = 'SELECT id_marca, nombre_marca FROM public.tb_marca 
+        where nombre_marca ILIKE ?
+        ORDER BY id_marca';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
@@ -63,7 +65,8 @@ class marca extends validator
     public function readAll()
     {
         $sql = 'SELECT id_marca, nombre_marca
-        FROM public.tb_marca';
+        FROM public.tb_marca
+        ORDER BY id_marca';
         $params = null;
         return Database::getRows($sql, $params);
     }
@@ -71,7 +74,9 @@ class marca extends validator
     public function readOne()
     {
         $sql = 'SELECT id_marca, nombre_marca
-        FROM public.tb_marca';
+        FROM public.tb_marca
+        where id_marca = ?'  
+       
         $params = array($this->id_marca);
         return Database::getRow($sql, $params):
     }
@@ -92,4 +97,5 @@ class marca extends validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-} 
+}   
+?>    
