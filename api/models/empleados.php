@@ -72,7 +72,7 @@ class Empleados extends Validator
 
     public function setDireccion_e($value)
     {
-        if ($this->validateAlphabetic($value, 1, 60)) {
+        if ($this->validateAlphanumeric($value, 1, 60)) {
             $this->direccion_empleado = $value;
             return true;
         } else {
