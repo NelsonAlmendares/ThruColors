@@ -9,6 +9,8 @@
 	<link rel="shortcut icon" href="../../resources/Butterfly.png" type="image/x-icon" />
 	<!-- Custom styles -->
 	<link rel="stylesheet" href="../../css/privado/style.min.css" />
+	<link rel="stylesheet" href="../../css/privado/productos.css">
+
 </head>
 
 <body>
@@ -146,141 +148,39 @@
 				</nav>
 			</header>
 			<!-- Main -->
+			
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<h2 class="main-title">Clientes</h2>
-					<div class="row">
-						<div class="col-lg-8">
-							<div class="users-table table-wrapper">
-								<table class="posts-table">
-									<thead>
-										<tr class="users-table-info">
-											<th>Foto</th>
-											<th>Nombres</th>
-											<th>Apellidos</th>
-											<th>e-mail</th>
-											<th>Estado</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/perfil/avatar-face-04.png"
-															type="image/webp" />
-														<img src="../../resources/perfil/avatar-face-04.png"
-															alt="User Name" />
-													</picture>
-												</div>
-											</td>
-											<td>Gabriela Claudia</td>
-											<td>Rivera Reyes</td>
-											<td>gabriela.rivera@gmail.com</td>
-											<td><span class="badge-active">Activo</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/perfil/avatar-face-03.png"
-															type="image/webp" />
-														<img src="../../resources/perfil/avatar-face-03.png"
-															alt="User Name" />
-													</picture>
-												</div>
-											</td>
-											<td>Jorge Jefry</td>
-											<td>Panameño Castaneda</td>
-											<td>jorge.panameño@gmail.com</td>
-											<td><span class="badge-active">activo</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/perfil/avatar-face-02.png"
-															type="image/webp" />
-														<img src="../../resources/perfil/avatar-face-02.png"
-															alt="User Name" />
-													</picture>
-												</div>
-											</td>
-											<td>Michelle Raquel</td>
-											<td>Valenzuela Almendarez</td>
-											<td>michelle_almendarez@gmail.com</td>
-											<td><span class="badge-active">activo</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="categories-table-img">
-													<picture>
-														<source srcset="../../resources/perfil/avatar-face-05.png"
-															type="image/webp" />
-														<img src="../../resources/perfil/avatar-face-05.png"
-															alt="User Name" />
-													</picture>
-												</div>
-											</td>
-											<td>Gilberto Carlos</td>
-											<td>Delgado Monge</td>
-											<td>gilberto.delgado@gmail.com</td>
-											<td><span class="badge-active">activo</span></td>
-										</tr>
-									</tbody>
-								</table>
+					<form action="" id="save-form" name="save-form" method="post">
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Clientes</h2>
+						</div>
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreatee()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
 							</div>
 						</div>
-						<div class="col-lg-3">
-							<article class="white-block">
-								<div class="top-cat-title">
-									<h3>Cliente:</h3>
-								</div>
-								<ul class="top-cat-list">
-									<li>
-										<picture>
-											<source srcset="../../resources/perfil/avatar-face-04.png"
-												type="image/webp" />
-											<img src="../../resources/perfil/avatar-face-04.png" alt="User Name" />
-										</picture>
-									</li>
-									<li>
-										<div class="top-cat-list__title">Nombres: <span></span></div>
-										<div class="top-cat-list__subtitle">Gabriela Claudia <span></span>
-										</div>
-									</li>
-									<li>
-										<div class="top-cat-list__title">Apellidos: <span></span></div>
-										<div class="top-cat-list__subtitle">
-											Rivera Reyes <span class="danger"></span>
-										</div>
-									</li>
-									<li>
-										<div class="top-cat-list__title">Celular: <span></span></div>
-										<div class="top-cat-list__subtitle">87654321<span class="success"></span>
-										</div>
-									</li>
-									<li>
-										<div class="top-cat-list__title">Dirección: <span></span></div>
-										<div class="top-cat-list__subtitle">Mi casa, enfrente de la calle<span
-												class="warning"></span></div>
-									</li>
-									<li>
-										<div class="top-cat-list__title">e-mail: <span></span></div>
-										<div class="top-cat-list__subtitle">
-											gabriela.rivera@gmail.com<span class="warning"></span>
-										</div>
-									</li>
-									<li>
-										<div class="top-cat-list__title">Estado: <span></span></div>
-										<span class="badge-active">Activo</span>
-									</li>
-								</ul>
-							</article>
+						<div class="col" id="contenido">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Telefono</th>
+										<th>Direccion</th>
+										<th>Correo</th>
+										<th>Estado clientes</th>
+										<th>Foto</th>
+									</tr>
+								</thead>
+								<tbody id="table-e"></tbody>
+							</table>
 						</div>
-					</div>
+					</form>
 				</div>
 			</main>
+
 			<!-- Footer -->
 			<footer class="footer">
 				<div class="container footer--flex">
