@@ -3,13 +3,14 @@
     require_once('../helpers/Validator.php');
     require_once('../models/productos.php');
 
-    if(isset($_GET['actions'])){
+    if(isset($_GET['action'])){
         session_start();
 
         $producto = new Productos;
-        $result = array('status' => 0, 'message' => null, 'exception' => null);
+        $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'codigo' => null);
         if (isset($_SESSION['id_empleado'])) {
-            switch ($_GET['actions']) {
+            $result['session'] = 1;
+            switch ($_GET['action']) {
                 case 'readAll':
                     if($result['dataset'] = $producto->readAll()){
                         $result['status'] = 1;

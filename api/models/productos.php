@@ -1,6 +1,6 @@
 <?php
 
-    class Productos extends validator{
+    class Productos extends Validator{
         private $id = null;
         private $nombreProducto = null;
         private $costoProducto = null;
@@ -13,7 +13,7 @@
         private $generoProducto = null;
         private $categoriaProducto = null;
         private $presentacionProducto = null;
-        private $ruta = '../images/productos';
+        private $ruta = '../imagenes/productos/';
 
         /* Metodos para validar y asignar los valores que se tomaran para los atributos */
         public function setId($value){
@@ -220,7 +220,7 @@
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
                 ORDER BY id_producto';
             $params = null;
-            return Database::getRow($sql, $params);
+            return Database::getRows($sql, $params);
         }
 
         /* Función para actualizar un registro desde la vista de la aplicacion dejando la imagen actual que contiene */
