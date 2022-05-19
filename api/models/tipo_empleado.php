@@ -50,19 +50,19 @@ class Tipo_empleado extends Validator
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                WHERE nombre_categoria ILIKE ? OR descripcion_categoria ILIKE ?
-                ORDER BY nombre_categoria';
-        $params = array("%$value%", "%$value%");
+        $sql = 'SELECT t_e."id_tipoEmpleado", t_e."tipoEmpleado" 
+                FROM tipo_empleado t_e
+                WHERE t_e."tipoEmpleado" ILIKE ?
+                ORDER BY t_e."tipoEmpleado"';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO categorias(nombre_categoria, imagen_categoria, descripcion_categoria)
-                VALUES(?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion);
+        $sql = 'INSERT INTO tipo_empleado("tipoEmpleado")
+                VALUES (?)';
+        $params = array($this->tipo_empleado);
         return Database::executeRow($sql, $params);
     }
 
@@ -70,37 +70,34 @@ class Tipo_empleado extends Validator
     {
         $sql = 'SELECT t_e."id_tipoEmpleado", t_e."tipoEmpleado" 
                 FROM tipo_empleado t_e
-                ORDER BY t_e."tipoEmpleado"';
+                ORDER BY t_e."id_tipoEmpleado"';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_categoria, nombre_categoria, imagen_categoria, descripcion_categoria
-                FROM categorias
-                WHERE id_categoria = ?';
-        $params = array($this->id);
+        $sql = 'SELECT t_e."id_tipoEmpleado", t_e."tipoEmpleado" 
+                FROM tipo_empleado t_e
+                WHERE t_e."id_tipoEmpleado" = ?';
+        $params = array($this->id_tipoE);
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
-
-        $sql = 'UPDATE categorias
-                SET imagen_categoria = ?, nombre_categoria = ?, descripcion_categoria = ?
-                WHERE id_categoria = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
+        $sql = 'UPDATE tipo_empleado
+                SET "tipoEmpleado"=?
+                WHERE "id_tipoEmpleado" = ?';
+        $params = array($this->tipo_empleado, $this->id_tipoE);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM categorias
-                WHERE id_categoria = ?';
-        $params = array($this->id);
+        $sql = 'DELETE FROM tipo_empleado t_e
+                WHERE t_e."id_tipoEmpleado" = ?';
+        $params = array($this->id_tipoE);
         return Database::executeRow($sql, $params);
     }
 }

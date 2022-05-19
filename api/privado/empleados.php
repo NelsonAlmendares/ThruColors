@@ -94,11 +94,29 @@ if (isset($_GET['action'])) {
                 break;
             case 'search':
                 $_POST = $empleado->validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $empleado->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Valor encontrado';
+                } elseif ($empleado->validateNaturalNumber($_POST['buscar'])) {
+                    if ($result['dataset'] = $empleado->searchNumbers($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                } elseif ($empleado->validateAlphabetic($_POST['buscar'],0,500)) {
+                    if ($result['dataset'] = $empleado->searchRows($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
+                } elseif ($empleado->validateDUI($_POST['buscar'])) {
+                    if ($result['dataset'] = $empleado->searchDUIs($_POST['buscar'])) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Valor encontrado';
+                    } else{
+                        $result['exception'] = 'No hay coincidencias';
+                    }
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -253,36 +271,6 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['message'] = 'El empleado se registro pero no se guardó la imagen';
                     }
-<<<<<<< HEAD
-                    break;
-                case 'logOut':
-                    if(session_destroy()){
-                        $result['status'] = 1;
-                        $result['messsage'] = 'Sesión eliminada correctamente';
-                    }else{
-                        $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-                    }
-                    break;
-                case 'readProfile':
-                    if($result['dataset'] = $empleado->readProfile()){
-                        $result['status'] = 1;
-                    }elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    }else{
-                        $result['exception'] = 'Empleado inexsitente';
-                    }
-                    break;
-                case 'editProfile':
-                    $_POST = $empleado->validateForm($_POST);
-                    if(!$empleado->setNombre_e($_POST['nombres'])){
-                        $result['exception'] = 'Nombres incorrectos';
-                    }
-                    break;
-                default:
-                    # code...
-                    break;
-            }
-=======
                 } elseif (Database::getException()) {                   
                     $result['exception'] = Database::getException();
                 } else {
@@ -311,7 +299,6 @@ if (isset($_GET['action'])) {
                 break;
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
->>>>>>> f958dc33d022caf92488e30f1e9ecd2c9eeac0e6
         }
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

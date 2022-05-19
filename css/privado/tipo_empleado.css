@@ -1,0 +1,63 @@
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root{
+    --black:  #000;
+    --white:  #fff;
+    --red: #F44336;
+    --hover-red: #BF342B;
+    --verde: #7EBD3F;
+    --verde_hover: #007200;
+    --input: #E6E6E6;
+}
+
+.modal-titulo{
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+}
+
+#cerrar_form{
+    background-color: var(--red);
+    border-radius: 5px;
+    padding: 9px 55px;
+    color: var(--white);
+}
+
+#cerrar_form:hover{
+    background-color: var(--hover-red);
+    color: var(--white);
+}
+
+#agregar{
+    background-color: var(--verde);
+    border-radius: 5px;
+    padding: 0.6rem 50px;
+    color: var(--white);
+}
+
+#agregar:hover{
+    background-color: var(--verde_hover);
+    color: var(--white);
+}
+
+.label{
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+.input-label{
+    border: 1px solid #000;
+    background-color: var(--input);
+    color: var(--black);
+    margin-top: 10px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.buttons{
+    margin-top: 50px;
+}
+
+.margin{
+    margin-top: 20px;
+}

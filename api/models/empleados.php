@@ -255,16 +255,33 @@ class Empleados extends Validator
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+    /*-------------Método para buscar el nombre y apellido de empleado.-------------*/
     public function searchRows($value)
     {
         $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado, foto_empleado
                 FROM tb_empleado
-                WHERE apellido_empleado ILIKE ? OR nombre_empleado ILIKE ? OR "DUI" ILIKE ? OR codigo_empleado ILIKE ? OR tipo_empleado ILIKE ?
-                ORDER BY apellido_empleado';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+                WHERE apellido_empleado ILIKE ? OR nombre_empleado ILIKE ? OR direccion_empleado ILIKE ?';
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
-
+    /*-------------Método para buscar el coddigo y tipo empleado de empleado.-------------*/
+    public function searchNumbers($value)
+    {
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado, foto_empleado
+        FROM tb_empleado
+        WHERE codigo_empleado = ? OR tipo_empleado = ?';
+        $params = array("$value", "$value");
+        return Database::getRows($sql, $params);
+    }
+    /*-------------Método para buscar el DUI de empleado.-------------*/
+    public function searchDUIs($value)
+    {
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, tipo_empleado, foto_empleado
+                FROM tb_empleado
+                WHERE "DUI" ILIKE ?';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
     public function createRow()
     {
         $sql = 'INSERT INTO tb_empleado(nombre_empleado, apellido_empleado, "DUI", direccion_empleado, codigo_empleado, password_empleado, tipo_empleado, foto_empleado)

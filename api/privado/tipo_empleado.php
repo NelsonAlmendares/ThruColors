@@ -26,9 +26,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'search':
                 $_POST =  $tipo_empleado->validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] =  $tipo_empleado->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] =  $tipo_empleado->searchRows($_POST['buscar'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valor encontrado';
                 } elseif (Database::getException()) {
@@ -39,27 +39,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST =  $tipo_empleado->validateForm($_POST);
-                if (! $tipo_empleado->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (! $tipo_empleado->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (! $tipo_empleado->setImagen($_FILES['archivo'])) {
-                    $result['exception'] =  $tipo_empleado->getFileError();
+                if (! $tipo_empleado->setTipo_e($_POST['tipo_empleado'])) {
+                    $result['exception'] = 'Tipo empleado no aceptado';                
                 } elseif ( $tipo_empleado->createRow()) {
                     $result['status'] = 1;
-                    if ( $tipo_empleado->saveFile($_FILES['archivo'],  $tipo_empleado->getRuta(),  $tipo_empleado->getImagen())) {
-                        $result['message'] = 'Categoría creada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría creada pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Tipo empleado creado correctamente';                    
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'readOne':
-                if (! $tipo_empleado->setId($_POST['id'])) {
+                if (!$tipo_empleado->setId_tipoE($_POST['id_tipoE'])) {
                     $result['exception'] = 'Categoría incorrecta';
                 } elseif ($result['dataset'] =  $tipo_empleado->readOne()) {
                     $result['status'] = 1;
@@ -71,46 +61,27 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST =  $tipo_empleado->validateForm($_POST);
-                if (! $tipo_empleado->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoría incorrecta';
+                if (! $tipo_empleado->setId_tipoE($_POST['id_tipoE'])) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif (!$data =  $tipo_empleado->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif (! $tipo_empleado->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (! $tipo_empleado->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ( $tipo_empleado->updateRow($data['imagen_categoria'])) {
+                    $result['exception'] = 'Tipo empleado inexistente';
+                } elseif (! $tipo_empleado->setTipo_e($_POST['tipo_empleado'])) {
+                    $result['exception'] = 'Tipo empleado no aceptado';                
+                } elseif ( $tipo_empleado->updateRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Categoría modificada correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (! $tipo_empleado->setImagen($_FILES['archivo'])) {
-                    $result['exception'] =  $tipo_empleado->getFileError();
-                } elseif ( $tipo_empleado->updateRow($data['imagen_categoria'])) {
-                    $result['status'] = 1;
-                    if ( $tipo_empleado->saveFile($_FILES['archivo'],  $tipo_empleado->getRuta(),  $tipo_empleado->getImagen())) {
-                        $result['message'] = 'Categoría modificada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría modificada pero no se guardó la imagen';
-                    }
+                        $result['message'] = 'Tipo empleado modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (! $tipo_empleado->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoría incorrecta';
+                if (! $tipo_empleado->setId_tipoE($_POST['id_tipoE'])) {
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif (!$data =  $tipo_empleado->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
+                    $result['exception'] = 'Tipo empleado inexistente';
                 } elseif ( $tipo_empleado->deleteRow()) {
                     $result['status'] = 1;
-                    if ( $tipo_empleado->deleteFile( $tipo_empleado->getRuta(), $data['imagen_categoria'])) {
-                        $result['message'] = 'Categoría eliminada correctamente';
-                    } else {
-                        $result['message'] = 'Categoría eliminada pero no se borró la imagen';
-                    }
+                    $result['message'] = 'Tipo empleado eliminado correctamente';                    
                 } else {
                     $result['exception'] = Database::getException();
                 }
