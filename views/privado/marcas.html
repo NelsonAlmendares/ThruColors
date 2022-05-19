@@ -12,6 +12,8 @@
 	<!-- Estilos personalizados Nelson Almendares -->
 	<link rel="stylesheet" href="../../css/privado/productos.css">
 
+	<link rel="stylesheet" href="../../css/privado/marca.css">
+
 </head>
 
 <body>
@@ -134,105 +136,16 @@
 								<i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
 							</button>
 							<div class="notification-wrapper">
-								<button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
-									<span class="sr-only">To messages</span>
-									<span class="icon notification" aria-hidden="true"></span>
-								</button>
-								<ul class="users-item-dropdown notification-dropdown dropdown">
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon info">
-												<i data-feather="check"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">System just updated</span>
-												<span class="notification-dropdown__subtitle">The system has been
-													successfully upgraded. Read more
-													here.</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon danger">
-												<i data-feather="info" aria-hidden="true"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">The cache is full!</span>
-												<span class="notification-dropdown__subtitle">Unnecessary caches take up
-													a
-													lot of memory space and
-													interfere ...</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon info">
-												<i data-feather="check" aria-hidden="true"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">New Subscriber here!</span>
-												<span class="notification-dropdown__subtitle">A new subscriber has
-													subscribed.</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a class="link-to-page" href="##">Go to Notifications page</a>
-									</li>
-								</ul>
-							</div>
-							<div class="notification-wrapper">
-								<button class="gray-circle-btn dropdown-btn" title="Ajustes" type="button">
-									<span class="sr-only">Ajustes</span>
-									<span class="icon setting" aria-hidden="true"></span>
-								</button>
-								<ul class="users-item-dropdown notification-dropdown dropdown">
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon info">
-												<i data-feather="check"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">System just updated</span>
-												<span class="notification-dropdown__subtitle">The system has been
-													successfully upgraded. Read more
-													here.</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon danger">
-												<i data-feather="info" aria-hidden="true"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">The cache is full!</span>
-												<span class="notification-dropdown__subtitle">Unnecessary caches take up
-													a
-													lot of memory space and
-													interfere ...</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a href="##">
-											<div class="notification-dropdown-icon info">
-												<i data-feather="check" aria-hidden="true"></i>
-											</div>
-											<div class="notification-dropdown-text">
-												<span class="notification-dropdown__title">New Subscriber here!</span>
-												<span class="notification-dropdown__subtitle">A new subscriber has
-													subscribed.</span>
-											</div>
-										</a>
-									</li>
-									<li>
-										<a class="link-to-page" href="##">Go to Notifications page</a>
-									</li>
-								</ul>
-							</div>
+                                <button class="gray-circle-btn dropdown-btn" title="Configuracion" type="button">
+                                    <span class="sr-only">Configuración</span>
+                                    <i class="fa-solid fa-gear"></i>
+                                </button>
+                                <ul class="users-item-dropdown notification-dropdown dropdown">
+                                    <li>
+                                        <a class="sidebar-user" onclick="logOut()">Cerrar sesión</a>
+                                    </li>
+                                </ul>
+                            </div>
 						</div>
 					</div>
 				</nav>
@@ -240,55 +153,29 @@
 			<!-- ! Main -->
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<div class="col spacing-top">
-						<h2 class="main-text">Administración de Marca</h2>
-					</div>
-					<div class="container">
-						<div class="col botones">
-							<button class="add-btn btn-agregar" type="submit">Agregar</button>
-							<button class="btn-reporte" type="submit">Reporte</button>
+					<form action="" id="save-form" name="save-form" method="post">
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Marca</h2>
 						</div>
-					</div>
-					<div class="col">
-						<form action="" id="form" name="form" method="post">
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
+							</div>
+						</div>
+						<div class="col" id="contenido">
+
 							<table class="table">
 								<thead>
 									<tr>
-										<th>Numero</th>
-										<th>Marca</th>
+										<th>ID Marca</th>
+										<th>Marca</th>										
 									</tr>
 								</thead>
-								<tbody id="tbody-rows"></tbody>
-								<!--tbody>
-									<tr>
-										<td class="contenido">1</td>
-										<td class="contenido">2022-02-14</td>
-											<button class="btn-editar"><i
-													class="fa-solid fa-pen-to-square"></i></button>
-											<button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
-										</td>
-									</tr>
-								</tbody-->
+								<tbody id="table-te"></tbody>
 							</table>
-						</form>
-					</div>
-					<section class="modal">
-						<div class="modal__container">
-							<img src="../../resources/img/undraw_makeup_artist_rxn8.svg" alt="" class="modal__img">
-							<div class="container">
-								<div class="col">
-									<h2>Agregar Marca</h2>
-									<form action="" method="post">
-										<span class="notification-dropdown__subtitle">Nombre Marca:</span>
-										<form class="d-flex">
-											<input  form="form-control" class="me-3 form-labe">
-										  </form>
-										<a href="" class="modal__close">Aceptar</a>
-									</form>
-								</div>
-							</div>
 						</div>
-					</section>
+					</form>
 				</div>
 			</main>
 			<!-- ! Footer -->
@@ -312,23 +199,25 @@
 	<!-- Vanilla DataTables -->
 	<link rel="stylesheet" href="../../css/privado/vanilla-dataTables.min.css">
 	<script src="../../js/privado/vanilla-dataTables.min.js"></script>
+	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
 
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
 
 	<!--Inicializador de las tablas de datos -->
 	<script src="../../js/privado/dataTables.js"></script>
-   
-	<!-- Icons library -->
-	<script src="../../plugins/feather.min.js"></script>
-	<script src="../../js/publico/tables.js"></script>
 
-	<!-- Custom scripts -->
+	<!-- Icons library -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!----Js personales---->
+	<script src="../../plugins/feather.min.js"></script>
 	<script src="../../controller/components.js"></script>
+	<script src="../../js/publico/tables.js"></script>
+	<script src="../../controller/admin/marca.js"></script>
 	<script src="../../controller/admin/online.js"></script>
 	<script src="../../js/privado/script.js"></script>
-	<script src="../../controller/admin/online.js"></script>
+	
+
 </body>
 
 </html>

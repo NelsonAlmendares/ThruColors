@@ -62,52 +62,70 @@ function openCreate() {
     let register = '';
     // Se crea todo el formulario.
         register += `            
-                <h2 id="modal-titulo"></h2>                
+                <h2 id="modal-titulo"></h2>
                     <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="id_empleado" id="id_e">ID de empleado:</label>
-                        <input type="number" class="form-control" id="id_empleado" name="id_empleado" step="000" placeholder="1" min="1" required/>
+                    <div class="openModal">
+                        <div class="lateral1">
+                            <div class="input-field ">
+                                <label class="label" for="id_empleado" id="id_e">ID de empleado:</label>
+                                <input type="number" class="form-control input-label" id="id_empleado" name="id_empleado" step="000" placeholder="1" min="1"
+                                    required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="nombre_empleado">Nombre de empleado:</label>
+                                <input type="text" class="form-control input-label" id="nombre_empleado" name="nombre_empleado" placeholder="Nombre"
+                                    required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="apellido_empleado">Apellido de empleado:</label>
+                                <input type="text" class="form-control input-label" id="apellido_empleado" name="apellido_empleado" placeholder="Apellido"
+                                    required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="DUI_empleado">DUI de empleado:</label>
+                                <input type="text" class="form-control input-label" id="DUI_empleado" name="DUI_empleado" placeholder="12345678-9"
+                                    maxlength="10" required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="foto_empleado">Foto de empleado:</label>
+                                <div class="file-select">
+                                    <input type="file" class="form-control" id="foto_empleado" name="foto_empleado" accept=".jpg, .png" required />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="lateral2">
+                            <div class="input-field ">
+                                <label class="label" for="direccion_empleado">Direccion de empleado:</label>
+                                <input type="text" class="form-control input-label" id="direccion_empleado" name="direccion_empleado"
+                                    placeholder="Residencial, pasaje, casa N°..." required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="codigo_empleado">Código de empleado:</label>
+                                <input type="number" class="form-control input-label" id="codigo_empleado" name="codigo_empleado" step="000"
+                                    placeholder="001" min="1" required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="tipo_empleado">Tipo empleado</label>
+                                <select id="tipo_empleado" class="select_id" name="tipo_empleado">
+                                </select>
+                            </div>
+                            <div class="input-field  ">
+                                <label class="label" for="clave">Contraseña:</label>
+                                <input type="password" id="clave" name="clave" maxlength="8" class="form-control input-label" placeholder="Contraseña"
+                                    required />
+                            </div>
+                            <div class="input-field ">
+                                <label class="label" for="password">Confirmar Contraseña:</label>
+                                <input id="confirmar" type="password" name="confirmar" maxlength="8" class="form-control input-label"
+                                    placeholder="Confirmar contraseña" required>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="input-field col s12 m6">
-                        <label class="label" for="nombre_empleado">Nombre de empleado:</label>
-                        <input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado" placeholder="Nombre" required/>											
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="apellido_empleado">Apellido de empleado:</label>
-                        <input type="text" class="form-control" id="apellido_empleado" name="apellido_empleado" placeholder="Apellido" required/>												
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="DUI_empleado">DUI de empleado:</label>
-                        <input type="text" class="form-control" id="DUI_empleado" name="DUI_empleado" placeholder="12345678-9" maxlength="10" required/>												
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="foto_empleado">Foto de empleado:</label>
-                        <input type="file" class="form-control" id="foto_empleado" name="foto_empleado" accept=".jpg, .png" required/>										
-                    </div>	
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="direccion_empleado">Direccion de empleado:</label>
-                        <input type="text" class="form-control" id="direccion_empleado" name="direccion_empleado" placeholder="Residencial, pasaje, casa N°..." required/>											
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="codigo_empleado">Código de empleado:</label>
-                        <input type="number" class="form-control" id="codigo_empleado" name="codigo_empleado" step="000" placeholder="001" min="1" required/>
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="tipo_empleado">Tipo empleado</label>
-                        <select id="tipo_empleado" name="tipo_empleado">
-                        </select>											
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="clave">Contraseña:</label>
-                        <input type="password" id="clave" name="clave" maxlength="8" class="form-control" placeholder="Contraseña" required/>
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <label class="label" for="password">Confirmar Contraseña:</label>
-                        <input id="confirmar" type="password" name="confirmar" maxlength="8" class="form-control" placeholder="Confirmar contraseña" required>
-                    </div>                    									
-                    <div class="input-field col s12 m6">
-                    <a class="active" href="empleados.html" id="cerrar_form">Cerrar</a>
-                        <button type="submit">Agregar</button>
+                        <a class="active" href="empleados.html" id="cerrar_form">Cerrar</a>
+                        <button id="agregar" type="submit">Agregar</button>
                     </div>                          
         `;
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.

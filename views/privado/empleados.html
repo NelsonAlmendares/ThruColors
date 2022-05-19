@@ -120,18 +120,18 @@
 					<div class="container main-nav">
 						<div class="main-nav-start">
 							<form method="post" id="search-form">
-								<div class="search-wrapper buscar">									
+								<div class="search-wrapper buscar">
 									<input type="text" placeholder="Buscar" id="buscar" name="buscar" />
 									<button type="submit" class="transparent-btn" data-tooltip="Buscar">
 										<i data-feather="search" aria-hidden="true"></i>
-									</button>								
-								</div>				
+									</button>
+								</div>
 							</form>
 						</div>
 						<div class="main-nav-end">
 							<button class="sidebar-toggle transparent-btn" title="Menu" type="button">
 								<span class="sr-only">Toggle menu</span>
-								<span class="icon menu-toggle-gray" aria-hidden="true"></span>
+								<span class="icon menu-toggle--gray" aria-hidden="true"></span>
 							</button>
 							<button class="theme-switcher gray-circle-btn" type="button" title="Tema">
 								<span class="sr-only">Tema</span>
@@ -158,34 +158,34 @@
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
 					<form action="" id="save-form" name="save-form" method="post">
-					<div class="col spacing-top">
-						<h2 class="main-text">Administración de Empleados</h2>
-					</div>
-					<div class="container">
-						<div class="col botones">
-							<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
-							<button class="btn-reporte" type="submit">Reporte</button>
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Empleados</h2>
 						</div>
-					</div>
-					<div class="col" id="contenido">
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
+							</div>
+						</div>
+						<div class="col" id="contenido">
 
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Foto empleado</th>
-									<th>Nombre empleado</th>
-									<th>Apellido empleado</th>
-									<th>DUI</th>
-									<th>Direccion</th>
-									<th>Codigo empleado</th>
-									<th>Tipo empleado</th>
-									<th>Acciones</th>
-								</tr>
-							</thead>
-							<tbody id="table-e"></tbody>
-						</table>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Foto empleado</th>
+										<th>Nombre empleado</th>
+										<th>Apellido empleado</th>
+										<th>DUI</th>
+										<th>Direccion</th>
+										<th>Codigo empleado</th>
+										<th>Tipo empleado</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody id="table-e"></tbody>
+							</table>
 
-					</div>
+						</div>
 					</form>
 				</div>
 			</main>
