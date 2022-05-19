@@ -1,6 +1,6 @@
 <?php
     require_once('../helpers/database.php');
-    require_once('../helpers/Validator.php');
+    require_once('../helpers/validator.php');
     require_once('../models/productos.php');
 
     if(isset($_GET['action'])){
@@ -10,6 +10,7 @@
         $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'codigo' => null);
         if (isset($_SESSION['id_empleado'])) {
             $result['session'] = 1;
+            // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
             switch ($_GET['action']) {
                 case 'readAll':
                     if($result['dataset'] = $producto->readAll()){

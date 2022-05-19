@@ -2,7 +2,7 @@ const API_PRODUCTOS = SERVER + 'privado/productos.php?action=';
 const ENDPOINT_CATEGORIAS = SERVER + 'privado/categorias.php?action=';
 
 /* Metodo para manejar los eventos que se ejecutan cuando el sitio es cargado */
-document.addEventListener('DOMContentLoader', function(){
+document.addEventListener('DOMContentLoaded', function() {
 
     // Llamamos a la función que obtiene los registros para llenar la base
     readRows(API_PRODUCTOS);
@@ -29,13 +29,13 @@ function fillTable(dataset) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
                         <tr>
-                            <td class="contenido">${row.id}</td>
-                            <td class="contenido"><img src="${SERVER}imagenes/productos/${row.foto}" class="materialboxed" height="100"></td>                            
-                            <td class="contenido">${row.nombre}</td>
-                            <td class="contenido">${row.costo}</td>
-                            <td class="contenido">${row.marca}</td>
-                            <td class="contenido">${row.id_categoria}</td>
-                            <td class="contenido">${row.id_estado}</td>
+                            <td class="contenido">${row.id_producto}</td>
+                            <td class="contenido"><img src="${SERVER}imagenes/productos/${row.foto_producto}" class="materialboxed" height="100"></td>                            
+                            <td class="contenido">${row.nombre_producto}</td>
+                            <td class="contenido">${row.costo_producto}</td>
+                            <td class="contenido">${row.nombre_marca}</td>
+                            <td class="contenido">${row.categoria_producto}</td>
+                            <td class="contenido">${row.estado_producto}</td>
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_producto})"><i class="fa-solid fa-pen-to-square"></i></button>
                                 <button class="btn-eliminar" onclick="openDelete(${row.id_producto})"><i class="fa-solid fa-trash"></i></button>
