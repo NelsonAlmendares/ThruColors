@@ -7,9 +7,9 @@
 
         public static function connect(){
             $server = 'localhost';
-            $database = 'ThruColors';
+            $database = 'DB_ThruColors';
             $username = 'postgres';
-            $password = 'AdminUser';
+            $password = '12DZ12';
 
 
             self::$connection = new PDO('pgsql:host=' . $server . ';dbname=' . $database . ';port=5432' , $username, $password);

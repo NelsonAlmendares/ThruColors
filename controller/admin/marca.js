@@ -58,7 +58,7 @@ function openCreate() {
                 <h2 id="modal-titulo"></h2>                
                     <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
                     <div class="input-field col s12 m6">
-                        <label class="label" for="id_marca" id="id_te">ID de la marca:</label>
+                        <label class="label" for="id_marca" id="id_ma">ID de la marca:</label>
                         <input type="number" class="form-control" id="id_marca" name="id_marca" step="000" placeholder="1" min="1" required/>
                     </div>
                     <div class="input-field col s12 m6">
@@ -76,8 +76,8 @@ function openCreate() {
     document.getElementById('modal-titulo').textContent = 'Crear marca';
     //se ocultan y deshabilitan los campos del id
     document.getElementById('id_marca').hidden = true;
-    document.getElementById('id_te').hidden = true;
-    document.getElementById('id_te').disabled = true;
+    document.getElementById('id_ma').hidden = true;
+    document.getElementById('id_ma').disabled = true;
     document.getElementById('id_marca').disabled = true;    
 }
 
@@ -90,7 +90,7 @@ function openUpdate(id_marca) {
         <h2 id="modal-titulo"></h2>                
         <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
         <div class="input-field col s12 m6">
-            <label class="label" for="id_marca" id="id_te">ID de la marca:</label>
+            <label class="label" for="id_marca" id="id_ma">ID de la marca:</label>
             <input type="number" class="form-control" id="id_marca" name="id_marca" step="000" placeholder="1" min="1" required/>
         </div>
         <div class="input-field col s12 m6">
@@ -108,8 +108,8 @@ function openUpdate(id_marca) {
     document.getElementById('modal-titulo').textContent = 'Actualizar Marca';
     // Se deshabilitan los campos de alias y contraseña.
     document.getElementById('id_marca').hidden = false;
-    document.getElementById('id_te').hidden = false;
-    document.getElementById('id_te').disabled = false;
+    document.getElementById('id_ma').hidden = false;
+    document.getElementById('id_ma').disabled = false;
     document.getElementById('id_marca').disabled = false;
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
