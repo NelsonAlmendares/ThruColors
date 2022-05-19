@@ -240,55 +240,29 @@
 			<!-- ! Main -->
 			<main class="main users chart-page" id="skip-target">
 				<div class="container">
-					<div class="col spacing-top">
-						<h2 class="main-text">Administración de Marca</h2>
-					</div>
-					<div class="container">
-						<div class="col botones">
-							<button class="add-btn btn-agregar" type="submit">Agregar</button>
-							<button class="btn-reporte" type="submit">Reporte</button>
+					<form action="" id="save-form" name="save-form" method="post">
+						<div class="col spacing-top">
+							<h2 class="main-text">Administración de Marca</h2>
 						</div>
-					</div>
-					<div class="col">
-						<form action="" id="form" name="form" method="post">
+						<div class="container">
+							<div class="col botones">
+								<button class="btn-agregar" id="openModal" onclick="openCreate()">Agregar</button>
+								<button class="btn-reporte" type="submit">Reporte</button>
+							</div>
+						</div>
+						<div class="col" id="contenido">
+
 							<table class="table">
 								<thead>
 									<tr>
-										<th>Numero</th>
-										<th>Marca</th>
+										<th>ID Marca</th>
+										<th>Marca</th>										
 									</tr>
 								</thead>
-								<tbody id="tbody-rows"></tbody>
-								<!--tbody>
-									<tr>
-										<td class="contenido">1</td>
-										<td class="contenido">2022-02-14</td>
-											<button class="btn-editar"><i
-													class="fa-solid fa-pen-to-square"></i></button>
-											<button class="btn-eliminar"><i class="fa-solid fa-trash"></i></button>
-										</td>
-									</tr>
-								</tbody-->
+								<tbody id="table-te"></tbody>
 							</table>
-						</form>
-					</div>
-					<section class="modal">
-						<div class="modal__container">
-							<img src="../../resources/img/undraw_makeup_artist_rxn8.svg" alt="" class="modal__img">
-							<div class="container">
-								<div class="col">
-									<h2>Agregar Marca</h2>
-									<form action="" method="post">
-										<span class="notification-dropdown__subtitle">Nombre Marca:</span>
-										<form class="d-flex">
-											<input  form="form-control" class="me-3 form-labe">
-										  </form>
-										<a href="" class="modal__close">Aceptar</a>
-									</form>
-								</div>
-							</div>
 						</div>
-					</section>
+					</form>
 				</div>
 			</main>
 			<!-- ! Footer -->
