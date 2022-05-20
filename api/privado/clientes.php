@@ -64,20 +64,20 @@ if (isset($_GET['action'])) {
                 if (!$captcha['success']) {
                     $result['recaptcha'] = 1;
                     $result['exception'] = 'No eres un humano';
-                } elseif (!$cliente->setNombre_c($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$cliente->setApellido_c($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$cliente->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$cliente->setDireccion($_POST['direccion'])) {
+                } elseif (!$cliente->setNombre_c($_POST['nombre_cliente'])) {
+                    $result['exception'] = 'Nombre incorrectos';
+                } elseif (!$cliente->setApellido_c($_POST['apellido_cliente'])) {
+                    $result['exception'] = 'Apellido incorrectos';
+                } elseif (!$cliente->setCelular_c($_POST['celular_cliente'])) {
+                    $result['exception'] = 'celular incorrecto';
+                } elseif (!$cliente->setDireccion_c($_POST['direccion_cliente'])) {
                     $result['exception'] = 'Dirección incorrecta';
-                } elseif (!$cliente->setDUI($_POST['dui'])) {
-                    $result['exception'] = 'DUI incorrecto';
-                } elseif (!$cliente->setNacimiento($_POST['nacimiento'])) {
-                    $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$cliente->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Teléfono incorrecto';
+                } elseif (!$cliente->setEmail_c($_POST['email_cliente'])) {
+                    $result['exception'] = 'Email incorrecto';
+                } elseif (!$cliente->setEstado_c($_POST['estado_cliente'])) {
+                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!$cliente->setFoto_c($_POST['foto_cliente'])) {
+                    $result['exception'] = 'foto no permitida';
                 } elseif ($_POST['clave'] != $_POST['confirmar_clave']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
