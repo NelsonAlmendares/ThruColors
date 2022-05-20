@@ -55,10 +55,10 @@ class Marca extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO public.tb_marca(nombre_marca)
+        $sql = 'INSERT INTO tb_marca(nombre_marca)
             VALUES (?)';
         $params = array($this->nombre_marca);
-        return Datatbase::executeRow($sql, $params);
+        return Database::executeRow($sql, $params);
     }
 
     public function readAll()

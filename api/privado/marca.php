@@ -39,13 +39,13 @@ if (isset($_GET['action'])){
                 }
                 break;
             case 'create':
-                $_POST = $marca -> validateForm($_POST);
-                if(! $marca -> setNombre_marca($_POST['nombre_marca'])){
-                    $result['exception'] = 'Marca no aceptada';
-                }elseif ($marca ->createRow()){
+                $_POST =  $marca->validateForm($_POST);
+                if (!$marca->setNombre_marca($_POST['nombre_marca'])) {
+                    $result['exception'] = 'marca no aceptada';                
+                } elseif ( $marca->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Marca creada correctamente';
-                }else{
+                    $result['message'] = 'Marca creada correctamente';                    
+                } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
@@ -60,6 +60,21 @@ if (isset($_GET['action'])){
                     $result['exception'] = 'Marca inexistente';
                 }
                 break;
+                case 'update':
+                    $_POST =  $marca->validateForm($_POST);
+                    if (! $marca->setid_marca($_POST['id_marca'])) {
+                        $result['exception'] = 'Marca incorrecto';
+                    } elseif (!$data =  $marca->readOne()) {
+                        $result['exception'] = 'Marca inexistente';
+                    } elseif (! $marca->setNombre_marca($_POST['nombre_marca'])) {
+                        $result['exception'] = 'Marca no aceptado';                
+                    } elseif ( $marca->updateRow()) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Marca modificado correctamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             case 'delete':
                 if(!$marca -> setid_marca($_POST['id_marca'])) {
                     $result['exception'] = 'Marca incorrecta';
