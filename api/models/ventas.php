@@ -164,18 +164,27 @@ class ventas extends validator
 
     public function readAll()
     {
-        $sql = 'SELECT tb_v.id_venta, tb_v.fecha_venta, tb_c.nombre_cliente, tb_c.apellido_cliente, tb_p.nombre_producto, tb_dv.cantidad, tb_v.estado_venta
-                FROM tb_venta tb_v, "tb_DetalleVenta" tb_dv, tb_cliente tb_c, tb_producto tb_p
-                WHERE tb_v.id_venta=tb_dv.id_venta AND tb_dv.id_producto=tb_p.id_producto AND tb_v.id_cliente=tb_c.id_cliente;';
+        $sql = 'SELECT "id_DetalleVenta" AS id_venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
+                FROM "tb_DetalleVenta" tdv 
+                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
+                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
+                ORDER BY "id_DetalleVenta"';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT tb_v.id_venta, tb_v.fecha_venta, tb_c.nombre_cliente, tb_c.apellido_cliente, tb_p.nombre_producto, tb_dv.cantidad, tb_v.estado_venta
-        FROM tb_venta tb_v, "tb_DetalleVenta" tb_dv, tb_cliente tb_c, tb_producto tb_p
-        WHERE tb_v.id_venta=tb_dv.id_venta AND tb_dv.id_producto=tb_p.id_producto AND tb_v.id_cliente=tb_c.id_cliente AND tb_v.id_venta = ?';
+        $sql = 'SELECT "id_DetalleVenta" AS id_venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
+                FROM "tb_DetalleVenta" tdv 
+                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
+                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
+                WHERE "id_DetalleVenta" = ?
+                ORDER BY "id_DetalleVenta"';
         $params = array($this->id_venta);
         return Database::getRow($sql, $params);
     }

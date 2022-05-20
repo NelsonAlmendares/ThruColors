@@ -210,7 +210,7 @@
                     INNER JOIN tb_empleado tem ON tp.id_empleado = tem.id_empleado
                     INNER JOIN tb_genero tg ON tp."id_generoProducto" = tg.id_genero
                     WHERE id_producto = ?
-                    ORDER BY id_producto;';
+                    ORDER BY id_producto';
             $params = array($this->id);
             return Database::getRow($sql, $params);
         }
