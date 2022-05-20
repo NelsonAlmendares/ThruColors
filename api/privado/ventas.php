@@ -26,9 +26,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'search':
                 $_POST = $venta->validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $venta->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $venta->searchRows($_POST['buscar'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Valor encontrado';
                 } elseif (Database::getException()) {
@@ -39,36 +39,30 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = $venta->validateForm($_POST);
-                if (!$venta->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$venta->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$venta->setPrecio($_POST['precio'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                } elseif (!isset($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$venta->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$venta->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$venta->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = $venta->getFileError();
-                } elseif ($venta->createRow()) {
+                if (!$venta->setCantidad($_POST['cantidad_venta'])) {
+                    $result['exception'] = 'Nombre incorrecto';                
+                } elseif (!isset($_POST['producto_venta'])) {
+                    $result['exception'] = 'Seleccione un producto';
+                } elseif (!$venta->setProducto($_POST['producto_venta'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!isset($_POST['venta'])) {
+                    $result['exception'] = 'Seleccione un fecha de venta';
+                } elseif (!$venta->setVenta($_POST['venta'])) {
+                    $result['exception'] = 'Venta incorrecta';
+                } elseif (!isset($_POST['comentario_venta'])) {
+                    $result['exception'] = 'Seleccione un comentario';               
+                } elseif (!$venta->setComentario_venta($_POST['comentario_venta'])) {
+                    $result['exception'] = 'Comentario incorrecto';
+                } elseif ( $venta->createRow()) {
                     $result['status'] = 1;
-                    if ($venta->saveFile($_FILES['archivo'], $venta->getRuta(), $venta->getImagen())) {
-                        $result['message'] = 'Producto creado correctamente';
-                    } else {
-                        $result['message'] = 'Producto creado pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Venta creada correctamente';                    
                 } else {
-                    $result['exception'] = Database::getException();;
+                    $result['exception'] = Database::getException();
                 }
                 break;
             case 'readOne':
-                if (!$venta->setId($_POST['id'])) {
-                    $result['exception'] = 'Producto incorrecto';
+                if (!$venta->setId_venta($_POST['id_venta'])) {
+                    $result['exception'] = 'Venta incorrecta';
                 } elseif ($result['dataset'] = $venta->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
@@ -79,52 +73,33 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $venta->validateForm($_POST);
-                if (!$venta->setId($_POST['id'])) {
+                if (!$venta->setId_venta($_POST['id_venta'])) {
                     $result['exception'] = 'Venta incorrecta';
                 } elseif (!$data = $venta->readOne()) {
                     $result['exception'] = 'Venta inexistente';
-                } elseif (!$venta->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$venta->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$venta->setPrecio($_POST['precio'])) {
-                    $result['exception'] = 'Precio incorrecto';
-                } elseif (!$venta->setCategoria($_POST['categoria'])) {
-                    $result['exception'] = 'Seleccione una categoría';
-                } elseif (!$venta->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($venta->updateRow($data['imagen_producto'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$venta->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = $venta->getFileError();
-                } elseif ($venta->updateRow($data['imagen_producto'])) {
+                } elseif (!$venta->setComentario_venta($_POST['comentario_venta'])) {
+                    $result['exception'] = 'Comentario incorrecto';
+                } elseif (!$venta->setProducto($_POST['producto_venta'])) {
+                    $result['exception'] = 'Producto incorrecto';
+                } elseif (!$venta->setCantidad($_POST['cantidad_venta'])) {
+                    $result['exception'] = 'Venta incorrecta';
+                } elseif(!$venta->setVenta($_POST['venta'])){
+                    $result['exception'] = 'Venta incorrecta';
+                } elseif ($venta->updateRow()) {
                     $result['status'] = 1;
-                    if ($venta->saveFile($_FILES['archivo'], $venta->getRuta(), $venta->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Producto modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$venta->setId($_POST['id'])) {
-                    $result['exception'] = 'Producto incorrecto';
+                if (!$venta->setId_venta($_POST['id_venta'])) {
+                    $result['exception'] = 'Venta incorrecto';
                 } elseif (!$data = $venta->readOne()) {
-                    $result['exception'] = 'Producto inexistente';
+                    $result['exception'] = 'Venta inexistente';
                 } elseif ($venta->deleteRow()) {
                     $result['status'] = 1;
-                    if ($venta->deleteFile($venta->getRuta(), $data['imagen_producto'])) {
-                        $result['message'] = 'Producto eliminado correctamente';
-                    } else {
-                        $result['message'] = 'Producto eliminado pero no se borró la imagen';
-                    }
+                    $result['message'] = 'Venta eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

@@ -40,7 +40,9 @@
                         $result['exception'] = 'No hay coincidencias';
                     }
                 break;
-
+/* 
+*este es el caso para crar una categoria 
+*/
                 case 'create':
                     $_POST = $categoria->validateForm($_POST);
                     if(!$categoria->setCategoria_p($_POST['categoria_producto'])){
@@ -63,6 +65,10 @@
                     }
                 break;
 
+
+/* 
+* case para la funcion leer uno 
+*/
                 case 'readOne':
                     if(!$categoria->setId_c($_POST['id_categoria'])){
                         $result['exception'] = 'Categoria incorrecta';
@@ -75,6 +81,12 @@
                     }
                 break;
 
+
+/* 
+*caso para la funcion actualizar 
+*/
+
+ 
                 case 'update':
                     $_POST = $categoria->validateForm($_POST);
                     if(!$categoria->setId_c($_POST['id_categoria'])){
@@ -105,6 +117,13 @@
                         $result['exception'] = Database::getException();
                     }
                     break;
+
+
+
+/* 
+*caso para eliminar una categoria 
+*/
+
                     case 'delete':
                         if(!$categoria->setId_c($_POST['id_categoria'])){
                             $result['exception'] = 'Categoria incorrecta';
@@ -122,10 +141,17 @@
                         }
                     break;
                 default:
+/* 
+*aca se imprimen los errores 
+*/
+
                     $result['exception'] = 'Acción no dispobible dentro de la sesión';
             }
             header('content-type: application/json; charset=utf-8');
             print(json_encode($result));
+
+
+
         } else{
             print(json_encode('Acceso denegado'));
         }

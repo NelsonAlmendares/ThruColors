@@ -17,6 +17,11 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+
+
+            /* 
+*caso para obtener el usuario 
+*/
             case 'getUser':
                 if (isset($_SESSION['codigo_cliente'])) {
                     $result['status'] = 1;
@@ -28,6 +33,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Codigo de empleado indefinido';
                 }
                 break;
+
+
+                /* 
+*caso para cerrar sesion
+*/
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -36,6 +46,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+
+
+/* 
+*caso para leer los datos del perfil 
+*/
+
             case 'readProfile':
                 if ($result['dataset'] = $cliente->readProfile()) {
                     $result['status'] = 1;
@@ -45,6 +61,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado inexistente';
                 }
                 break;
+
+
+/* 
+*caso para editar el perfil del cliente 
+*/
+
             case 'editProfile':
                 $_POST = $cliente->validateForm($_POST);
                 if (!$cliente->setNombre_e($_POST['nombre_cliente'])) {
@@ -66,6 +88,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+/* 
+*caso para cambiar contraseña del cliente 
+*/
+
             case 'changePassword':
                 $_POST = $cliente->validateForm($_POST);
                 if (!$cliente->setId($_SESSION['id_cliente'])) {
@@ -83,6 +110,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+
+
+/* 
+*caso para leer todos los datos del tb cliente 
+*/
+
+
             case 'readAll':
                 if ($result['dataset'] = $cliente->readAll()) {
                     $result['status'] = 1;
@@ -92,6 +127,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+
+
+/* 
+*caso para buscar un cliente 
+*/
+
+
+
             case 'search':
                 $_POST = $cliente->validateForm($_POST);
                 if ($_POST['buscar'] == '') {
@@ -123,6 +166,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+
+/* 
+*caso para crar un cliente 
+*/
+
+
             case 'create':
                 $_POST = $cliente->validateForm($_POST);                
                 if (!$cliente->setNombre_c($_POST['nombre_cliente'])) {
@@ -160,6 +209,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'El cliente no se registro correctamente';
                 }
                 break;
+
+
+/* 
+*caso para cleer un dato del cliente 
+*/
+
             case 'readOne':
                 if (!$cliente->setId_c($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
@@ -171,6 +226,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Cliente inexistente';
                 }
                 break;
+
+
+/* 
+*caso para actualizar un cliente 
+*/
+
+
             case 'update':
                 $_POST = $cliente->validateForm($_POST);
                 if (!$cliente->setId_c($_POST['id_cliente'])) {
@@ -209,6 +271,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+/* 
+*caso para eliminar un cliente 
+*/
+
+
             case 'delete':
                 if (!$cliente->setId_c($_POST['id_cliente'])) {
                     $result['exception'] = 'Cliente incorrecto';
@@ -274,6 +342,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'El empleado no se registro correctamente';
                 }
                 break;
+
+
+/* 
+*caso para inisiar sesion del cliente 
+*/
+
+
             case 'logIn':
                 $_POST = $cliente->validateForm($_POST);
                 if (!$cliente->checkUser($_POST['codigo_cliente'])) {

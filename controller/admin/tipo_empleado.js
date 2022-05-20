@@ -90,20 +90,23 @@ function openUpdate(id_tipoEmpleado) {
     let update = '';
     // Se crea todo el formulario.
         update += `            
-        <h2 id="modal-titulo"></h2>                
-        <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
-        <div class="input-field col s12 m6">
-            <label class="label" for="id_tipoE" id="id_te">ID del tipo empleado:</label>
-            <input type="number" class="form-control" id="id_tipoE" name="id_tipoE" step="000" placeholder="1" min="1" required/>
-        </div>
-        <div class="input-field col s12 m6">
-            <label class="label" for="tipo_empleado">Tipo de empleado:</label>
-            <input type="text" class="form-control" id="tipo_empleado" name="tipo_empleado" placeholder="Administrador" required/>											
-        </div>                    									
-        <div class="input-field col s12 m6">
-        <a class="active" href="tipo_empleados.html" id="cerrar_form">Cerrar</a>
-            <button type="submit">Actualizar</button>
-        </div>                           
+        <h2 id="modal-titulo"></h2>
+
+                    <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
+                    <div class="input-field">
+                        <label class="label" for="id_tipoE" id="id_te">ID del tipo empleado:</label>
+                        <input type="number" class="form-control" id="id_tipoE" name="id_tipoE" step="000" placeholder="1" min="1" required/>
+                    </div>
+
+                    <div class="input-field margin">
+                        <label class="label" for="tipo_empleado">Tipo de empleado:</label>
+                        <input type="text" class="form-control input-label" id="tipo_empleado" name="tipo_empleado" placeholder="Administrador" required/>											
+                    </div>
+
+                    <div class="input-field buttons">
+                        <a class="active" href="tipo_empleados.html" id="cerrar_form">Cerrar</a>
+                        <button id="agregar" type="submit">Actualizar</button>
+                    </div>                           
         `;
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
     document.getElementById('save-form').innerHTML = update;

@@ -1,7 +1,7 @@
 <?php
     require_once('../helpers/database.php');
     require_once('../helpers/validator.php');
-    require_once('../models/genero.php');
+    require_once('../models/estado_venta.php');
 
     // Se comprueba que haya una sesión iniciada, de lo contrario de envía un mensaje de error
     if(isset($_GET['action'])){
@@ -10,7 +10,7 @@
         session_start();
 
         // Se instancia la clase para acceder a su contenido
-        $genero = new Genero;
+        $estado_v = new Estado_v;
         //Iniciamos el arreglo para guardar el resultado en la API
         $result = array('status' => 0, 'messsage' => null, 'exception' => null);
         //Se verifica si hay una sesión iniciada
@@ -18,7 +18,7 @@
             // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
             switch ($_GET['action']) {
                 case 'readAll':
-                    if ($result['dataset'] =  $genero->readAll()) {
+                    if ($result['dataset'] =  $estado_v->readAll()) {
                         $result['status'] = 1;
                     } elseif (Database::getException()) {
                         $result['exception'] = Database::getException();

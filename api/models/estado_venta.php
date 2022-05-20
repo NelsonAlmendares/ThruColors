@@ -1,7 +1,7 @@
 <?php
 /*clase para manejar la tabla producto de la base de datos*/ 
 
-class Genero extends Validator 
+class Estado_v extends Validator 
 {
     //*Declaracion de atributos(propiedades).
     private $id_genero = null;
@@ -62,8 +62,8 @@ class Genero extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT id_genero, genero_producto
-        FROM tb_genero';
+        $sql = 'SELECT id_venta,estado_venta, fecha_venta, id_cliente
+        FROM tb_venta';
         $params = null;
         return Database::getRows($sql, $params);
     }

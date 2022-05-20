@@ -99,7 +99,7 @@ function openCreate() {
                                     placeholder="Residencial, pasaje, casa N°..." required />
                             </div>
                             <div class="input-field ">
-                                <label class="label" for="email_cliente">Email de empleado:</label>
+                                <label class="label" for="email_cliente">Email de cliente:</label>
                                 <input type="text" class="form-control input-label" id="email_cliente" name="email_cliente"
                                     placeholder="example@gmail.com" required />
                             </div>
@@ -185,7 +185,7 @@ function openUpdate(id_cliente) {
                                 placeholder="Residencial, pasaje, casa N°..." required />
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="email_cliente">Email de empleado:</label>
+                            <label class="label" for="email_cliente">Email de cliente:</label>
                             <input type="text" class="form-control input-label" id="email_cliente" name="email_cliente"
                                 placeholder="example@gmail.com" required />
                         </div>

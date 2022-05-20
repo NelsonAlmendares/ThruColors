@@ -1,7 +1,8 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_VENTAS = SERVER + 'privado/ventas.php?action=';
 const ENDPOINT_PRODUCTOS = SERVER + 'privado/productos.php?action=readAll';
-const ENDPOINT_CLIENTES = SERVER + 'privado/clientes.php?action=readAll';
+const ENDPOINT_VALORACION = SERVER + 'privado/valoracion.php?action=readAll';
+const ENDPOINT_VENTA = SERVER + 'privado/ventas.php?action=readAll';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -37,7 +38,6 @@ function fillTable(dataset) {
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_venta})"><i class="fa-solid fa-pen-to-square"></i></button>
                                 <button class="btn-eliminar" onclick="openDelete(${row.id_venta})"><i class="fa-solid fa-trash"></i></button>
-                                </a>
                             </td>
                         </tr>          
         `;
@@ -83,19 +83,10 @@ function openCreate() {
                             </div>                          
                         </div>
                         
-                        <div class="lateral2">
+                        <div class="lateral2">                                                        
                             <div class="input-field ">
-                                <label class="label" for="fecha_venta">Fecha venta:</label>
-                                <input type="date" class="form-control input-label" id="fecha_venta" name="fecha_venta" required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="estado_venta">Estado venta:</label>
-                                <select id="estado_venta" class="select_id" name="estado_venta">                                
-                            </select>
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="cliente_venta">Cliente:</label>
-                                <select id="cliente_venta" class="select_id" name="cliente_venta">                                
+                                <label class="label" for="venta">Fecha de la venta:</label>
+                                <select id="venta" class="select_id" name="venta">                                
                                 </select>                            
                             </div>
                             <div class="input-field ">
@@ -122,11 +113,12 @@ function openCreate() {
     document.getElementById('id_venta').disabled = true;  
     //se llena el select    
     fillSelect(ENDPOINT_PRODUCTOS, 'producto_venta', null);
-    fillSelect(ENDPOINT_CLIENTES, 'cliente_venta', null);
+    fillSelect(ENDPOINT_VENTA, 'venta', null);
+    fillSelect(ENDPOINT_VALORACION, 'comentario_venta', null);
 }
 
 // Función para preparar el formulario al momento de modificar un registro.
-function openUpdate(id_categoria) {
+function openUpdate(id_venta) {
     // Se crea la variable que guardara todas las etiquetas html.
     let update = '';
     // Se crea todo el formulario.
@@ -152,19 +144,10 @@ function openUpdate(id_categoria) {
                             </div>                          
                         </div>
                         
-                        <div class="lateral2">
+                        <div class="lateral2">                                                        
                             <div class="input-field ">
-                                <label class="label" for="fecha_venta">Fecha venta:</label>
-                                <input type="date" class="form-control input-label" id="fecha_venta" name="fecha_venta" required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="estado_venta">Estado venta:</label>
-                                <select id="estado_venta" class="select_id" name="estado_venta">                                
-                            </select>
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="cliente_venta">Cliente:</label>
-                                <select id="cliente_venta" class="select_id" name="cliente_venta">                                
+                                <label class="label" for="venta">Venta:</label>
+                                <select id="venta" class="select_id" name="venta">                                
                                 </select>                            
                             </div>
                             <div class="input-field ">
@@ -184,13 +167,13 @@ function openUpdate(id_categoria) {
     // Se asigna el título para el formulario.
     document.getElementById('modal-titulo').textContent = 'Actualizar venta';
     // Se deshabilitan los campos de alias y contraseña.
-    document.getElementById('id_categoria').hidden = false;
-    document.getElementById('id_c').hidden = false;
-    document.getElementById('id_c').disabled = false;
-    document.getElementById('id_categoria').disabled = false;  
+    document.getElementById('id_venta').hidden = false;
+    document.getElementById('id_v').hidden = false;
+    document.getElementById('id_v').disabled = false;
+    document.getElementById('id_venta').disabled = false;  
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
-    data.append('id_categoria', id_categoria);
+    data.append('id_venta', id_venta);
     // Petición para obtener los datos del registro solicitado.
     fetch(API_VENTAS + 'readOne', {
         method: 'post',
@@ -202,9 +185,11 @@ function openUpdate(id_categoria) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
-                    document.getElementById('id_categoria').value = response.dataset.id_categoria;
-                    document.getElementById('categoria_producto').value = response.dataset.categoria_producto;
-                    document.getElementById('descripcion_categoria').value = response.dataset.descripcion_categoria;
+                    document.getElementById('id_venta').value = response.dataset.id_venta;
+                    document.getElementById('cantidad_venta').value = response.dataset.cantidad;
+                    fillSelect(ENDPOINT_PRODUCTOS, 'producto_venta', response.dataset.producto);
+                    fillSelect(ENDPOINT_VENTA, 'venta', response.dataset.fecha);
+                    fillSelect(ENDPOINT_VALORACION, 'comentario_venta', response.dataset.comentario);
                     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
                     M.updateTextFields();
                 } else {
@@ -225,20 +210,20 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     let action; 
     
     // Se comprueba si el campo oculto del formulario esta seteado para actualizar, de lo contrario será para crear.    
-    if (document.getElementById('id_categoria').disabled==true){
-        action = 'create';
-    } else if (document.getElementById('id_categoria').disabled==false){
+    if (document.getElementById('id_venta').value){
         action = 'update';
+    } else {
+        action = 'create';
     }    
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
     saveRow(API_VENTAS, action, 'save-form');
 });
 
 // Función para establecer el registro a eliminar y abrir una caja de diálogo de confirmación.
-function openDelete(id_categoria) {
+function openDelete(id_venta) {
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
-    data.append('id_categoria', id_categoria);
+    data.append('id_venta', id_venta);
     // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
     confirmDelete(API_VENTAS, data);
 }

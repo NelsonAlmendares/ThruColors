@@ -17,6 +17,12 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+
+/* 
+*caso para obtener el usuario del empleado 
+*/
+
+
             case 'getUser':
                 if (isset($_SESSION['codigo_empleado'])) {
                     $result['status'] = 1;
@@ -28,6 +34,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Codigo de empleado indefinido';
                 }
                 break;
+
+
+/* 
+*case para salir de la sesion 
+*/
+
+
             case 'logOut':
                 if (session_destroy()) {
                     $result['status'] = 1;
@@ -36,6 +49,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
+
+
+/* 
+*case para leer un perfil de empleado 
+*/
+
+
             case 'readProfile':
                 if ($result['dataset'] = $empleado->readProfile()) {
                     $result['status'] = 1;
@@ -45,6 +65,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado inexistente';
                 }
                 break;
+
+/* 
+*casos para editar perfil de un empleado
+*/
+
             case 'editProfile':
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->setNombre_e($_POST['nombre_empleado'])) {
@@ -83,6 +108,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
             case 'readAll':
                 if ($result['dataset'] = $empleado->readAll()) {
                     $result['status'] = 1;
@@ -277,6 +303,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'El empleado no se registro correctamente';
                 }
                 break;
+                
             case 'logIn':
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->checkUser($_POST['codigo_empleado'])) {

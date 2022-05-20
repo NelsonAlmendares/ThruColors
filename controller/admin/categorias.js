@@ -142,8 +142,8 @@ function openUpdate(id_categoria) {
                     </div> 									
                     <div class="input-field col s12 m6">
                     <a class="active" href="categoria.html" id="cerrar_form">Cerrar</a>
-                        <button type="submit">Actualizar</button>
-                    </div>                          
+                        <button id="agregar" type="submit">Actualizar</button>
+                    </div>
         `;
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
     document.getElementById('save-form').innerHTML = update;
