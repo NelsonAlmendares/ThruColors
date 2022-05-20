@@ -253,7 +253,6 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['message'] = 'El empleado se registro pero no se guardó la imagen';
                     }
-<<<<<<< HEAD
                     break;
                 case 'logOut':
                     if(session_destroy()){
@@ -282,36 +281,6 @@ if (isset($_GET['action'])) {
                     # code...
                     break;
             }
-=======
-                } elseif (Database::getException()) {                   
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'El empleado no se registro correctamente';
-                }
-                break;
-            case 'logIn':
-                $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->checkUser($_POST['codigo_empleado'])) {
-                    $result['exception'] = 'Codigo incorrecto';
-                } elseif (!$empleado->readUserName($_POST['codigo_empleado'])) {
-                    $result['exception'] = 'Nombre no encontrado';
-                } elseif (!$empleado->readUserRol($_POST['codigo_empleado'])) {
-                    $result['exception'] = 'Rol no encontrado';
-                } elseif ($empleado->checkPassword($_POST['clave'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_empleado'] = $empleado->getId_e();
-                    $_SESSION['codigo_empleado'] = $empleado->getCodigo_e();
-                    $_SESSION['nombre_empleado'] = $empleado->getNombre_e();
-                    $_SESSION['foto_empleado'] = $empleado->getFoto_e();
-                    $_SESSION['tipo_empleado'] = $empleado->getTipo_e();
-                } else {
-                    $result['exception'] = 'Clave incorrecta';
-                }
-                break;
-            default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
->>>>>>> f958dc33d022caf92488e30f1e9ecd2c9eeac0e6
         }
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
