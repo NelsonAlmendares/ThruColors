@@ -50,13 +50,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'readOne':
                 if (!$tipo_empleado->setId_tipoE($_POST['id_tipoE'])) {
-                    $result['exception'] = 'Categoría incorrecta';
+                    $result['exception'] = 'Tipo empleado incorrecto';
                 } elseif ($result['dataset'] =  $tipo_empleado->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Categoría inexistente';
+                    $result['exception'] = 'Tipo empleado inexistente';
                 }
                 break;
             case 'update':
