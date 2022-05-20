@@ -97,4 +97,4 @@ class Marca extends Validator
         return Database::executeRow($sql, $params);
     }
 }   
-?>    
+?>       
