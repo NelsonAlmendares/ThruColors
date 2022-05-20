@@ -1,28 +1,28 @@
 <?php
 /*clase para manejar la tabla producto de la base de datos*/ 
 
-class tipo_empleado extends validator 
+class Estado extends Validator 
 {
     //*Declaracion de atributos(propiedades).
-    private $id_tipoEmpleado = null;
-    private $tipoEmpleado = null;
+    private $id_estado = null;
+    private $estado = null;
 
     /*metodo para validar y asignar valores a los campos*/ 
 
-    public function setId_tipoEmpleado($value)
+    public function setId_estado($value)
     {
-        if ($this->validateBaturalNumber($value)){
-            $this->id_tipoEmpleado = $value;
-            return true
+        if ($this->validateNaturalNumber($value)){
+            $this->id_estado = $value;
+            return true;
         }else{
             return false;
         }
     }
 
-    public function setTipoEmpleado($value)
+    public function setEstado($value)
     {
-        if ($this->validateBoolean($value)){
-            this->tipoEmpleado = $value;
+        if ($this->validateAlphanumeric($value, 1, 30)){
+            $this->estado = $value;
             return true;
         }else{
             return false;
@@ -31,14 +31,14 @@ class tipo_empleado extends validator
 
     /*Metodos para obtener los datos de los atributos*/ 
 
-    public function getId_tipoEmpleado()
+    public function getId_estado()
     {
-        return $this->id_tipoEmpleado;
+        return $this->id_estado;
     }
 
-    public function getTipoEmpleado()
+    public function getEstado()
     {
-        return $this->tipoEmpleado;
+        return $this->estado;
     }
 
     /*Metodos para realizar las acciones SCRUD: search, create, read, update, delete.*/
@@ -62,8 +62,8 @@ class tipo_empleado extends validator
 
     public function readAll()
     {
-        $sql = 'SELECT "id_tipoEmpleado", "tipoEmpleado"
-        FROM public.tipo_empleado';
+        $sql = 'SELECT id_estado, estado_producto
+        FROM tb_estado';
         $params = null;
         return Database::getRows($sql, $params);
     }
