@@ -1,7 +1,7 @@
 <?php
 /*clase para manejar la tabla producto de la base de datos*/
 
-class marca extends validator
+class Marca extends Validator
 {
     //*Declaracion de atributos(propiedades).
     private $id_marca = null;
@@ -57,14 +57,14 @@ class marca extends validator
     {
         $sql = 'INSERT INTO public.tb_marca(nombre_marca)
             VALUES (?)';
-        $params = array($this->nombre);
+        $params = array($this->nombre_marca);
         return Datatbase::executeRow($sql, $params);
     }
 
     public function readAll()
     {
         $sql = 'SELECT id_marca, nombre_marca
-        FROM public.tb_marca
+        FROM tb_marca
         ORDER BY id_marca';
         $params = null;
         return Database::getRows($sql, $params);
@@ -77,7 +77,7 @@ class marca extends validator
         where id_marca = ?';  
        
         $params = array($this->id_marca);
-        return Database::getRow($sql, $params):
+        return Database::getRow($sql, $params);
     }
 
     public function updateRow()
@@ -85,7 +85,7 @@ class marca extends validator
       $sql = 'UPDATE public.tb_marca
       SET nombre_marca = ?
       WHERE id_marca = ?';
-      $params = array($this->nombre_marca, $this->id);
+      $params = array($this->nombre_marca, $this->id_marca);
       return Database::executeRow($sql, $params);
     }
 

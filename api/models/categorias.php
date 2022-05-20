@@ -1,62 +1,62 @@
 <?php
 
     class Categorias extends Validator{
-        private $id_categoria = null;
-        private $categoria_producto = null;
-        private $foto_categoria = null;
-        private $descripcion_categoria = null;
-        private $ruta = '../imagenes/categorias/';
+        private $id = null;
+        private $nombre = null;
+        private $imagen = null;
+        private $descripcion = null;
+        private $ruta = '../images/categorias';
 
-        public function setId_c($value){
+        public function setId($value){
             if($this->validateNaturalNumber($value)){
-                $this->id_categoria = $value;
+                $this->id = $value;
                 return true;
             } else{
                 return false;
             }
         }
 
-        public function setCategoria_p($value){
-            if ($this->validateAlphanumeric($value, 1, 50)) {
-                $this->categoria_producto = $value;
+        public function setNombre($value){
+            if ($this->validateAlphanumeric($value, 1, 150)) {
+                $this->nombre = $value;
                 return true;
             } else{
                 return false;
             }
         }
 
-        public function setFoto_c($file){
+        public function setImage($file){
             if ($this->validateImageFile($file, 800,800)) {
-                $this->foto_categoria = $this->getFileName();
+                $this->imagen = $this->getFileName();
                 return true;
             } else{
                 return false;
             }
         }
 
-        public function setDescripcion_c($value){
-            if ($this->validateAlphanumeric($value, 1 ,200)){
-                $this->descripcion_categoria = $value;
+        public function setDescripcion($value){
+            if ($this->validateString($value, 1 ,300)){
+                $this->descripcion = $value;
                 return true;
             } else{
                 return false;
             }
         }
 
-        public function getId_c(){
-            return $this->id_categoria;
+        public function getId(){
+            return $this->id;
         }
 
-        public function getCategoria_p(){
-            return $this->categoria_producto;
+        public function getNombre(){
+            return $this->nombre;
         }
 
-        public function getFoto_c(){
-            return $this->foto_categoria;
+        public function getImage(){
+            return $this->imagen;
         }
 
-        public function getDescripcion_c(){
-            return $this->descripcion_categoria;
+        public function getDescripcion(){
+            return $this->descripcion;
         }
 
         public function getRuta(){
@@ -68,8 +68,8 @@
         //Funcion para listar las categorias que han sido creadas en la base de datos
         public function searchRows($value){
             $sql = 'SELECT id_categoria, categoria_producto, foto_categoria, descripcion_categoria
-                FROM tb_categoria
-                WHERE categoria_producto ILIKE ? OR descripcion_categoria ILIKE ?
+                FROM public."tb_categoria"
+                WHERE categoria_producto LIKE = ? OR descripcion_categoria LIKE = ?
                 ORDER BY categoria_producto';
             $params = array("%$value%", "%$value%");
             return Database::getRows($sql, $params);
@@ -77,9 +77,9 @@
 
         //Funcion para crear una nueva categoria que es almacena en la base de datos
         public function createRow(){
-            $sql = 'INSERT INTO tb_categoria(categoria_producto, foto_categoria, descripcion_categoria)
-	                VALUES (?, ?, ?)';
-            $params = array($this->categoria_producto, $this->foto_categoria, $this->descripcion_categoria);
+            $sql = 'INSERT INTO public.tb_categoria(categoria_producto, foto_categoria, descripcion_categoria)
+	                VALUES (?, ?, ?, ?)';
+            $params = array($this->nombre, $this->imagen, $this->descripcion);
             return Database::executeRow($sql, $params);
         }
 
@@ -89,34 +89,34 @@
                 FROM public."tb_categoria"
                 WHERE id_categoria = ?
                 ORDER BY categoria_producto';
-            $params = array($this->id_categoria);
+            $params = array($this->id);
             return Database::getRow($sql, $params);
         }
 
         // Funcion para leer toda la tabla pero con un solo paramerto
         public function readAll(){
             $sql = 'SELECT id_categoria, categoria_producto, foto_categoria, descripcion_categoria
-                    FROM tb_categoria
-                    ORDER BY id_categoria';
+	            FROM public.tb_categoria
+	            ORDER BY categoria_producto';
             $params = null;
-            return Database::getRows($sql, $params);
+            return Database::getRow($sql, $params);
         }
 
         //Funcion para actualizar una categoria de la base
         public function updateRow($current_image){
-            ($this->foto_categoria) ? $this->deleteFile($this->getRuta(), $current_image) : $this->foto_categoria = $current_image;
+            ($this->imagen) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
             $sql = 'UPDATE public.tb_categoria
 	            SET categoria_producto=?, foto_categoria=?, descripcion_categoria=?
 	            WHERE id_categoria = ?';
-            $params = array($this->categoria_producto, $this->foto_categoria, $this->descripcion_categoria, $this->id_categoria);
+            $params = array($this->imagen, $this->nombre, $this->descripcion, $this->id);
             return Database::executeRow($sql, $params);
         }
 
         //Funcion para eliminar una categoria
-        public function deleteRow(){
-            $sql = 'DELETE FROM tb_categoria
-                    WHERE id_categoria = ?';
-            $params = array($this->id_categoria);
+        public function deleteRow($values){
+            $sql = 'DELETE FROM public.tb_categorias 
+                WHERE id_categoria = ?';
+            $params = array($this->id);
             return Database::executeRow($sql, $params);
         }
 

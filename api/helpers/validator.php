@@ -102,7 +102,7 @@
 
     /* Metodo para validar campos vacios */
     public function validateAlphabetic($value, $minimum, $maximum){
-        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s\,\;\#\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        if (preg_match('/^[a-zA-ZñÑáÁéÉíÍóÓúÚ\s\,\;\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
         } else {
             return false;
@@ -111,7 +111,7 @@
 
     /* Metodo para validar alfanumericos en blanco */
     public function validateAlphanumeric($value, $minimum, $maximum){
-        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\#\-\_\.]{' . $minimum . ',' . $maximum . '}$/', $value)) {
+        if (preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s]{' . $minimum . ',' . $maximum . '}$/', $value)) {
             return true;
         } else {
             return false;

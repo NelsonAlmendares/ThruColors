@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addData();
       });
     }
-  })();
+  });
 
   (function () {
     /* Add gradient to chart */

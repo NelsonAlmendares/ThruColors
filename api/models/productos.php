@@ -1,6 +1,6 @@
 <?php
 
-    class Productos extends Validator{
+    class Productos extends validator{
         private $id = null;
         private $nombreProducto = null;
         private $costoProducto = null;
@@ -13,7 +13,7 @@
         private $generoProducto = null;
         private $categoriaProducto = null;
         private $presentacionProducto = null;
-        private $ruta = '../imagenes/productos/';
+        private $ruta = '../images/productos';
 
         /* Metodos para validar y asignar los valores que se tomaran para los atributos */
         public function setId($value){
@@ -200,12 +200,11 @@
         }
 
         public function readOne(){
-            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, nombre_empleado as empleado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
                 FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
                 INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
                 INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-				INNER JOIN tb_empleado te ON tp.id_empledo = te.id_empleado
 				WHERE id_producto = ?
                 ORDER BY id_producto';
             $params = array($this->id);
@@ -221,7 +220,7 @@
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
                 ORDER BY id_producto';
             $params = null;
-            return Database::getRows($sql, $params);
+            return Database::getRow($sql, $params);
         }
 
         /* Función para actualizar un registro desde la vista de la aplicacion dejando la imagen actual que contiene */
@@ -264,3 +263,4 @@
             return Database::getRows($sql, $params);
         }
     }
+?>
