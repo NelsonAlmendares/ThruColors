@@ -23,7 +23,7 @@ function fillTable(dataset) {
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.map(function (row) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-        content += `            
+        content += `                         
                         <tr>
                             <td class="contenido">${row.id_tipoEmpleado}</td>                            
                             <td class="contenido">${row.tipoEmpleado}</td>
@@ -34,7 +34,7 @@ function fillTable(dataset) {
                             </td>
                         </tr>          
         `;
-    });
+        });
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('table-te').innerHTML = content;
     // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.

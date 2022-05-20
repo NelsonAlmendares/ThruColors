@@ -1,8 +1,8 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_MARCA = SERVER + 'private/marca.php?action=';
+const API_MARCA = SERVER + 'privado/marca.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentloanded', function(){
+document.addEventListener('DOMContentLoaded', function(){
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows(API_MARCA);
      // Se define una variable para establecer las opciones del componente Modal.
@@ -36,7 +36,7 @@ function fillTable(dataset) {
     `;
     });
      // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
-     document.getElementById('table-te').innerHTML = content;
+     document.getElementById('table-ma').innerHTML = content;
      // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
      //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 }
@@ -48,6 +48,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
     searchRows(API_MARCA, 'search-form');
 });
+
 
 // Función para preparar el formulario al momento de insertar un registro.
 function openCreate() {
