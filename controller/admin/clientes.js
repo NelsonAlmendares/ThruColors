@@ -52,7 +52,6 @@ document.getElementById('search-form').addEventListener('submit', function (even
     event.preventDefault();
     // Se llama a la función que realiza la búsqueda. Se encuentra en el archivo components.js
     searchRows(API_CLIENTES, 'search-form');
-
 });
 
 // Función para preparar el formulario al momento de insertar un registro.
