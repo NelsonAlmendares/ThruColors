@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap-icons": "^1.8.1",
+    "js-image-zoom": "^0.7.0",
     "sweetalert2": "^11.4.6",
     "swiper": "^8.0.7",
     "vanilla-datatables": "^1.6.16"
