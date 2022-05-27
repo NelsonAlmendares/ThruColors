@@ -1,8 +1,8 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_MARCA = SERVER + 'private/marca.php?action=';
+const API_MARCA = SERVER + 'privado/marca.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentloanded', function(){
+document.addEventListener('DOMContentLoaded', function(){
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows(API_MARCA);
      // Se define una variable para establecer las opciones del componente Modal.
@@ -36,7 +36,7 @@ function fillTable(dataset) {
     `;
     });
      // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
-     document.getElementById('table-te').innerHTML = content;
+     document.getElementById('table-ma').innerHTML = content;
      // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
      //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 }
@@ -49,6 +49,7 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_MARCA, 'search-form');
 });
 
+
 // Función para preparar el formulario al momento de insertar un registro.
 function openCreate() {
     // Se crea la variable que guardara todas las etiquetas html.
@@ -57,17 +58,18 @@ function openCreate() {
         register += `            
                 <h2 id="modal-titulo"></h2>                
                     <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
-                    <div class="input-field col s12 m6">
+                    <div class="input-field">
                         <label class="label" for="id_marca" id="id_ma">ID de la marca:</label>
                         <input type="number" class="form-control" id="id_marca" name="id_marca" step="000" placeholder="1" min="1" required/>
                     </div>
-                    <div class="input-field col s12 m6">
+                    <div class="openModal">
                         <label class="label" for="nombre_marca">Marca:</label>
-                        <input type="text" class="form-control" id="nombre_marca" name="nombre_marca" placeholder="Administrador" required/>											
-                    </div>                    									
-                    <div class="input-field col s12 m6">
+                        <input type="text" class="form-control" id="nombre_marca" name="nombre_marca" placeholder="Esika" required/>											
+                    </div>
+
+                    <div class="openModal">
                     <a class="active" href="marcas.html" id="cerrar_form">Cerrar</a>
-                        <button type="submit">Agregar</button>
+                        <button id="agregar" type="submit">Agregar</button>
                     </div>                          
         `;
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
@@ -88,19 +90,20 @@ function openUpdate(id_marca) {
     // Se crea todo el formulario.
         update += `            
         <h2 id="modal-titulo"></h2>                
-        <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
-        <div class="input-field col s12 m6">
-            <label class="label" for="id_marca" id="id_ma">ID de la marca:</label>
-            <input type="number" class="form-control" id="id_marca" name="id_marca" step="000" placeholder="1" min="1" required/>
-        </div>
-        <div class="input-field col s12 m6">
-            <label class="label" for="nombre_marca">Marca:</label>
-            <input type="text" class="form-control" id="nombre_marca" name="nombre_marca" placeholder="Administrador" required/>											
-        </div>                    									
-        <div class="input-field col s12 m6">
-        <a class="active" href="marcas.html" id="cerrar_form">Cerrar</a>
-            <button type="submit">Actualizar</button>
-        </div>                           
+                    <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
+                    <div class="input-field">
+                        <label class="label" for="id_marca" id="id_ma">ID de la marca:</label>
+                        <input type="number" class="form-control" id="id_marca" name="id_marca" step="000" placeholder="1" min="1" required/>
+                    </div>
+                    <div class="openModal">
+                        <label class="label" for="nombre_marca">Marca:</label>
+                        <input type="text" class="form-control" id="nombre_marca" name="nombre_marca" placeholder="Esika" required/>											
+                    </div>
+
+                    <div class="openModal">
+                    <a class="active" href="marcas.html" id="cerrar_form">Cerrar</a>
+                        <button id="agregar" type="submit">Actualizar</button>
+                    </div>                       
         `;
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
     document.getElementById('save-form').innerHTML = update;

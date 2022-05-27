@@ -44,8 +44,8 @@
         }
 
         public function setDescripcion($value){
-            if ($this->validateString($value, 1, 150)) {
-                $this->descripcion = $value;
+            if ($this->validateAlphabetic($value, 1, 150)) {
+                $this->descripcionProducto = $value;
                 return true;
             }else{
                 return false;
@@ -53,8 +53,8 @@
         }
 
         public function setImage($file){
-            if ($this->validateImageFile($file, 500, 500)) {
-                $this->image = $this->getFileName();
+            if ($this->validateImageFile($file, 800, 800)) {
+                $this->fotoProducto = $this->getFileName();
                 return true;
             }else{
                 return false;
@@ -63,7 +63,7 @@
 
         public function setCantidad($value){
             if ($this->validateNaturalNumber($value)) {
-                $this->cantidad = $value;
+                $this->cantidadProducto = $value;
                 return true;
             }else{
                 return false;
@@ -71,7 +71,8 @@
         }
 
         public function setEstado($value){
-            if ($this->validateBoolean($value)) {
+            if ($this->validateNaturalNumber($value)) {
+                $this->estadoProducto = $value;
                 return true;
             }else{
                 return false;
@@ -89,7 +90,7 @@
         
         public function setMarca($value){
             if ($this->validateNaturalNumber($value)) {
-                $this->marca = $value;
+                $this->marcaProducto = $value;
                 return true;
             }else{
                 return false;
@@ -107,7 +108,7 @@
 
         public function setCategoria($value){
             if ($this->validateNaturalNumber($value)) {
-                $this->categoria = $value;
+                $this->categoriaProducto = $value;
                 return true;
             }else{
                 return false;
@@ -116,7 +117,7 @@
 
         public function setPresentacion($value){
             if ($this->validateNaturalNumber($value)) {
-                $this->presentacion = $value;
+                $this->presentacionProducto = $value;
                 return true;
             }else{
                 return false;
@@ -165,7 +166,7 @@
         }
 
         public function getCategiria(){
-            return $this-> cantidadProducto;
+            return $this-> categoriaProducto;
         }
 
         public function getPresentacion(){
@@ -180,34 +181,36 @@
 
         /* Funcion para hacer la busqueda en la base por medio de parametros como son nombre y descripcion */
         public function searchRows($value){
-            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
-            FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
-                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
-                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
-                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-                WHERE nombre_producto LIKE = ? OR descripcion_producto LIKE = ?
-                ORDER BY id_producto';
-            $params = array("%$value%", "%$value%");
+            $sql = 'SELECT "id_DetalleVenta", cantidad, nombre_producto, "comentario_producto", fecha_venta, estado_venta, id_cliente
+            FROM PUBLIC."tb_DetalleVenta" tbd 
+            INNER JOIN tb_venta tv ON tbd.id_venta = tv.id_venta
+            INNER JOIN "tb_valoracionProducto" tp ON tbd."id_Valoracion" = tp.id_valoracion
+            INNER JOIN "tb_producto" tbp ON tbd.id_producto = tbp.id_producto
+            WHERE nombre_producto LIKE ?
+            ORDER BY "id_DetalleVenta" ';
+            $params = array("%$value%");
             return Database::getRows($sql, $params);
         }
 
         /* Funcion para los inserts de la vista a la base */
         public function createRow(){
             $sql = 'INSERT INTO "tb_producto" (nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto,"id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto","id_categoriaProducto","id_presentacionProducto")
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)';
             $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto);
             return Database::executeRow($sql, $params);
         }
 
         public function readOne(){
-            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, nombre_empleado as empleado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
-                FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
-                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
-                INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
-                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-				INNER JOIN tb_empleado te ON tp.id_empledo = te.id_empleado
-				WHERE id_producto = ?
-                ORDER BY id_producto';
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, cantidad_producto as cantidad, estado_producto as estado, nombre_empleado as empleado, nombre_marca as marca, genero_producto as genero, categoria_producto as categoria, presentacion_producto as presentacion
+                    FROM tb_producto tp 
+                    INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
+                    INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                    INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
+                    INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+                    INNER JOIN tb_empleado tem ON tp.id_empleado = tem.id_empleado
+                    INNER JOIN tb_genero tg ON tp."id_generoProducto" = tg.id_genero
+                    WHERE id_producto = ?
+                    ORDER BY id_producto';
             $params = array($this->id);
             return Database::getRow($sql, $params);
         }
@@ -230,13 +233,13 @@
             $sql = 'UPDATE public."tb_producto"
 	            SET foto_producto=?, nombre_producto=?, costo_producto=?, descripcion_producto=?, cantidad_producto=?, "id_estadoProducto"=?, id_empleado=?, "id_marcaProducto"=?, "id_generoProducto"=?, "id_categoriaProducto"=?, "id_presentacionProducto"=?
 	            WHERE id_producto = ?';
-            $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
+            $params = array($this->fotoProducto, $this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
             return Database::executeRow($sql, $params);
         }
 
         /* Funcion para eliminar un registro de la base */
         public function deleteRow(){
-           $sql = 'DELETE FROM public.tb_producto
+           $sql = 'DELETE FROM tb_producto
 	                WHERE id_producto = ?';
             $params = array($this->id);
             return Database::executeRow($sql,  $params);

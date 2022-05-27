@@ -25,7 +25,7 @@ form.addEventListener('submit', function(evt){
         `);
     }
     else{
-        window.location.replace('main.html');
+        window.location.replace('index.html');
     }
     error.innerHTML = mensajeError.join(', ');
 });

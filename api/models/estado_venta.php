@@ -1,28 +1,28 @@
 <?php
 /*clase para manejar la tabla producto de la base de datos*/ 
 
-class tipo_empleado extends validator 
+class Estado_v extends Validator 
 {
     //*Declaracion de atributos(propiedades).
-    private $id_tipoEmpleado = null;
-    private $tipoEmpleado = null;
+    private $id_genero = null;
+    private $genero = null;
 
     /*metodo para validar y asignar valores a los campos*/ 
 
-    public function setId_tipoEmpleado($value)
+    public function setId_genero($value)
     {
-        if ($this->validateBaturalNumber($value)){
-            $this->id_tipoEmpleado = $value;
-            return true
+        if ($this->validateNaturalNumber($value)){
+            $this->id_genero = $value;
+            return true;
         }else{
             return false;
         }
     }
 
-    public function setTipoEmpleado($value)
+    public function setGenero($value)
     {
-        if ($this->validateBoolean($value)){
-            this->tipoEmpleado = $value;
+        if ($this->validateAlphanumeric($value, 1, 30)){
+            $this->genero = $value;
             return true;
         }else{
             return false;
@@ -31,14 +31,14 @@ class tipo_empleado extends validator
 
     /*Metodos para obtener los datos de los atributos*/ 
 
-    public function getId_tipoEmpleado()
+    public function getId_genero()
     {
-        return $this->id_tipoEmpleado;
+        return $this->id_genero;
     }
 
-    public function getTipoEmpleado()
+    public function getGenero()
     {
-        return $this->tipoEmpleado;
+        return $this->genero;
     }
 
     /*Metodos para realizar las acciones SCRUD: search, create, read, update, delete.*/
@@ -62,8 +62,8 @@ class tipo_empleado extends validator
 
     public function readAll()
     {
-        $sql = 'SELECT "id_tipoEmpleado", "tipoEmpleado"
-        FROM public.tipo_empleado';
+        $sql = 'SELECT id_venta,estado_venta, fecha_venta, id_cliente
+        FROM tb_venta';
         $params = null;
         return Database::getRows($sql, $params);
     }

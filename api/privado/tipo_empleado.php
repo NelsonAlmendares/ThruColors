@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
 require_once('../models/tipo_empleado.php');
@@ -50,13 +50,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'readOne':
                 if (!$tipo_empleado->setId_tipoE($_POST['id_tipoE'])) {
-                    $result['exception'] = 'Tipo empleado incorrecto';
+                    $result['exception'] = 'Categoría incorrecta';
                 } elseif ($result['dataset'] =  $tipo_empleado->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Tipo empleado inexistente';
+                    $result['exception'] = 'Categoría inexistente';
                 }
                 break;
             case 'update':

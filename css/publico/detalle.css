@@ -16,6 +16,9 @@
     --search_hover: #B9ABE0;
     --footer: #D6D6D6;
     --titulos: #686666;
+    --agregar: #F88179;
+    --agregar_hover: #F55A4E;
+
 }
 
 @font-face {
@@ -107,16 +110,16 @@ h4{
 }
 
 .enviar{
-    background-color: var(--search_hover);
-    color: var(--black);
-    border-color: var(--search_hover);
+    background-color: var(--agregar);
+    color: var(--button);
+    border-color: var(--agregar);
     width: 180px;
-    margin-top: 25px;
 }
 
 .enviar:hover{
-    background-color: var(--button_hover);
-    border-color: var(--button_hover);
+    background-color: var(--agregar_hover);
+    border-color: var(--agregar_hover);
+    outline-style: none;
     color: var(--button);
 }
 
@@ -175,8 +178,8 @@ h4{
 }
 
 .img-container{
-    position: relative;
-  }
+    width: 400px; 
+}
   
   .image{
     transition: .5s ease;
@@ -192,14 +195,6 @@ h4{
     transform: translate(-50%, -50%);
   }
   
-  .img-container:hover .image{
-    opacity: 0.3;
-  }
-  
-  .img-container:hover .overlay{
-    opacity: 1;
-  }
-
 .filtro{
     margin-top: 12px;
     margin-left: 25px;
@@ -292,4 +287,29 @@ a:hover{
 .icon{
     height: 25px;
     cursor: pointer;    
+}
+
+.counter{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.incremento{
+    background-color: var(--hover);
+    color: var(--button);
+}
+
+.incremento:hover{
+    background-color: var(--hover);
+    color: var(--button);
+}
+
+.relationated_products{
+    margin-top: 10rem;
+}
+
+.details{
+    margin-top: 80px;
 }

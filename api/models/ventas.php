@@ -7,19 +7,16 @@ class ventas extends validator
 {
     // Declaración de atributos (propiedades).
     private $id_venta = null;
-    private $fecha_venta = null;
-    private $nombre_cliente = null;
-    private $apellido_cliente = null;
+    private $comentario_venta = null;
     private $producto = null;
     private $cantidad = null;
-    private $estado_venta = null;
+    private $venta = null;
     /*private $ruta = '../images/productos/';*/
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
-    public function setId_venta($value)
-    {
+    public function setId_venta($value){
         if ($this->validateNaturalNumber($value)) {
             $this->id_venta = $value;
             return true;
@@ -28,49 +25,18 @@ class ventas extends validator
         }
     }
 
-    public function setFecha_venta($value)
-    {
-        if ($this->validateDate($value)) {
-            $this->fecha_venta = $value;
+    public function setComentario_venta($value){
+        if ($this->validateNaturalNumber($value)) {
+            $this->comentario_venta = $value;
             return true;
         } else {
             return false;
         }
     }
-
-    public function setNombre_cliente($value)
-    {
-        if ($this->validateAlphanumeric($value, 1, 50)) {
-            $this->nombre_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setApellido_cliente($value)
-    {
-        if ($this->validateAlphanumeric($value, 1, 50)) {
-            $this->apellido_cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /*public function setImagen($file)
-    {
-        if ($this->validateImageFile($file, 500, 500)) {
-            $this->imagen = $this->getFileName();
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
     public function setProducto($value)
     {
-        if ($this->validateAlphanumeric($value, 1, 50)) {
+        if ($this->validateNaturalNumber($value)) {
             $this->producto = $value;
             return true;
         } else {
@@ -88,10 +54,10 @@ class ventas extends validator
         }
     }
 
-    public function setEstado_venta($value)
+    public function setVenta($value)
     {
-        if ($this->validateBoolean($value)) {
-            $this->estado_venta = $value;
+        if ($this->validateNaturalNumber($value)) {
+            $this->venta = $value;
             return true;
         } else {
             return false;
@@ -106,19 +72,9 @@ class ventas extends validator
         return $this->id_venta;
     }
 
-    public function getFecha_venta()
+    public function getComentario_venta()
     {
-        return $this->fecha_venta;
-    }
-
-    public function getNombre_cliente()
-    {
-        return $this->nombre_cliente;
-    }
-
-    public function getApellido_cliente()
-    {
-        return $this->apellido_cliente;
+        return $this->comentario_venta;
     }
 
     public function getProducto()
@@ -131,9 +87,9 @@ class ventas extends validator
         return $this->cantidad;
     }
 
-    public function getEstado_venta()
+    public function getVenta()
     {
-        return $this->estado_venta;
+        return $this->venta;
     }
 
     /*public function getRuta()
@@ -146,57 +102,66 @@ class ventas extends validator
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                WHERE nombre_producto ILIKE ? OR descripcion_producto ILIKE ?
-                ORDER BY nombre_producto';
-        $params = array("%$value%", "%$value%");
+        $sql = 'SELECT "id_DetalleVenta" as id_venta, cantidad as cantidad, nombre_producto as producto, fecha_venta as fecha, estado_venta as estado, id_cliente as cliente, comentario_producto as comentario
+        FROM PUBLIC."tb_DetalleVenta" tbd 
+        INNER JOIN tb_venta tv ON tbd.id_venta = tv.id_venta
+        INNER JOIN "tb_valoracionProducto" tp ON tbd."id_Valoracion" = tp.id_valoracion
+        INNER JOIN "tb_producto" tbp ON tbd.id_producto = tbp.id_producto
+        WHERE nombre_producto ILIKE ?
+        ORDER BY "id_DetalleVenta"';
+            $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, id_categoria, id_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->categoria, $_SESSION['id_usuario']);
+        $sql = 'INSERT INTO "tb_DetalleVenta"(cantidad, id_producto, id_venta, "id_Valoracion")
+                VALUES (?, ?, ?, ?)';
+        $params = array($this->cantidad, $this->producto, $this->venta, $this->comentario_venta);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT tb_v.id_venta, tb_v.fecha_venta, tb_c.nombre_cliente, tb_c.apellido_cliente, tb_p.nombre_producto, tb_dv.cantidad, tb_v.estado_venta
-                FROM tb_venta tb_v, "tb_DetalleVenta" tb_dv, tb_cliente tb_c, tb_producto tb_p
-                WHERE tb_v.id_venta=tb_dv.id_venta AND tb_dv.id_producto=tb_p.id_producto AND tb_v.id_cliente=tb_c.id_cliente;';
+        $sql = 'SELECT "id_DetalleVenta" AS id_venta, fecha_venta AS venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
+                FROM "tb_DetalleVenta" tdv 
+                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
+                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
+                ORDER BY "id_DetalleVenta"';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT tb_v.id_venta, tb_v.fecha_venta, tb_c.nombre_cliente, tb_c.apellido_cliente, tb_p.nombre_producto, tb_dv.cantidad, tb_v.estado_venta
-        FROM tb_venta tb_v, "tb_DetalleVenta" tb_dv, tb_cliente tb_c, tb_producto tb_p
-        WHERE tb_v.id_venta=tb_dv.id_venta AND tb_dv.id_producto=tb_p.id_producto AND tb_v.id_cliente=tb_c.id_cliente AND tb_v.id_venta = ?';
+        $sql = 'SELECT "id_DetalleVenta" AS id_venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
+                FROM "tb_DetalleVenta" tdv 
+                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
+                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
+                WHERE "id_DetalleVenta" = ?
+                ORDER BY "id_DetalleVenta" ';
         $params = array($this->id_venta);
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
-
-        $sql = 'UPDATE productos
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?
-                WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->categoria, $this->id);
+        $sql = 'UPDATE "tb_DetalleVenta"
+                SET cantidad=?, id_producto=?, id_venta=?, "id_Valoracion"=?
+                WHERE "id_DetalleVenta" = ?';
+        $params = array($this->cantidad, $this->producto, $this->venta, $this->comentario_venta, $this->id_venta);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM productos
-                WHERE id_producto = ?';
-        $params = array($this->id);
+        $sql = 'DELETE FROM "tb_DetalleVenta"
+                WHERE "id_DetalleVenta" = ?';
+        $params = array($this->id_venta);
         return Database::executeRow($sql, $params);
     }
 

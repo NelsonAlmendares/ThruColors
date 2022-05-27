@@ -241,4 +241,32 @@ a {
   color: var(--black);
   width: 100%;
   bottom: 0;
+  position:relative;
+  bottom:0;
+  left:0;
+}
+
+.carrito_img{
+    height: 130px;
+}
+
+.label_total{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  color: #5C636A;
+}
+
+.fa-cart-shopping{
+  height: 20px;
+  margin-left: 10px;
+  color: #5C636A;
+}
+
+.actions_carrito{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
 }

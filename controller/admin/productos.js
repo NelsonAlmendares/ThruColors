@@ -2,6 +2,9 @@ const API_PRODUCTO = SERVER + 'privado/productos.php?action=';
 const ENDPOINT_CATEGORIAS = SERVER + 'privado/categorias.php?action=readAll';
 const ENDPOINT_EMPLEADO = SERVER + 'privado/empleados.php?action=readAll';
 const ENDPOINT_MARCA = SERVER + 'privado/marca.php?action=readAll';
+const ENDPOINT_GENERO = SERVER + 'privado/genero.php?action=readAll';
+const ENDPOINT_ESTADO = SERVER + 'privado/estado.php?action=readAll';
+const ENDPOINT_PRESENTACION = SERVER + 'privado/presentacion.php?action=readAll';
 
 /* Metodo para manejar los eventos que se ejecutan cuando el sitio es cargado */
 document.addEventListener('DOMContentLoaded', function() {
@@ -82,7 +85,7 @@ function openCreate() {
                             <input id="costo" type="number" name="costo" step="0.01" min="0.00" class="validate" placeholder="0.00" required />
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="descripcion_producto">Direccion de empleado:</label>
+                            <label class="label" for="descripcion_producto">Descripcion del producto:</label>
                             <input type="text" class="form-control input-label" id="descripcion_producto" name="descripcion_producto"
                             placeholder="Un shampoo con olor a rosas..." required />
                         </div>
@@ -151,6 +154,9 @@ function openCreate() {
     fillSelect(ENDPOINT_CATEGORIAS, 'categoria_producto', null);
     fillSelect(ENDPOINT_EMPLEADO, 'empleado_producto', null);
     fillSelect(ENDPOINT_MARCA, 'marca_producto', null);  
+    fillSelect(ENDPOINT_GENERO, 'genero_producto', null);
+    fillSelect(ENDPOINT_ESTADO, 'estado_producto', null);
+    fillSelect(ENDPOINT_PRESENTACION, 'presentacion_producto', null);
 }
 
 // Funcion para preparar el formulario de Editar
@@ -178,7 +184,7 @@ function openUpdate(id) {
                             <input id="costo" type="number" name="costo" step="0.01" min="0.00" class="validate" placeholder="0.00" required />
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="descripcion_producto">Direccion de empleado:</label>
+                            <label class="label" for="descripcion_producto">Descripcion del producto:</label>
                             <input type="text" class="form-control input-label" id="descripcion_producto" name="descripcion_producto"
                             placeholder="Un shampoo con olor a rosas..." required />
                         </div>
@@ -259,13 +265,15 @@ function openUpdate(id) {
                     // Se inicializan los campos del formulario con los datos del registro seleccionado.
                     document.getElementById('id_producto').value = response.dataset.id;
                     document.getElementById('nombre_producto').value = response.dataset.nombre;
-                    document.getElementById('costo').value = response.dataset.apellido_empleado;
-                    document.getElementById('descripcion_producto').value = response.dataset.DUI;                    
-                    document.getElementById('cantidad_producto').value = response.dataset.direccion_empleado;
-                    document.getElementById('estado_producto').value = response.dataset.codigo_empleado;
-                    fillSelect(ENDPOINT_CATEGORIAS, 'categoria_producto', response.dataset.categoria_producto);
-                    fillSelect(ENDPOINT_EMPLEADO, 'empleado_producto', response.dataset.empleado_producto);
-                    document.getElementById('clave').value = response.dataset.clave;
+                    document.getElementById('costo').value = response.dataset.costo;
+                    document.getElementById('descripcion_producto').value = response.dataset.descripcion;                    
+                    document.getElementById('cantidad_producto').value = response.dataset.cantidad;
+                    fillSelect(ENDPOINT_CATEGORIAS, 'categoria_producto', response.dataset.categoria);
+                    fillSelect(ENDPOINT_EMPLEADO, 'empleado_producto', response.dataset.empleado);
+                    fillSelect(ENDPOINT_MARCA, 'marca_producto', response.dataset.marca);
+                    fillSelect(ENDPOINT_GENERO, 'genero_producto', response.dataset.genero);
+                    fillSelect(ENDPOINT_ESTADO, 'estado_producto', response.dataset.estado);
+                    fillSelect(ENDPOINT_PRESENTACION, 'presentacion_producto', response.dataset.presentacion);
                     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
                     M.updateTextFields();
                 } else {
@@ -293,3 +301,12 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
     saveRow(API_PRODUCTO, action, 'save-form');
 });
+
+// Función para establecer el registro a eliminar y abrir una caja de diálogo de confirmación.
+function openDelete(id) {
+    // Se define un objeto con los datos del registro seleccionado.
+    const data = new FormData();
+    data.append('id_producto', id);
+    // Se llama a la función que elimina un registro. Se encuentra en el archivo components.js
+    confirmDelete(API_PRODUCTO, data);
+}
