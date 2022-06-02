@@ -426,8 +426,8 @@ p{
 
 /* File personalizados */
 .file-select {
-  position: relative;
-  display: inline-block;
+  /*position: relative;
+  display: inline-block;*/
 }
 
 .file-select::before {
