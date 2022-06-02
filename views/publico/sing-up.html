@@ -13,80 +13,87 @@
 
 <body>
     
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form action="#" class="" method="post">
-                    <h2 class="title">Registrarse como Cliente</h2>
-                    <div class="inputs">
-                        <div class="lado1">
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Nombre" />
+    <main class="container">
+
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <form action="#" id="register-form" name="register-form" method="post">
+                        <h2 class="title">Registrarse como Cliente</h2>
+                        <div class="inputs">
+                            <div class="lado1">
+                                <div class="input-field">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" placeholder="Nombre" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" placeholder="Apellido" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="text" placeholder="Celular" />
+                                </div>
+                                <div class="input-field file-select" id="src-file1">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="file" />
+                                </div>
                             </div>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Apellido" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="text" placeholder="Celular" />
-                            </div>
-                            <div class="input-field file-select" id="src-file1">
-                                <i class="fas fa-lock"></i>
-                                <input type="file" />
+                            <div class="lado2">
+                                <div class="input-field">
+                                    <i class="fas fa-user"></i>
+                                    <input type="email" placeholder="Email" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="text" placeholder="Direccion" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" placeholder="Contraseña" />
+                                </div>
                             </div>
                         </div>
-                        <div class="lado2">
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="email" placeholder="Email" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Direccion" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="text" placeholder="Contraseña" />
-                            </div>
+        
+                        <input type="submit" class="btn" value="Registrarse" />
+                        <p class="social-text">Inicia con las siguientes plataformas</p>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
                         </div>
-                    </div>
-
-                    <input type="submit" class="btn" value="Registrarse" />
-                    <p class="social-text">Inicia con las siguientes plataformas</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>Ya tienes una cuenta ?</h3>
-                    <p>
-                        Inicia sesión con el usuario que has creado anteriormente y sigue haciendo las compras de tu preferencia
-                    </p>
-                    <a href="../publico/login.html" class="log_in">Iniciar Sesión</a>
-                    
+                    </form>
                 </div>
-                <img src="../../resources/img/undraw_access_account_re_8spm.svg" class="image" alt="" />
+            </div>
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>Ya tienes una cuenta ?</h3>
+                        <p>
+                            Inicia sesión con el usuario que has creado anteriormente y sigue haciendo las compras de tu
+                            preferencia
+                        </p>
+                        <a href="../publico/login.html" class="log_in">Iniciar Sesión</a>
+        
+                    </div>
+                    <img src="../../resources/img/undraw_access_account_re_8spm.svg" class="image" alt="" />
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <script src="../../controller/components.js"></script>
+    <script src="../../controller/public/account.js"></script>
+    <script src="../../controller/public/sing-up.js"></script>
 </body>
 
 </html>
