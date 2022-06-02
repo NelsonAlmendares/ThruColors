@@ -1,5 +1,5 @@
 //Declaramos la ruta y parametros de la comunicación con la API
-const API_CLIENTES = SERVER = + 'public/clientes.php?action=';
+const API_CLIENTES = SERVER = + 'publico/clientes.php?action=';
 
 //Metodo manejador de eventos
 document.addEventListener('DOMContentLoaded', function(){

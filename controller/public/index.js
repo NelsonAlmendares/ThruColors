@@ -1,5 +1,5 @@
 //Establecemos la ruta de comunicación con la API
-const API_CATALOGO = SERVER + 'public/catalogo.php?action=';
+const API_CATALOGO = SERVER + 'publico/catalogo.php?action=';
 
 // Metodo para manejar los eventos
 document.addEventListener(DOMContentLoaded, function(){
