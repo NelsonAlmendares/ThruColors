@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="../../resources/butterfly.png" />
     <link rel="stylesheet" href="../../css/publico/sing-up.css">
 
-    <title>Registrar cliente</title>
+    <title>ThruColors | Registrarse</title>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="#" class="" method="post">
-                    <h2 class="title">Registrarse como Cliente</h2>
+                    <h2 class="title">Registrarse</h2>
                     <div class="inputs">
                         <div class="lado1">
                             <div class="input-field">
@@ -26,11 +28,11 @@
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Apellido" />
+                                <input type="text" placeholder="Correo" />
                             </div>
                             <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="text" placeholder="Celular" />
+                                <i class="fas fa-phone"></i>
+                                <input type="text" placeholder="Teléfono" />
                             </div>
                             <div class="input-field file-select" id="src-file1">
                                 <i class="fas fa-lock"></i>
@@ -40,15 +42,19 @@
                         <div class="lado2">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input type="email" placeholder="Correo" />
+                                <input type="email" placeholder="Apellido" />
                             </div>
                             <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Direccion" />
+                                <i class="fas fa-home"></i>
+                                <input type="text" placeholder="Dirección" />
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
                                 <input type="text" placeholder="Contraseña" />
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="text" placeholder="Confirmar Contraseña" />
                             </div>
                         </div>
                     </div>
@@ -87,6 +93,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Sweetalert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+     <!-- Js del sitio -->
+     <script src="../../controller/components.js"></script>
+     <script src="../../controller/publico//registroC.js"></script>   
 </body>
 
 </html>
