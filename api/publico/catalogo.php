@@ -4,59 +4,67 @@ require_once('../helpers/validator.php');
 require_once('../models/categorias.php');
 require_once('../models/productos.php');
 
-// Comprobamoos si hay una acción a realizar
-if(isset($_GET['action'])){
-
-    // Se instancian las clases correspondientes
-    $categorias = new Categorias;
+// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
+if (isset($_GET['action'])) {
+    // Se instancian las clases correspondientes.
+    $categoria = new Categorias;
     $producto = new Productos;
-
-    //Se guarda en un arrglo el resultado que retorna la API
-    $result = array('status' => 0, 'message' => 0, 'exception' => null);
-
-    //Se compara la acción a realizarse
+    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
+    $result = array('status' => 0, 'message' => null, 'exception' => null);
+    // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
         case 'readAll':
-            if ($result['dataset'] = $categorias->readAll()) {
-                $result['status'] = 1;
-            } elseif(Database::getException()){
+            if ($result['dataset'] = $producto->readAll()) {
+                $result['status'] = 1;                
+            } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
-            } else{
-                $result['exception'] = 'No existen datos para mostrar';
+            } else {
+                $result['exception'] = 'No existen categorías para mostrar';
             }
             break;
         case 'readProductosCategoria':
+            print_r($_POST);
             if (!$producto->setId($_POST['id_categoria'])) {
                 $result['exception'] = 'Categoría incorrecta';
-            } elseif($result['dataset'] = $producto->readProductsCategory()){
+            } elseif ($result['dataset'] = $producto->readProductsCategory()) {
                 $result['status'] = 1;
-            } elseif(Database::getException()){
+            } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
-            } else{
-                $result['exception'] = 'Producto Inexistente';
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
             }
             break;
         case 'readOne':
-            if(!$producto->setId($_POST['id_producto'])){
-                $result['exception'] = 'Producto Incorrecto';
-            } elseif($result['dataset'] = $producto->readOne()){
+            if (!$producto->setId($_POST['id_producto'])) {
+                $result['exception'] = 'Producto incorrecto';
+            } elseif ($result['dataset'] = $producto->readOne()) {
                 $result['status'] = 1;
-            } elseif(Database::getException()){
+            } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
-            } else{
-                $result['exception'] = 'Producto Inexistente';
+            } else {
+                $result['exception'] = 'Producto inexistente';
             }
             break;
+        case 'search':
+                $_POST =  $producto->validateForm($_POST);
+                if ($_POST['buscar'] == '') {
+                    $result['exception'] = 'Ingrese un valor para buscar';
+                } elseif ($result['dataset'] =  $producto->searchRows($_POST['buscar'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Valor encontrado';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
         default:
             $result['exception'] = 'Acción no disponible';
-        break;
     }
-    //Indicamos el tipo de contenido a mostrar
+    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('content-type: application/json; charset=utf-8');
-    // Se imprime el resultado en formato Json y retorna el controlador
+    // Se imprime el resultado en formato JSON y se retorna al controlador.
     print(json_encode($result));
-} else{
+} else {
     print(json_encode('Recurso no disponible'));
 }
-
-?>

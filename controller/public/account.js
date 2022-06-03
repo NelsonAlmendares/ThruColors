@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Se declara e inicializa una variable para obtener un elemento del arreglo de forma aleatoria.
                 let element = Math.floor(Math.random() * images.length);
                 // Se asigna la imagen a la etiqueta img por medio del atributo src.
-                document.getElementById('parallax').setAttribute('src', '../../resources/img/parallax/' + images[element]);
+                //document.getElementById('parallax').setAttribute('src', '../../resources/img/parallax/' + images[element]);
                 // Se inicializa el efecto Parallax.
                 //M.Parallax.init(document.querySelectorAll('.parallax'));
             });

@@ -181,13 +181,13 @@
 
         /* Funcion para hacer la busqueda en la base por medio de parametros como son nombre y descripcion */
         public function searchRows($value){
-            $sql = 'SELECT "id_DetalleVenta", cantidad, nombre_producto, "comentario_producto", fecha_venta, estado_venta, id_cliente
-            FROM PUBLIC."tb_DetalleVenta" tbd 
-            INNER JOIN tb_venta tv ON tbd.id_venta = tv.id_venta
-            INNER JOIN "tb_valoracionProducto" tp ON tbd."id_Valoracion" = tp.id_valoracion
-            INNER JOIN "tb_producto" tbp ON tbd.id_producto = tbp.id_producto
-            WHERE nombre_producto LIKE ?
-            ORDER BY "id_DetalleVenta" ';
+            $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
+            FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado 
+            INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+            INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
+            INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+            WHERE nombre_producto ILIKE ?
+            ORDER BY id_producto ';
             $params = array("%$value%");
             return Database::getRows($sql, $params);
         }
