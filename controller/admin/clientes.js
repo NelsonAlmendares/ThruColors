@@ -25,7 +25,7 @@ function fillTable(dataset) {
         content += `            
                         <tr>
                             <td class="contenido">${row.id_cliente}</td>
-                            <td class="contenido"><img src="${SERVER}imagenes/empleados/${row.foto_cliente}" class="materialboxed" height="100"></td>
+                            <td class="contenido"><img src="${SERVER}imagenes/clientes/${row.foto_cliente}" class="materialboxed" height="100"></td>
                             <td class="contenido">${row.nombre_cliente}</td>
                             <td class="contenido">${row.apellido_cliente}</td>
                             <td class="contenido">${row.celular_cliente}</td>

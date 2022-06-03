@@ -15,7 +15,7 @@ class Clientes extends Validator
     private $email_cliente = null;
     private $clave = null;
     private $estado_cliente = null;
-    private $ruta = '../imagenes/empleados/';
+    private $ruta = '../imagenes/clientes/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -125,7 +125,7 @@ class Clientes extends Validator
 
     public function getApellido_c()
     {
-        return $this->apellidos_cliente;
+        return $this->apellido_cliente;
     }
 
     public function getCelular_c()
@@ -185,13 +185,14 @@ class Clientes extends Validator
     /*-------------Método para proporcionar el nombre y foto del cliente.-------------*/
     public function readUserName($email_cliente)
     {
-        $sql = 'SELECT nombre_cliente, foto_cliente
+        $sql = 'SELECT nombre_cliente, apellido_cliente, foto_cliente
                 FROM tb_cliente
                 WHERE email_cliente = ?';
         $params = array($this->email_cliente);
         if ($data = Database::getRow($sql, $params)) {
             $this->nombre_cliente = $data['nombre_cliente'];
             $this->foto_cliente = $data['foto_cliente'];
+            $this->apellido_cliente = $data['apellido_cliente'];
             $this->email_cliente = $email_cliente;
             return true;
         } else {

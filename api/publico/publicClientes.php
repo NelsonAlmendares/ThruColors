@@ -16,10 +16,11 @@
                     if (isset($_SESSION['correo_cliente'])) {
                         $result['status'] = 1;
                         $result['nombre_cliente'] = $_SESSION['nombre_cliente'];
+                        $result['apellido_cliente'] = $_SESSION['apellido_cliente'];
                         $result['correo_cliente'] = $_SESSION['correo_cliente'];
                         $result['foto_cliente'] = $_SESSION['foto_cliente'];
                     } else{
-                        $result['exceptoion'] = 'Correo de usuario indefinido';
+                        $result['exception'] = 'Correo de usuario indefinido';
                     }
                     break;
                 case 'logOut':
@@ -86,6 +87,7 @@
                             $_SESSION['id_cliente'] = $clientes->getId_c();
                             $_SESSION['correo_cliente'] = $clientes->getEmail_c();
                             $_SESSION['nombre_cliente'] = $clientes->getNombre_c();
+                            $_SESSION['apellido_cliente'] = $clientes->getApellido_c();
                             $_SESSION['foto_cliente'] = $clientes->getFoto_c();
                         } else {
                             $result['exception'] = 'Clave incorrecta';

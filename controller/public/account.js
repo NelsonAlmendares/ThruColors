@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Se comprueba si el usuario está autenticado para establecer el encabezado respectivo.
                 if (response.session) {
                     header = `
-                    <img src="../../resources/perfil/media_.jpeg" style="height: 25px;" class="img-fluid profile mt-1" alt="">
+                    <img src="${SERVER}imagenes/clientes/${response.foto_cliente}" style="height: 25px;" class="img-fluid profile mt-1" alt="">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            ${response.correo_cliente}
+                            ${response.nombre_cliente} ${response.apellido_cliente}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" onclick="logOut()">Cerrar Sesión <img
-                                        src="../../resources/iconos/icons8_Close_96px.png" id="actions" alt=""></a></li>
+                                <li><a class="dropdown-item" onclick="logOut()">Cerrar sesión <img
+                                        src="../../resources/iconos/cerrar-sesion.png" id="actions" alt=""></a></li>
                                 <li><a class="dropdown-item" href="#">Ajustes <img
                                         src="../../resources/iconos/icons8_settings_96px.png" id="actions" alt=""></a></li>
                             </ul>
@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Iniciar Sessión
+                        Iniciar sesión
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="login.html"">Iniciar Sesión <img
-                                src="../../resources/iconos/icons8_Close_96px.png" id="actions" alt=""></a></li>
+                        <li><a class="dropdown-item" href="login.html"">Iniciar sesión <img
+                                src="../../resources/iconos/iniciar-sesion.png" id="actions" alt=""></a></li>
                         <li><a class="dropdown-item" href="#">Ajustes <img
                                 src="../../resources/iconos/icons8_settings_96px.png" id="actions" alt=""></a></li>
                         </ul>
@@ -56,16 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 // Se asigna a la página web el contenido del encabezado.
                 document.getElementById('info_client').innerHTML = header;
-                // Se define el componente Parallax.
-                let parallax = `
-                    <div class="parallax-container">
-                        <div class="parallax">
-                            <img id="parallax">
-                        </div>
-                    </div>
-                `;
-                // Se asigna el componente Parallax antes de la etiqueta footer.
-                document.querySelector('footer').insertAdjacentHTML('beforebegin', parallax);
+                
                 // Se establece el pie del encabezado.
                 const footer = `
                 <div class="container">
@@ -78,15 +69,15 @@ document.addEventListener('DOMContentLoaded', function () {
                   <li class="list-inline-item footer-menu"><a href="#">Contact</a></li>
                 </ul>
                 <ul class="list-inline">
-                  <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+                  <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
                         class="img-fluid icon"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
+                  <li class="list-inline-item"><a href="https://twitter.com/?lang=ES" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"
                         class="img-fluid icon"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174883.png"
+                  <li class="list-inline-item"><a href="https://www.youtube.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174883.png"
                         class="img-fluid icon"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733544.png"
+                  <li class="list-inline-item"><a href="https://dribbble.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733544.png"
                         class="img-fluid icon"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png"
+                  <li class="list-inline-item"><a href="https://www.facebook.com/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png"
                         class="img-fluid icon"></a></li>
                 </ul>
                 <small>©2022 All Rights Reserved. Created by <a href="https://github.com/NelsonAlmendares/ThruColors.git"
