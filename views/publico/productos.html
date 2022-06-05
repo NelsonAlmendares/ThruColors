@@ -1,162 +1,158 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- Link css para productos -->
-  <link rel="stylesheet" href="../../css/publico/prooductos.css">
+	<!-- Link css para productos -->
+	<link rel="stylesheet" href="../../css/publico/prooductos.css">
 
-  <!-- Iconos -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<!-- Iconos -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-  <!-- favicon -->
-  <link rel="icon" type="image/x-icon" href="../../resources/butterfly.png">
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="../../resources/butterfly.png">
 
-  <title>Productos | ThruColors</title>
+	<title>Productos | ThruColors</title>
 </head>
+
 <body>
-  <header class="fixed">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand kathen text-white" href="../publico/index.html"><img src="../../resources/butterfly.png"
-            class="img-fluid logo" alt=""> Thru Colors</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-            </li>
-          </ul>
-          <form class="d-flex" id="info_client">
-            
-          </form>
-        </div>
-      </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="navigator" href="../publico/index.html">Inicio</a></li>
-            <li class="breadcrumb-item active" id="activo" aria-current="page">Productos</li>
-          </ol>
-        </nav>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          </ul>
-          <form class="d-flex" id="search-form">
-            <a href="../publico/carrito.html" class="carrito_link"><img src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito" alt=""></a>
-            <input class="form-control me-2" type="search" placeholder="Search" name="buscar" aria-label="Search">
-            <button class="btn search btn-outline-secondary" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <section class="hero">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 mt-3">
-          <h3 class="p-3">Marcas</h3>
-          <div class="col">
-            <div class="buttons mt-3 text-center">
-              <button type="button" id="marcas" class="btn btn-outline-primary">Avon</button>
-              <button type="button" id="marcas" class="btn btn-outline-primary">Nivea</button>
-              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Gilton</button>
-              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Gucci</button>
-              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Dalton</button>
-              <button type="button" id="marcas" class="btn btn-outline-primary mt-1">Esika</button>
-            </div>
-            <h4 class="p-3 mt-3">
-              Categorías
-            </h4>
-            <div id="dropdown_menu" class="text-center">
-              <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  Categorías
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="filter mt-4 p-3">
-              <h4 class="mt-3">
-                Categorías
-              </h4>
-              <input type="range" class="form-range" id="customRange1">
-            </div>
-            <div class="filter_button p-3">
-              <div class="row">
-                <div class="col d-flex">
-                  <button type="button" id="marcas" class="btn btn-outline-primary">Filtrar</button>
-                  <p class="filtro">$4 - $90</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-10 mt-3">
-          <div class="container" id="title">
-            <div class="row">
-              <div class="container products-preview">
-                <div class="row" id="productos">
-                                    
-                </div>
-              </div>
-            </div>            
-            <!--div class="row pagination">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link previous_link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link next_link" href="#">Next</a></li>
-                </ul>
-              </nav>
-            </div-->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer">    
-  </footer>
+	<header class="fixed">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="container">
+				<a class="navbar-brand kathen text-white" href="../publico/index.html"><img
+						src="../../resources/butterfly.png" class="img-fluid logo" alt=""> Thru Colors</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item dropdown">
+						</li>
+					</ul>
+					<form class="d-flex" id="info_client">
+
+					</form>
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="container">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a class="navigator" href="../publico/index.html">Inicio</a></li>
+						<li class="breadcrumb-item active" id="activo" aria-current="page">Productos</li>
+					</ol>
+				</nav>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					</ul>
+					<form class="d-flex" id="search-form">
+						<a href="../publico/carrito.html" class="carrito_link"><img
+								src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito" alt=""></a>
+						<input class="form-control me-2" type="search" placeholder="Search" name="buscar" aria-label="Search">
+						<button class="btn search btn-outline-secondary" type="submit">
+							<i class="bi bi-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+		<div id="toast"></div>
+	</header>
+	<section class="hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 mt-3">
+					<h3 class="p-3">Marcas</h3>
+					<div class="col">
+						<div class="buttons mt-3 text-center">
+							<select id="marca" name="marca" class="form-select" aria-label="Default select example">
+								
+							</select>
+						</div>
+						<h4 class="p-3 mt-3">
+							Categorías
+						</h4>
+						<div class="text-center">
+							<div class="">
+								<select id="categorias" name="categorias" class="form-select" aria-label="Default select example">
+									
+								</select>
+							</div>
+						</div>
+						<div class="filter mt-4 p-3">
+							<h4 class="mt-3">
+								Precios
+							</h4>
+							<input type="range" class="form-range" id="customRange1">
+						</div>
+						<div class="filter_button p-3">
+							<div class="row">
+								<div class="col d-flex">
+									<button id="search" type="submit" name="filtro" class="btn btn-outline-primary">Filtrar</button>
+									<p class="filtro">$4 - $90</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-10 mt-3">
+					<div class="container" id="title">
+						<div class="row">
+							<div class="container products-preview">
+								<div class="row" id="productos">
+
+								</div>
+							</div>
+						</div>
+						<!--div class="row pagination">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+								<li class="page-item"><a class="page-link previous_link" href="#">Previous</a></li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link next_link" href="#">Next</a></li>
+								</ul>
+							</nav>
+						</div-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+	</footer>
 
 
-   <!-- JS del plugin SWIPER -->
-   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
- 
-   <!-- Bootsrap cns JS -->
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-     crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-     crossorigin="anonymous"></script>
- 
-   <!--Index.js -->
-   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-   <script src="../../controller/components.js"></script>
-   <script src="../../controller/public/account.js"></script>
-   <script src="../../controller/public/productos.js"></script>
- 
-   <!-- app.js para el plugin de SWIPER -->
-   <script src="../../js/publico/app.js"></script>
+	<!-- JS del plugin SWIPER -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Bootsrap cns JS -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+	<!--Index.js -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="../../controller/components.js"></script>
+	<script src="../../controller/public/account.js"></script>
+	<script src="../../controller/public/productos.js"></script>
+
+	<!-- app.js para el plugin de SWIPER -->
+	<script src="../../js/publico/app.js"></script>
 </body>
 
 </html>

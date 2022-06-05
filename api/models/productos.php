@@ -215,6 +215,10 @@
             return Database::getRow($sql, $params);
         }
 
+        public function filter(){
+            $sql = '';
+        }
+
         /* Función para mandar a llamar a todos los registros que se tengan de la base  */
         public function readAll(){
             $sql = 'SELECT id_producto as ID, nombre_producto as nombre, foto_producto as foto, descripcion_producto as descripcion, costo_producto as costo, estado_producto as estado, nombre_marca as marca, categoria_producto as categoria, presentacion_producto as presentacion
@@ -222,7 +226,7 @@
                 INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
                 INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-                ORDER BY id_producto';
+                ORDER BY nombre_producto';
             $params = null;
             return Database::getRows($sql, $params);
         }

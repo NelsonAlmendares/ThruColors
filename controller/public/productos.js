@@ -1,6 +1,7 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_CATALOGO = SERVER + 'publico/catalogo.php?action=';
-
+const ENDPOINT_CATEGORIAS = SERVER + 'publico/categorias.php?action=readAll';
+const ENDPOINT_MARCAS = SERVER +'publico/marcas.php?action=readAll';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -29,6 +30,8 @@ function readProductos() {
         } else {
             console.log(request.status + ' ' + request.statusText);
         }
+        fillSelect(ENDPOINT_CATEGORIAS, "categorias", null);
+        fillSelect(ENDPOINT_MARCAS, "marca", null);
     });
 }
 function fillCards(dataset) {
@@ -37,7 +40,7 @@ function fillCards(dataset) {
     dataset.map(function (row) {
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
-            <div class="col-md-3 d-flex" >
+            <div class="col-md-3 mt-3 d-flex" >
             <div class="card">
                 <div class="img-container">
                     <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid"
@@ -67,6 +70,9 @@ function fillCards(dataset) {
     // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
     //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 }
+
+
+
 document.getElementById('search-form').addEventListener('submit', function (event){
     event.preventDefault();
     searchProducts(API_CATALOGO, 'search-form');
