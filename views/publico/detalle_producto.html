@@ -60,10 +60,10 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					</ul>
-					<form class="d-flex">
-						<a href="../publico/carrito.html"><img src="../../resources/iconos/icons8_basket_128px.png"
-								class="img-fluid carrito" alt=""></a>
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<form class="d-flex" id="search-form">
+						<a href="../publico/carrito.html" class="carrito_link"><img
+								src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito" alt=""></a>
+						<input class="form-control me-2" type="search" placeholder="Search" name="buscar" aria-label="Search">
 						<button class="btn search btn-outline-secondary" type="submit">
 							<i class="bi bi-search"></i>
 						</button>
@@ -77,23 +77,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5 mt-3">
-					<div class="img-container text-center" id="img-container">
-						<img src="https://pics.drugstore.com/prodimg/623361/450.jpg" class="img-fluid meustra" alt="">
+					<div class="img-container text-center" id="img-container">						
 					</div>
 				</div>
 				<div class="col-md-7 mt-3">
-					<h2 class="titulo">Colección Mía Secret Red Gift</h2>
-					<h1 class="mt-3 precio">$4.42</h1>
-					<p class="desciption">Colección especial de acrílicos en polvo color rojo pasión, que cuenta con 6 tonos
-						diferentes de rojo:
-					<ul class="desciption">
-						<li>Scarlet: un tono intenso de rojo con un poco de negro</li>
-						<li>Morberry: un tono mas claro de rojo</li>
-						<li>Garnet: es un tono rojo intenso con brillo</li>
-						<li>regalo rojo: la insignia de nuestra colección es un tono de rojo puro</li>
-						<li>Lápiz labial: un tono menos puro de rojo, discreto y elegante</li>
-						<li>Poffy red: es una mescla mas divertida de rojo con el tono de blanco</li>
-					</ul>
+					<div id="producto-container"></div>
 					<div class="row">
 						<div class="col-md-3 counter">
 							<div class="row">
@@ -124,9 +112,9 @@
 								<h3>Marca</h3>
 							</div>
 							<div class="col-md-6">
-								<p>500ml</p>
+								<div id="presentacion-container"></div>
 								<hr class="dropdown-divider	">
-								<p>Moderna</p>
+								<div id="marca-container"></div>
 							</div>
 						</div>
 					</div>
@@ -134,73 +122,8 @@
 				<div class="col-md-12">
 					<h3 class="relationated_products">Productos relacionados</h3>
 						<div class="container p-4">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="card">
-										<div class="img-container">
-											<img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid" alt="..." />
-											<div class="overlay">
-												<div class="col">
-													<button type="button" class="btn btn-outline-danger btn-sm">
-														Agregar al carrito <i class="bi bi-bag"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="card-body">
-											<h5 class="card-title text-center">Hidratación</h5>
-											<p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
-											<p class="card-price text-center">$12.95</p>
-											<form action="" class="text-center">
-												<!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-											</form>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card">
-										<div class="img-container">
-											<img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid" alt="..." />
-											<div class="overlay">
-												<div class="col">
-													<button type="button" class="btn btn-outline-danger btn-sm">
-														Agregar al carrito <i class="bi bi-bag"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="card-body">
-											<h5 class="card-title text-center">Hidratación</h5>
-											<p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
-											<p class="card-price text-center">$12.95</p>
-											<form action="" class="text-center">
-												<!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-											</form>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="card">
-										<div class="img-container">
-											<img src="../../resources/productos/Product1.png" class="image card-img-top img-fluid" alt="..." />
-											<div class="overlay">
-												<div class="col">
-													<button type="button" class="btn btn-outline-danger btn-sm">
-														Agregar al carrito <i class="bi bi-bag"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="card-body">
-											<h5 class="card-title text-center">Hidratación</h5>
-											<p class="card-description text-center">Crema para el cuerpo Hand Rief 300ml</p>
-											<p class="card-price text-center">$12.95</p>
-											<form action="" class="text-center">
-												<!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-											</form>
-										</div>
-									</div>
-								</div>
+							<div class="row" id="productos">
+								
 							</div>
 						</div>
 				</div>
@@ -233,6 +156,7 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../../controller/components.js"></script>
 	<script src="../../controller/public/account.js"></script>
+	<script src="../../controller/public/detalle_p.js"></script>
 </body>
 
 </html>
