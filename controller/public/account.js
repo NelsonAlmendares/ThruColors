@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     header = `                    
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-white" aria-current="page" href="../publico/registro.html">Registrarse</a>
                     </li>
                     <!-- <img src="../../resources/perfil/media_.jpeg" class="img-fluid profile mt-1" alt=""> -->
                     <li class="nav-item dropdown">

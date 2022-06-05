@@ -424,12 +424,6 @@ p{
   }
 }
 
-/* File personalizados */
-.file-select {
-  /*position: relative;
-  display: inline-block;*/
-}
-
 .file-select::before {
   background-color: #F0F0F0;
   color: #000;
