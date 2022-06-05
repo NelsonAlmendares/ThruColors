@@ -13,6 +13,7 @@
         private $generoProducto = null;
         private $categoriaProducto = null;
         private $presentacionProducto = null;
+        private $nombre_marca = null;
         private $ruta = '../imagenes/productos/';
 
         /* Metodos para validar y asignar los valores que se tomaran para los atributos */
@@ -124,6 +125,15 @@
             }
         }
 
+        public function setNombre_marca($value){
+            if ($this->validateBoolean($value)){
+                $this->nombre_marca = $value;
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         /* Medodos para obtener los valores de los atributos */
         public function getId(){
             return $this->id;
@@ -175,6 +185,10 @@
 
         public function getRuta(){
             return $this->ruta;
+        }
+
+        public function getNombre_marca(){
+        return $this->nombre_marca;
         }
 
         /* Metodos para realizar las operaciones SCRUD */
@@ -256,9 +270,9 @@
                 INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
                 INNER JOIN "tb_categoria" tc ON tp."id_categoriaProducto" = tc.id_categoria
                 INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
-                WHERE id_categoria = ? 
+                WHERE nombre_marca = ? 
                 ORDER BY id_producto';
-            $params = array($this->id);
+            $params = array($this->nombre_marca);
             return Database::getRows($sql, $params);
         }
 

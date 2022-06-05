@@ -30,14 +30,15 @@ function readProductos() {
         } else {
             console.log(request.status + ' ' + request.statusText);
         }
-        fillSelect(ENDPOINT_CATEGORIAS, "categorias", null);
-        fillSelect(ENDPOINT_MARCAS, "marca", null);
+        fillSelect(ENDPOINT_CATEGORIAS, 'categorias', null);
+        fillSelect(ENDPOINT_MARCAS, 'marca', null);
     });
 }
 function fillCards(dataset) {
     let content = '';
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.map(function (row) {
+        url = `detalle_producto.html?id=${row.id}&marca=${row.marca}`;
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
             <div class="col-md-3 mt-3 d-flex" >
@@ -48,7 +49,7 @@ function fillCards(dataset) {
                     <div class="overlay">
                     <div class="col">
                         <button type="button" class="btn btn-outline-danger btn-sm"> <a
-                            href="../../views/publico/detalle_producto.html" class="card_link">ver más...</a> <i
+                            href="${url}" class="card_link">ver más...</a> <i
                             class="bi bi-bag"></i></button>
                     </div>
                     </div>

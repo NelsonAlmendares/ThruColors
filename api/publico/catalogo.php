@@ -1,13 +1,13 @@
 <?php
 require_once('../helpers/database.php');
 require_once('../helpers/validator.php');
-require_once('../models/categorias.php');
+require_once('../models/marca.php');
 require_once('../models/productos.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se instancian las clases correspondientes.
-    $categoria = new Categorias;
+    $marca = new Marca;
     $producto = new Productos;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null);
@@ -22,10 +22,9 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen categorías para mostrar';
             }
             break;
-        case 'readProductosCategoria':
-            print_r($_POST);
-            if (!$producto->setId($_POST['id_categoria'])) {
-                $result['exception'] = 'Categoría incorrecta';
+        case 'readProductosMarca':  
+            if (!$producto->setNombre_marca($_POST['nombre_marca'])) {
+                $result['exception'] = 'Marca incorrecta';
             } elseif ($result['dataset'] = $producto->readProductsCategory()) {
                 $result['status'] = 1;
             } elseif (Database::getException()) {
