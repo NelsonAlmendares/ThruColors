@@ -127,7 +127,7 @@ function openUpdate(id_categoria) {
                             <div class="input-field ">
                             <label class="label" for="foto_categoria">Foto de categoria:</label>
                                 <div class="file-select">
-                                    <input type="file" class="form-control" id="foto_categoria" name="foto_categoria" accept=".jpg, .png" required />
+                                    <input type="file" class="form-control" id="foto_categoria" name="foto_categoria" accept=".jpg, .png" />
                                 </div>
                             </div>                          
                         </div>
