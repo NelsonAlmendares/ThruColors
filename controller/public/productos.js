@@ -92,9 +92,9 @@ function searchProducts(api, form) {
                 if (response.status) {
                     // Se envían los datos a la función del controlador para que llene la tabla en la vista y se muestra un mensaje de éxito.
                     fillCards(response.dataset);
-                    sweetAlert(1, response.message, null);
+                    Toast(1, response.message, null);
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    Toast(2, response.exception, null);
                 }
             });
         } else {
