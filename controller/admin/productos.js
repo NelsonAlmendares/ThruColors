@@ -43,7 +43,7 @@ function fillTable(dataset) {
                             <td class="contenido">${row.estado}</td>
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn-eliminar" onclick="openDelete(${row.id})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn-eliminar" onclick="openDelete(${row.id})" data-swal-toast-template="#my-template"><i class="fa-solid fa-trash"></i></button>
                                 </a>
                             </td>
                         </tr>          
@@ -92,7 +92,7 @@ function openCreate() {
                         <div class="input-field ">
                             <label class="label" for="foto_producto">Foto de producto:</label>
                             <div class="file-select">
-                                <input type="file" class="form-control" id="foto_producto" name="foto_producto" accept=".jpg, .png" required />
+                                <input type="file" class="form-control" id="foto_producto" name="foto_producto" accept=".jpg, .png" />
                             </div>
                         </div>
                     </div>

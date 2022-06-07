@@ -36,7 +36,7 @@ function fillTable(dataset) {
                             <td class="contenido">${row.tipo_empleado}</td>
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_empleado})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn-eliminar" onclick="openDelete(${row.id_empleado})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn-eliminar" onclick="openDelete(${row.id_empleado})" data-swal-toast-template="#my-template"><i class="fa-solid fa-trash"></i></button>
                                 </a>
                             </td>
                         </tr>          
@@ -174,7 +174,7 @@ function openUpdate(id_empleado) {
                 <div class="input-field ">
                     <label class="label" for="foto_empleado">Foto de empleado:</label>
                     <div class="file-select">
-                        <input type="file" class="form-control" id="foto_empleado" name="foto_empleado" accept=".jpg, .png" required />
+                        <input type="file" class="form-control" id="foto_empleado" name="foto_empleado" accept=".jpg, .png" />
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@ function openUpdate(id_empleado) {
                     fillSelect(ENDPOINT_TIPO_E, 'tipo_empleado', response.dataset.tipo_empleado);
                     document.getElementById('clave').value = response.dataset.clave;
                     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-                    M.updateTextFields();
+                    //M.updateTextFields();
                 } else {
                     sweetAlert(2, response.exception, null);
                 }

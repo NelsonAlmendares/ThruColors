@@ -22,11 +22,30 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No existen categorías para mostrar';
             }
             break;
-        case 'readProductosMarca':  
+        case 'readProductosMarca':   
             if (!$producto->setNombre_marca($_POST['nombre_marca'])) {
                 $result['exception'] = 'Marca incorrecta';
             } elseif ($result['dataset'] = $producto->readProductsCategory()) {
                 $result['status'] = 1;
+            } elseif (Database::getException()) {
+                $result['exception'] = Database::getException();
+            } else {
+                $result['exception'] = 'No existen productos para mostrar';
+            }
+            break;
+        case 'filtrarProductos': 
+            if (isset($_POST['marca'])) {
+                if (!$producto->setMarca($_POST['marca'])) {
+                    $result['exception'] = 'Marca incorrecta';
+                } elseif ($result['dataset'] = $producto->filtrarProductosMarca()) {
+                    $result['status'] = 1;
+                }
+            }elseif (isset($_POST['categorias'])) {
+                if (!$producto->setCategoria($_POST['categorias'])) {
+                    $result['exception'] = 'Categoria incorrecta';
+                } elseif ($result['dataset'] = $producto->filtrarProductosCategoria()) {
+                    $result['status'] = 1;
+                }
             } elseif (Database::getException()) {
                 $result['exception'] = Database::getException();
             } else {
