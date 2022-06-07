@@ -31,7 +31,7 @@ function fillTable(dataset) {
                             <td class="contenido">${row.descripcion_categoria}</td>
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_categoria})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn-eliminar" onclick="openDelete(${row.id_categoria})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn-eliminar" onclick="openDelete(${row.id_categoria})" data-swal-toast-template="#my-template"><i class="fa-solid fa-trash"></i></button>
                                 </a>
                             </td>
                         </tr>          
@@ -127,7 +127,7 @@ function openUpdate(id_categoria) {
                             <div class="input-field ">
                             <label class="label" for="foto_categoria">Foto de categoria:</label>
                                 <div class="file-select">
-                                    <input type="file" class="form-control" id="foto_categoria" name="foto_categoria" accept=".jpg, .png" required />
+                                    <input type="file" class="form-control" id="foto_categoria" name="foto_categoria" accept=".jpg, .png" />
                                 </div>
                             </div>                          
                         </div>
