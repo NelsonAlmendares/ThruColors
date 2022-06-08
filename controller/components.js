@@ -122,7 +122,8 @@ function confirmDelete(api, data) {
         cancelButtonText: 'No',
         reverseButtons: true,
         closeOnClickOutside: false,
-        closeOnEsc: false
+        closeOnEsc: false,
+        
     }).bindClickHandler('data-swal-toast-template').then((result) => {
         // Se comprueba si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
         if (result.isConfirmed) {
