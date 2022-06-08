@@ -54,10 +54,7 @@
                     $response = file_get_contents($url, false, $context);
                     $captcha = json_encode($response, true);
 
-                    if(!$captcha['success']){
-                        $result['recaptcha'] = 1;
-                        $result['exception'] = 'No eres humano';
-                    } elseif($$clientes->setNombre_c($_POST['nombres'])){
+                    if($$clientes->setNombre_c($_POST['nombres'])){
                         $result['exception'] = 'Nombres incorrectos';
                     } elseif(!$clientes->setApellido_c($_POST['apellidos'])){
                         $result['exception'] = 'Apellios Incorrectos';
@@ -67,10 +64,17 @@
                         $result['exception'] = 'Direccion Incorrecta';
                     } elseif(!$clientes->setEmail_c($_POST['correo'])){
                         $result['exception'] = 'Correo incorrecto';
-                    } elseif(!$clientes->setEstado_c($_POST['estado'])){
-                        $result['exception'] = 'Selecciona un estado valido';
-                    } elseif(!$clientes){
-
+                    } elseif(!$clientes->setCelular_c($_POST['celular'])){
+                        $result['exception'] = 'Celular incorrecto';
+                    } elseif($_POST['clave'] != $_POST['confirmar_clave']){
+                        $result['exception'] = 'Claves diferentes';
+                    } elseif(!$clientes->setClave($_POST['clave'])){
+                        $result['exception'] = $clientes->getPasswordError();
+                    } elseif($clientes->createRow()){
+                        $result['status'] = 1;
+                        $result['message'] = 'Cliente registrado correctamente';
+                    } else{
+                        $result['exception'] = Database::getException();
                     }
                     break;
                     case 'logIn':

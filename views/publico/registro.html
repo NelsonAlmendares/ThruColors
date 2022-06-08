@@ -25,15 +25,15 @@
                             <div class="lado1">
                                 <div class="input-field">
                                     <i class="fa-solid fa-user"></i>
-                                    <input type="text" placeholder="Nombre" />
+                                    <input id="nombre" name="nombre" type="text" placeholder="Nombre" />
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-envelope"></i>
-                                    <input type="email" placeholder="Correo" />
+                                    <input id="correo" name="correo" type="email" placeholder="Correo" />
                                 </div>
                                 <div class="input-field">
                                     <i class="fas fa-phone"></i>
-                                    <input type="text" placeholder="Teléfono" />
+                                    <input type="text" id="celular" id="celular" placeholder="Teléfono" />
                                 </div>
                                 <div class="input-field file-select" id="src-file1">
                                     <i class="fas fa-lock"></i>
@@ -43,19 +43,19 @@
                             <div class="lado2">
                                 <div class="input-field">
                                     <i class="fas fa-user"></i>
-                                    <input type="text" placeholder="Apellido" />
+                                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" />
                                 </div>
                                 <div class="input-field">
                                     <i class="fas fa-home"></i>
-                                    <input type="text" placeholder="Dirección" />
+                                    <input type="text" id="direccion" name="direccion" placeholder="Dirección" />
                                 </div>
                                 <div class="input-field">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" placeholder="Contraseña" />
+                                    <input type="password" id="clave" name="clave" placeholder="Contraseña" />
                                 </div>
                                 <div class="input-field">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" placeholder="Confirmar Contraseña" />
+                                    <input type="password" id="confirmar_clave" name="confirmar_clave" placeholder="Confirmar Contraseña" />
                                 </div>
                             </div>
                         </div>
@@ -92,9 +92,11 @@
     <script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
     <!-- Sweetalert  -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Js del sitio -->
     <script src="../../controller/components.js"></script>
-    <script src="../../controller/public/account.js"></script>
+    <!-- <script src="../../controller/public/account.js"></script> -->
     <script src="../../controller/public/sing-up.js"></script>
 </body>
 

@@ -7,7 +7,7 @@
 
         public static function connect(){
             $server = 'localhost';
-            $database = 'ThruColors';
+            $database = 'ThruColors2.0';
             $username = 'postgres';
             $password = 'AdminUser';
 

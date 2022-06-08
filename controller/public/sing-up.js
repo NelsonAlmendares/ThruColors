@@ -1,4 +1,4 @@
-const API_CLIENTES = SERVER + 'public/publicClientes.php?action=';
+const API_CLIENTES = SERVER + 'publico/publicClientes.php?action=';
 
 document.addEventListener('DomContentLoaded', function() {
     //Se llama a la función que le asigna el token al formulario
@@ -21,14 +21,14 @@ document.addEventListener('DomContentLoaded', function() {
     M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 });
 
-function reCAPTCHA(){
-    grecaptcha.ready(function (){
-        let publicKey = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
-        grecaptcha.execute(publicKey, { action: 'homepage'}).theb(function(token){
-            document.getElementById('g-recaptcha-response').value = token;
-        });
-    });
-}
+// function reCAPTCHA(){
+//     grecaptcha.ready(function (){
+//         let publicKey = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
+//         grecaptcha.execute(publicKey, { action: 'homepage'}).theb(function(token){
+//             document.getElementById('g-recaptcha-response').value = token;
+//         });
+//     });
+// }
 
 document.getElementById('register-form').addEventListener('submit', function(event){
     //Evitamos que se recargue el sitio
@@ -47,7 +47,6 @@ document.getElementById('register-form').addEventListener('submit', function(eve
                         sweetAlert(2, response.message, 'index.html');
                     } else{
                         sweetAlert(2, response.message, null);
-                        reCAPTCHA();
                     }
                 }
             });

@@ -306,8 +306,12 @@ a:hover{
     color: var(--button);
 }
 
+.zona-valoraciones{
+    padding-top: 3rem;
+}
+
 .relationated_products{
-    margin-top: 10rem;
+    padding-top: 5rem;
 }
 
 .details{

@@ -1,95 +1,62 @@
 <?php
-/*clase para manejar la tabla producto de la base de datos*/ 
+    class valoracion extends Validator{
+        private $Id_valoracion = null;
+        private $comentario = null;
+        private $fecha = null;
 
-class Valoracion extends Validator 
-{
-    //*Declaracion de atributos(propiedades).
-    private $id_genero = null;
-    private $genero = null;
+    public function setId_valoracion($value){
+        if($this->validateNaturalNumber($value)){
+            $this->id_valoracion = $value;
+            return true; 
+        } else{
+            return false;
+        }
+    }
 
-    /*metodo para validar y asignar valores a los campos*/ 
-
-    public function setId_genero($value)
-    {
-        if ($this->validateNaturalNumber($value)){
-            $this->id_genero = $value;
+    public function setComentario($value){
+        if($this->validateString(1 ,50, $value)){
+            $this->comentario = $value;
             return true;
         }else{
             return false;
         }
     }
 
-    public function setGenero($value)
-    {
-        if ($this->validateAlphanumeric($value, 1, 30)){
-            $this->genero = $value;
+    public function setFecha($value){
+        if($this->validateDate($value)){
+            $this->fecha = $value;
             return true;
-        }else{
+        } else{
             return false;
         }
     }
 
-    /*Metodos para obtener los datos de los atributos*/ 
-
-    public function getId_genero()
-    {
-        return $this->id_genero;
+    public function getId_valoracion(){
+        return $this->Id_valoracion;
     }
 
-    public function getGenero()
-    {
-        return $this->genero;
+    public function getComentario(){
+        return $this->comentario;
     }
 
-    /*Metodos para realizar las acciones SCRUD: search, create, read, update, delete.*/
-     
-    public function searchRows($value)
-    {
-        $sql = 'SELECT "id_tipoEmpleado", "tipoEmpleado"
-        FROM public.tipo_empleado where "tipoEmpleado" = ?';
-        $params = array("%$value%");
-        return Database::getRows($sql, $params);
+    public function getFecha(){
+        return $this->fecha;
     }
 
-    public function createRow()
-    {
-        $sql = 'INSERT INTO public.tipo_empleado(
-            "id_tipoEmpleado", "tipoEmpleado")
-            VALUES (?, ?)';
-        $params = array($this->nombre);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function readAll()
-    {
-        $sql = 'SELECT id_valoracion, comentario_producto, fecha_comentario, estado_comentario
-        FROM "tb_valoracionProducto"';
+    public function readAll(){
+        $sql = 'SELECT id_valoracion AS ID, comentario_producto AS comentario, fecha_comentario AS fecha FROM public."tb_valoracionProducto" ORDER BY fecha_comentario';
         $params = null;
         return Database::getRows($sql, $params);
     }
-
-    public function readOne()
-    {
-        $sql = 'SELECT "id_tipoEmpleado", "tipoEmpleado"
-        FROM public.tipo_empleado';
-        $params = array($this->id_tipoEmpleado);
+    
+    public function createRow($value){
+        $sql = 'INSERT INTO public."tb_valoracionProducto"(
+	    comentario_producto, fecha_comentario, estado_comentario)
+	    VALUES (?, current_date, "activo")';
+        $params = array($this->comentario);
         return Database::executeRow($sql, $params);
     }
+    
 
-    public function updateRow()
-    {
-        $sql = 'UPDATE public.tipo_empleado
-        SET "id_tipoEmpleado"=?, "tipoEmpleado"=?
-        WHERE id_tipoEmpleado = ?';
-        $params = array($this->nombre, $this->id);
-        return Database::executeRow($sql, $params);
     }
-
-    public function deleteRow()
-    {
-        $sql = 'DELETE FROM public.tipo_empleado
-        WHERE tipoEmpleado = ?';
-        $params = array($this->id);
-        return Database::executeRow($sql, $params);
-    }
-}
+?>

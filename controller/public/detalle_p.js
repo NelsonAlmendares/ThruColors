@@ -1,4 +1,5 @@
 const API_CATALOGO = SERVER + 'publico/catalogo.php?action=';
+const API_VALORACIONES = SERVER  + 'publico/valoracion.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que muestra los productos de la categoría seleccionada previamente.
     readOneProducto(ID);
     readProductosRelacionados(ID,marca);
+    readValoracions();
 });
 
 function readOneProducto(id) {
@@ -149,4 +151,41 @@ function readProductosRelacionados(id, marca) {
             console.log(request.status + ' ' + request.statusText);
         }
     });
+}
+
+function readValoracions(){
+    fetch(API_VALORACIONES + 'readAll', {
+        method: 'get'
+    }).then(function (request){
+        if(request.ok){
+            request.json().then(function (response){
+                if(response.status){
+                    fillValoraciones(response.dataset);
+                } else{
+                    console.log(request.status + " " + request.statusText);
+                }
+            });
+        }
+    });
+}
+
+function fillValoraciones(dataset){
+    let content = '';
+
+    dataset.map(function (row){
+        content += `
+        <ol class="list-group ">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">Valoracion</div>
+                ${row.comentario}
+                <div class="">
+                    <p>${row.fecha}</p>
+                </div>
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+        </ol>`;
+    });
+    document.getElementById('valoraciones').innerHTML = content;
 }

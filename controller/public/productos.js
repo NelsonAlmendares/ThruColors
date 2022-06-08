@@ -37,6 +37,9 @@ function readProductos() {
         fillSelect(ENDPOINT_MARCAS, 'marca', null);
     });
 }
+
+
+
 function fillCards(dataset) {
     let content = '';
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
