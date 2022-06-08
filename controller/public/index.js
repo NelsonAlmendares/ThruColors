@@ -21,7 +21,7 @@ function readProductos() {
                     fillCarrusel(response.dataset);
                 } else {
                     // Se presenta un mensaje de error cuando no existen datos para mostrar.
-                    document.getElementById('title').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text"> ${response.exception}</span>`;
+                    document.getElementById('carrusel').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text"> ${response.exception}</span>`;
                 }
             });
         } else {
@@ -34,29 +34,30 @@ function fillCarrusel(dataset) {
     let content = '';
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.map(function (row) {
-  
+      url = `detalle_producto.html?id=${row.id}&marca=${row.marca}`;
         content += `    
         <div class="swiper-slide">
             <div class="card">
               <div class="img-container">
-                <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid" alt="..." />
-                <div class="overlay">
+                  <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid"
+                  alt="...">
+                  <div class="overlay">
                   <div class="col">
-                    <button type="button" class="btn btn-outline-danger btn-sm">
-                      Agregar al carrito <i class="bi bi-bag"></i>
-                    </button>
+                      <button type="button" class="btn btn-outline-danger btn-sm"> <a
+                          href="${url}" class="card_link">ver más...</a> <i
+                          class="bi bi-bag"></i></button>
                   </div>
-                </div>
+                  </div>
               </div>
               <div class="card-body">
-                <h5 class="card-title text-center">${row.nombre}</h5>
-                <p class="card-description text-center">${row.descripcion} ${row.presentacion}</p>
-                <p class="card-price text-center">$${row.costo}</p>
-                <form action="" class="text-center">
+                  <h5 class="card-title text-center">${row.nombre}</h5>
+                  <p class="card-description text-center">${row.descripcion} ${row.presentacion}</p>
+                  <p class="card-price text-center">$${row.costo}</p>
+                  <form action="" class="text-center">
                   <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-                </form>
+                  </form>
               </div>
-            </div>
+          </div>
           </div>        
          
         `;
@@ -65,3 +66,4 @@ function fillCarrusel(dataset) {
     document.getElementById('carrusel').innerHTML = content;
     // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
     //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+}
