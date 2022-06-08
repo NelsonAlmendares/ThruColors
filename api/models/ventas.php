@@ -10,7 +10,8 @@ class ventas extends validator
     private $comentario_venta = null;
     private $producto = null;
     private $cantidad = null;
-    private $venta = null;
+    private $estado = null;
+    private $cliente = null;
     /*private $ruta = '../images/productos/';*/
 
     /*
@@ -44,6 +45,16 @@ class ventas extends validator
         }
     }
 
+    public function setEstado($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->estado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setCantidad($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -54,10 +65,10 @@ class ventas extends validator
         }
     }
 
-    public function setVenta($value)
+    public function setCliente($value)
     {
         if ($this->validateNaturalNumber($value)) {
-            $this->venta = $value;
+            $this->cliente = $value;
             return true;
         } else {
             return false;
@@ -76,6 +87,12 @@ class ventas extends validator
     {
         return $this->comentario_venta;
     }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
 
     public function getProducto()
     {
@@ -115,52 +132,52 @@ class ventas extends validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO "tb_DetalleVenta"(cantidad, id_producto, id_venta, "id_Valoracion")
-                VALUES (?, ?, ?, ?)';
-        $params = array($this->cantidad, $this->producto, $this->venta, $this->comentario_venta);
+        $sql = 'INSERT INTO tb_ventas(fecha_venta, estado_venta, id_cliente, cantidad_venta,id_producto,id_valoracion)
+                VALUES (CURRENT_DATE, ?, ?, ?,?,?)	';
+        $params = array($this->estado, $this->cliente, $this->cantidad, $this->producto, $this->comentario_venta);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT "id_DetalleVenta" AS id_venta, fecha_venta AS venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
-                FROM "tb_DetalleVenta" tdv 
-                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
-                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+        $sql = 'SELECT id_venta AS id_venta, fecha_venta AS fecha, tev.estado_venta AS estado, nombre_cliente AS cliente, cantidad_venta AS cantidad, nombre_producto AS producto, comentario_producto AS comentario
+                FROM tb_ventas tv 
+                INNER JOIN tb_producto tp ON tv.id_producto = tp.id_producto 
                 INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
-                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
-                ORDER BY "id_DetalleVenta"';
+                INNER JOIN "tb_estadoVenta" tev ON tv.estado_venta = tev.id_estado
+                INNER JOIN "tb_valoracionProducto" tvp ON tv.id_valoracion = tvp.id_valoracion
+                ORDER BY id_venta';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT "id_DetalleVenta" AS id_venta, cantidad, nombre_producto AS producto, fecha_venta AS fecha, estado_venta AS estado, nombre_cliente AS cliente, comentario_producto AS comentario
-                FROM "tb_DetalleVenta" tdv 
-                INNER JOIN tb_producto tp ON tdv.id_producto = tp.id_producto 
-                INNER JOIN tb_venta tv ON tdv.id_venta = tv.id_venta
+        $sql = 'SELECT id_venta AS id_venta, fecha_venta AS fecha, tev.estado_venta AS estado, nombre_cliente AS cliente, cantidad_venta AS cantidad, nombre_producto AS producto, comentario_producto AS comentario
+                FROM tb_ventas tv 
+                INNER JOIN tb_producto tp ON tv.id_producto = tp.id_producto 
                 INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
-                INNER JOIN "tb_valoracionProducto" tvp ON tdv."id_Valoracion" = tvp.id_valoracion
-                WHERE "id_DetalleVenta" = ?
-                ORDER BY "id_DetalleVenta" ';
+                INNER JOIN "tb_estadoVenta" tev ON tv.estado_venta = tev.id_estado
+                INNER JOIN "tb_valoracionProducto" tvp ON tv.id_valoracion = tvp.id_valoracion
+                WHERE id_venta = ?
+                ORDER BY id_venta';
         $params = array($this->id_venta);
         return Database::getRow($sql, $params);
     }
 
     public function updateRow()
     {
-        $sql = 'UPDATE "tb_DetalleVenta"
-                SET cantidad=?, id_producto=?, id_venta=?, "id_Valoracion"=?
-                WHERE "id_DetalleVenta" = ?';
-        $params = array($this->cantidad, $this->producto, $this->venta, $this->comentario_venta, $this->id_venta);
+        $sql = 'UPDATE tb_ventas
+                SET fecha_venta=CURRENT_DATE, estado_venta=?, id_cliente=?, cantidad_venta=?, id_producto=?, id_valoracion=?
+                WHERE id_venta = ?';
+        $params = array($this->estado, $this->cliente, $this->cantidad, $this->producto, $this->comentario_venta, $this->id_venta);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM "tb_DetalleVenta"
-                WHERE "id_DetalleVenta" = ?';
+        $sql = 'DELETE FROM tb_ventas
+                WHERE id_venta = ?';
         $params = array($this->id_venta);
         return Database::executeRow($sql, $params);
     }

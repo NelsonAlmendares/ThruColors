@@ -157,12 +157,13 @@ document.getElementById('filtro').addEventListener('submit', function (event) {
     event.preventDefault();
     
     // Se llama a la función para guardar el registro. Se encuentra en el archivo components.js
-    readFiltro(API_CATALOGO,'filtro');
+    readFiltroMarca(API_CATALOGO,'filtro');
+    readFiltroCategoria(API_CATALOGO, 'filtro');
 
 });
 
-function readFiltro(api, form){
-    fetch(api + 'filtrarProductos', {
+function readFiltroMarca(api, form){
+    fetch(api + 'filtrarProductosMarca', {
         method: 'post',
         body: new FormData(document.getElementById(form))
     }).then(function (request) {
@@ -185,14 +186,10 @@ function readFiltro(api, form){
     });
 }
 
-function readFiltroMarca(marca) {
-    // Se define un objeto con los datos del registro seleccionado.
-    const data = new FormData();
-    data.append('nombre_marca', marca);
-    // Petición para solicitar los productos de la categoría seleccionada.
-    fetch(API_CATALOGO + 'filtrarProductosMarca', {
+function readFiltroCategoria(api, form){
+    fetch(api + 'filtrarProductosCategoria', {
         method: 'post',
-        body: data
+        body: new FormData(document.getElementById(form))
     }).then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
         if (request.ok) {
@@ -200,42 +197,11 @@ function readFiltroMarca(marca) {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    let content = '';
-                    // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
-                    response.dataset.map(function (row) {
-                        url = `detalle_producto.html?id=${row.id}&marca=${row.marca}`;
-                        // Se crean y concatenan las tarjetas con los datos de cada producto.
-                        content += `                            
-                            <div class="col-md-4">
-									<div class="card">
-                                    <div class="img-container">
-                                        <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid"
-                                        alt="...">
-                                        <div class="overlay">
-                                        <div class="col">
-                                            <button type="button" class="btn btn-outline-danger btn-sm"> <a
-                                                href="${url}" class="card_link">ver más...</a> <i
-                                                class="bi bi-bag"></i></button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center">${row.nombre}</h5>
-                                            <p class="card-description text-center">${row.descripcion} ${row.presentacion}</p>
-                                            <p class="card-price text-center">$${row.costo}</p>
-                                            <form action="" class="text-center">
-                                            <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-                                            </form>
-                                        </div>
-									</div>
-								</div>
-                        `;
-                    });
-                    // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar los productos.
-                    document.getElementById('productos').innerHTML = content;                    
+                    // Se envían los datos a la función del controlador para que llene la tabla en la vista y se muestra un mensaje de éxito.
+                    fillCards(response.dataset);
+                    Toast(1, response.message, null);
                 } else {
-                    // Se presenta un mensaje de error cuando no existen datos para mostrar.
-                    document.getElementById('productos').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text">${response.exception}</span>`;
+                    Toast(2, response.exception, null);
                 }
             });
         } else {

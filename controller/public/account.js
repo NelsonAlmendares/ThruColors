@@ -86,6 +86,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
                 // Se asigna a la página web el contenido del pie.
                 document.querySelector('footer').innerHTML = footer;
+
+                //Se establece el carrito
+                let carrito = ''; 
+                if (response.session) {
+                    carrito = `
+                        <a href="../publico/carrito.html" class="carrito_link"><img src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito" alt=""></a>
+                    `;
+                } else {
+                    carrito = `                    
+                    
+                    `;                                                                                        
+                }
+                // Se asigna a la página web el contenido del pie.
+                document.getElementById('carrito').innerHTML = carrito;
                 // Se inicializa el componente Sidenav para que funcione la navegación lateral.
                 //M.Sidenav.init(document.querySelectorAll('.sidenav'));
                 // Se declara e inicializa un arreglo con los nombres de las imagenes que se pueden utilizar en el efecto parallax.
