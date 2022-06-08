@@ -27,30 +27,30 @@ function readOneProducto(id) {
             request.json().then(function (response) {
                 // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                 if (response.status) {
-                    // Se crean y concatenan las tarjetas con los datos de cada producto.
-                    let foto = '';
-                    foto += `
-                        <img src="${SERVER}imagenes/productos/${response.dataset.foto}" class="img-fluid meustra" alt="">
-                    `;
-                    let producto = '';
-                    producto += `
-                        <h2 class="titulo">${response.dataset.nombre}</h2>
-					    <h1 class="mt-3 precio">$${response.dataset.costo}</h1>
-					    <p class="desciption">${response.dataset.descripcion}</p>
-                    `;
-                    let marca = '';
-                    marca += `
-                        <p>${response.dataset.marca}</p>
-                    `;
-                    let presentacion = '';
-                    presentacion += `
-                        <p>${response.dataset.presentacion}</p>
-                    `;
+                    // Se crean y concatenan las tarjetas con los datos de cada producto.      
+                        let foto = '';
+                        foto += `
+                            <img src="${SERVER}imagenes/productos/${response.dataset.foto}" class="img-fluid meustra" alt="">
+                        `;
+                        let producto = '';
+                        producto += `
+                            <h2 class="titulo">${response.dataset.nombre}</h2>
+                            <h1 class="mt-3 precio">$${response.dataset.costo}</h1>
+                            <p class="desciption">${response.dataset.descripcion}</p>
+                        `;
+                        let marca = '';
+                        marca += `
+                            <p>${response.dataset.marca}</p>
+                        `;
+                        let presentacion = '';
+                        presentacion += `
+                            <p>${response.dataset.presentacion}</p>
+                        `;
 
-                    document.getElementById('img-container').innerHTML = foto;
-                    document.getElementById('producto-container').innerHTML = producto;
-                    document.getElementById('marca-container').innerHTML = marca;
-                    document.getElementById('presentacion-container').innerHTML = presentacion; 
+                        document.getElementById('img-container').innerHTML = foto;
+                        document.getElementById('producto-container').innerHTML = producto;
+                        document.getElementById('marca-container').innerHTML = marca;
+                        document.getElementById('presentacion-container').innerHTML = presentacion;                                       
                 } else {
                     // Se presenta un mensaje de error cuando no existen datos para mostrar.
                     document.getElementById('detalle-producto').innerHTML = `<i class="material-icons small">cloud_off</i><span class="red-text"> ${response.exception}</span>`;
@@ -112,31 +112,35 @@ function readProductosRelacionados(id, marca) {
                     response.dataset.map(function (row) {
                         url = `detalle_producto.html?id=${row.id}&marca=${row.marca}`;
                         // Se crean y concatenan las tarjetas con los datos de cada producto.
+                        if (id==row.id) {
+                            
+                    } else {
                         content += `                            
-                            <div class="col-md-4">
-									<div class="card">
-                                    <div class="img-container">
-                                        <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid"
-                                        alt="...">
-                                        <div class="overlay">
-                                        <div class="col">
-                                            <button type="button" class="btn btn-outline-danger btn-sm"> <a
-                                                href="${url}" class="card_link">ver más...</a> <i
-                                                class="bi bi-bag"></i></button>
+                                <div class="col-md-4">
+                                        <div class="card">
+                                        <div class="img-container">
+                                            <img src="${SERVER}imagenes/productos/${row.foto}" class="image card-img-top img-fluid"
+                                            alt="...">
+                                            <div class="overlay">
+                                            <div class="col">
+                                                <button type="button" class="btn btn-outline-danger btn-sm"> <a
+                                                    href="${url}" class="card_link">ver más...</a> <i
+                                                    class="bi bi-bag"></i></button>
+                                            </div>
+                                            </div>
                                         </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title text-center">${row.nombre}</h5>
+                                                <p class="card-description text-center">${row.descripcion} ${row.presentacion}</p>
+                                                <p class="card-price text-center">$${row.costo}</p>
+                                                <form action="" class="text-center">
+                                                <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title text-center">${row.nombre}</h5>
-                                            <p class="card-description text-center">${row.descripcion} ${row.presentacion}</p>
-                                            <p class="card-price text-center">$${row.costo}</p>
-                                            <form action="" class="text-center">
-                                            <!-- <a href="#" class="btn btn-outline-secondary cards">Go somewhere</a> -->
-                                            </form>
-                                        </div>
-									</div>
-								</div>
-                        `;
+                            `;
+                    }      
                     });
                     // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar los productos.
                     document.getElementById('productos').innerHTML = content;                    
