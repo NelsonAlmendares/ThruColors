@@ -15,16 +15,28 @@
                 case 'createDetail':
                     $_POST = $pedido->validateForm($_POST);
                     if(!$pedido->startOrder()){
-
+                        $result['exception'] = 'Ocurrio un problema al obtner pedido';
                     } elseif(!$pedido->setProducto($_POST['id_producto'])){
-
+                        $result['exception'] = 'Producto incorrecto';
+                    } elseif(!$pedido->setCantidad($_POST['cantidad'])){
+                        $result['exception'] = 'Cantidad incorrecta';
+                    } elseif(!$pedido->createDetail()){
+                        $result['status'] = 1;
+                        $result['message'] = 'Producto agregado correctamente';
                     } else{
-
+                        $result['exception'] = 'Ocurrió un problema al agregar el producto';
+                    }
+                break;
+                case 'readOrderDetail':
+                    if(!$pedido->startOrder()){
+                        $result['exception'] = 'Debe agregar un producto al carrito';
+                    } elseif(!$result['dataset'] = $pedido->readOrderDetail()){
+                        
                     }
                 break;
                 
                 default:
-                    # code...
+                    
                     break;
             }
         } else{
