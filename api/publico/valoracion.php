@@ -18,9 +18,25 @@
                     $result['exception'] = 'Valoracion no valida';
                 }
                 break;
-            case 'createRow':
-                    
+            case 'readValoracion':
+                if($result['dataset'] = $valoracion->valoracionBueno()){
+                    $result['status'] = 1;
+                } elseif(Database::getException()){
+                    $result['excption'] = Database::getException();
+                } else{
+                    $result['exception'] = 'Acción no valida';
+                }
             break;
+            case 'registerValoracion':
+                if($valoracion['dataset'] = $valoracion->registerValoracion){
+                    $result['status'] = 1;
+                } elseif(Database::getException()){
+                    $result['exception'] = Database::getException();
+                } else{
+                    $result['exception'] = 'Acción no valida';
+                }
+            break;
+
             default:
                 $result['exception'] = 'Acción no disponible';
                 break;

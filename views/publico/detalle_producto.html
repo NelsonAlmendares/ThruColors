@@ -62,18 +62,10 @@
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					</ul>
 					<form class="d-flex" id="search-form">
-<<<<<<< HEAD
-						<a href="../publico/carrito.html" class="carrito_link"><img
-								src="../../resources/iconos/icons8_basket_128px.png" class="img-fluid carrito"
-								alt=""></a>
-						<input class="form-control me-2" type="search" placeholder="Search" name="buscar"
-							aria-label="Search">
-=======
 						<div id="carrito">
               
 						</div>
 						<input class="form-control me-2" type="search" placeholder="Search" name="buscar" aria-label="Search">
->>>>>>> cb863847f633effa49083def87f360a5c8db6bb9
 						<button class="btn search btn-outline-secondary" type="submit">
 							<i class="bi bi-search"></i>
 						</button>
@@ -134,23 +126,29 @@
 				<div class="col-md-12 mt-3 zona-valoraciones">
 					<div class="valoracion">
 						<div class="row mt-3">
-							<form action="" method="post" name="valoracion" id="valoracion">
+							<form action="" method="post" name="register-valoracion" id="register-valoracion">
 								<div class="row">
 									<div class="col-md-4">
 										<h2 class="text-center mb-2">Valora este producto:</h2>
 									</div>
 									<div class="col-md-7">
-										<input class="form-control " type="text" placeholder="valoración">
+										<input class="form-control " type="text" name="valoracionText" id="valoracionText" placeholder="valoración">
 									</div>
 									<div class="col-md-1">
-										<button type="button" class="btn btn-info w-100"><i class="fa-solid fa-envelope-open-text"></i></button>
+										<button type="submit" class="btn btn-info w-100"><i class="fa-solid fa-envelope-open-text"></i></button>
 									</div>
 								</div>
 							</form>
 						</div>
 						<div class="row mt-3">
+							<div class="col-md-12">
+								<div class="fw-bold text-center mt-3 mb-2">
+									<h3 class="pb-3">Valoracion</h3>
+								</div>
+							</div>
 							<div class="valoracion">
 								<div class="row" id="valoraciones"></div>
+								<div class="badge"></div>
 							</div>
 						</div>
 					</div>
@@ -159,7 +157,6 @@
 				<div class="col-md-12">
 					<h3 class="relationated_products">Productos relacionados</h3>
 					<div class="container p-4">
-						<div class="mensaje"></div>
 						<div class="row" id="productos">
 						</div>
 					</div>
@@ -181,12 +178,7 @@
 
 	<script src="../../js/publico/detalle.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-		crossorigin="anonymous"></script>
+	<script src="../../js/bootstrap.min.js"></script>
 
 	<!--Index.js -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

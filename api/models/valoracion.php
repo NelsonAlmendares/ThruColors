@@ -44,7 +44,12 @@
     }
 
     public function readAll(){
-        $sql = 'SELECT id_valoracion AS ID, comentario_producto AS comentario, fecha_comentario AS fecha FROM public."tb_valoracionProducto" ORDER BY fecha_comentario';
+        $sql = 'SELECT nombre_cliente AS nombre, apellido_cliente AS apellido ,nombre_producto AS producto, comentario_producto AS comentario, fecha_comentario AS fecha
+            FROM tb_ventas tv
+            INNER JOIN tb_producto tp ON tp.id_producto = tv.id_producto
+            INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+            INNER JOIN "tb_valoracionProducto" tvp ON tv.id_valoracion = tvp.id_valoracion
+            ORDER BY fecha_comentario';
         $params = null;
         return Database::getRows($sql, $params);
     }
@@ -56,7 +61,20 @@
         $params = array($this->comentario);
         return Database::executeRow($sql, $params);
     }
-    
+
+    public function valoracionBueno(){
+        $sql = 'select count(comentario_producto) from public."tb_valoracionProducto" WHERE comentario_producto LIKE = ? OR comentario_producto LIKE = ? ';
+        $params = array("%Bueno%", "%buen%");
+        return Database::getRows($sql, $params);
+    }
+
+    public function registerValoracion(){
+        $sql = 'INSERT INTO public."tb_valoracionProducto"(
+	        comentario_producto, fecha_comentario)
+	        VALUES (?, CURRENT_DATE)';
+        $params = array($this->comentario);
+        return Database::executeRow($sql, $params);
+    }
 
     }
 ?>

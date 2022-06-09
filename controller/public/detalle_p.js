@@ -173,6 +173,43 @@ function readValoracions(){
     });
 }
 
+//Fucnion para registrar una valoracion
+document.getElementById('register-valoracion').addEventListener('submit',function(event){
+    event.preventDefault();
+    fetch(API_VALORACIONES + "registerValoracion", {
+      method: "post",
+      body: new FormData(document.getElementById("register-valoracion")),
+    }).then(function (request) {
+      if (request.ok) {
+        request.json().then(function (response) {
+          if (response.status) {
+            sweetAlert(1, response.message, 'productos.html');
+          } else {
+            sweetAlert(2, response.exception, null);
+          }
+        });
+      } else {
+        console.log(request.status + " " + request.statusText);
+      }
+    });
+});
+
+function fillBadge(dataset){
+    fetch(API_VALORACIONES + 'readValoracion', {
+        method: post
+    }).then(function (request){
+        if(request.ok){
+            request.json().then(function (response){
+                if(response.status){
+                    fillBadgeValoracion(response.dataset);
+                } else{
+                    console.log(request.status + " " + request.statusText);
+                }
+            });
+        }
+    });
+}
+
 function fillValoraciones(dataset){
     let content = '';
 
@@ -181,15 +218,37 @@ function fillValoraciones(dataset){
         <ol class="list-group ">
             <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                <div class="fw-bold">Valoracion</div>
-                ${row.comentario}
-                <div class="">
-                    <p>${row.fecha}</p>
-                </div>
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
+                <row class="">
+                    <div classs = "col-md-6">
+                        <h5 class="mt-2">Cliente:</h5>
+                            ${row.nombre} ${row.apellido}
+                            <div class="">
+                                <h5 class="text-bold mt-3">Producto</h5>
+                                <p>${row.producto}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <h5 class="mt-2">Fecha de Valoración:</h5>
+                        <p>${row.fecha}</p>
+
+                        <div class="">
+                        <h5>Comentario del cliente:</h5>
+                            <p>${row.comentario}</p>
+                        </div>
+                    </div
+                </row>
             </li>
         </ol>`;
     });
     document.getElementById('valoraciones').innerHTML = content;
+}
+
+function fillBadgeValoracion(){
+    let content = '';
+
+    dataset.map(function (row){
+        content = `<span class="badge bg-primary rounded-pill">${row.comentario}</span>`;
+    });
+    document.getElementById('badge').innerHTML = content;
 }
