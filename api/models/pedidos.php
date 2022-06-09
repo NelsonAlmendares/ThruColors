@@ -84,7 +84,7 @@
         if($data = Database::getRow($sql, $params)){
             $this->id_pedido = $data['id_pedido'];
         } else{
-            $sql = '';
+            $sql = 'INSERT INTO tb_ventas()';
         }
     }
 
