@@ -29,7 +29,7 @@ function fillTable(dataset) {
                             <td class="contenido">${row.tipoEmpleado}</td>
                             <td class="contenido">
                                 <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_tipoEmpleado})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn-eliminar" onclick="openDelete(${row.id_tipoEmpleado})" data-swal-toast-template="#my-template"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn-eliminar" onclick="openDelete(${row.id_tipoEmpleado})"><i class="fa-solid fa-trash"></i></button>
                                 </a>
                             </td>
                         </tr>          

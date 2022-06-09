@@ -112,7 +112,7 @@ function saveRow(api, action, form) {
 *   Retorno: ninguno.
 */
 function confirmDelete(api, data) {
-    Swal.mixin({
+    Swal.fire({
         toast: true,
         title: 'Advertencia',
         text: '¿Desea eliminar el registro?',
@@ -120,11 +120,8 @@ function confirmDelete(api, data) {
         showCancelButton: true,
         confirmButtonText: 'Si',
         cancelButtonText: 'No',
-        reverseButtons: true,
-        closeOnClickOutside: false,
-        closeOnEsc: false,
-        
-    }).bindClickHandler('data-swal-toast-template').then((result) => {
+        reverseButtons: true
+        }).then((result) => {
         // Se comprueba si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
         if (result.isConfirmed) {
             fetch(api + 'delete', {
@@ -138,9 +135,10 @@ function confirmDelete(api, data) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro y se muestra un mensaje de éxito.
-                            readRows(api);
+                            
                             sweetAlert(1, response.message, null);
                             location.reload();
+                            readRows(api);
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
@@ -202,10 +200,6 @@ function sweetAlert(type, text, url) {
         });
     }
 }
-
-const blindHanddler = Swal.mixin({
-    toast: true,
-    }).bindClickHandler('data-swal-toast-template')    
 
 const ToastS = Swal.mixin({
     toast: true,
