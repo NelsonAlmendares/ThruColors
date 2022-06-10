@@ -63,9 +63,10 @@
 					</ul>
 					<form class="d-flex" id="search-form">
 						<div id="carrito">
-              
+
 						</div>
-						<input class="form-control me-2" type="search" placeholder="Search" name="buscar" aria-label="Search">
+						<input class="form-control me-2" type="search" placeholder="Search" name="buscar"
+							aria-label="Search">
 						<button class="btn search btn-outline-secondary" type="submit">
 							<i class="bi bi-search"></i>
 						</button>
@@ -85,26 +86,23 @@
 				<div class="col-md-7 mt-3">
 					<div id="producto-container"></div>
 					<div class="row">
-						<div class="col-md-3 counter">
-							<div class="row">
-								<div class="col">
-									<a class="btn incremento" id="disminuye" href="#"> <i class="fa-solid fa-minus"></i>
-									</a>
-								</div>
-								<div class="col">
-									<div class="texto">
-										<label id="display">1</label>
+						<!-- Formulario para agregar el producto al carrito de compras -->
+						<form class="row" method="post" id="carrito-form">
+							<div class="col-md-3 counter">
+								<div class="row">
+									<!-- Campo oculto para asignar el id del producto -->
+									<input type="hidden" id="id_producto" name="id_producto">
+									<div class="input-field col s12 m6">
+										<label for="cantidad">Cantidad:</label>
+										<input type="number" class="form-control" id="cantidad_producto"
+											name="cantidad_producto" step="000" placeholder="1" min="1" required />
 									</div>
 								</div>
-								<div class="col">
-									<a class="btn incremento" id="incrementa" href="#"> <i class="fa-solid fa-plus"></i>
-									</a>
-								</div>
 							</div>
-						</div>
-						<div class="col-md-9 counter">
-							<button type="button" class="btn btn-outline-primary enviar">Añadir al carrito</button>
-						</div>
+							<div class="col-md-9 counter">
+								<button type="submit" class="btn btn-outline-primary enviar">Añadir al carrito</button>
+							</div>
+						</form>
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -132,10 +130,12 @@
 										<h2 class="text-center mb-2">Valora este producto:</h2>
 									</div>
 									<div class="col-md-7">
-										<input class="form-control " type="text" name="valoracionText" id="valoracionText" placeholder="valoración">
+										<input class="form-control " type="text" name="valoracionText"
+											id="valoracionText" placeholder="valoración">
 									</div>
 									<div class="col-md-1">
-										<button type="submit" class="btn btn-info w-100"><i class="fa-solid fa-envelope-open-text"></i></button>
+										<button type="submit" class="btn btn-info w-100"><i
+												class="fa-solid fa-envelope-open-text"></i></button>
 									</div>
 								</div>
 							</form>
@@ -173,8 +173,6 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 	<script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
-
-	<script src="../../js/publico/counter.js"></script>
 
 	<script src="../../js/publico/detalle.js"></script>
 
