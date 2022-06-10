@@ -14,50 +14,61 @@
 </head>
 
 <body>
-    
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form action="#" class="" method="post">
-                    <h2 class="title">Registrarse</h2>
-                    <div class="inputs">
-                        <div class="lado1">
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Nombre" />
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <form autocomplete="off" id="register-form" name="register-form" class="form-control" method="post">
+                        <h2 class="title">Registrarse</h2>
+                        <div class="inputs">
+                            <div class="lado1">
+                                <div class="input-field">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input id="nombre" name="nombre" type="text" placeholder="Nombre" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input id="correo" name="correo" type="email" placeholder="Correo" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="text" id="celular" id="celular" placeholder="Teléfono" />
+                                </div>
+                                <div class="input-field file-select" id="src-file1">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="file" />
+                                </div>
                             </div>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Correo" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-phone"></i>
-                                <input type="text" placeholder="Teléfono" />
-                            </div>
-                            <div class="input-field file-select" id="src-file1">
-                                <i class="fas fa-lock"></i>
-                                <input type="file" />
+                            <div class="lado2">
+                                <div class="input-field">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-home"></i>
+                                    <input type="text" id="direccion" name="direccion" placeholder="Dirección" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="clave" name="clave" placeholder="Contraseña" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="confirmar_clave" name="confirmar_clave" placeholder="Confirmar Contraseña" />
+                                </div>
                             </div>
                         </div>
-                        <div class="lado2">
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="email" placeholder="Apellido" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-home"></i>
-                                <input type="text" placeholder="Dirección" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="text" placeholder="Contraseña" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="text" placeholder="Confirmar Contraseña" />
-                            </div>
+                        <label class="col s12 center-align">
+                            <input type="checkbox" id="condicion" name="condicion" required>
+                            <span>Acepto <a href="#" class="modal-trigger">términos y condiciones</a></span>
+                        </label>
+                        <div class="contain">
+                            <button type="submit" id="register" class="btn">Registrarte</button>
                         </div>
                     </form>
+
+                    <script src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
                 </div>
             </div>
             <div class="panels-container">
@@ -75,13 +86,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/7cef28abfd.js" crossorigin="anonymous"></script>
     <!-- Sweetalert  -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
-     <!-- Js del sitio -->
-     <script src="../../controller/components.js"></script>
-     <script src="../../controller/publico//registroC.js"></script>   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Js del sitio -->
+    <script src="../../controller/components.js"></script>
+    <!-- <script src="../../controller/public/account.js"></script> -->
+    <script src="../../controller/public/sing-up.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ class Clientes extends Validator
     private $email_cliente = null;
     private $clave = null;
     private $estado_cliente = null;
-    private $ruta = '../imagenes/empleados/';
+    private $ruta = '../imagenes/clientes/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -125,7 +125,7 @@ class Clientes extends Validator
 
     public function getApellido_c()
     {
-        return $this->apellidos_cliente;
+        return $this->apellido_cliente;
     }
 
     public function getCelular_c()
@@ -170,10 +170,11 @@ class Clientes extends Validator
     /*-------------Método para proporcionar el id del empleado.-------------*/
     public function checkUser($email_cliente)
     {
-        $sql = 'SELECT id_cliente FROM tb_cliente WHERE email_cliente = ?';
+        $sql = 'SELECT id_cliente, estado_cliente FROM tb_cliente WHERE email_cliente = ?';
         $params = array($email_cliente);
         if ($data = Database::getRow($sql, $params)) {
             $this->id_cliente = $data['id_cliente'];
+            $this->estado_cliente = $data['estado_cliente'];
             $this->email_cliente = $email_cliente;
             return true;
         } else {
@@ -181,16 +182,17 @@ class Clientes extends Validator
         }
     }
 
-    /*-------------Método para proporcionar el nombre y foto del empleado.-------------*/
+    /*-------------Método para proporcionar el nombre y foto del cliente.-------------*/
     public function readUserName($email_cliente)
     {
-        $sql = 'SELECT nombre_cliente, foto_cliente
+        $sql = 'SELECT nombre_cliente, apellido_cliente, foto_cliente
                 FROM tb_cliente
                 WHERE email_cliente = ?';
         $params = array($this->email_cliente);
         if ($data = Database::getRow($sql, $params)) {
             $this->nombre_cliente = $data['nombre_cliente'];
             $this->foto_cliente = $data['foto_cliente'];
+            $this->apellido_cliente = $data['apellido_cliente'];
             $this->email_cliente = $email_cliente;
             return true;
         } else {
@@ -198,7 +200,7 @@ class Clientes extends Validator
         }
     }
 
-    /*-------------Método para proporcionar el rol o estado de empleado.-------------*/
+    /*-------------Método para proporcionar el rol o estado de cliente.-------------*/
     public function readUserRol($email_cliente)
     {
         $sql = 'SELECT te."tipoEmpleado" 
@@ -216,11 +218,11 @@ class Clientes extends Validator
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT password_cliente FROM tb_cliente WHERE id_cliente = ?';
+        $sql = 'SELECT password FROM tb_cliente WHERE id_cliente = ?';
         $params = array($this->id_cliente);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['password_cliente'])) {
+        if (password_verify($password, $data['password'])) {
             return true;
         } else {
             return false;
@@ -236,7 +238,7 @@ class Clientes extends Validator
 
     public function readProfile()
     {
-        $sql = 'SELECT id_cliente, nombres_cliente, apellido_cliente, "DUI", direccion_cliente, email_cliente, estado_cliente, foto_cliente
+        $sql = 'SELECT id_cliente, nombre_cliente, apellido_cliente, "DUI", direccion_cliente, email_cliente, estado_cliente, foto_cliente
                 FROM tb_cliente
                 WHERE id_cliente = ?';
         $params = array($_SESSION['id_cliente']);

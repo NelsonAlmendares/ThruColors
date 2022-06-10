@@ -488,3 +488,7 @@ header.abajo .breadcrumb li a{
 .loader2{
   clip-path: circle(0% at 100% 100%);
 }
+
+.fa-envelope-open-text{
+  color: var(--banner1);
+}

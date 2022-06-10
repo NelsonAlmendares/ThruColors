@@ -1,0 +1,862 @@
+[33mcommit 5c1e1166c32e959f530b10cc9ef7297b1c61b02a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Mon May 23 17:31:47 2022 -0600
+
+    Diseños mejorados
+
+[33mcommit 3fb6acd6879dc708cce4e6d9b794da0f30c87777[m
+Author: NelsonAlmendares <Nelsonjosealmendares1999@gmail.com>
+Date:   Fri May 20 14:29:15 2022 -0600
+
+    Trabajo rical
+
+[33mcommit f1078b906578a7b3534beb6584c0ab0e4cefa797[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 20 02:25:39 2022 -0600
+
+    Actualiza la base
+    
+    Se actualiza nuevamente la base dde datos
+
+[33mcommit 6bc0a21b98614f194d9bcc78a9cea667bfed7ba4[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 20 02:25:01 2022 -0600
+
+    Comienzo CRUD ventas
+    
+    Se empieza el CRUD ventas
+
+[33mcommit ed54631cd655c83c236a6699b22c63e2bd8b61ff[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 20 01:23:22 2022 -0600
+
+    Actualizano datos
+    
+    Actualización de datos
+
+[33mcommit 38f8c655f8fa74c9cfdbc5bd76a38601691cf5a5[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 20 00:49:09 2022 -0600
+
+    Subiendo cambios
+    
+    Subiendo cambios a clientes
+
+[33mcommit 668a9b8b16c1ac400aeda41ce8234506b47357f8[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 20 00:47:59 2022 -0600
+
+    CRUD clientes
+    
+    El crud de clientes queda finalizado
+
+[33mcommit 3351505384893a9a414721d181952f77c6170741[m
+Merge: 79d3449 a70c3c1
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Thu May 19 23:19:54 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 79d3449a95aa7e644f9e4f0b4203db8f367e8212[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Thu May 19 23:19:52 2022 -0600
+
+    "Funcionamiento al 100% de marca":b
+
+[33mcommit a70c3c18505bb41ea0cb80136b4f3c81d347b73c[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 22:42:59 2022 -0600
+
+    CRUD producto terminado
+    
+    CRUD de producto terminado
+
+[33mcommit 3c3b2b1ebdded0619cc815d55292f6cfc2b638f2[m
+Merge: d33c81b f771da7
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 20:50:03 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit d33c81ba3242639c61daa0483fefddd97a9bbb90[m
+Merge: 03f3e07 1ec853e
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 20:49:03 2022 -0600
+
+    Merge branch 'diego'
+
+[33mcommit 1ec853e1a07e0192f97731667900c21154ecf5c0[m
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 20:48:34 2022 -0600
+
+    agregue datos al controlador
+
+[33mcommit f771da7f3e18a8c62a216e47c679260231220f18[m
+Merge: 42ce38f 03f3e07
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Thu May 19 20:43:33 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 42ce38fad14448b4defe574ac4523c9fec861839[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Thu May 19 20:42:25 2022 -0600
+
+    70% en funcion de marca
+
+[33mcommit e863b6678349ce502fa24a2eea8b5173bf44c74f[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Thu May 19 20:40:00 2022 -0600
+
+    Marca a un 70% en funcionamiento
+
+[33mcommit 03f3e078cc7df83509e42549aa981166d14e6a49[m
+Merge: b7db919 bad3263
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 19:51:28 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit b7db919f01385ea2dba1bfafbd02d5b60acd731b[m
+Merge: 110c24e 1caa931
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 19:46:18 2022 -0600
+
+    agrege api cliente
+
+[33mcommit 1caa93133c6070fc93e419e7dbd1a0564c84ae1d[m
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 19:42:32 2022 -0600
+
+    finalice el codigo en la api
+
+[33mcommit 9e9775820f712502603e0b4e77e58c6c7e5fedfc[m
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 19:20:07 2022 -0600
+
+    agrege el api mas modificar el modal de cliente
+
+[33mcommit bad3263dda0ad71844bb74457202864998797a34[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 18:45:20 2022 -0600
+
+    Se actualiza la base de datos
+    
+    Se actualiza la base de datos
+
+[33mcommit be952878fd41f5c850b5b6578381cd6c25dcd1fe[m
+Author: AndresLB0 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 15:49:53 2022 -0600
+
+    Avances de productos
+    
+    Se avanza el CRUD de productos
+
+[33mcommit 42a3721b26014dab0ce7738e10788de5ed5f5bb9[m
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 13:26:23 2022 -0600
+
+    Actualizacion de la base
+    
+    Se actualiza la base de datos
+
+[33mcommit 3c3ab93385cb26a5314a76a82b0ba81a2e1897bd[m
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 11:37:47 2022 -0600
+
+    Arreglando productos
+    
+    Se va arreglando el SCRUD productos
+
+[33mcommit b4c49ec82288faae3803d4fc456fc6fa3327645b[m
+Merge: 110c24e a34958d
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 09:47:14 2022 -0600
+
+    Merge pull request #22 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit a34958d2daa5a22696c81ce79cabc6334d52bf79[m
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 09:44:16 2022 -0600
+
+    arreglo a la clase validator
+    
+    Se le agregan caracteres especiales a la clase que valida da direccion
+
+[33mcommit 110c24ee7f89f6947c05858a9e5687d350d5b8b1[m
+Merge: 0e53f13 aad3777
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 09:06:36 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 0e53f135107faa0348d305d0db999fea7ea6b2e7[m
+Author: Diego A. Cruz <dalvaradocruz34@gmail.com>
+Date:   Thu May 19 09:03:30 2022 -0600
+
+    creeel modelo cliente y actualice la vista
+
+[33mcommit 5708ad27b35b46a30cc56a124f15085eecdf4efe[m
+Merge: 09da3ef aad3777
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 00:03:03 2022 -0600
+
+    Merge pull request #21 from NelsonAlmendares/master
+    
+    Cambios de master a ElmerBranch
+
+[33mcommit aad3777e09a3076fa39fd12be9b5277caa504b7a[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 19 00:01:56 2022 -0600
+
+    Empezando SCRUD productos
+    
+    Se empieza el SCRUD de productos, se deja a medias
+
+[33mcommit 28bca39ce1db6f65cef06cf89d18ae2f0addae13[m
+Merge: e7a3026 09da3ef
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 23:09:33 2022 -0600
+
+    Merge pull request #20 from NelsonAlmendares/Elmerbranch
+    
+    Merge pull request #19 from NelsonAlmendares/master
+
+[33mcommit 09da3ef99d476f5fd1467835aa35c5dc0b7b5776[m
+Merge: 5a7cd70 e7a3026
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 23:09:01 2022 -0600
+
+    Merge pull request #19 from NelsonAlmendares/master
+    
+    Arreglando ElmerBranch
+
+[33mcommit e7a3026fe3b2b1f22beeb0d4ab427cce817d26fb[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 23:08:17 2022 -0600
+
+    SCRUD categorias listo
+    
+    Se termina el SCRUD de categorias
+
+[33mcommit dbeba3434f77ab58c86c4628ef9e53a507194f02[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Wed May 18 22:24:11 2022 -0600
+
+    Crud marca arreglada
+
+[33mcommit 753ef7c590cf68e324a1898235e67caaa93e5ce6[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Wed May 18 20:34:58 2022 -0600
+
+    Marca casi completo
+
+[33mcommit 77077962666f13860c11bd71c0920654ffb30c9a[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Wed May 18 20:00:18 2022 -0600
+
+    Crud de marca
+
+[33mcommit 8af7d8f93ea12a9aefa0689993e9f4f29ad535f5[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Wed May 18 17:18:56 2022 -0600
+
+    Modes modificado de marca
+
+[33mcommit befa71e5a6f8972880e4f78e28d57fac48e9aef8[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Wed May 18 16:04:02 2022 -0600
+
+    Editando css de las vistas
+
+[33mcommit a02fa9d104d26f0b73cc91e1fdc6da0d15fb90a9[m
+Merge: eaf3d73 5a7cd70
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 14:47:01 2022 -0600
+
+    Merge pull request #18 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit 5a7cd707fe7b899a670b6c215168a3530edd314f[m
+Merge: 074aaa3 eaf3d73
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 14:45:20 2022 -0600
+
+    Merge pull request #17 from NelsonAlmendares/master
+    
+    Elmerbranch
+
+[33mcommit eaf3d7313d5bbbb72c2f291dde7cd0e18901b17f[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 14:44:14 2022 -0600
+
+    Arreglando datos
+    
+    Se arreglando el sitio
+
+[33mcommit 7b3b2a808888e55c1b47566e97cf7523ba6a4872[m
+Merge: 864a1fd 7bceb3d
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Wed May 18 14:14:36 2022 -0600
+
+    subida de datos
+
+[33mcommit 864a1fd14bece697e07f7c4867a33d76cd901f62[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Wed May 18 14:10:18 2022 -0600
+
+    trabajo
+
+[33mcommit 074aaa310942dbcc4640f7674146531278e91659[m
+Merge: cfd2375 7bceb3d
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 00:39:34 2022 -0600
+
+    Merge pull request #16 from NelsonAlmendares/master
+    
+    se juntas las ramas
+
+[33mcommit 7bceb3dd28b4495118b96589841c861ce66cf85a[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 00:38:41 2022 -0600
+
+    Se arregla tipo empleado
+    
+    Se arregla tipo empleado
+
+[33mcommit f44a1b9069a820ad2910c94acc82525e2a3f7f39[m
+Merge: 8c3ce75 cfd2375
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 00:17:44 2022 -0600
+
+    Merge pull request #15 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit cfd23756517d73b98134123fd2edbe8370bcb2c9[m
+Merge: 1060cb3 0c23cd9
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 00:17:16 2022 -0600
+
+    Merge branch 'Elmerbranch' of https://github.com/NelsonAlmendares/ThruColors into Elmerbranch
+
+[33mcommit 1060cb3ee5a7ef19b82f4067fca2989fe40d7d66[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 18 00:09:25 2022 -0600
+
+    SCRUD de tipo empleado terminado
+    
+    Se termina el SCRU de empleado y tipo empleado
+
+[33mcommit 8c3ce7556193d7474f701b41c8a57adafae7e280[m
+Merge: 34f058f 48e9b7a
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Tue May 17 21:10:42 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 34f058fb251bc7864f721f4c2cf364577f9b7554[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Tue May 17 21:10:38 2022 -0600
+
+    Modelo de Marca y tipo empleado
+
+[33mcommit 3749089c3b3ea0fd79cc1be8fd836daa154c7e4c[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Tue May 17 21:07:31 2022 -0600
+
+    M
+
+[33mcommit 48e9b7a20c99e0ec4d5ed7366ec943b1322fb3f5[m
+Merge: 0bb895a 0c23cd9
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 20:38:55 2022 -0600
+
+    Merge pull request #14 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit 0c23cd9f706e330242b9c232c16a596b552d0efa[m
+Merge: 0cad0d4 0bb895a
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 20:38:21 2022 -0600
+
+    Merge branch 'master' into Elmerbranch
+
+[33mcommit 0cad0d4346393c2118d6eac424534a8a33a58678[m
+Merge: f0d329c 8e29e77
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 20:35:37 2022 -0600
+
+    Merge branch 'Elmerbranch' of https://github.com/NelsonAlmendares/ThruColors into Elmerbranch
+
+[33mcommit f0d329c887e9a429dfc1a70a246f30ce708455d8[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 20:30:48 2022 -0600
+
+    CRUD de Empleados terminado
+    
+    CRUD de empleado
+
+[33mcommit 0bb895a96126f07bdce3daa21a4712af014bbc7b[m
+Merge: a33156f f958dc3
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Tue May 17 18:52:06 2022 -0600
+
+    actualizacion de datos de la master
+
+[33mcommit a33156f0b61afdabe7519a3b23a9ad2cae59d805[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Tue May 17 18:50:25 2022 -0600
+
+    trabajo Nelson
+
+[33mcommit f958dc33d022caf92488e30f1e9ecd2c9eeac0e6[m
+Merge: 2868c68 8e29e77
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 00:22:52 2022 -0600
+
+    Merge pull request #13 from NelsonAlmendares/Elmerbranch
+    
+    Función de Create empleados
+
+[33mcommit 8e29e77bd329550a843a2ac109399a4ab0ca653f[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 17 00:21:22 2022 -0600
+
+    Función de Create empleados
+    
+    Ya se puedden crear empleados desde el sitio, y se agregaron archivos utiles
+
+[33mcommit 2868c683b8e5c02278409707803e86efa7055c59[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Mon May 16 21:58:25 2022 -0600
+
+    Modificacion de marca y tipo empleado
+
+[33mcommit 92ac962957e2b305f20f06ae5ed42a05c07b673e[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Mon May 16 21:55:04 2022 -0600
+
+    Modificacion de Marca y Tipo empleado
+
+[33mcommit 9cf645f4efd2e0a88f3437680a7f8a1ad05afe19[m
+Merge: 5786935 262b931
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Mon May 16 21:53:45 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 5786935cf9039bb020cb00507e276ac506c6f5aa[m
+Author: 112danilo12 <danilodz102@gmail.com>
+Date:   Mon May 16 21:50:38 2022 -0600
+
+    Arreglos del htlm de Marca y Tipo empleadp
+
+[33mcommit 262b93181efaff011c901f2061c21e4f9033064d[m
+Merge: fa4c076 6d13298
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Mon May 16 01:01:19 2022 -0600
+
+    Merge pull request #12 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit 6d13298dd8fa285275739a92a333f4ed97bd476f[m
+Merge: ed5ec41 2fc1b6c
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Mon May 16 01:01:03 2022 -0600
+
+    Merge branch 'Elmerbranch' of https://github.com/NelsonAlmendares/ThruColors into Elmerbranch
+
+[33mcommit ed5ec41a04960cf48773143d21106e4b19d1c69b[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Mon May 16 00:57:31 2022 -0600
+
+    Programación de LogIn
+    
+    Se hace mostrar el nombre, rol e imagen del empleado que inicio sesión
+
+[33mcommit fa4c0765bd6ea1d3b7d69cd3a46ca20971421aab[m
+Merge: 71328b5 2fc1b6c
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 15:19:08 2022 -0600
+
+    Merge pull request #11 from NelsonAlmendares/Elmerbranch
+    
+    Arreglando mal entendidos
+
+[33mcommit 2fc1b6c8745af2e93a7844bc38329f6926a0b806[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 15:18:45 2022 -0600
+
+    Arreglando mal entendidos
+    
+    por un mal entendido, se crearon archivos innecesarios.
+
+[33mcommit 71328b55e3f546f45a8b87e51d5fa26f19ffa6d4[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 15:16:51 2022 -0600
+
+    cambio de carpetas
+    
+    Por  una confusión, se crearon dos carpetas sin haber querido.
+
+[33mcommit 86b8f6a30457e0220e83f2718d3211f7358a344e[m
+Merge: 05c58a1 a0cf0a5
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 14:18:51 2022 -0600
+
+    Merge pull request #10 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit a0cf0a52194265f54ee1dde0ef30030ce52f85a6[m
+Merge: 0af93a7 05c58a1
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 14:18:23 2022 -0600
+
+    Merge branch 'master' into Elmerbranch
+
+[33mcommit 0af93a718d728854f63ca3297a46923523209ee3[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Sun May 15 14:10:22 2022 -0600
+
+    Primer uso terminado
+    
+    Se termina el  formulario de primer uso terminado
+
+[33mcommit 05c58a1345716a17f5a8d3fbc5ef860da47699b5[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sat May 14 21:01:22 2022 -0600
+
+    Actualizacion de datos
+
+[33mcommit b767cc179d7e9e8b495ab31fa9d85927ce7ef836[m
+Author: Yeck-Sang <elmer.carias55@gmail.com>
+Date:   Fri May 13 15:47:25 2022 -0600
+
+    Se agregar foto
+    
+    Se agrega el campo foto a la base y al primer uso
+
+[33mcommit 3fb33fe0faa4ee08a256f1ed58f9699b7b6ce354[m
+Merge: 9d95b52 51d12b7
+Author: AndresLB0 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 13 11:41:31 2022 -0600
+
+    Merge branch 'Elmerbranch' of https://github.com/NelsonAlmendares/ThruColors into Elmerbranch
+
+[33mcommit 9d95b52c96a9c14a7b3ac72f6bb97a5812afa87c[m
+Author: AndresLB0 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 13 11:40:37 2022 -0600
+
+    Cerrar sesion
+    
+    Se termina el de cerrar sesion
+
+[33mcommit bf6e922ebeaad665eefae1a74494e8051883f1f8[m
+Author: NelsonAlmendares <Nelsonjosealmendares1999@gmail.com>
+Date:   Fri May 13 11:33:49 2022 -0600
+
+    Trabajo Nelson
+
+[33mcommit 8ff70bd5acea71e7bbad9d2c4bfdd5dfae661344[m
+Merge: a8d6f5d 51d12b7
+Author: Elmer Carias <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 13 09:32:52 2022 -0600
+
+    Merge pull request #9 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit 51d12b72cb9defbdf140e6d0ac188becd3c1b6f4[m
+Merge: cbfe873 a8d6f5d
+Author: AndresLB0 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 13 09:32:15 2022 -0600
+
+    Merge branch 'master' into Elmerbranch
+
+[33mcommit cbfe873f5aab320878336021ed113a69cc6d9279[m
+Author: AndresLB0 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri May 13 09:21:50 2022 -0600
+
+    Login y primer uso finish
+    
+    Se termina el Login y el primer uso, funcionales al 100%
+
+[33mcommit a8d6f5dc51ef5ed0fcc6773954254c3135dcdec2[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Thu May 12 22:12:26 2022 -0600
+
+    Actualizacion de prooductos
+
+[33mcommit c402d22bb047b2bab3c11c9c1094070cc3048fd3[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 12 21:56:19 2022 -0600
+
+    Continuacion del Login y Primer uso
+    
+    Se continua el desarrollo del LogIn y Primer uso, pero tiene un error.
+
+[33mcommit 948d88a882e2781646e1e821b4cc1709b3fe9bf7[m
+Merge: 691e112 2fa3090
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Thu May 12 01:02:07 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 691e1128626e45bf7e518fed711db24b4ec78588[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Thu May 12 01:01:17 2022 -0600
+
+    trabajo Nelson
+
+[33mcommit 2fa30906503b983c9bb0766c1c9b19b8f4a55d0d[m
+Merge: ca40bc5 1e0c4b6
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 10 15:32:07 2022 -0600
+
+    Merge branch 'Elmerbranch'
+
+[33mcommit 1e0c4b630478b7078db8a91c95db2f2b3b872d19[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Tue May 10 15:26:36 2022 -0600
+
+    Login y primer usuario a medias
+    
+    Se crea el Login, se crea la coneción con la base de datos, pero no se termina por completo el primer usuario
+
+[33mcommit ca40bc5e272408b7d70de31cc4a586a078ee988d[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Mon May 9 08:22:44 2022 -0600
+
+    Actualizacion de datos
+
+[33mcommit f277e98ddad0fbc55de48d0d3e2dba4fe0e890bb[m
+Merge: d1b9b73 93f0f0b
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 8 09:22:30 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit d1b9b732fd458c0598634c3632d6f510a12ba645[m
+Merge: 1f2f5ee 3a658b8
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 8 09:15:43 2022 -0600
+
+    Actualizacion de datos Nelson
+
+[33mcommit 93f0f0bbb41a264d27dbd0e72bababd2a6b2ed8a[m
+Author: NelsonAlmendares <Nelsonjosealmendares1999@gmail.com>
+Date:   Fri May 6 11:40:15 2022 -0600
+
+    Trabajo rical
+
+[33mcommit 883014c6fbe89f18a7890251d92f8204f82b3a6d[m
+Merge: 1f2f5ee 3a658b8
+Author: NelsonAlmendares <Nelsonjosealmendares1999@gmail.com>
+Date:   Fri May 6 07:27:48 2022 -0600
+
+    Prueba
+
+[33mcommit 1f2f5ee142f830bb9ef1d689b094935da503058b[m
+Author: RoiHdz <rodrigophernandez@hotmail.com>
+Date:   Thu May 5 15:40:39 2022 -0600
+
+    trabajo Rical
+
+[33mcommit 3a658b89a89e450b4581cc9456b4845d91fb4ec0[m
+Merge: 1df2194 bed4f5e
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 15:40:12 2022 -0600
+
+    Merge pull request #7 from NelsonAlmendares/Elmerbranch
+    
+    afinar detalles
+
+[33mcommit bed4f5e21d04179b00e978c9e0aeab2b15ffa468[m
+Author: yorkie0067 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 15:37:15 2022 -0600
+
+    afinar detalles
+    
+    se agrega el login.js y se termina de colocar bien todas las direcciones
+
+[33mcommit 1df2194a95a025f97057ce12979ce664fb128b02[m
+Merge: 6a36232 4b00636
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 15:28:39 2022 -0600
+
+    Merge pull request #6 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch hacia master
+
+[33mcommit 4b00636736d7fd6a9a6a4ad25cbbe661ec6a20c9[m
+Author: yorkie0067 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 15:26:17 2022 -0600
+
+    login terminado
+    
+    se crea el login y se deja terminado
+
+[33mcommit 898159248a6f5588ab26562511a2a3171dba13fe[m
+Merge: ab77246 6a36232
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 13:28:21 2022 -0600
+
+    Merge pull request #5 from NelsonAlmendares/master
+    
+    master a Elmer
+
+[33mcommit 6a362324926f0685e55a8b545ea29e41f40c60c0[m
+Author: yorkie0067 <46569528+KarmeYT@users.noreply.github.com>
+Date:   Thu May 5 12:56:00 2022 -0600
+
+    creación de inicio.html
+    
+    Se copio en index y se le cambio el nombre a "inicio.html"
+
+[33mcommit 52ca058b3a74322bfaca35088f8d52ab378ae033[m
+Merge: 4f106f7 0db71b4
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Wed May 4 22:48:24 2022 -0600
+
+    Actuailzacion
+
+[33mcommit 4f106f7907fa330818ea31221e4245ab3dabb781[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Wed May 4 22:45:55 2022 -0600
+
+    Trabajo
+
+[33mcommit 0db71b45306fec7a60e851e069cf36fb024dd906[m
+Merge: db269ad ab77246
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 4 14:24:18 2022 -0600
+
+    Merge pull request #4 from NelsonAlmendares/Elmerbranch
+    
+    Elmerbranch
+
+[33mcommit ab77246362dff1f3b36d4167ba61ebff488bab3f[m
+Merge: c92d554 db269ad
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 4 14:23:48 2022 -0600
+
+    Merge pull request #3 from NelsonAlmendares/master
+    
+    master to  ElmerBranch
+
+[33mcommit db269ad7c4907d7285138acd83388a30f28487d0[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Wed May 4 14:21:04 2022 -0600
+
+    Sitio privado afinando detalles
+    
+    Se cambio el lenguaje del sitio y se quito un par cosas en las tablas
+
+[33mcommit db408245b5be8212b4cb9203e6347c11038136a1[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Tue May 3 09:20:05 2022 -0600
+
+    Arreglando sitio privado, productos
+
+[33mcommit c92d554d7e1592d7492981fec0cf4bfd10e44fe2[m
+Merge: 989ae44 452e315
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Mon May 2 15:50:07 2022 -0600
+
+    Merge pull request #2 from NelsonAlmendares/master
+    
+    Cambios de master a ElmerBranch
+
+[33mcommit 452e315053d9ca9781313fd4feeb312a4e1a3431[m
+Merge: 80c8329 53725d6
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Mon May 2 15:47:55 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 80c832952a0dbfd7f7ffb670e0b90bebcc124c16[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Mon May 2 15:47:31 2022 -0600
+
+    Trabajo nelson
+
+[33mcommit 53725d68ed0877b6413f67b824736d87b60fc7ed[m
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Mon May 2 15:44:55 2022 -0600
+
+    sitio privado finalizado
+    
+    Se deja terminado el sitio privado, links funcionales e imagenes terminadas
+
+[33mcommit 4852d3f79c3433b90eb72fe26630717bc9abd3c2[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 1 20:45:45 2022 -0600
+
+    Controlador general y errores solucionados
+
+[33mcommit 4cb2dd089aa2d84e02a131174ca687fbc4ee71ef[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 1 11:18:41 2022 -0600
+
+    Solución error de controlador
+
+[33mcommit 73acca56e6b9b5d2677f030f9df346c56c05ab54[m
+Merge: 243ebbd cea8981
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 1 11:16:39 2022 -0600
+
+    Merge branch 'master' of https://github.com/NelsonAlmendares/ThruColors
+
+[33mcommit 243ebbdadfaf5cf7a3b7ef365103465295e2ab16[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sun May 1 11:16:19 2022 -0600
+
+    Actualizacion de trabahjo
+
+[33mcommit cea8981dd81690ceee94be2c761fae6c57bf9a10[m
+Merge: b4717f1 989ae44
+Author: KarmeYT <46569528+KarmeYT@users.noreply.github.com>
+Date:   Fri Apr 29 15:33:10 2022 -0600
+
+    Merge pull request #1 from NelsonAlmendares/Elmerbranch
+    
+    commit arreglando privado 1.0
+
+[33mcommit 989ae440362f05174ff7d1abc634543acbcd4af7[m
+Author: Yeck-Sang <elmer.carias55@gmail.com>
+Date:   Fri Apr 29 15:32:05 2022 -0600
+
+    commit arreglando privado 1.0
+    
+    Se empezo arreglar el sitio privado, pero no se termino
+
+[33mcommit b4717f1bc741df984ce5bd1ee3bbe9ccbedb72be[m
+Author: Nelson Almendares <67060429+NelsonAlmendares@users.noreply.github.com>
+Date:   Fri Apr 29 10:35:28 2022 -0600
+
+    base de datos completa
+
+[33mcommit 24400625f5c54c470ec7d2f4127e2fabc24cd66c[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Thu Apr 28 23:13:53 2022 -0600
+
+    trabajo Nelson
+
+[33mcommit 2bd4b1cde661563db351185979c18b1454dcb5a8[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Mon Apr 25 19:23:54 2022 -0600
+
+    Datos actualizados
+
+[33mcommit d0a0d3f1173d5f96846fa4dfff0b67b5fc856cdc[m
+Author: NelsonAlmndares <Nelsonjosealmendares1999@gmail.com>
+Date:   Sat Apr 23 23:10:06 2022 -0600
+
+    Inicializacion de ThruColor

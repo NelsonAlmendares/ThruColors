@@ -2,7 +2,8 @@
 const API_VENTAS = SERVER + 'privado/ventas.php?action=';
 const ENDPOINT_PRODUCTOS = SERVER + 'privado/productos.php?action=readAll';
 const ENDPOINT_VALORACION = SERVER + 'privado/valoracion.php?action=readAll';
-const ENDPOINT_VENTA = SERVER + 'privado/ventas.php?action=readAll';
+const ENDPOINT_CLIENTE = SERVER + 'privado/clientes.php?action=readAll';
+const ENDPOINT_ESTADO = SERVER + 'privado/estado_venta.php?action=readAll';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
@@ -77,6 +78,11 @@ function openCreate() {
                                     placeholder="1" min="0" required />
                             </div>
                             <div class="input-field ">
+                                <label class="label" for="estado_venta">Estado de la venta:</label>
+                                <select id="estado_venta" class="select_id" name="estado_venta">                                
+                                </select>                            
+                            </div>
+                            <div class="input-field ">
                                 <label class="label" for="producto_venta">Producto de la venta:</label>
                                 <select id="producto_venta" class="select_id" name="producto_venta">
                                 </select>
@@ -85,8 +91,8 @@ function openCreate() {
                         
                         <div class="lateral2">                                                        
                             <div class="input-field ">
-                                <label class="label" for="venta">Fecha de la venta:</label>
-                                <select id="venta" class="select_id" name="venta">                                
+                                <label class="label" for="cliente_venta">Cliente que realiza la venta:</label>
+                                <select id="cliente_venta" class="select_id" name="cliente_venta">                                
                                 </select>                            
                             </div>
                             <div class="input-field ">
@@ -113,8 +119,9 @@ function openCreate() {
     document.getElementById('id_venta').disabled = true;  
     //se llena el select    
     fillSelect(ENDPOINT_PRODUCTOS, 'producto_venta', null);
-    fillSelect(ENDPOINT_VENTA, 'venta', null);
+    fillSelect(ENDPOINT_CLIENTE, 'cliente_venta', null);
     fillSelect(ENDPOINT_VALORACION, 'comentario_venta', null);
+    fillSelect(ENDPOINT_ESTADO, 'estado_venta', null);
 }
 
 // Función para preparar el formulario al momento de modificar un registro.
@@ -126,36 +133,41 @@ function openUpdate(id_venta) {
                     <h2 id="modal-titulo"></h2>
                     <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
                     <div class="openModal">
-                        <div class="lateral1">
-                            <div class="input-field ">
-                                <label class="label" for="id_venta" id="id_v">ID de venta:</label>
-                                <input type="number" class="form-control input-label" id="id_venta" name="id_venta" step="000" placeholder="1" min="1"
-                                    required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="cantidad_venta">Cantidad producto:</label>
-                                <input type="number" class="form-control input-label" id="cantidad_venta" name="cantidad_venta" step="000"
-                                    placeholder="1" min="0" required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="producto_venta">Producto de la venta:</label>
-                                <select id="producto_venta" class="select_id" name="producto_venta">
-                                </select>
-                            </div>                          
+                    <div class="lateral1">
+                    <div class="input-field ">
+                        <label class="label" for="id_venta" id="id_v">ID de venta:</label>
+                            <input type="number" class="form-control input-label" id="id_venta" name="id_venta" step="000" placeholder="1" min="1"
+                                required />
                         </div>
-                        
-                        <div class="lateral2">                                                        
-                            <div class="input-field ">
-                                <label class="label" for="venta">Venta:</label>
-                                <select id="venta" class="select_id" name="venta">                                
-                                </select>                            
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="comentario_venta">Comentario:</label>
-                                <select id="comentario_venta" class="select_id" name="comentario_venta">                                
+                        <div class="input-field ">
+                            <label class="label" for="cantidad_venta">Cantidad producto:</label>
+                            <input type="number" class="form-control input-label" id="cantidad_venta" name="cantidad_venta" step="000"
+                                placeholder="1" min="0" required />
+                        </div>
+                        <div class="input-field ">
+                            <label class="label" for="estado_venta">Estado de la venta:</label>
+                            <select id="estado_venta" class="select_id" name="estado_venta">                                
+                            </select>                            
+                        </div>
+                        <div class="input-field ">
+                            <label class="label" for="producto_venta">Producto de la venta:</label>
+                            <select id="producto_venta" class="select_id" name="producto_venta">
                             </select>
-                            </div>                            
+                        </div>                          
+                    </div>
+                    
+                    <div class="lateral2">                                                        
+                        <div class="input-field ">
+                            <label class="label" for="cliente_venta">Cliente que realiza la venta:</label>
+                            <select id="cliente_venta" class="select_id" name="cliente_venta">                                
+                            </select>                            
                         </div>
+                        <div class="input-field ">
+                            <label class="label" for="comentario_venta">Comentario:</label>
+                            <select id="comentario_venta" class="select_id" name="comentario_venta">                                
+                        </select>
+                        </div>                            
+                    </div>
                     </div> 									
                     <div class="input-field col s12 m6">
                     <a class="active" href="ventas.html" id="cerrar_form">Cerrar</a>
@@ -188,8 +200,9 @@ function openUpdate(id_venta) {
                     document.getElementById('id_venta').value = response.dataset.id_venta;
                     document.getElementById('cantidad_venta').value = response.dataset.cantidad;
                     fillSelect(ENDPOINT_PRODUCTOS, 'producto_venta', response.dataset.producto);
-                    fillSelect(ENDPOINT_VENTA, 'venta', response.dataset.fecha);
+                    fillSelect(ENDPOINT_CLIENTE, 'cliente_venta', response.dataset.cliente);
                     fillSelect(ENDPOINT_VALORACION, 'comentario_venta', response.dataset.comentario);
+                    fillSelect(ENDPOINT_ESTADO, 'estado_venta', response.dataset.estado);
                     // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
                     M.updateTextFields();
                 } else {

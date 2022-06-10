@@ -7,6 +7,7 @@
 */
 const SERVER = 'http://localhost/ThruColors/api/';
 
+
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
 *
@@ -58,9 +59,9 @@ function searchRows(api, form) {
                 if (response.status) {
                     // Se envían los datos a la función del controlador para que llene la tabla en la vista y se muestra un mensaje de éxito.
                     fillTable(response.dataset);
-                    sweetAlert(1, response.message, null);
+                    Toast(1, response.message, null);
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    Toast(2, response.exception, null);
                 }
             });
         } else {
@@ -111,16 +112,18 @@ function saveRow(api, action, form) {
 *   Retorno: ninguno.
 */
 function confirmDelete(api, data) {
-    swal({
+    Swal.fire({
+        toast: true,
         title: 'Advertencia',
         text: '¿Desea eliminar el registro?',
         icon: 'warning',
-        buttons: ['No', 'Sí'],
-        closeOnClickOutside: false,
-        closeOnEsc: false
-    }).then(function (value) {
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
+        reverseButtons: true
+        }).then((result) => {
         // Se comprueba si fue cliqueado el botón Sí para hacer la petición de borrado, de lo contrario no se hace nada.
-        if (value) {
+        if (result.isConfirmed) {
             fetch(api + 'delete', {
                 method: 'post',
                 body: data
@@ -132,9 +135,10 @@ function confirmDelete(api, data) {
                         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
                         if (response.status) {
                             // Se cargan nuevamente las filas en la tabla de la vista después de borrar un registro y se muestra un mensaje de éxito.
-                            readRows(api);
+                            
                             sweetAlert(1, response.message, null);
                             location.reload();
+                            readRows(api);
                         } else {
                             sweetAlert(2, response.exception, null);
                         }
@@ -148,7 +152,7 @@ function confirmDelete(api, data) {
 }
 
 /*
-*   Función para manejar los mensajes de notificación al usuario. Requiere el archivo sweetalert.min.js para funcionar.
+*   Funciones para manejar los mensajes de notificación al usuario. Requiere el archivo sweetalert.min.js para funcionar.
 *
 *   Parámetros: type (tipo de mensaje), text (texto a mostrar) y url (ubicación para enviar al cerrar el mensaje).
 *
@@ -175,7 +179,7 @@ function sweetAlert(type, text, url) {
     }
     // Si existe una ruta definida, se muestra el mensaje y se direcciona a dicha ubicación, de lo contrario solo se muestra el mensaje.
     if (url) {
-        swal({
+        Swal.fire({
             title: title,
             text: text,
             icon: icon,
@@ -186,7 +190,7 @@ function sweetAlert(type, text, url) {
             location.href = url
         });
     } else {
-        swal({
+        Swal.fire({
             title: title,
             text: text,
             icon: icon,
@@ -197,6 +201,54 @@ function sweetAlert(type, text, url) {
     }
 }
 
+const ToastS = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
+ 
+function Toast(type, text, url) {
+    // Se compara el tipo de mensaje a mostrar.
+    switch (type) {
+        case 1:
+            title = 'Éxito';
+            icon = 'success';
+            break;
+        case 2:
+            title = 'Error';
+            icon = 'error';
+            break;
+        case 3:
+            title = 'Advertencia';
+            icon = 'warning';
+            break;
+        case 4:
+            title = 'Aviso';
+            icon = 'info';
+    }
+    // Si existe una ruta definida, se muestra el mensaje y se direcciona a dicha ubicación, de lo contrario solo se muestra el mensaje.
+    if (url) {
+        ToastS.fire({
+            icon: icon,
+            title: title,
+            text: text
+          }).then(function () {
+            location.href = url
+        });
+    } else {
+        ToastS.fire({
+            icon: icon,
+            title: title,
+            text: text
+        });
+    }
+}
 /*
 *   Función para cargar las opciones en un select de formulario.
 *
@@ -217,7 +269,7 @@ function fillSelect(endpoint, select, selected) {
                 if (response.status) {
                     // Si no existe un valor para seleccionar, se muestra una opción para indicarlo.
                     if (!selected) {
-                        content += '<option disabled selected>Seleccione una opción</option>';
+                        content += '<option disabled selected>Seleccion una opción</option>';
                     }
                     // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
@@ -237,8 +289,6 @@ function fillSelect(endpoint, select, selected) {
                 }
                 // Se agregan las opciones a la etiqueta select mediante su id.
                 document.getElementById(select).innerHTML = content;
-                // Se inicializa el componente Select del formulario para que muestre las opciones.
-                //M.FormSelect.init(document.querySelectorAll('select'));
             });
         } else {
             console.log(request.status + ' ' + request.statusText);
@@ -338,16 +388,19 @@ function pieGraph(canvas, legends, values, title) {
 
 // Función para mostrar un mensaje de confirmación al momento de cerrar sesión.
 function logOut() {
-    swal({
+    Swal.fire({
         title: 'Advertencia',
         text: '¿Está seguro de cerrar la sesión?',
         icon: 'warning',
-        buttons: ['No', 'Sí'],
+        showCancelButton: true,
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
+        reverseButtons: true,
         closeOnClickOutside: false,
         closeOnEsc: false
-    }).then(function (value) {
+    }).then((result) => {
         // Se verifica si fue cliqueado el botón Sí para hacer la petición de cerrar sesión, de lo contrario se muestra un mensaje.
-        if (value) {
+        if (result.isConfirmed) {
             fetch(API + 'logOut', {
                 method: 'get'
             }).then(function (request) {

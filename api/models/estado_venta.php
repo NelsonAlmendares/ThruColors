@@ -62,8 +62,7 @@ class Estado_v extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT id_venta,estado_venta, fecha_venta, id_cliente
-        FROM tb_venta';
+        $sql = 'SELECT id_estado, estado_venta FROM "tb_estadoVenta"';
         $params = null;
         return Database::getRows($sql, $params);
     }

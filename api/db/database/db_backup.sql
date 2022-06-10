@@ -348,3 +348,25 @@ INSERT INTO public.tb_producto(
 INSERT INTO public.tb_producto(
 	nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto, "id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto", "id_categoriaProducto", "id_presentacionProducto")
 	VALUES ('3D Men Champu', 21.50,'Ayuda a prevenir la caspa en el cabello masculino, brindando a su vez limpieza capilar', 'imagen.jpg', 20, 1, 1, 10, 1, 4, 6);
+
+
+create table public."tb_ventas"(
+    id_venta serial not null,
+    fecha_venta date not null,
+    estado_venta integer not null,
+    id_cliente integer not null,
+    cantidad_venta numeric not null,
+    id_producto int not null,
+    id_valoracion int not null
+    primary key("id_venta")
+);
+ALTER TABLE IF EXISTS public.cliente
+    OWNER to postgres;
+
+create table public."tb_estadoVenta"(
+    id_estado serial not null,
+    estado_venta character varying(40) not null
+    primary key("id_estado")
+);
+
+insert into tb_ventas (fecha_venta) values(current_timestamp)

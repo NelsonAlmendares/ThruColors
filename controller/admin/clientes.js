@@ -1,5 +1,5 @@
 /*se establece ruta y parametros para la comunicacion con API */
-const API_CLIENTES = SERVER + 'privado/clientes.php?action=';
+const API_CLIENTES = SERVER + 'privado/privadoClientes.php?action=';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
@@ -25,7 +25,7 @@ function fillTable(dataset) {
         content += `            
                         <tr>
                             <td class="contenido">${row.id_cliente}</td>
-                            <td class="contenido"><img src="${SERVER}imagenes/empleados/${row.foto_cliente}" class="materialboxed" height="100"></td>
+                            <td class="contenido"><img src="${SERVER}imagenes/clientes/${row.foto_cliente}" class="materialboxed" height="100"></td>
                             <td class="contenido">${row.nombre_cliente}</td>
                             <td class="contenido">${row.apellido_cliente}</td>
                             <td class="contenido">${row.celular_cliente}</td>
@@ -33,8 +33,7 @@ function fillTable(dataset) {
                             <td class="contenido">${row.email_cliente}</td>
                             <td class="contenido">${row.estado_cliente}</td>
                             <td class="contenido">
-                                <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_cliente})"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn-eliminar" onclick="openDelete(${row.id_cliente})"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn-editar" id="openModal" onclick="openUpdate(${row.id_cliente})"><i class="fa-solid fa-pen-to-square"></i></button>                                
                                 </a>
                             </td>
                         </tr>          
@@ -54,91 +53,6 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_CLIENTES, 'search-form');
 });
 
-// Función para preparar el formulario al momento de insertar un registro.
-function openCreate() {
-    // Se crea la variable que guardara todas las etiquetas html.
-    let register = '';
-    // Se crea todo el formulario.
-        register += `            
-                <h2 id="modal-titulo"></h2>
-                    <!-- No se coloca el id solo al momento de modificar al momento de modificar -->
-                    <div class="openModal">
-                        <div class="lateral1">
-                            <div class="input-field ">
-                                <label class="label" for="id_cliente" id="id_c">ID de cliente:</label>
-                                <input type="number" class="form-control input-label" id="id_cliente" name="id_cliente" step="000" placeholder="1" min="1"
-                                    required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="nombre_cliente">Nombre de cliente:</label>
-                                <input type="text" class="form-control input-label" id="nombre_cliente" name="nombre_cliente" placeholder="Nombre"
-                                    required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="apellido_cliente">Apellido de cliente:</label>
-                                <input type="text" class="form-control input-label" id="apellido_cliente" name="apellido_cliente" placeholder="Apellido"
-                                    required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="celular_cliente">Celular de cliente:</label>
-                                <input type="text" class="form-control input-label" id="celular_cliente" name="celular_cliente" placeholder="1234-5678"
-                                    maxlength="10" required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="foto_cliente">Foto de cliente:</label>
-                                <div class="file-select">
-                                    <input type="file" class="form-control" id="foto_cliente" name="foto_cliente" accept=".jpg, .png" required />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="lateral2">
-                            <div class="input-field ">
-                                <label class="label" for="direccion_cliente">Direccion de cliente:</label>
-                                <input type="text" class="form-control input-label" id="direccion_cliente" name="direccion_cliente"
-                                    placeholder="Residencial, pasaje, casa N°..." required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="email_cliente">Email de cliente:</label>
-                                <input type="text" class="form-control input-label" id="email_cliente" name="email_cliente"
-                                    placeholder="example@gmail.com" required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="estado_cliente">Estado cliente</label>
-                                <select id="estado_cliente" class="select_id" name="estado_cliente">
-                                    <option selected>Seleccione una opción</option>
-                                    <option value="Habilitado">Habilitado</option>
-                                    <option value="Inhabilitado">Inhabilitado</option>
-                                </select>
-                            </div>
-                            <div class="input-field  ">
-                                <label class="label" for="clave">Contraseña:</label>
-                                <input type="password" id="clave" name="clave" maxlength="8" class="form-control input-label" placeholder="Contraseña"
-                                    required />
-                            </div>
-                            <div class="input-field ">
-                                <label class="label" for="password">Confirmar Contraseña:</label>
-                                <input id="confirmar" type="password" name="confirmar" maxlength="8" class="form-control input-label"
-                                    placeholder="Confirmar contraseña" required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="input-field col s12 m6">
-                        <a class="active" href="clientes.html" id="cerrar_form">Cerrar</a>
-                        <button id="agregar" type="submit">Agregar</button>
-                    </div>                          
-        `;
-    // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
-    document.getElementById('save-form').innerHTML = register;
-    // Se asigna el título para el formulario.
-    document.getElementById('modal-titulo').textContent = 'Crear usuario de cliente';
-    //se ocultan y deshabilitan los campos del id
-    document.getElementById('id_cliente').hidden = true;
-    document.getElementById('id_c').hidden = true;
-    document.getElementById('id_c').disabled = true;
-    document.getElementById('id_cliente').disabled = true;    
-}
 
 // Función para preparar el formulario al momento de modificar un registro.
 function openUpdate(id_cliente) {
@@ -173,7 +87,7 @@ function openUpdate(id_cliente) {
                         <div class="input-field ">
                             <label class="label" for="foto_cliente">Foto de cliente:</label>
                             <div class="file-select">
-                                <input type="file" class="form-control" id="foto_cliente" name="foto_cliente" accept=".jpg, .png" required />
+                                <input type="file" class="form-control" id="foto_cliente" name="foto_cliente" accept=".jpg, .png" />
                             </div>
                         </div>
                     </div>

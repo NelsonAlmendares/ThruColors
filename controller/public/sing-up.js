@@ -1,43 +1,39 @@
-//Declaramos la ruta y parametros de la comunicación con la API
-const API_CLIENTES = SERVER = + 'public/clientes.php?action=';
+const API_CLIENTES = SERVER + 'publico/publicClientes.php?action=';
 
-//Metodo manejador de eventos
-document.addEventListener('DOMContentLoaded', function(){
-    //Llamamos la función captcha del formulario
+document.addEventListener('DomContentLoaded', function() {
+    //Se llama a la función que le asigna el token al formulario
     reCAPTCHA();
-    //Definimos el objeto para obetner hora y fecha
+    // Inicializamos una variable con la fecha actual
     let today = new Date();
-    //Guardamos el día en formato de 2 dígitos
-    let day = ('0' + today.getMonth().slice(-2));
-    //Guardamos el mes en formato de 2 digitos
-    let month = ('0' + (today.getMonth() + 1)).slice(-2);
-    //Guardamos el año con la mayoría de edad
-    let year = today.getFullYear() - 18;
+    //Inicializamos variable para guardar en 2 digitos la fecha
+    let day = ('0' + (today.getMonth() + 1)).slice(-2);
 
-    //Variable para establecer el formato de la fecha
+    //Inicializamos variable para guardar mes en 2 digitos
+    var month = ('0' + (today.getMonth()+1)).slice(-2);
+    //Inicializamos variable para guardar el año con mayoría de edad
+    var year = today.getFullYear() - 18;
+
+    //Variable para definir formato de fecha
     let date = `${year}-${month}-${day}`;
-    //Se aseigna la fecha como máximo en el campo del form
-    document.getElementById('nacimiento').setAttribute('max', date);  
+    //asignamos la fecha como valor maximo 
+    document.getElementById('nacimiento').setAttribute('max', date);
+
+    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 });
 
-//Funcion para obtener un token del reCAPTCHA y asignarlo al from
-function reCAPTCHA(){
-    //Método para generar el CAPTCHA
-    grecaptcha.ready(function (){
-        //Se declara una variable para guardar la llave publica
-        let publicKey = "6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT";
+// function reCAPTCHA(){
+//     grecaptcha.ready(function (){
+//         let publicKey = '6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT';
+//         grecaptcha.execute(publicKey, { action: 'homepage'}).theb(function(token){
+//             document.getElementById('g-recaptcha-response').value = token;
+//         });
+//     });
+// }
 
-        grecaptcha.execute(publicKey, { actions: 'homepage'}).then(function (token){
-            document.getElementById('g-recaptcha-response').value = token;
-        });
-    });
-}
-
-//Metodo manejador de eventos para el envio del formulario
 document.getElementById('register-form').addEventListener('submit', function(event){
-    //Se evita la carga de la pagina
+    //Evitamos que se recargue el sitio
     event.preventDefault();
-    //Petición para registrar los clientes
+    //Peticion para registrar un usuario como cliente
     fetch(API_CLIENTES + 'register', {
         method: 'post',
         body: new FormData(document.getElementById('register-form'))
@@ -48,15 +44,14 @@ document.getElementById('register-form').addEventListener('submit', function(eve
                     sweetAlert(1, response.message, 'login.html');
                 } else{
                     if(response.recaptcha){
-                        sweetAlert(2, response.status, 'index.html');
+                        sweetAlert(2, response.message, 'index.html');
                     } else{
-                        sweetAlert(2, response.status, null);
-                        reCAPTCHA();
+                        sweetAlert(2, response.message, null);
                     }
                 }
             });
         } else{
-            console.log(request.status + '' + request.statusText);
+            console.log(request.status + " " + request.statusText);
         }
     });
-});
+})
