@@ -44,9 +44,9 @@ document.getElementById('register-form').addEventListener('submit', function(eve
                     sweetAlert(1, response.message, 'login.html');
                 } else{
                     if(response.recaptcha){
-                        sweetAlert(2, response.message, 'index.html');
+                        sweetAlert(2, response.exception, 'index.html');
                     } else{
-                        sweetAlert(2, response.message, null);
+                        sweetAlert(2, response.exception, null);
                     }
                 }
             });
@@ -54,4 +54,4 @@ document.getElementById('register-form').addEventListener('submit', function(eve
             console.log(request.status + " " + request.statusText);
         }
     });
-})
+});
