@@ -180,11 +180,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellido incorrectos';
                 } elseif (!$cliente->setCelular_c($_POST['celular_cliente'])) {
                     $result['exception'] = 'Celular incorrecto';
-                } elseif (!is_uploaded_file($_FILES['foto_cliente']['tmp_name'])) {
+                } 
+                
+                elseif (!is_uploaded_file($_FILES['foto_cliente']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$cliente->setFoto_c($_FILES['foto_cliente'])) {
                     $result['exception'] = $cliente->getFileError();
-                } elseif (!$cliente->setDireccion_c($_POST['direccion_cliente'])) {
+                } 
+                
+                elseif (!$cliente->setDireccion_c($_POST['direccion_cliente'])) {
                     $result['exception'] = 'Direccion incorrecto';
                 } elseif (!$cliente->setEmail_c($_POST['email_cliente'])) {
                     $result['exception'] = 'Email incorrecto';

@@ -286,9 +286,9 @@ class Clientes extends Validator
     }
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_cliente(nombre_cliente, apellido_cliente, celular_cliente, direccion_cliente, email_cliente, password)
-            VALUES ( ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->celular_cliente, $this->direccion_cliente, $this->email_cliente, $this->clave);
+        $sql = 'INSERT INTO tb_cliente(nombre_cliente, apellido_cliente, celular_cliente, direccion_cliente, email_cliente, password, foto_cliente)
+            VALUES ( ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_cliente, $this->apellido_cliente, $this->celular_cliente, $this->direccion_cliente, $this->email_cliente, $this->clave, $this->foto_cliente);
         //print_r($params);
         return Database::executeRow($sql, $params);
     }

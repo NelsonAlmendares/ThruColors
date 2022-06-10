@@ -74,8 +74,6 @@ function fillCards(dataset) {
     });
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
     document.getElementById('productos').innerHTML = content;
-    // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-    //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 }
 
 function fillFiltros() {
@@ -84,7 +82,17 @@ function fillFiltros() {
 
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
-            	
+            
+        <h3 class="p-3 mt-3">
+        Categorías
+        </h3>
+        <div class="text-center">
+            <div class="">
+                <select id="categorias" name="categorias" class="form-select" aria-label="Default select example">
+                    
+                </select>
+            </div>
+        </div>
             <h3 class="p-3">Marcas</h3>
             <div class="col">
                 <div class="buttons mt-3 text-center">
@@ -92,16 +100,7 @@ function fillFiltros() {
                         
                     </select>
                 </div>
-                <h4 class="p-3 mt-3">
-                    Categorías
-                </h4>
-                <div class="text-center">
-                    <div class="">
-                        <select id="categorias" name="categorias" class="form-select" aria-label="Default select example">
-                            
-                        </select>
-                    </div>
-                </div>
+                
                 <!--div class="filter mt-4 p-3">
                     <h4 class="mt-3">
                         Precios

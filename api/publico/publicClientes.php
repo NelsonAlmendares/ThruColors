@@ -53,6 +53,7 @@
                     // $context = stream_context_create($options);
                     // $response = file_get_contents($url, false, $context);
                     // $captcha = json_encode($response, true);
+                    $_POST = $clientes->validateForm($_POST);
                         if(!$clientes->setNombre_c($_POST['nombres'])){
                             $result['exception'] = 'Nombres incorrectos';
                         } elseif(!$clientes->setApellido_c($_POST['apellidos'])){
@@ -67,9 +68,17 @@
                             $result['exception'] = 'Claves diferentes';
                         } elseif(!$clientes->setClave($_POST['clave'])){
                             $result['exception'] = $clientes->getPasswordError();
+                        } elseif(!is_uploaded_file($_FILES['foto_cliente']['tmp_name'])){
+                            $result['exception'] = 'Seleccione una imagen';
+                        } elseif(!$clientes->setFoto_c($_FILES['foto_cliente'])){
+                            $result['exception'] = $clientes->getFileError();
                         } elseif($clientes->createRow()){
                             $result['status'] = 1;
-                            $result['message'] = 'Cliente registrado correctamente';
+                            if($clientes->saveFile($_FILES['foto_cliente'], $clientes->getRuta(), $clientes->getFoto_c())){
+                                $result['message'] = 'Cliente registrado correctamente';
+                            } else{
+                                $result['message'] = 'El cliente se registro pero no se guardó la imagen';
+                            }
                         } else{
                             $result['exception'] = Database::getException();
                         }
