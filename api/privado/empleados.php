@@ -93,7 +93,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'changePassword':
                 $_POST = $empleado->validateForm($_POST);
-                if (!$empleado->setId($_SESSION['id_empleado'])) {
+                if (!$empleado->setId_e($_SESSION['id_empleado'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$empleado->checkPassword($_POST['actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';

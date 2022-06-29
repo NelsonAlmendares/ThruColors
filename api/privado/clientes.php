@@ -329,11 +329,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Codigo incorrecto';
                 } elseif (!$cliente->setTipo_e(1)) {
                     $result['exception'] = 'Tipo empleado incorrecto';
-                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                } 
+                elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$cliente->setClave($_POST['clave'])) {
                     $result['exception'] = $cliente->getPasswordError();                    
-                } elseif ($cliente->createRow()) {
+                }
+                elseif ($cliente->createRow()) {
                     $result['status'] = 1;
                     if ($cliente->saveFile($_FILES['foto_cliente'], $cliente->getRuta(), $cliente->getFoto_e())) {
                     $result['message'] = 'El empleado registrado correctamente';
