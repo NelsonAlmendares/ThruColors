@@ -69,12 +69,8 @@ function openUpdate(id_venta) {
                             readonly required/>
                         </div>                        
                         <div class="input-field ">
-                            <label class="label" for="estado_venta">Estado de la venta:</label>
-                            <select id="estado_venta" class="select_id" name="estado_venta">
-                            <option disabled selected>Seleccion una opción</option>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>                                
-                            </select>                            
+                            <label class="label" for="estado_venta">Estado de la venta:</label>                            
+                            <label class="switch"><input type="checkbox" id="estado_venta" name="estado_venta"/><span class="slider"></span></label>
                         </div>                                                
                     </div>                                        
                     </div> 									
