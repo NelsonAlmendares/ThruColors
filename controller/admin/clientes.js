@@ -132,7 +132,7 @@ function openUpdate(id_cliente) {
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
     document.getElementById('save-form').innerHTML = update;
     // Se asigna el título para el formulario.
-    document.getElementById('modal-titulo').textContent = 'Actualizar usuario de empleado';
+    document.getElementById('modal-titulo').textContent = 'Actualizar usuario de cliente';
     // Se deshabilitan los campos de alias y contraseña.
     document.getElementById('id_cliente').hidden = false;
     document.getElementById('id_c').hidden = false;

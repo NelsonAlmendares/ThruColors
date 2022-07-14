@@ -104,22 +104,17 @@ function openCreate() {
                                 placeholder="1" min="0" required />
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="estado_producto">Estado del producto:</label>
+                            <label class="label" for="estado_producto">Estado:</label>
                             <select id="estado_producto" class="select_id" name="estado_producto">
                             </select>
-                        </div>
+                        </div>                        
                         <div class="input-field ">
-                            <label class="label" for="empleado_producto">Empleado que agrego el producto:</label>
-                            <select id="empleado_producto" class="select_id" name="empleado_producto">
-                            </select>
-                        </div>
-                        <div class="input-field ">
-                            <label class="label" for="marca_producto">Marca del producto:</label>
+                            <label class="label" for="marca_producto">Marca:</label>
                             <select id="marca_producto" class="select_id" name="marca_producto">
                             </select>
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="genero_producto">Para que sexo esta hecho el producto:</label>
+                            <label class="label" for="genero_producto">Género del producto:</label>
                             <select id="genero_producto" class="select_id" name="genero_producto">
                             </select>
                         </div>
@@ -203,22 +198,22 @@ function openUpdate(id) {
                                 placeholder="1" min="0" required />
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="estado_producto">Estado del producto:</label>
+                            <label class="label" for="empleado_producto">Empleado que agrego el producto:</label>
+                            <input type="text" class="form-control input-label" id="empleado_producto" name="empleado_producto" placeholder="Nombre"
+                                required />
+                        </div>
+                        <div class="input-field ">
+                            <label class="label" for="estado_producto">Estado:</label>
                             <select id="estado_producto" class="select_id" name="estado_producto">
                             </select>
-                        </div>
+                        </div>                        
                         <div class="input-field ">
-                            <label class="label" for="empleado_producto">Empleado que agrego el producto:</label>
-                            <select id="empleado_producto" class="select_id" name="empleado_producto">
-                            </select>
-                        </div>
-                        <div class="input-field ">
-                            <label class="label" for="marca_producto">Marca del producto:</label>
+                            <label class="label" for="marca_producto">Marca:</label>
                             <select id="marca_producto" class="select_id" name="marca_producto">
                             </select>
                         </div>
                         <div class="input-field ">
-                            <label class="label" for="genero_producto">Para que sexo esta hecho el producto:</label>
+                            <label class="label" for="genero_producto">Género del producto:</label>
                             <select id="genero_producto" class="select_id" name="genero_producto">
                             </select>
                         </div>
@@ -243,12 +238,14 @@ function openUpdate(id) {
     // Se agregan agregan todos los campos al formulario mediante su id para crear un registro.
     document.getElementById('save-form').innerHTML = update;
     // Se asigna el título para el formulario.
-    document.getElementById('modal-titulo').textContent = 'Actualizar usuario de empleado';
+    document.getElementById('modal-titulo').textContent = 'Actualizar producto';
     // Se deshabilitan los campos de alias y contraseña.
     document.getElementById('id_producto').hidden = false;
     document.getElementById('id_p').hidden = false;
     document.getElementById('id_producto').disabled = false;
     document.getElementById('id_p').disabled = false;
+    //Se deshabilita el empleado
+    document.getElementById('empleado_producto').disabled = true;
     // Se define un objeto con los datos del registro seleccionado.
     const data = new FormData();
     data.append('id_producto', id);
@@ -269,7 +266,7 @@ function openUpdate(id) {
                     document.getElementById('descripcion_producto').value = response.dataset.descripcion;                    
                     document.getElementById('cantidad_producto').value = response.dataset.cantidad;
                     fillSelect(ENDPOINT_CATEGORIAS, 'categoria_producto', response.dataset.categoria);
-                    fillSelect(ENDPOINT_EMPLEADO, 'empleado_producto', response.dataset.empleado);
+                    document.getElementById('empleado_producto').value = response.dataset.empleado;
                     fillSelect(ENDPOINT_MARCA, 'marca_producto', response.dataset.marca);
                     fillSelect(ENDPOINT_GENERO, 'genero_producto', response.dataset.genero);
                     fillSelect(ENDPOINT_ESTADO, 'estado_producto', response.dataset.estado);

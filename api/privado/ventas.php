@@ -36,36 +36,9 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                break;
-            case 'create':
-                $_POST = $venta->validateForm($_POST);
-                if (!$venta->setCantidad($_POST['cantidad_venta'])) {
-                    $result['exception'] = 'Nombre incorrecto';                
-                } elseif (!isset($_POST['producto_venta'])) {
-                    $result['exception'] = 'Seleccione un producto';
-                } elseif (!$venta->setProducto($_POST['producto_venta'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!isset($_POST['estado_venta'])) {
-                    $result['exception'] = 'Seleccione un estado de venta';
-                } elseif (!$venta->setEstado($_POST['estado_venta'])) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!isset($_POST['cliente_venta'])) {
-                    $result['exception'] = 'Seleccione un cliente de venta';
-                } elseif (!$venta->setCliente($_POST['cliente_venta'])) {
-                    $result['exception'] = 'Cliente incorrecto';
-                } elseif (!isset($_POST['comentario_venta'])) {
-                    $result['exception'] = 'Seleccione un comentario';               
-                } elseif (!$venta->setComentario_venta($_POST['comentario_venta'])) {
-                    $result['exception'] = 'Comentario incorrecto';
-                } elseif ( $venta->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Venta creada correctamente';                    
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+                break;            
             case 'readOne':
-                if (!$venta->setId_venta($_POST['id_venta'])) {
+                if (!$venta->setId($_POST['id_venta'])) {
                     $result['exception'] = 'Venta incorrecta';
                 } elseif ($result['dataset'] = $venta->readOne()) {
                     $result['status'] = 1;
@@ -77,20 +50,14 @@ if (isset($_GET['action'])) {
                 break;
             case 'update':
                 $_POST = $venta->validateForm($_POST);
-                if (!$venta->setId_venta($_POST['id_venta'])) {
+                if (!$venta->setId($_POST['id_venta'])) {
                     $result['exception'] = 'Venta incorrecta';
                 } elseif (!$data = $venta->readOne()) {
                     $result['exception'] = 'Venta inexistente';
-                } elseif (!$venta->setComentario_venta($_POST['comentario_venta'])) {
-                    $result['exception'] = 'Comentario incorrecto';
-                } elseif (!$venta->setProducto($_POST['producto_venta'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$venta->setCantidad($_POST['cantidad_venta'])) {
-                    $result['exception'] = 'Venta incorrecta';
+                } elseif (!isset($_POST['estado_venta'])) {
+                    $result['exception'] = 'Seleccione un estado de venta';                
                 } elseif (!$venta->setEstado($_POST['estado_venta'])) {
-                    $result['exception'] = 'Estado incorrecto';
-                } elseif (!$venta->setCliente($_POST['cliente_venta'])) {
-                    $result['exception'] = 'Cliente incorrecto';
+                    $result['exception'] = 'Estado incorrecto';                
                 } elseif ($venta->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto modificado correctamente';
@@ -99,7 +66,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if (!$venta->setId_venta($_POST['id_venta'])) {
+                if (!$venta->setId($_POST['id_venta'])) {
                     $result['exception'] = 'Venta incorrecto';
                 } elseif (!$data = $venta->readOne()) {
                     $result['exception'] = 'Venta inexistente';

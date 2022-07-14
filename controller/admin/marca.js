@@ -49,6 +49,13 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_MARCA, 'search-form');
 });
 
+// Función para abrir el reporte de productos.
+function openReport() {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/admin/marcas.php';
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}
 
 // Función para preparar el formulario al momento de insertar un registro.
 function openCreate() {

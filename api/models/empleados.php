@@ -125,7 +125,7 @@ class Empleados extends Validator
 
     public function getApellido_e()
     {
-        return $this->apellidos_empleado;
+        return $this->apellido_empleado;
     }
 
     public function getDUI_e()
@@ -181,15 +181,16 @@ class Empleados extends Validator
         }
     }
 
-    /*-------------Método para proporcionar el nombre y foto del empleado.-------------*/
+    /*-------------Método para proporcionar el nombre, apellido y foto del empleado.-------------*/
     public function readUserName($codigo_empleado)
     {
-        $sql = 'SELECT nombre_empleado, foto_empleado
+        $sql = 'SELECT nombre_empleado, apellido_empleado, foto_empleado
                 FROM tb_empleado
                 WHERE codigo_empleado = ?';
         $params = array($this->codigo_empleado);
         if ($data = Database::getRow($sql, $params)) {
             $this->nombre_empleado = $data['nombre_empleado'];
+            $this->apellido_empleado = $data['apellido_empleado'];
             $this->foto_empleado = $data['foto_empleado'];
             $this->codigo_empleado = $codigo_empleado;
             return true;

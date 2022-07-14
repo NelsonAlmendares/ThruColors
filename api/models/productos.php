@@ -210,7 +210,7 @@
         public function createRow(){
             $sql = 'INSERT INTO "tb_producto" (nombre_producto, costo_producto, descripcion_producto, foto_producto, cantidad_producto,"id_estadoProducto", id_empleado, "id_marcaProducto", "id_generoProducto","id_categoriaProducto","id_presentacionProducto")
             VALUES (?,?,?,?,?,?,?,?,?,?,?)';
-            $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto);
+            $params = array($this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->fotoProducto, $this->cantidadProducto, $this->estadoProducto, $_SESSION['id_empleado'], $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto);
             return Database::executeRow($sql, $params);
         }
 
@@ -306,6 +306,18 @@
 	            FROM tb_producto INNER JOIN tb_categoria ON "id_categoriaProducto" = id_categoria
 	            GROUP BY categoria_producto ORDER BY porcentaje DESC';
             $params = null;
+            return Database::getRows($sql, $params);
+        }
+
+        /*--------Métodos para generar reporte con marca------------*/
+        public function productosMarca()
+        {
+            $sql = 'SELECT nombre_producto, costo_producto, estado_producto
+                    FROM tb_producto tp INNER JOIN tb_estado te ON tp."id_estadoProducto" = te.id_estado
+                    INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                    WHERE tp."id_marcaProducto" = ?
+                    ORDER BY nombre_producto';
+            $params = array($this->marcaProducto);
             return Database::getRows($sql, $params);
         }
     }

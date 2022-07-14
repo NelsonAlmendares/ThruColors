@@ -28,7 +28,7 @@ function readRows(api) {
                 if (response.status) {
                     data = response.dataset;
                 } else {
-                    sweetAlert(4, response.exception, null);
+                    Toast(4, response.exception, null);
                 }
                 // Se envían los datos a la función del controlador para llenar la tabla en la vista.
                 fillTable(data);
@@ -92,10 +92,10 @@ function saveRow(api, action, form) {
                     //M.Modal.getInstance(document.getElementById(modal)).close();                    
                     // Se cargan nuevamente las filas en la tabla de la vista después de guardar un registro y se muestra un mensaje de éxito.
                     readRows(api);
-                    sweetAlert(1, response.message, null);
+                    Toast(1, response.message, null);
                     location.reload();
                 } else {
-                    sweetAlert(2, response.exception, null);
+                    Toast(2, response.exception, null);
                 }
             });
         } else {
@@ -420,7 +420,7 @@ function logOut() {
                 }
             });
         } else {
-            sweetAlert(4, 'Puede continuar con la sesión', null);
+            Toast(4, 'Puede continuar con la sesión', null);
         }
     });
 }

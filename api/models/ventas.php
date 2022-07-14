@@ -6,44 +6,20 @@
 class ventas extends validator
 {
     // Declaración de atributos (propiedades).
-    private $id_venta = null;
-    private $comentario_venta = null;
-    private $producto = null;
-    private $cantidad = null;
+    private $id_venta = null;    
     private $estado = null;
-    private $cliente = null;
-    /*private $ruta = '../images/productos/';*/
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
-    public function setId_venta($value){
+    public function setId($value){
         if ($this->validateNaturalNumber($value)) {
             $this->id_venta = $value;
             return true;
         } else {
             return false;
         }
-    }
-
-    public function setComentario_venta($value){
-        if ($this->validateNaturalNumber($value)) {
-            $this->comentario_venta = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setProducto($value)
-    {
-        if ($this->validateNaturalNumber($value)) {
-            $this->producto = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
+    }    
 
     public function setEstado($value)
     {
@@ -55,64 +31,18 @@ class ventas extends validator
         }
     }
 
-    public function setCantidad($value)
-    {
-        if ($this->validateNaturalNumber($value)) {
-            $this->cantidad = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setCliente($value)
-    {
-        if ($this->validateNaturalNumber($value)) {
-            $this->cliente = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /*
     *   Métodos para obtener valores de los atributos.
     */
-    public function getId_venta()
+    public function getId()
     {
         return $this->id_venta;
-    }
-
-    public function getComentario_venta()
-    {
-        return $this->comentario_venta;
     }
 
     public function getEstado()
     {
         return $this->estado;
     }
-
-
-    public function getProducto()
-    {
-        return $this->producto;
-    }
-
-    public function getCantidad()
-    {
-        return $this->cantidad;
-    }
-
-    public function getVenta()
-    {
-        return $this->venta;
-    }
-
-    /*public function getRuta()
-    {
-        return $this->ruta;
-    }*/
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -128,24 +58,13 @@ class ventas extends validator
         ORDER BY "id_DetalleVenta"';
             $params = array("%$value%");
         return Database::getRows($sql, $params);
-    }
-
-    public function createRow()
-    {
-        $sql = 'INSERT INTO tb_ventas(fecha_venta, estado_venta, id_cliente, cantidad_venta,id_producto,id_valoracion)
-                VALUES (CURRENT_DATE, ?, ?, ?,?,?)	';
-        $params = array($this->estado, $this->cliente, $this->cantidad, $this->producto, $this->comentario_venta);
-        return Database::executeRow($sql, $params);
-    }
+    }    
 
     public function readAll()
     {
-        $sql = 'SELECT id_venta AS id_venta, fecha_venta AS fecha, tev.estado_venta AS estado, nombre_cliente AS cliente, cantidad_venta AS cantidad, nombre_producto AS producto, comentario_producto AS comentario
-                FROM tb_ventas tv 
-                INNER JOIN tb_producto tp ON tv.id_producto = tp.id_producto 
+        $sql = 'SELECT id_venta AS id_venta, estado_venta AS estado, fecha_venta AS fecha, nombre_cliente AS cliente
+                FROM tb_venta tv 
                 INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
-                INNER JOIN "tb_estadoVenta" tev ON tv.estado_venta = tev.id_estado
-                INNER JOIN "tb_valoracionProducto" tvp ON tv.id_valoracion = tvp.id_valoracion
                 ORDER BY id_venta';
         $params = null;
         return Database::getRows($sql, $params);
@@ -153,12 +72,8 @@ class ventas extends validator
 
     public function readOne()
     {
-        $sql = 'SELECT id_venta AS id_venta, fecha_venta AS fecha, tev.estado_venta AS estado, nombre_cliente AS cliente, cantidad_venta AS cantidad, nombre_producto AS producto, comentario_producto AS comentario
-                FROM tb_ventas tv 
-                INNER JOIN tb_producto tp ON tv.id_producto = tp.id_producto 
-                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
-                INNER JOIN "tb_estadoVenta" tev ON tv.estado_venta = tev.id_estado
-                INNER JOIN "tb_valoracionProducto" tvp ON tv.id_valoracion = tvp.id_valoracion
+        $sql = 'SELECT id_venta AS id_venta, estado_venta AS estado
+                FROM tb_venta
                 WHERE id_venta = ?
                 ORDER BY id_venta';
         $params = array($this->id_venta);
@@ -167,16 +82,16 @@ class ventas extends validator
 
     public function updateRow()
     {
-        $sql = 'UPDATE tb_ventas
-                SET fecha_venta=CURRENT_DATE, estado_venta=?, id_cliente=?, cantidad_venta=?, id_producto=?, id_valoracion=?
+        $sql = 'UPDATE tb_venta
+                SET estado_venta=?
                 WHERE id_venta = ?';
-        $params = array($this->estado, $this->cliente, $this->cantidad, $this->producto, $this->comentario_venta, $this->id_venta);
+        $params = array($this->estado, $this->id_venta);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM tb_ventas
+        $sql = 'DELETE FROM tb_venta
                 WHERE id_venta = ?';
         $params = array($this->id_venta);
         return Database::executeRow($sql, $params);

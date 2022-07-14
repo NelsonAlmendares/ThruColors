@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							</picture>
 						</span>
 						<div class="sidebar-user-info">
-							<span class="sidebar-user__title">${response.nombre}</span>
+							<span class="sidebar-user__title">${response.nombre} ${response.apellido}</span>
 							<span class="sidebar-user__subtitle">${response.rol}</span>
 						</div>
                         `;                                                

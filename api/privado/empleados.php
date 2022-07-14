@@ -27,7 +27,8 @@ if (isset($_GET['action'])) {
                 if (isset($_SESSION['codigo_empleado'])) {
                     $result['status'] = 1;
                     $result['codigo'] = $_SESSION['codigo_empleado'];
-                    $result['nombre'] = $_SESSION['nombre_empleado'];
+                    $result['nombre'] = $_SESSION['nombre_empleado'];                    
+                    $result['apellido'] = $_SESSION['apellido_empleado'];
                     $result['foto'] = $_SESSION['foto_empleado'];
                     $result['rol'] = $_SESSION['tipo_empleado'];
                 } else {
@@ -317,7 +318,8 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['id_empleado'] = $empleado->getId_e();
                     $_SESSION['codigo_empleado'] = $empleado->getCodigo_e();
-                    $_SESSION['nombre_empleado'] = $empleado->getNombre_e();
+                    $_SESSION['nombre_empleado'] = $empleado->getNombre_e();                    
+                    $_SESSION['apellido_empleado'] = $empleado->getApellido_e();
                     $_SESSION['foto_empleado'] = $empleado->getFoto_e();
                     $_SESSION['tipo_empleado'] = $empleado->getTipo_e();
                 } else {

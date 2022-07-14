@@ -55,11 +55,7 @@ if (isset($_GET['action'])) {
                 } elseif (!isset($_POST['estado_producto'])) {
                     $result['exception'] = 'Seleccione un estado de producto';
                 } elseif (!$productos->setEstado($_POST['estado_producto'])) {
-                    $result['exception'] = 'Estado del producto incorrecto';
-                } elseif (!isset($_POST['empleado_producto'])) {
-                    $result['exception'] = 'Seleccione un empleado';
-                } elseif (!$productos->setEmpleado($_POST['empleado_producto'])) {
-                    $result['exception'] = 'Empleado incorrecto';
+                    $result['exception'] = 'Estado del producto incorrecto';                
                 } elseif (!isset($_POST['marca_producto'])) {
                     $result['exception'] = 'Seleccione una marca';
                 } elseif (!$productos->setMarca($_POST['marca_producto'])) {
