@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'update':
-                $_POST = $venta->validateForm($_POST);
+                $_POST = $venta->validateForm($_POST);                
                 if (!$venta->setId($_POST['id_venta'])) {
                     $result['exception'] = 'Venta incorrecta';
                 } elseif (!$data = $venta->readOne()) {

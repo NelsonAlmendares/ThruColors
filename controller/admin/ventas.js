@@ -25,7 +25,7 @@ function fillTable(dataset) {
     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
     dataset.map(function (row) {
         //Se evalua el valor, si es 1 se coloca a la variable estado: "Activo", si no se coloca a la variable estado: "Inactivo"
-        (row.estado) ? $estado = 'Activo' : $estado = 'Inactivo';
+        (row.estado==1) ? $estado = 'Activo' : $estado = 'Inactivo';
         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
         content += `            
                         <tr>

@@ -251,7 +251,7 @@
             $sql = 'UPDATE public."tb_producto"
 	            SET foto_producto=?, nombre_producto=?, costo_producto=?, descripcion_producto=?, cantidad_producto=?, "id_estadoProducto"=?, id_empleado=?, "id_marcaProducto"=?, "id_generoProducto"=?, "id_categoriaProducto"=?, "id_presentacionProducto"=?
 	            WHERE id_producto = ?';
-            $params = array($this->fotoProducto, $this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->cantidadProducto, $this->estadoProducto, $this->empleado, $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
+            $params = array($this->fotoProducto, $this->nombreProducto, $this->costoProducto, $this->descripcionProducto, $this->cantidadProducto, $this->estadoProducto, $_SESSION['id_empleado'], $this->marcaProducto,  $this->generoProducto, $this->categoriaProducto, $this->presentacionProducto, $this->id);
             return Database::executeRow($sql, $params);
         }
 

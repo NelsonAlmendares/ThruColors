@@ -23,7 +23,7 @@ class ventas extends validator
 
     public function setEstado($value)
     {
-        if ($this->validateNaturalNumber($value)) {
+        if ($this->validateBoolean($value)) {
             $this->estado = $value;
             return true;
         } else {
@@ -81,7 +81,7 @@ class ventas extends validator
     }
 
     public function updateRow()
-    {
+    {   
         $sql = 'UPDATE tb_venta
                 SET estado_venta=?
                 WHERE id_venta = ?';
