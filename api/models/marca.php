@@ -70,6 +70,17 @@ class Marca extends Validator
         return Database::getRows($sql, $params);
     }
 
+    public function readMarca()
+    {
+        $sql = 'SELECT tm.id_marca, nombre_marca, COUNT(id_producto) AS cantidad
+        FROM tb_marca tm
+		INNER JOIN tb_producto tp ON tp."id_marcaProducto" = tm.id_marca
+        GROUP BY id_marca, nombre_marca
+		ORDER BY id_marca';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
     public function readOne()
     {
         $sql = 'SELECT id_marca, nombre_marca
