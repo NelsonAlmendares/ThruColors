@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li><a class="dropdown-item" onclick="logOut()">Cerrar sesión <img
                                         src="../../resources/iconos/cerrar-sesion.png" id="actions" alt=""></a></li>
+                                <li><a class="dropdown-item" href="ventas.html">Ventas realizadas <img
+                                        src="../../resources/iconos/icons8_settings_96px.png" id="actions" alt=""></a></li>
                                 <li><a class="dropdown-item" href="#">Ajustes <img
                                         src="../../resources/iconos/icons8_settings_96px.png" id="actions" alt=""></a></li>
                             </ul>

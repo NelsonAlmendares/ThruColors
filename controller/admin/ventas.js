@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Se restauran los elementos del formulario.
             document.getElementById('save-form').reset();
         }
-    }
-    // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-    //M.Modal.init(document.querySelectorAll('.modal'), options);
+    }    
 });
 
 // Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().

@@ -3,7 +3,7 @@
 *	Clase para manejar la tabla productos de la base de datos.
 *   Es clase hija de Validator.
 */
-class ventas extends validator
+class Ventas extends validator
 {
     // Declaración de atributos (propiedades).
     private $id_venta = null;    
@@ -127,7 +127,21 @@ class ventas extends validator
         $params = null;
         return Database::getRows($sql, $params);
     }
-
+    /*
+    *   Métodos para leer los registros de las ventas.
+    */
+    public function readVentas()
+    {
+        $sql = 'SELECT tv.id_venta AS id_venta, estado_venta AS estado, fecha_venta AS fecha, SUM(tdv.cantidad) AS cantidad_productos, SUM(tdv.precio_producto) AS costo
+                FROM tb_venta tv 
+                INNER JOIN tb_cliente tc ON tv.id_cliente = tc.id_cliente
+                INNER JOIN "tb_DetalleVenta" tdv ON tv.id_venta = tdv.id_venta
+                WHERE tv.id_cliente = ?
+                GROUP BY tv.id_venta
+                ORDER BY id_venta';
+        $params = array($_SESSION['id_cliente']);
+        return Database::getRows($sql, $params);
+    }
     /*
     *   Métodos para generar reportes.
     */

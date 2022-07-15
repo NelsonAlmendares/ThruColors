@@ -17,7 +17,7 @@
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="../../resources/butterfly.png">
 
-    <title>Carrito de compras!</title>
+    <title>Ventas realizadas</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@
                         <li class="breadcrumb-item"><a class="navigator" href="../publico/index.html">Inicio</a></li>
                         <li class="breadcrumb-item"><a class="navigator" href="../publico/productos.html">Productos</a>
                         </li>
-                        <li class="breadcrumb-item active" id="activo" aria-current="page">Carrito</li>
+                        <li class="breadcrumb-item active" id="activo" aria-current="page">Ventas</li>
                     </ol>
                 </nav>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -68,68 +68,32 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 class="label_total">Carrito de compra <i class="fa-solid fa-cart-shopping"></i></h2>
+                <h2 class="label_total">Ventas realizadas <i class="fa-solid fa-cart-shopping"></i></h2>
             </div>
             <div class="col-md-12 container-table">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center">Nombre</th>
-                            <th scope="col" class="text-center">Costo</th>
-                            <th scope="col" class="text-center">Cantidad</th>
-                            <th scope="col" class="text-center">Marca</th>
-                            <th scope="col" class="text-center">Presentacion</th>
-                            <th scope="col" class="text-center">Sub-total</th>
-                            <th scope="col" class="text-center">Acciones</th>
+                            <th scope="col" class="text-center">Fecha</th>
+                            <th scope="col" class="text-center">Cantidad de productos</th>
+                            <th scope="col" class="text-center">Estado de la venta</th>
+                            <th scope="col" class="text-center">Total pagado</th>                            
+                            <th scope="col" class="text-center">Accion</th>
                         </tr>
                     </thead>
-                    <tbody id="carrito-compra">
+                    <tbody id="tb-venta">
                     </tbody>
                 </table>
                 <div class="row">
                     <div class="col">
                         <div class="actions_carrito">
-                            <p>Total a cancelar(US$): <b id="pago"></b></p>
+                            <p>Total pagado(US$): <b id="pago"></b></p>
                             <div class="buttons" id="botones">
                                 
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal fade" id="Modal-cantidad" aria-hidden="true"
-                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalToggleLabel">Cambiar cantidad</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="row" method="post" id="cantidad-form">
-                                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                                    <input type="hidden" id="id_detalle" name="id_detalle">
-                                    <input type="hidden" id="id_venta" name="id_venta">
-									<div class="modal-body">
-										<label class="label" for="cantidad">Cantidad:</label>
-										<input type="number" class="form-control" id="cantidad"
-											name="cantidad_producto" step="000" placeholder="1" min="1" required />
-									</div>
-                                    <div class="modal-footer">
-                                        <!-- Enlace para cerrar el componente Modal -->
-                                        <a class="btn btn-light" data-tooltip="Cancelar">
-                                            Cancelar
-                                        </a>
-                                        <!-- Botón para enviar el formulario -->
-                                        <button type="submit" class="btn btn-outline-success" data-tooltip="Guardar">
-                                            Guardar
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
 
@@ -155,7 +119,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../controller/components.js"></script>
     <script src="../../controller/public/account.js"></script>
-    <script src="../../controller/public/carrito.js"></script>
+    <script src="../../controller/public/ventas.js"></script>
 </body>
 
 </html>

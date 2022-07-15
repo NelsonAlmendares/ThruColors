@@ -6,13 +6,7 @@ var myModal = new bootstrap.Modal(document.getElementById('Modal-cantidad'), {
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los productos del carrito de compras para llenar la tabla en la vista.
-    readOrderDetail();
-    // Se define una variable para establecer las opciones del componente Modal.
-    let options = {
-        dismissible: false
-    }
-    // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-    //M.Modal.init(document.querySelectorAll('.modal'), options);
+    readOrderDetail();    
 });
 
 // Función para obtener el detalle del pedido (carrito de compras).
@@ -73,7 +67,7 @@ function readOrderDetail() {
                     // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
                     document.getElementById('botones').innerHTML = boton;
                 } else {
-                    sweetAlert(4, response.exception, 'index.html');
+                    Toast(4, response.exception, null);
                 }
             });
         } else {

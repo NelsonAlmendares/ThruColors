@@ -17,13 +17,14 @@
   --search: #c9b6da;
   --search_hover: #b9abe0;
   --footer: #d6d6d6;
+  --documento: #c82333;
 }
 
 @font-face {
   font-family: "Kathen";
   font-style: normal;
   font-weight: normal;
-  src: url("../fonts/kathen.woff2") format("woff2");
+  src: url('../../resources/fonts/publico/kathen.woff2') format('woff2');
 }
 
 
@@ -269,4 +270,18 @@ a {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+}
+
+.documento{
+  background-color: transparent;
+  border-color: var(--documento);
+}
+
+.documento:hover{
+  background-color: var(--documento);
+  color: #fff;
+}
+
+a:hover i{
+  color: #fff;
 }
