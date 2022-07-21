@@ -100,4 +100,15 @@ class Tipo_empleado extends Validator
         $params = array($this->id_tipoE);
         return Database::executeRow($sql, $params);
     }
+
+    public function readTipoEm()
+    {
+        $sql = 'SELECT em."id_tipoEmpleado", "tipoEmpleado", COUNT(id_empleado) as cantidad
+		FROM tipo_empleado em
+		INNER JOIN tb_empleado te ON te.tipo_empleado = em."id_tipoEmpleado"
+		GROUP BY "id_tipoEmpleado", "tipoEmpleado"
+		ORDER BY "id_tipoEmpleado"';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }

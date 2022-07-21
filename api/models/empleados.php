@@ -329,4 +329,16 @@ class Empleados extends Validator
         $params = array($this->id_empleado);
         return Database::executeRow($sql, $params);
     }
+
+    /*metodo para generar reportes con tipo empleado */
+    public function empleadosTipos()
+    {
+        $sql = 'SELECT nombre_empleado, apellido_empleado
+        FROM tb_empleado te INNER JOIN tipo_empleado em ON te.tipo_empleado = em."id_tipoEmpleado"
+        WHERE te.tipo_empleado = ?
+        ORDER BY nombre_empleado '
+        $params = array($this->tipo_empleado);
+        return Database::getRows($sql, $params);
+    }
 }
+
