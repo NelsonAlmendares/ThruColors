@@ -65,8 +65,8 @@ class Reportes extends FPDF
         $this->cell(185, 15, utf8_decode($this->title), 0, 1, 'C');
         // Se ubica el nombre del empleado, apellido, la fecha y hora del servidor.    
         $this->setFont('Arial', '', 10);
-        $this->cell(185, 5,utf8_decode('Nombre: '.$this->nombre.' '.utf8_decode($this->apellido).'                                                             
-                                                      '.date('d M Y / H:i:s')), 0, 1, 'L');                
+        $this->cell(150, 5,utf8_decode('Nombre: '.$this->nombre.' '.$this->apellido), 0, 0, 'L');                
+        $this->cell(25, 5, utf8_decode(date('d M Y / H:i:s')), 0, 1, 'L');
         //Para la fecha d/M/Y y para la hora H:i:s
         //Se ubica el codigo del empleado
         $this->cell(180, 5, utf8_decode('Correo del cliente: '.$this->correo), 0, 1, 'L');
@@ -84,8 +84,8 @@ class Reportes extends FPDF
         // Se establece la fuente para el número de página.
         $this->setFont('Arial', 'I', 9);
         // Se imprime una celda con los derechos de ThruColors y con el número de página.
-        $this->cell(0, 10, utf8_decode('2022 © Thru Colors   ').'                                                                                                
-                                                                '.utf8_decode('Página ').$this->pageNo().'/{nb}', 0, 0, 'L');
+        $this->cell(150, 10, utf8_decode('2022 © Thru Colors   '), 0, 0, 'L');                                                                                               
+        $this->cell(40, 10, utf8_decode('Página ').$this->pageNo().'/{nb}', 0, 0, 'R');
     }
 }
 ?>

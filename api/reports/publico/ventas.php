@@ -30,21 +30,18 @@ if($dataVentas = $venta->readRecibo($id_venta)){
     $pdf->cell(67, 10, utf8_decode('Descripción'), 0, 0, 'C', 1);
     $pdf->cell(30, 10, utf8_decode('Cantidad'), 0, 0, 'C', 1);             
     $pdf->cell(30, 10, utf8_decode('P. Unitario'), 0, 0, 'C', 1);             
-    $pdf->cell(30, 10, utf8_decode('P. ToTal'), 0, 0, 'C', 1);             
+    $pdf->cell(30, 10, utf8_decode('P. ToTal'), 0, 1, 'C', 1);             
     // Se recorren los registros ($dataVentas) fila por fila ($rowVentas).
     foreach ($dataVentas as $rowVentas) {
-        $pdf->cell(0, 10,' ', 0, 1,);
         // Se establece la fuente para los datos.        
         $pdf->setFont('Arial', '', 9);
-        // Se establece un color de relleno de la celda del nombre de pedido.
-        $pdf->setFillColor(211,218,237);
         // Se imprime una celda con el nombre de la pedido.
         $pdf->cell(30, 10, utf8_decode($rowVentas['codigo']), 0, 0, 'C');
         $pdf->cell(67, 10, utf8_decode($rowVentas['nombre'].' '.$rowVentas['marca'].' ('.$rowVentas['presentacion'].')'), 0, 0, 'C');
         $pdf->cell(30, 10, utf8_decode($rowVentas['cantidad']), 0, 0, 'C');
         $pdf->cell(30, 10, '$'.$rowVentas['costo'], 0, 0, 'C');
         $sub_total = $rowVentas['costo'] * $rowVentas['cantidad'];
-        $pdf->cell(30, 10, '$'.utf8_decode($sub_total), 0, 0, 'C');
+        $pdf->cell(30, 10, '$'.utf8_decode($sub_total), 0, 1, 'C');
     }   
                          
 } else {

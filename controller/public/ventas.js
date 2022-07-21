@@ -36,7 +36,7 @@ function readOrderDetail() {
                     // Se recorre el conjunto de registros (dataset) fila por fila a través del objeto row.
                     response.dataset.map(function (row) {
                         (row.estado==1) ? $estado = 'Activo' : $estado = 'Inactivo';
-                        subtotal = parseFloat(row.costo);
+                        subtotal = parseFloat(row.costo*row.cantidad_productos);
                         total += subtotal;
                         // Se crean y concatenan las filas de la tabla con los datos de cada registro.
                         content += `
