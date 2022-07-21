@@ -24,6 +24,16 @@ if (isset($_GET['action'])) {
                 } else{
                     $result['excption'] = 'Usted no ha realizado ninguna venta';
                 }
+                break;
+            case 'createRecibo':
+                $_POST = $venta->validateForm($_POST);                
+                if (!$venta->setId($_POST['id_venta'])) {
+                    $result['exception'] = 'Venta incorrecta';
+                } elseif($venta->readRecibo()){
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = Database::getException();
+                }
                 break;            
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';

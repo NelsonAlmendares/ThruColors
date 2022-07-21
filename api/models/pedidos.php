@@ -194,7 +194,6 @@
                 WHERE "id_DetalleVenta" = ? AND id_venta = ?';
         $params = array($this->id_detalle, $_SESSION['id_pedido']);
         return Database::executeRow($sql, $params);
-    }
-
-    }
+    }    
+}
 ?>

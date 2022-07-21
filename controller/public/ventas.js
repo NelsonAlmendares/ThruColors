@@ -1,5 +1,6 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_VENTAS = SERVER + 'publico/ventas.php?action=';
+const API_RECIBO = SERVER + 'reports/publico/ventas.php';
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
     // Se llama a la función que obtiene los productos del carrito de compras para llenar la tabla en la vista.
@@ -45,7 +46,7 @@ function readOrderDetail() {
                                 <td class="text-center">${$estado}</td>                                
                                 <td class="text-center">$${subtotal.toFixed(2)}</td>
                                 <td class="text-center">
-                                    <a onclick="openReport()" class="btn documento" data-bs-toggle="tooltip" data-bs-placement="top" title="Generar recibo">
+                                    <a onclick="openReport(${row.id_venta})" class="btn documento" data-bs-toggle="tooltip" data-bs-placement="top" title="Generar recibo">
                                         <i class="fa-solid fa-file-lines generar_documento"></i>
                                     </a>                                    
                                 </td>
@@ -69,9 +70,9 @@ function readOrderDetail() {
 }
 
 // Función para abrir el reporte de productos.
-function openReport() {
-    // Se establece la ruta del reporte en el servidor.
-    let url = SERVER + 'reports/publico/ventas.php';
+function openReport(id_venta) {
+    // Se establece la ruta del reporte en el servidor y se manda el id de la venta para generar el recibo de la misma.
+    let url = SERVER + 'reports/publico/ventas.php?id='+ id_venta;
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(url);
 }

@@ -38,9 +38,7 @@ function fillTable(dataset) {
         `;
     });
     // Se agregan las filas al cuerpo de la tabla mediante su id para mostrar los registros.
-    document.getElementById('table-v').innerHTML = content;
-    // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-    //M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+    document.getElementById('table-v').innerHTML = content;    
 }
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de buscar.

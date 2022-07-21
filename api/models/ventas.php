@@ -154,4 +154,16 @@ class Ventas extends validator
         $params = array($this->categoria);
         return Database::getRows($sql, $params);
     }
+    // Méto para generar el recibo
+    public function readRecibo($id_venta){
+        $this->id_venta = $id_venta;
+        $sql = 'SELECT td.id_venta, fecha_venta AS fecha,id_cliente AS cliente, estado_venta AS estado, tp.id_producto AS codigo, nombre_producto AS nombre, costo_producto AS costo, cantidad, tm.nombre_marca AS marca, tb.presentacion_producto AS presentacion
+                FROM "tb_DetalleVenta" td INNER JOIN tb_producto tp ON td.id_producto = tp.id_producto
+                INNER JOIN tb_marca tm ON tp."id_marcaProducto" = tm.id_marca
+                INNER JOIN tb_venta tv ON td.id_venta = tv.id_venta
+                INNER JOIN tb_presentacion tb ON tp."id_presentacionProducto" = tb.id_presentacion
+                WHERE td.id_venta = ?';
+        $params = array($this->id_venta);
+        return Database::getRows($sql, $params);
+    }
 }
