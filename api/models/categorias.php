@@ -120,6 +120,16 @@
             return Database::executeRow($sql, $params);
         }
 
+        public function CategoriaP(){
+            $sql = 'SELECT id_categoria, categoria_producto, COUNT(id_producto) as cantidad
+            FROM tb_categoria tc
+            INNER JOIN tb_producto tp ON tp."id_categoriaProducto" = tc.id_categoria
+            GROUP BY id_categoria, "id_categoriaProducto"
+            ORDER BY id_categoria';
+            $params = null;
+            return Database::getRows($sql, $params);
+        }
+
     }
 
 ?>

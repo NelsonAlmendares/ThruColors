@@ -320,4 +320,16 @@
             $params = array($this->marcaProducto);
             return Database::getRows($sql, $params);
         }
+
+         /*--------Métodos para generar reporte con categoria------------*/
+        public function productoCate()
+        {
+            $sql ='   SELECT nombre_producto, costo_producto
+            FROM tb_producto tp  
+            INNER JOIN tb_categoria tm ON tp."id_categoriaProducto" = tm.id_categoria
+            WHERE tp."id_categoriaProducto" = ?
+            ORDER BY nombre_producto';
+            $params = array($this-> categoriaProducto);
+            return Database::getRows($sql, $params);
+        }
     }
