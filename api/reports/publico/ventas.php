@@ -13,7 +13,7 @@ parse_url($id_venta = $_GET['id']);
 //Se verifica si hay una sesion activa, para poder utilizar las variables de session
 session_start();
 // Se inicia el reporte con el encabezado del documento.
-$pdf->startReport('Venta realizada', $_SESSION['nombre_cliente'], $_SESSION['apellido_cliente'], $_SESSION['correo_cliente'], $id_venta);
+$pdf->startReport('Factura de la venta', $_SESSION['nombre_cliente'], $_SESSION['apellido_cliente'], $_SESSION['correo_cliente'], $id_venta);
 // Se instancia el módelo Marca para obtener los datos.
 $venta = new Ventas;
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
