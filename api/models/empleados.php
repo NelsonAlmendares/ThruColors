@@ -336,7 +336,7 @@ class Empleados extends Validator
         $sql = 'SELECT nombre_empleado, apellido_empleado
         FROM tb_empleado te INNER JOIN tipo_empleado em ON te.tipo_empleado = em."id_tipoEmpleado"
         WHERE te.tipo_empleado = ?
-        ORDER BY nombre_empleado '
+        ORDER BY nombre_empleado';
         $params = array($this->tipo_empleado);
         return Database::getRows($sql, $params);
     }
