@@ -39,8 +39,9 @@ if($dataVentas = $venta->readRecibo($id_venta)){
         $pdf->cell(30, 10, '$'.$rowVentas['costo'], 0, 0, 'C');
         $sub_total = $rowVentas['costo'] * $rowVentas['cantidad'];
         $pdf->cell(30, 10, '$'.utf8_decode($sub_total), 0, 1, 'C');
-    }   
-                       
+        $total = ++$sub_total;        
+    }             
+    $pdf->cell(30, 10, '$'.utf8_decode($total), 0, 1, 'C');
 } else {
     $pdf->cell(0, 10, utf8_decode('No hay marcas para mostrar'), 1, 1);
 }            

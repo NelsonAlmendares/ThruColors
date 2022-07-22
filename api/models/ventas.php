@@ -138,7 +138,7 @@ class Ventas extends validator
                 INNER JOIN "tb_DetalleVenta" tdv ON tv.id_venta = tdv.id_venta
                 WHERE tv.id_cliente = ?
                 GROUP BY tv.id_venta
-                ORDER BY id_venta;';
+                ORDER BY id_venta';
         $params = array($_SESSION['id_cliente']);
         return Database::getRows($sql, $params);
     }
