@@ -13,7 +13,8 @@ class Reportes extends FPDF
     // Propiedad para guardar el nombre, apellido y codigo del empleado.
     private $nombre = null;
     private $apellido = null;
-    private $correo = null;    
+    private $correo = null; 
+    private $id_venta = null;   
 
     /*
     *   Método para iniciar el reporte con el encabezado del documento.    
@@ -21,9 +22,10 @@ class Reportes extends FPDF
     *               $nombre (nombre del cliente que genero el reporte)
     *               $apellido (apellido del cliente que genero el reporte).
     *               $correo (correo del cliente que genero el reporte).
+    *               $id_venta(el numero de la factura generada).
     *   Retorno: ninguno.
     */
-    public function startReport($title, $nombre, $apellido, $correo)
+    public function startReport($title, $nombre, $apellido, $correo, $id_venta)
     {
         // Se establece la zona horaria a utilizar durante la ejecución del reporte.
         ini_set('date.timezone', 'America/El_Salvador');        
@@ -35,6 +37,8 @@ class Reportes extends FPDF
             $this->nombre = $nombre;
             $this->apellido = $apellido;
             $this->correo = $correo;
+            // Se asigna el id de la factura, para mostrar el número de factura
+            $this->id_venta = $id_venta;
             // Se establece el título del documento (true = utf-8).
             $this->setTitle(utf8_decode($this->title), true);
             //Se establece el nombre de la aplicación que genero el documento
@@ -65,11 +69,12 @@ class Reportes extends FPDF
         $this->cell(185, 15, utf8_decode($this->title), 0, 1, 'C');
         // Se ubica el nombre del empleado, apellido, la fecha y hora del servidor.    
         $this->setFont('Arial', '', 10);
-        $this->cell(185, 5,utf8_decode('Nombre: '.$this->nombre.' '.utf8_decode($this->apellido).'                                                             
-                                                      '.date('d M Y / H:i:s')), 0, 1, 'L');                
+        $this->cell(150, 5,utf8_decode('Nombre: '.$this->nombre.' '.$this->apellido), 0, 0, 'L');                
+        $this->cell(25, 5, utf8_decode(date('d M Y / H:i:s')), 0, 1, 'L');
         //Para la fecha d/M/Y y para la hora H:i:s
         //Se ubica el codigo del empleado
-        $this->cell(180, 5, utf8_decode('Correo del cliente: '.$this->correo), 0, 1, 'L');
+        $this->cell(150, 5, utf8_decode('Correo del cliente: '.$this->correo), 0, 0, 'L');        
+        $this->cell(25, 5, utf8_decode('N° de factura: '.$this->id_venta), 0, 1, 'L');
         $this->ln(2);               
     }
 
@@ -84,8 +89,8 @@ class Reportes extends FPDF
         // Se establece la fuente para el número de página.
         $this->setFont('Arial', 'I', 9);
         // Se imprime una celda con los derechos de ThruColors y con el número de página.
-        $this->cell(0, 10, utf8_decode('2022 © Thru Colors   ').'                                                                                                
-                                                                '.utf8_decode('Página ').$this->pageNo().'/{nb}', 0, 0, 'L');
+        $this->cell(150, 10, utf8_decode('2022 © Thru Colors   '), 0, 0, 'L');                                                                                               
+        $this->cell(40, 10, utf8_decode('Página ').$this->pageNo().'/{nb}', 0, 0, 'R');
     }
 }
 ?>
