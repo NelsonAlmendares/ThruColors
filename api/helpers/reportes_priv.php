@@ -48,7 +48,7 @@ class Reportes extends FPDF
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
         } else {
-            header('location: ../../../views/dashboard/index.php');
+            header('location: ../../../views/dashboard/index.html');
         }
     }    
 

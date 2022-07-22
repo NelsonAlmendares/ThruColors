@@ -52,7 +52,7 @@ class Reportes extends FPDF
             // Se define un alias para el número total de páginas que se muestra en el pie del documento.
             $this->aliasNbPages();
         } else {
-            header('location: ../../../views/dashboard/index.php');
+            header('location: ../../../views/dashboard/index.html');
         }
     }    
 
@@ -69,12 +69,20 @@ class Reportes extends FPDF
         $this->cell(185, 15, utf8_decode($this->title), 0, 1, 'C');
         // Se ubica el nombre del empleado, apellido, la fecha y hora del servidor.    
         $this->setFont('Arial', '', 10);
-        $this->cell(150, 5,utf8_decode('Nombre: '.$this->nombre.' '.$this->apellido), 0, 0, 'L');                
+        $this->cell(150, 5,utf8_decode('Nombre: '.$this->nombre.' '.$this->apellido), 0, 0, 'L');
+        //Se le asigna el color al marco del cuadro
+        $this->setDrawColor(255, 0, 0);
+        //Se le asigna el color al texto
+        $this->setTextColor(255, 0, 0);
+        // Se ubica el id como número de factura                
+        $this->cell(30, 6, utf8_decode('N° de factura: '.$this->id_venta), 1, 1, 'C');
+        //Se le asigna el color al texto
+        $this->setTextColor(0);                               
+        //Se ubica el correo del empleado
+        $this->cell(150, 5, utf8_decode('Correo del cliente: '.$this->correo), 0, 0, 'L');
+        //Se ubica la fecha y la hora en la que se genero la factura
         $this->cell(25, 5, utf8_decode(date('d M Y / H:i:s')), 0, 1, 'L');
         //Para la fecha d/M/Y y para la hora H:i:s
-        //Se ubica el codigo del empleado
-        $this->cell(150, 5, utf8_decode('Correo del cliente: '.$this->correo), 0, 0, 'L');        
-        $this->cell(25, 5, utf8_decode('N° de factura: '.$this->id_venta), 0, 1, 'L');
         $this->ln(2);               
     }
 
