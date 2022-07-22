@@ -49,6 +49,14 @@ document.getElementById('search-form').addEventListener('submit', function (even
     searchRows(API_TIPOE, 'search-form');
 });
 
+// Función para abrir el reporte de productos.
+function openReport() {
+    // Se establece la ruta del reporte en el servidor.
+    let url = SERVER + 'reports/admin/tipo_empleado.php';
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(url);
+}
+
 // Función para preparar el formulario al momento de insertar un registro.
 function openCreate() {
     // Se crea la variable que guardara todas las etiquetas html.
